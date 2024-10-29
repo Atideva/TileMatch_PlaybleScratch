@@ -1,18 +1,15 @@
 using System;
-using UnityEngine;
 
 [Serializable]
 public class TileData
 {
-	public int type;
-
-	public Sprite icon;
+	public TileSO tile;
 
 	public int amount;
 
 	public bool CanSpawn => amount > 0;
 
-	public void Decrease()
+	public void Spawned()
 	{
 		amount--;
 	}

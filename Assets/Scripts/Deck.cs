@@ -1,31 +1,29 @@
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
 public class Deck : GameComponent
 {
     public DeckLayer[] Layers { get; private set; }
-    public List<Tile> Slots => Layers.SelectMany(layer => layer.Slots).ToList();
-    public List<Tile> FirstLayer => Layers[0].Slots.ToList();
-    public List<Tile> SecondLayer => Layers[1].Slots.ToList();
+    public List<Tile> Tiles => Layers.SelectMany(layer => layer.Tiles).ToList();
+    public List<Tile> FirstLayer => Layers[0].Tiles.ToList();
+    public List<Tile> SecondLayer => Layers[1].Tiles.ToList();
 
     protected override void OnInit()
     {
-        FindPlatforms();
-        InitPlatforms();
+        FindLayers();
+        InitLayers();
     }
 
-    void FindPlatforms()
-    {
-        Layers = GetComponentsInChildren<DeckLayer>();
-        //Debug.Log("Layers total: " + Layers.Length);
-    }
+    void FindLayers()
+        => Layers = GetComponentsInChildren<DeckLayer>();
 
-    void InitPlatforms()
+    void InitLayers()
     {
-        foreach (var layer in Layers)
+        for (var i = 0; i < Layers.Length; i++)
         {
-            layer.Init(this);
+            var layer = Layers[i];
+            var layerID = (i+1) * 100;
+            layer.Init(this, layerID);
         }
     }
 }

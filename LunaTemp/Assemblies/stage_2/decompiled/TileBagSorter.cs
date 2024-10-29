@@ -10,7 +10,7 @@ public class TileBagSorter : GameComponent
 
 	private bool _isSorting;
 
-	private bool NeedsSorting => Game.Bag.BusySlots.Where((BagSlot slot) => slot.ID != 0).Any((BagSlot slot) => Game.Bag.slots[slot.ID - 1].IsEmpty);
+	private bool NeedsSorting => Game.Bag.BusySlots.Where((TileSlot slot) => slot.ID != 0).Any((TileSlot slot) => Game.Bag.slots[slot.ID - 1].IsEmpty);
 
 	protected override void OnInit()
 	{
@@ -34,13 +34,14 @@ public class TileBagSorter : GameComponent
 		while (NeedsSorting)
 		{
 			SortingSlot();
+			_ = Game.Bag.EmptySlot;
 			yield return new WaitForSeconds(intervalSec);
 		}
 		_isSorting = false;
 	}
 
-	private BagSlot SortingSlot()
+	private TileSlot SortingSlot()
 	{
-		return Game.Bag.BusySlots.Where((BagSlot slot) => slot.ID != 0).FirstOrDefault((BagSlot slot) => Game.Bag.slots[slot.ID - 1].IsEmpty);
+		return Game.Bag.BusySlots.Where((TileSlot slot) => slot.ID != 0).FirstOrDefault((TileSlot slot) => Game.Bag.slots[slot.ID - 1].IsEmpty);
 	}
 }

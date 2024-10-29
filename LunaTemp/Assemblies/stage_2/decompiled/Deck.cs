@@ -5,24 +5,24 @@ public class Deck : GameComponent
 {
 	public DeckLayer[] Layers { get; private set; }
 
-	public List<TileSlot> Slots => Layers.SelectMany((DeckLayer layer) => layer.Slots).ToList();
+	public List<Tile> Slots => Layers.SelectMany((DeckLayer layer) => layer.Tiles).ToList();
 
-	public List<TileSlot> FirstLayer => Layers[0].Slots.ToList();
+	public List<Tile> FirstLayer => Layers[0].Tiles.ToList();
 
-	public List<TileSlot> SecondLayer => Layers[1].Slots.ToList();
+	public List<Tile> SecondLayer => Layers[1].Tiles.ToList();
 
 	protected override void OnInit()
 	{
-		FindPlatforms();
-		InitPlatforms();
+		FindLayers();
+		InitLayers();
 	}
 
-	private void FindPlatforms()
+	private void FindLayers()
 	{
 		Layers = GetComponentsInChildren<DeckLayer>();
 	}
 
-	private void InitPlatforms()
+	private void InitLayers()
 	{
 		DeckLayer[] layers = Layers;
 		foreach (DeckLayer layer in layers)

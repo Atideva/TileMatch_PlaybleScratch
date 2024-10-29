@@ -208,7 +208,7 @@
       "url": "https://packages.unity.com"
     },
     "uk.lunalabs.luna": {
-      "version": "file:../../../../Users/Eduard/Desktop/6.1.1/scripts",
+      "version": "file:../../../Users/Eduard/Desktop/6.1.1/scripts",
       "depth": 0,
       "source": "local",
       "dependencies": {}

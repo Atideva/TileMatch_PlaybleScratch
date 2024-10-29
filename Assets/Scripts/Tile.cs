@@ -1,75 +1,121 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
+[ExecuteAlways]
 public class Tile : MonoBehaviour
 {
+    [Space(20)]
+    public TileSO Type;
+    public TileSO lastType;
+    // public TileData Data;
+    [Space(20)]
     public SpriteRenderer icon;
     public SpriteRenderer disabledTile;
-    public List<Tile> coverTiles = new();
-    public int Layer { get; private set; }
     public SpriteRenderer background;
+    public TrailRenderer trail;
+    [Space(20)]
     public Vector3 defaultSize = Vector3.one;
     public float speed;
     public float spawnAnimSize = 1.5f;
     public float spawnAnimDuration = 0.3f;
-    public float moveDuration = 0.5f;
+
+    [Space(20)]
+    public List<Tile> coverTiles = new();
+
+    public int Layer { get; private set; }
+
     bool _isSpawnAnimation;
     float _spawnTimer = 0.0f;
     Vector3 _targetPosition;
     float _timer;
     bool _isMoving;
     TileSlot _targetSlot;
-    public bool IsClickable => _isClickable && !_isMoving;
+    public bool IsClickable => _isClickable && !_isMoving && !InBag;
     public bool _isClickable;
-    public TileData Data { get; private set; }
+
     public bool InBag { get; private set; }
+
+    void Awake()
+    {
+        IsInit = false;
+    }
+
+    void RefreshEditor()
+    {
+        if (Application.isPlaying) return;
+        if (lastType == Type) return;
+        lastType = Type;
+        Refresh(Type);
+    }
+
     public void SetContacts(List<Tile> cover)
     {
         if (cover == null) return;
         coverTiles.Clear();
         coverTiles = cover;
         if (cover.Count > 0) Disable();
+        else Enable();
     }
+
+    int iconSort;
+    int backGroundSort;
+    int disabledSort;
+    int trailSort;
 
     public void MoveTo(TileSlot slot)
     {
-        icon.sortingOrder = 1000;
-        background.sortingOrder = 1000;
+        trail.sortingOrder = 1000;
+        background.sortingOrder = 1001;
+        icon.sortingOrder = 1002;
         _targetSlot = slot;
-        // Set up the movement
         _targetPosition = slot.Position;
-        var distance = Vector2.Distance(Position, _targetPosition);
-        // speed = distance / moveDuration; // Calculate the speed based on the distance and duration
-        _isMoving = true; // Start moving
+        _isMoving = true;
     }
 
     public event Action<Tile, TileSlot> OnMoveFinish = delegate { };
     public Vector2 Position => transform.position;
+    public bool IsMoving => _isMoving;
+    public float Y => transform.position.y;
 
-    public void Init(int id)
+    public void SetLayer(int layer, int lineID)
     {
-        Layer = id;
-        background.sortingOrder = Layer;
-        if (!Application.isPlaying) return;
-        //debugBackground.gameObject.SetActive(false);
+        _line = lineID;
+        Layer = layer;
+        trailSort = Layer + _line ;
+        backGroundSort = Layer + _line+1;
+        iconSort = Layer + _line + 2;
+        disabledSort = Layer + _line + 3;
+        Refresh();
     }
+
+    void Refresh()
+    {
+        trail.sortingOrder = trailSort;
+        background.sortingOrder = backGroundSort;
+        icon.sortingOrder = iconSort;
+        disabledTile.sortingOrder = disabledSort;
+    }
+
+    void StopMove()
+    {
+        transform.position = _targetPosition;
+        _isMoving = false;
+        Refresh();
+        OnMoveFinish(this, _targetSlot);
+    }
+
+    bool Arrive => Vector2.Distance(transform.position, _targetPosition) < 0.01f;
 
     void Update()
     {
+        RefreshEditor();
         if (_isMoving)
         {
-//            Debug.LogError("Moving to: " + _targetPosition);
+            //  Debug.LogError("Moving to: " + _targetPosition);
             transform.position = Vector3.MoveTowards(Position, _targetPosition, speed * Time.deltaTime);
-            if (Vector3.Distance(transform.position, _targetPosition) < 0.01f)
-            {
-                transform.position = _targetPosition;
-                _isMoving = false;
-                icon.sortingOrder = 0;
-                background.sortingOrder = 0;
-                OnMoveFinish(this, _targetSlot);
-            }
+            if (Arrive)
+                StopMove();
         }
 
         if (_isSpawnAnimation)
@@ -95,15 +141,22 @@ public class Tile : MonoBehaviour
         }
     }
 
-    public void Set(TileData data, int layer)
+    public void Set(TileSO so)
     {
-        Data = data;
-        Layer = layer;
-        icon.sprite = data.tile.Icon;
-        icon.sortingOrder = Layer + 1;
-        disabledTile.sortingOrder = Layer + 2;
+        Refresh(so);
         Enable();
+        IsInit = true;
     }
+
+    void Refresh(TileSO so)
+    {
+        var soName = so ? so.name : "";
+        gameObject.name = "Tile - " + soName;
+        icon.sprite = so ? so.Icon : null;
+    }
+
+    public bool IsInit;
+    int _line;
 
     public void SpawnAnimation()
     {
@@ -112,8 +165,6 @@ public class Tile : MonoBehaviour
         Show();
     }
 
-
-
     public void PutInBag()
     {
         InBag = true;
@@ -121,11 +172,13 @@ public class Tile : MonoBehaviour
 
     public void Hide()
     {
+        if (!Application.isPlaying) return;
         gameObject.SetActive(false);
     }
 
     public void Show()
     {
+        if (!Application.isPlaying) return;
         gameObject.SetActive(true);
     }
 

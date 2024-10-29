@@ -1,12 +1,15 @@
 using System.Collections.Generic;
 using System.Linq;
+using Luna.Unity;
 using UnityEngine;
 
 public class TileActions : GameComponent
 {
-	private List<TileSlot> _slots;
+	private List<Tile> _slots;
 
-	public Camera _cam;
+	private Camera _cam;
+
+	private int clicks;
 
 	protected override void OnInit()
 	{
@@ -17,8 +20,8 @@ public class TileActions : GameComponent
 	private void OnTouchScreen(Vector2 touchPos, float touchSize)
 	{
 		Vector3 pos = _cam.ScreenToWorldPoint(touchPos);
-		IEnumerable<TileSlot> clickable = _slots.Where((TileSlot s) => s.IsClickable);
-		foreach (TileSlot slot in clickable)
+		IEnumerable<Tile> clickable = _slots.Where((Tile s) => s.IsClickable);
+		foreach (Tile slot in clickable)
 		{
 			float dist = Vector2.Distance(pos, slot.Position);
 			if (dist > touchSize)
@@ -30,32 +33,37 @@ public class TileActions : GameComponent
 		}
 	}
 
-	private void Touched(TileSlot slot)
+	private void Touched(Tile tile)
 	{
-		Click(slot);
+		Click(tile);
 	}
 
-	private void Click(TileSlot slot)
+	private void Click(Tile tile)
 	{
-		Debug.Log(slot.Tile.icon.sprite.name + " clicked");
-		if (!slot.InBag && !Game.Bag.NoSpace)
+		clicks++;
+		if (tile.InBag)
 		{
-			BagSlot emptySlot = Game.Bag.EmptySlot;
-			emptySlot.Book(slot);
-			slot.MoveTo(emptySlot);
-			slot.OnMoveFinish += PutBag;
+			Analytics.LogEvent("Bagckpack clicked", clicks);
+			return;
+		}
+		Analytics.LogEvent("Tile clicked", clicks);
+		if (!Game.Bag.NoSpace)
+		{
+			TileSlot empty = Game.Bag.EmptySlot;
+			empty.Put(tile);
+			tile.OnMoveFinish += PutBag;
 		}
 	}
 
-	public void Observe(List<TileSlot> tiles)
+	public void Observe(List<Tile> tiles)
 	{
 		_slots = tiles;
 	}
 
-	private void PutBag(TileSlot moving, BagSlot bagSlot)
+	private void PutBag(Tile moving, TileSlot tileSlot)
 	{
 		Debug.Log("Move finished");
 		moving.OnMoveFinish -= PutBag;
-		Game.Bag.Put(moving, bagSlot);
+		Game.Bag.Put(moving, tileSlot);
 	}
 }

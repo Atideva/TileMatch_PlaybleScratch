@@ -2,20 +2,33 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static Luna.Unity.Analytics;
 
 public class TileActions : GameComponent
 {
     List<Tile> _slots;
-      Camera _cam;
+    Camera _cam;
 
     protected override void OnInit()
     {
         _cam = Camera.main;
-        Game.Input.OnTouchScreen += OnTouchScreen;
+        if (Application.isPlaying)
+        {
+//            Debug.LogError("INITED");
+            Game.Input.OnTouchScreen += OnTouchScreen;
+        }
+    }
+
+    bool isDisable;
+
+    public void Disable()
+    {
+        isDisable = true;
     }
 
     void OnTouchScreen(Vector2 touchPos, float touchSize)
     {
+//        Debug.LogError("TOUCHED");
         var pos = _cam.ScreenToWorldPoint(touchPos);
 
         var clickable = _slots.Where(s => s.IsClickable);
@@ -24,25 +37,31 @@ public class TileActions : GameComponent
             var dist = Vector2.Distance(pos, slot.Position);
             if (dist > touchSize) continue;
             Touched(slot);
-            break;
+            return;
         }
     }
 
     void Touched(Tile tile)
     {
+        if (isDisable) return;
         Click(tile);
     }
 
+    int clicks;
+    public event Action<Tile> OnMoveStart = delegate { };
+
     void Click(Tile tile)
     {
-        Debug.Log("Click: " + tile.Data.tile.name);
-        if (tile.InBag) return;
+        clicks++;
+        LogEvent("Tile clicked", clicks);
+
         if (Game.Bag.NoSpace) return;
 
         var empty = Game.Bag.EmptySlot;
-        empty.Put(tile);
-       
-        tile.OnMoveFinish += PutBag;
+        Game.Bag.Put(tile, empty);
+
+        OnMoveStart(tile);
+        tile.OnMoveFinish += MoveFinished;
     }
 
     public void Observe(List<Tile> tiles)
@@ -50,12 +69,13 @@ public class TileActions : GameComponent
         _slots = tiles;
     }
 
-    void PutBag(Tile moving, TileSlot tileSlot)
-    {
-        Debug.Log("Move finished");
+    public event Action OnMoveFinish = delegate { };
 
-        moving.OnMoveFinish -= PutBag;
-        Game.Bag.Put(moving, tileSlot);
+    void MoveFinished(Tile moving, TileSlot tileSlot)
+    {
+        Debug.Log("Move finished: " + moving.Type.name, moving.gameObject);
+        moving.OnMoveFinish -= MoveFinished;
+        OnMoveFinish();
     }
 
 }

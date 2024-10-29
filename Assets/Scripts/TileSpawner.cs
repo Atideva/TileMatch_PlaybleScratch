@@ -1,26 +1,21 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
-using UnityEngine.Serialization;
-using Random = UnityEngine.Random;
 
 public class TileSpawner : GameComponent
 {
-    [SerializeField] List<TileData> level = new();
+   // [SerializeField] List<TileData> level = new();
     public Tile prefab;
     public List<Tile> spawned = new();
-    public List<TileData> Level => level;
+    //public List<TileData> Level => level;
 
     protected override void OnInit()
     {
     }
 
-    public void Spawn(List<TileData> tiles, DeckLayer[] layers)
+    /*public void Spawn(List<TileData> tiles, DeckLayer[] layers)
     {
         var tilez = tiles.Sum(t => t.amount);
-        var slots = layers.Sum(p => p.Slots.Length);
+        var slots = layers.Sum(p => p.Tiles.Length);
         if (tilez != slots)
         {
             Debug.LogError("Tiles amount should be equals bricks amount on scene");
@@ -30,10 +25,11 @@ public class TileSpawner : GameComponent
         {
             StartCoroutine(RunSpawn(tiles, layers));
         }
-    }
+    }*/
 
     public bool hideAtSpawn = true;
 
+    /*
     IEnumerator RunSpawn(List<TileData> tileData, DeckLayer[] layers)
     {
         /*
@@ -63,10 +59,11 @@ public class TileSpawner : GameComponent
             spawned.Add(tile);
             yield return new WaitForSeconds(1 / spawnRate);
         }
-        */
+        #1#
         yield return new WaitForSeconds(1 / spawnRate);
         OnSpawnFinish(spawned);
     }
+    */
 
     public float spawnRate;
     public event Action<List<Tile>> OnSpawnFinish = delegate { };

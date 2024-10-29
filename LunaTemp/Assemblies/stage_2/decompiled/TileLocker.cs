@@ -15,8 +15,8 @@ public class TileLocker : GameComponent
 		for (int i = 0; i < layers.Length - 1; i++)
 		{
 			DeckLayer layer = layers[i];
-			int current = layer.id;
-			int onTop = layers[i + 1].id;
+			int current = layer.layer;
+			int onTop = layers[i + 1].layer;
 			foreach (Tile tile in tiles.Where((Tile t) => t.Layer == current).ToList())
 			{
 				List<Tile> topTiles = tiles.Where((Tile t) => t.Layer == onTop).ToList();

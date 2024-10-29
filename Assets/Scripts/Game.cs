@@ -1,36 +1,89 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Game : MonoBehaviour
 {
+    [Space(20)]
+    [SerializeField] float autoGameOverInSeconds = 30;
+    [Space(20)]
     [SerializeField] Deck deck;
-    [SerializeField] TileSpawner spawner;
     [SerializeField] TileActions actions;
     [SerializeField] TileLocker locker;
     [SerializeField] TilesBag bag;
     [SerializeField] TileSpawnAnimation spawnAnimation;
-    [SerializeField] MatchCondition matchCondition;
+    [SerializeField] TileMatcher tileMatcher;
     [SerializeField] LoseCondition loseCondition;
     [SerializeField] WinCondition winCondition;
     [SerializeField] InputTouch input;
-
+    [SerializeField] EndCard endCard;
+    [SerializeField] Quest quest;
+    [Space]
+    [SerializeField] bool useRandom;
+    [SerializeField] TileRandomSpawner spawnRandom;
     [Space(20)]
-    [SerializeField] int totalTiles;
-    [SerializeField] int totalBricks;
-    [SerializeField] bool randomTiles;
-    [SerializeField] List<Tile> tiles = new();
-    public  IReadOnlyList<Tile> Tiles => tiles;
-   public  IReadOnlyList<TileData> LevelData => spawner.Level;
+    [SerializeField] int tileToSpawn;
+    [SerializeField] int tilesInScene;
+    [SerializeField] List<Tile> tilesInGame = new();
+
+    public IReadOnlyList<Tile> TilesInGame => tilesInGame;
     public TilesBag Bag => bag;
-    public MatchCondition MatchCondition => matchCondition;
+    public TileMatcher TileMatcher => tileMatcher;
     public InputTouch Input => input;
+    public TileActions Actions => actions;
+    bool _isGameEnded;
 
     void Start()
     {
         InitComponents();
-        Invoke(nameof(Spawn), 0.1f);
+        Invoke(nameof(Win), autoGameOverInSeconds);
+        Invoke(useRandom ? nameof(Spawn) : nameof(StartGame), 0.01f);
+
+        quest.OnWin += QuestWin;
+        winCondition.OnWin += Win;
+        loseCondition.OnLose += Lose;
+        actions.OnMoveStart += OnTileMoved;
+    }
+
+    void QuestWin()
+    {
+        if (_isGameEnded) return;
+        _isGameEnded = true;
+        Invoke(nameof(Win), 1f);
+    }
+
+    void OnTileMoved(Tile obj)
+    {
+        RefreshTiles();
+    }
+
+    void Win()
+    {
+        if (_isGameEnded) return;
+        _isGameEnded = true;
+
+        endCard.Show();
+        actions.Disable();
+        Luna.Unity.LifeCycle.GameEnded();
+        Luna.Unity.Analytics.LogEvent("Game win", 0);
+        Debug.Log("Game win!");
+    }
+
+    public void OpenURL()
+    {
+        Luna.Unity.Playable.InstallFullGame();
+    }
+
+    void Lose()
+    {
+        if (_isGameEnded) return;
+        _isGameEnded = true;
+
+        endCard.Show();
+        actions.Disable();
+        Luna.Unity.LifeCycle.GameEnded();
+        Luna.Unity.Analytics.LogEvent("Game lose", 0);
+        Debug.Log("Game lose!");
     }
 
     void InitComponents()
@@ -42,23 +95,32 @@ public class Game : MonoBehaviour
 
     void Spawn()
     {
-        spawner.Spawn(LevelData.ToList(), deck.Layers);
-        spawner.OnSpawnFinish += Spawned;
+        spawnRandom.Spawn(deck.Tiles);
+        spawnRandom.OnSpawnFinish += ShowDeck;
     }
 
-    void Spawned(List<Tile> tiles)
+    void StartGame()
     {
-        
-        this.tiles = tiles;
-        spawnAnimation.SpawnAnimation(deck.FirstLayer, deck.SecondLayer);
-        actions.Observe(deck.Slots);
-        locker.Refresh(tiles, deck.Layers);
+        ShowDeck(deck.Tiles);
     }
+
+    void ShowDeck(List<Tile> spawned)
+    {
+//        Debug.LogError("SHOW deck ");
+        tilesInGame = spawned;
+        spawnAnimation.SpawnAnimation(deck.FirstLayer, deck.SecondLayer);
+        actions.Observe(deck.Tiles);
+        RefreshTiles();
+    }
+
+    void RefreshTiles() => locker.Refresh(tilesInGame, deck.Layers);
 
     void OnValidate()
     {
+        if (Application.isPlaying) return;
         InitComponents();
-        totalTiles = spawner.Level.Sum(t => t.amount);
-        totalBricks = deck.Layers.Sum(p => p.Slots.Length);
+        //  tileToSpawn = spawnRandom.TotalTiles;
+        tilesInScene = deck.Layers.Sum(p => p.Tiles.Length);
     }
+
 }

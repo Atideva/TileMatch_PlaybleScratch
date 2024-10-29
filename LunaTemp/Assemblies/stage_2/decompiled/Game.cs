@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Game : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class Game : MonoBehaviour
 	private Deck deck;
 
 	[SerializeField]
-	private TileSpawner spawner;
+	private TileRandomSpawner spawnRandom;
 
 	[SerializeField]
 	private TileActions actions;
@@ -34,12 +35,15 @@ public class Game : MonoBehaviour
 	[SerializeField]
 	private InputTouch input;
 
+	[FormerlySerializedAs("totalTiles")]
 	[Space(20f)]
 	[SerializeField]
-	private int totalTiles;
+	private int tileToSpawn;
 
+	[FormerlySerializedAs("tilesOnScene")]
+	[FormerlySerializedAs("totalBricks")]
 	[SerializeField]
-	private int totalBricks;
+	private int tilesInScene;
 
 	[SerializeField]
 	private bool randomTiles;
@@ -48,8 +52,6 @@ public class Game : MonoBehaviour
 	private List<Tile> tiles = new List<Tile>();
 
 	public IReadOnlyList<Tile> Tiles => tiles;
-
-	public IReadOnlyList<TileData> LevelData => spawner.Level;
 
 	public TilesBag Bag => bag;
 
@@ -75,22 +77,22 @@ public class Game : MonoBehaviour
 
 	private void Spawn()
 	{
-		spawner.Spawn(LevelData.ToList(), deck.Layers);
-		spawner.OnSpawnFinish += Spawned;
+		spawnRandom.Spawn(deck.Slots);
+		spawnRandom.OnSpawnFinish += Spawned;
 	}
 
-	private void Spawned(List<Tile> tiles)
+	private void Spawned(List<Tile> spawned)
 	{
-		this.tiles = tiles;
+		tiles = spawned;
 		spawnAnimation.SpawnAnimation(deck.FirstLayer, deck.SecondLayer);
 		actions.Observe(deck.Slots);
-		locker.Refresh(tiles, deck.Layers);
+		locker.Refresh(spawned, deck.Layers);
 	}
 
 	private void OnValidate()
 	{
 		InitComponents();
-		totalTiles = spawner.Level.Sum((TileData t) => t.amount);
-		totalBricks = deck.Layers.Sum((DeckLayer p) => p.Slots.Length);
+		tileToSpawn = spawnRandom.TotalTiles;
+		tilesInScene = deck.Layers.Sum((DeckLayer p) => p.Tiles.Length);
 	}
 }

@@ -1,14 +1,17 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Luna.Unity;
 
 public class MatchCondition : GameComponent
 {
-	public List<TileSlot> completeSlots = new List<TileSlot>();
+	public List<Tile> completeSlots = new List<Tile>();
+
+	private int matches;
 
 	public int Completed => completeSlots.Count;
 
-	public event Action<List<BagSlot>> OnMatch = delegate
+	public event Action<List<TileSlot>> OnMatch = delegate
 	{
 	};
 
@@ -20,33 +23,35 @@ public class MatchCondition : GameComponent
 	private void Check()
 	{
 		TilesBag bag = Game.Bag;
-		foreach (BagSlot slot in bag.BusySlots)
+		foreach (TileSlot slot in bag.BusySlots)
 		{
-			int same = SameAmount(slot.Data.type);
+			int same = SameAmount(slot.Type);
 			if (same < 3)
 			{
 				continue;
 			}
-			List<BagSlot> match = bag.BusySlots.Where((BagSlot s) => s.Data.type == slot.Data.type).ToList();
+			List<TileSlot> match = bag.BusySlots.Where((TileSlot s) => s.Type == slot.Type).ToList();
 			Match(match);
 			break;
 		}
 	}
 
-	private int SameAmount(int type)
+	private int SameAmount(TileSO type)
 	{
-		return Game.Bag.BusySlots.Count((BagSlot check) => check.Data.type == type);
+		return Game.Bag.BusySlots.Count((TileSlot check) => check.Type == type);
 	}
 
-	private void Match(List<BagSlot> bagSlots)
+	private void Match(List<TileSlot> bagSlots)
 	{
-		foreach (BagSlot bagSlot in bagSlots)
+		matches++;
+		foreach (TileSlot bagSlot in bagSlots)
 		{
-			TileSlot slot = bagSlot.TileSlot;
+			Tile slot = bagSlot.Tile;
 			slot.Hide();
 			completeSlots.Add(slot);
 			Game.Bag.Remove(slot);
 		}
+		Analytics.LogEvent("3 tiles matched: ", matches);
 		this.OnMatch(bagSlots);
 	}
 }

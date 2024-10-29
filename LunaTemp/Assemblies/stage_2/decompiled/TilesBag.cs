@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class TilesBag : MonoBehaviour
 {
-	public List<BagSlot> slots = new List<BagSlot>();
+	public List<TileSlot> slots = new List<TileSlot>();
 
-	public List<BagSlot> BusySlots => slots.Where((BagSlot b) => b.Busy).ToList();
+	public List<TileSlot> BusySlots => slots.Where((TileSlot b) => b.Busy).ToList();
 
-	public bool HaveEmptySlot => slots.Any((BagSlot s) => s.IsFree);
+	public bool HaveEmptySlot => slots.Any((TileSlot s) => s.IsEmpty);
 
-	public BagSlot EmptySlot => slots.FirstOrDefault((BagSlot s) => s.IsFree);
+	public TileSlot EmptySlot => slots.FirstOrDefault((TileSlot s) => s.IsEmpty);
 
 	public bool NoSpace => !HaveEmptySlot;
 
@@ -23,6 +23,11 @@ public class TilesBag : MonoBehaviour
 	{
 	};
 
+	public TileSlot GetPrevious(TileSlot slot)
+	{
+		return (slot.ID <= 0) ? null : slots[slot.ID - 1];
+	}
+
 	private void Awake()
 	{
 		for (int i = 0; i < slots.Count; i++)
@@ -31,16 +36,16 @@ public class TilesBag : MonoBehaviour
 		}
 	}
 
-	public void Put(TileSlot tileSlot, BagSlot bagSlot)
+	public void Put(Tile tile, TileSlot tileSlot)
 	{
-		tileSlot.PutInBag();
-		bagSlot.Put(tileSlot);
+		tile.PutInBag();
+		tileSlot.Put(tile);
 		this.OnPut();
 	}
 
-	public void Remove(TileSlot slot)
+	public void Remove(Tile @object)
 	{
-		BagSlot find = slots.FirstOrDefault((BagSlot s) => s.TileSlot == slot);
+		TileSlot find = slots.FirstOrDefault((TileSlot s) => s.Tile == @object);
 		if ((bool)find)
 		{
 			find.Empty();

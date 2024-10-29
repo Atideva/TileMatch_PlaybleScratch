@@ -1,108 +1,9 @@
-if ( TRACE ) { TRACE( JSON.parse( '["BagSlot#Busy#get","BagSlot#IsEmpty#get","BagSlot#IsFree#get","BagSlot#Data#get","BagSlot#Position#get","BagSlot#Booked#get","BagSlot#Awake","BagSlot#Book","BagSlot#StopBooking","BagSlot#Empty","BagSlot#Put","GameComponent#Init","DeckLayer#AnyFreeSlot#get","DeckLayer#Init","DeckLayer#InitSlots","DeckLayer#FindSlots","DeckLayer#GetFreeSlot","Game#Tiles#get","Game#LevelData#get","Game#Bag#get","Game#MatchCondition#get","Game#Input#get","Game#init","Game#Start","Game#InitComponents","Game#Spawn","Game#Spawned","Game#OnValidate","Tile#Position#get","Tile#init","Tile#SetContacts","Tile#SetSlot","Tile#Enable","Tile#Disable","Tile#ResetPosition","Tile#OnMouseDown","Tile#Set","TileData#CanSpawn#get","TileData#Decrease","TilesBag#BusySlots#get","TilesBag#HaveEmptySlot#get","TilesBag#EmptySlot#get","TilesBag#NoSpace#get","TilesBag#init","TilesBag#Awake","TilesBag#Put","TilesBag#Remove","TileSlot#IsClickable#get","TileSlot#IsFree#get","TileSlot#Data#get","TileSlot#Position#get","TileSlot#init","TileSlot#MoveTo","TileSlot#Init","TileSlot#Update","TileSlot#Put","TileSlot#SpawnAnimation","TileSlot#PutInBag","TileSlot#Empty","TileSlot#Hide","TileSlot#Show","Deck#Slots#get","Deck#FirstLayer#get","Deck#SecondLayer#get","Deck#OnInit","Deck#FindPlatforms","Deck#InitPlatforms","EndCard#OnInit","InputTouch#init","InputTouch#OnInit","InputTouch#Update","LoseCondition#init","LoseCondition#OnInit","LoseCondition#OnBagChange","LoseCondition#Update","LoseCondition#Check","LoseCondition#Lose","MatchCondition#Completed#get","MatchCondition#init","MatchCondition#OnInit","MatchCondition#Check","MatchCondition#SameAmount","MatchCondition#Match","TileActions#OnInit","TileActions#OnTouchScreen","TileActions#Touched","TileActions#Click","TileActions#Observe","TileActions#PutBag","TileBagSorter#NeedsSorting#get","TileBagSorter#init","TileBagSorter#OnInit","TileBagSorter#Sort","TileBagSorter#Sorting","TileBagSorter#SortingSlot","TileLocker#OnInit","TileLocker#Refresh","TileSpawnAnimation#init","TileSpawnAnimation#SpawnAnimation","TileSpawnAnimation#Play","TileSpawnAnimation#OnInit","TileSpawner#Level#get","TileSpawner#init","TileSpawner#OnInit","TileSpawner#Spawn","TileSpawner#RunSpawn","TileSpawner#GetRandom$1","TileSpawner#GetRandom","WinCondition#Completed#get","WinCondition#init","WinCondition#OnInit","WinCondition#Check"]' ) ); }
+if ( TRACE ) { TRACE( JSON.parse( '["GameComponent#Init","DeckLayer#Init","DeckLayer#InitTiles","DeckLayer#FindTiles","Game#Tiles#get","Game#Bag#get","Game#MatchCondition#get","Game#Input#get","Game#init","Game#Start","Game#InitComponents","Game#Spawn","Game#Spawned","Game#OnValidate","Tile#IsClickable#get","Tile#Position#get","Tile#init","Tile#SetContacts","Tile#MoveTo","Tile#SetLayer","Tile#Update","Tile#Set","Tile#SpawnAnimation","Tile#PutInBag","Tile#Hide","Tile#Show","Tile#Enable","Tile#Disable","TileData#CanSpawn#get","TileData#Spawned","TilesBag#BusySlots#get","TilesBag#HaveEmptySlot#get","TilesBag#EmptySlot#get","TilesBag#NoSpace#get","TilesBag#init","TilesBag#GetPrevious","TilesBag#Awake","TilesBag#Put","TilesBag#Remove","TileSlot#Busy#get","TileSlot#IsEmpty#get","TileSlot#Data#get","TileSlot#Type#get","TileSlot#Position#get","TileSlot#Empty","TileSlot#Put","TileSO#Icon#get","Deck#Slots#get","Deck#FirstLayer#get","Deck#SecondLayer#get","Deck#OnInit","Deck#FindLayers","Deck#InitLayers","EndCard#OnInit","EndCard#Show","InputTouch#init","InputTouch#OnInit","InputTouch#Update","LoseCondition#init","LoseCondition#OnInit","LoseCondition#OnBagChange","LoseCondition#Update","LoseCondition#Check","LoseCondition#Lose","MatchCondition#Completed#get","MatchCondition#init","MatchCondition#OnInit","MatchCondition#Check","MatchCondition#SameAmount","MatchCondition#Match","TileActions#OnInit","TileActions#OnTouchScreen","TileActions#Touched","TileActions#Click","TileActions#Observe","TileActions#PutBag","TileBagSorter#NeedsSorting#get","TileBagSorter#init","TileBagSorter#OnInit","TileBagSorter#Sort","TileBagSorter#Sorting","TileBagSorter#SortingSlot","TileLocker#OnInit","TileLocker#Refresh","TileRandomSpawner#TotalTiles#get","TileRandomSpawner#init","TileRandomSpawner#OnInit","TileRandomSpawner#Spawn","TileRandomSpawner#GetRandomEmpty","TileRandomSpawner#RunSpawn","TileRandomSpawner#BookRandom","TileSpawnAnimation#init","TileSpawnAnimation#SpawnAnimation","TileSpawnAnimation#Play","TileSpawnAnimation#OnInit","TileSpawner#Level#get","TileSpawner#init","TileSpawner#OnInit","TileSpawner#Spawn","TileSpawner#RunSpawn","WinCondition#Completed#get","WinCondition#init","WinCondition#OnInit","WinCondition#Check"]' ) ); }
 /**
  * @compiler Bridge.NET 17.9.42-luna
  */
 Bridge.assembly("UnityScriptsCompiler", function ($asm, globals) {
     "use strict";
-
-    /*BagSlot start.*/
-    Bridge.define("BagSlot", {
-        inherits: [UnityEngine.MonoBehaviour],
-        fields: {
-            ID: 0,
-            TileSlot: null,
-            bookedSlot: null
-        },
-        props: {
-            Busy: {
-                get: function () {
-if ( TRACE ) { TRACE( "BagSlot#Busy#get", this ); }
-
-                    return this.Data != null;
-                }
-            },
-            IsEmpty: {
-                get: function () {
-if ( TRACE ) { TRACE( "BagSlot#IsEmpty#get", this ); }
-
-                    return !this.Busy;
-                }
-            },
-            IsFree: {
-                get: function () {
-if ( TRACE ) { TRACE( "BagSlot#IsFree#get", this ); }
-
-                    return !this.Busy && !this.Booked;
-                }
-            },
-            Data: {
-                get: function () {
-if ( TRACE ) { TRACE( "BagSlot#Data#get", this ); }
-
-                    return UnityEngine.Object.op_Implicit(this.TileSlot) ? this.TileSlot.Data : null;
-                }
-            },
-            Position: {
-                get: function () {
-if ( TRACE ) { TRACE( "BagSlot#Position#get", this ); }
-
-                    return UnityEngine.Vector2.FromVector3(this.transform.position.$clone());
-                }
-            },
-            Booked: {
-                get: function () {
-if ( TRACE ) { TRACE( "BagSlot#Booked#get", this ); }
-
-                    return UnityEngine.Object.op_Implicit(this.bookedSlot);
-                }
-            }
-        },
-        methods: {
-            /*BagSlot.Awake start.*/
-            Awake: function () {
-if ( TRACE ) { TRACE( "BagSlot#Awake", this ); }
-
-                this.Empty();
-            },
-            /*BagSlot.Awake end.*/
-
-            /*BagSlot.Book start.*/
-            Book: function (slot) {
-if ( TRACE ) { TRACE( "BagSlot#Book", this ); }
-
-                this.bookedSlot = slot;
-            },
-            /*BagSlot.Book end.*/
-
-            /*BagSlot.StopBooking start.*/
-            StopBooking: function () {
-if ( TRACE ) { TRACE( "BagSlot#StopBooking", this ); }
-
-                this.bookedSlot = null;
-            },
-            /*BagSlot.StopBooking end.*/
-
-            /*BagSlot.Empty start.*/
-            Empty: function () {
-if ( TRACE ) { TRACE( "BagSlot#Empty", this ); }
-
-                this.TileSlot = null;
-            },
-            /*BagSlot.Empty end.*/
-
-            /*BagSlot.Put start.*/
-            Put: function (slot) {
-if ( TRACE ) { TRACE( "BagSlot#Put", this ); }
-
-                this.TileSlot = slot;
-                this.StopBooking();
-            },
-            /*BagSlot.Put end.*/
-
-
-        }
-    });
-    /*BagSlot end.*/
 
     /*GameComponent start.*/
     Bridge.define("GameComponent", {
@@ -135,20 +36,9 @@ if ( TRACE ) { TRACE( "GameComponent#Init", this ); }
     Bridge.define("DeckLayer", {
         inherits: [UnityEngine.MonoBehaviour],
         fields: {
-            id: 0,
+            layer: 0,
             _deck: null,
-            Slots: null
-        },
-        props: {
-            AnyFreeSlot: {
-                get: function () {
-if ( TRACE ) { TRACE( "DeckLayer#AnyFreeSlot#get", this ); }
-
-                    return System.Linq.Enumerable.from(this.Slots, TileSlot).any(function (s) {
-                            return s.IsFree;
-                        });
-                }
-            }
+            Tiles: null
         },
         methods: {
             /*DeckLayer.Init start.*/
@@ -156,22 +46,22 @@ if ( TRACE ) { TRACE( "DeckLayer#AnyFreeSlot#get", this ); }
 if ( TRACE ) { TRACE( "DeckLayer#Init", this ); }
 
                 this._deck = deck;
-                this.FindSlots();
-                this.InitSlots();
+                this.FindTiles();
+                this.InitTiles();
             },
             /*DeckLayer.Init end.*/
 
-            /*DeckLayer.InitSlots start.*/
-            InitSlots: function () {
-if ( TRACE ) { TRACE( "DeckLayer#InitSlots", this ); }
+            /*DeckLayer.InitTiles start.*/
+            InitTiles: function () {
+if ( TRACE ) { TRACE( "DeckLayer#InitTiles", this ); }
 
                 var $t;
-                var slots = this.Slots;
-                $t = Bridge.getEnumerator(slots);
+                var tiles = this.Tiles;
+                $t = Bridge.getEnumerator(tiles);
                 try {
                     while ($t.moveNext()) {
-                        var slot = $t.Current;
-                        slot.Init(this.id);
+                        var tile = $t.Current;
+                        tile.SetLayer(this.layer);
                     }
                 } finally {
                     if (Bridge.is($t, System.IDisposable)) {
@@ -179,25 +69,15 @@ if ( TRACE ) { TRACE( "DeckLayer#InitSlots", this ); }
                     }
                 }
             },
-            /*DeckLayer.InitSlots end.*/
+            /*DeckLayer.InitTiles end.*/
 
-            /*DeckLayer.FindSlots start.*/
-            FindSlots: function () {
-if ( TRACE ) { TRACE( "DeckLayer#FindSlots", this ); }
+            /*DeckLayer.FindTiles start.*/
+            FindTiles: function () {
+if ( TRACE ) { TRACE( "DeckLayer#FindTiles", this ); }
 
-                this.Slots = this.GetComponentsInChildren(TileSlot);
+                this.Tiles = this.GetComponentsInChildren(Tile);
             },
-            /*DeckLayer.FindSlots end.*/
-
-            /*DeckLayer.GetFreeSlot start.*/
-            GetFreeSlot: function () {
-if ( TRACE ) { TRACE( "DeckLayer#GetFreeSlot", this ); }
-
-                return System.Linq.Enumerable.from(this.Slots, TileSlot).firstOrDefault(Bridge.fn.bind(this, function (s) {
-                        return s.IsFree;
-                    }), null);
-            },
-            /*DeckLayer.GetFreeSlot end.*/
+            /*DeckLayer.FindTiles end.*/
 
 
         }
@@ -209,7 +89,7 @@ if ( TRACE ) { TRACE( "DeckLayer#GetFreeSlot", this ); }
         inherits: [UnityEngine.MonoBehaviour],
         fields: {
             deck: null,
-            spawner: null,
+            spawnRandom: null,
             actions: null,
             locker: null,
             bag: null,
@@ -218,8 +98,8 @@ if ( TRACE ) { TRACE( "DeckLayer#GetFreeSlot", this ); }
             loseCondition: null,
             winCondition: null,
             input: null,
-            totalTiles: 0,
-            totalBricks: 0,
+            tileToSpawn: 0,
+            tilesInScene: 0,
             randomTiles: false,
             tiles: null
         },
@@ -229,13 +109,6 @@ if ( TRACE ) { TRACE( "DeckLayer#GetFreeSlot", this ); }
 if ( TRACE ) { TRACE( "Game#Tiles#get", this ); }
 
                     return this.tiles;
-                }
-            },
-            LevelData: {
-                get: function () {
-if ( TRACE ) { TRACE( "Game#LevelData#get", this ); }
-
-                    return this.spawner.Level;
                 }
             },
             Bag: {
@@ -302,20 +175,19 @@ if ( TRACE ) { TRACE( "Game#InitComponents", this ); }
             Spawn: function () {
 if ( TRACE ) { TRACE( "Game#Spawn", this ); }
 
-                var $t;
-                this.spawner.Spawn(($t = TileData, System.Linq.Enumerable.from(this.LevelData, $t).toList($t)), this.deck.Layers);
-                this.spawner.addOnSpawnFinish(Bridge.fn.cacheBind(this, this.Spawned));
+                this.spawnRandom.Spawn(this.deck.Slots);
+                this.spawnRandom.addOnSpawnFinish(Bridge.fn.cacheBind(this, this.Spawned));
             },
             /*Game.Spawn end.*/
 
             /*Game.Spawned start.*/
-            Spawned: function (tiles) {
+            Spawned: function (spawned) {
 if ( TRACE ) { TRACE( "Game#Spawned", this ); }
 
-                this.tiles = tiles;
+                this.tiles = spawned;
                 this.spawnAnimation.SpawnAnimation(this.deck.FirstLayer, this.deck.SecondLayer);
                 this.actions.Observe(this.deck.Slots);
-                this.locker.Refresh(tiles, this.deck.Layers);
+                this.locker.Refresh(spawned, this.deck.Layers);
             },
             /*Game.Spawned end.*/
 
@@ -324,11 +196,9 @@ if ( TRACE ) { TRACE( "Game#Spawned", this ); }
 if ( TRACE ) { TRACE( "Game#OnValidate", this ); }
 
                 this.InitComponents();
-                this.totalTiles = System.Linq.Enumerable.from(this.spawner.Level, TileData).sum(function (t) {
-                        return t.amount;
-                    });
-                this.totalBricks = System.Linq.Enumerable.from(this.deck.Layers, DeckLayer).sum(function (p) {
-                        return p.Slots.length;
+                this.tileToSpawn = this.spawnRandom.TotalTiles;
+                this.tilesInScene = System.Linq.Enumerable.from(this.deck.Layers, DeckLayer).sum(function (p) {
+                        return p.Tiles.length;
                     });
             },
             /*Game.OnValidate end.*/
@@ -345,15 +215,35 @@ if ( TRACE ) { TRACE( "Game#OnValidate", this ); }
             icon: null,
             disabledTile: null,
             coverTiles: null,
-            Data: null,
-            Slot: null,
+            background: null,
+            defaultSize: null,
+            speed: 0,
+            spawnAnimSize: 0,
+            spawnAnimDuration: 0,
+            moveDuration: 0,
+            _isSpawnAnimation: false,
+            _spawnTimer: 0,
+            _targetPosition: null,
+            _timer: 0,
+            _isMoving: false,
+            _targetSlot: null,
+            _isClickable: false,
+            IsInit: false,
             Layer: 0,
-            IsClickable: false
+            Data: null,
+            InBag: false
         },
         events: {
-            OnClick: null
+            OnMoveFinish: null
         },
         props: {
+            IsClickable: {
+                get: function () {
+if ( TRACE ) { TRACE( "Tile#IsClickable#get", this ); }
+
+                    return this._isClickable && !this._isMoving;
+                }
+            },
             Position: {
                 get: function () {
 if ( TRACE ) { TRACE( "Tile#Position#get", this ); }
@@ -366,8 +256,15 @@ if ( TRACE ) { TRACE( "Tile#Position#get", this ); }
             init: function () {
 if ( TRACE ) { TRACE( "Tile#init", this ); }
 
+                this.defaultSize = new UnityEngine.Vector3();
+                this._targetPosition = new UnityEngine.Vector3();
                 this.coverTiles = new (System.Collections.Generic.List$1(Tile)).ctor();
-                Bridge.event(this, "OnClick", function () { });
+                this.defaultSize = new pc.Vec3( 1, 1, 1 );
+                this.spawnAnimSize = 1.5;
+                this.spawnAnimDuration = 0.3;
+                this.moveDuration = 0.5;
+                this._spawnTimer = 0.0;
+                Bridge.event(this, "OnMoveFinish", function () { });
             }
         },
         methods: {
@@ -385,22 +282,111 @@ if ( TRACE ) { TRACE( "Tile#SetContacts", this ); }
             },
             /*Tile.SetContacts end.*/
 
-            /*Tile.SetSlot start.*/
-            SetSlot: function (slot) {
-if ( TRACE ) { TRACE( "Tile#SetSlot", this ); }
+            /*Tile.MoveTo start.*/
+            MoveTo: function (slot) {
+if ( TRACE ) { TRACE( "Tile#MoveTo", this ); }
 
-                this.Slot = slot;
-                this.transform.SetParent(this.Slot.transform);
-                this.Invoke("ResetPosition", 0.1);
-                this.ResetPosition();
+                this.icon.sortingOrder = 1000;
+                this.background.sortingOrder = 1000;
+                this._targetSlot = slot;
+                this._targetPosition = UnityEngine.Vector3.FromVector2(slot.Position.$clone());
+                var distance = this.Position.$clone().sub( UnityEngine.Vector2.FromVector3(this._targetPosition) ).length();
+                this._isMoving = true;
             },
-            /*Tile.SetSlot end.*/
+            /*Tile.MoveTo end.*/
+
+            /*Tile.SetLayer start.*/
+            SetLayer: function (layer) {
+if ( TRACE ) { TRACE( "Tile#SetLayer", this ); }
+
+                this.Layer = layer;
+                this.background.sortingOrder = this.Layer;
+                this.icon.sortingOrder = (this.Layer + 1) | 0;
+                this.disabledTile.sortingOrder = (this.Layer + 2) | 0;
+            },
+            /*Tile.SetLayer end.*/
+
+            /*Tile.Update start.*/
+            Update: function () {
+if ( TRACE ) { TRACE( "Tile#Update", this ); }
+
+                if (this._isMoving) {
+                    this.transform.position = pc.Vec3.moveTowards( UnityEngine.Vector3.FromVector2(this.Position), this._targetPosition, this.speed * UnityEngine.Time.deltaTime );
+                    if (pc.Vec3.distance( this.transform.position, this._targetPosition ) < 0.01) {
+                        this.transform.position = this._targetPosition.$clone();
+                        this._isMoving = false;
+                        this.icon.sortingOrder = 0;
+                        this.background.sortingOrder = 0;
+                        this.OnMoveFinish(this, this._targetSlot);
+                    }
+                }
+                if (this._isSpawnAnimation) {
+                    this._spawnTimer += UnityEngine.Time.deltaTime;
+                    var progress = this._spawnTimer / this.spawnAnimDuration;
+                    if (progress <= 0.5) {
+                        var scale2 = pc.math.lerp(0.0, this.spawnAnimSize, progress * 2.0);
+                        this.transform.localScale = this.defaultSize.$clone().clone().scale( scale2 );
+                    } else if (progress <= 1.0) {
+                        var scale = pc.math.lerp(this.spawnAnimSize, 1.0, (progress - 0.5) * 2.0);
+                        this.transform.localScale = this.defaultSize.$clone().clone().scale( scale );
+                    } else {
+                        this.transform.localScale = this.defaultSize.$clone();
+                        this._isSpawnAnimation = false;
+                    }
+                }
+            },
+            /*Tile.Update end.*/
+
+            /*Tile.Set start.*/
+            Set: function (data) {
+if ( TRACE ) { TRACE( "Tile#Set", this ); }
+
+                this.Data = data;
+                this.icon.sprite = data.tile.Icon;
+                this.Enable();
+                this.IsInit = true;
+            },
+            /*Tile.Set end.*/
+
+            /*Tile.SpawnAnimation start.*/
+            SpawnAnimation: function () {
+if ( TRACE ) { TRACE( "Tile#SpawnAnimation", this ); }
+
+                this.transform.localScale = pc.Vec3.ZERO.clone();
+                this._isSpawnAnimation = true;
+                this.Show();
+            },
+            /*Tile.SpawnAnimation end.*/
+
+            /*Tile.PutInBag start.*/
+            PutInBag: function () {
+if ( TRACE ) { TRACE( "Tile#PutInBag", this ); }
+
+                this.InBag = true;
+            },
+            /*Tile.PutInBag end.*/
+
+            /*Tile.Hide start.*/
+            Hide: function () {
+if ( TRACE ) { TRACE( "Tile#Hide", this ); }
+
+                Bridge.ensureBaseProperty(this, "gameObject").$UnityEngine$Component$gameObject.SetActive(false);
+            },
+            /*Tile.Hide end.*/
+
+            /*Tile.Show start.*/
+            Show: function () {
+if ( TRACE ) { TRACE( "Tile#Show", this ); }
+
+                Bridge.ensureBaseProperty(this, "gameObject").$UnityEngine$Component$gameObject.SetActive(true);
+            },
+            /*Tile.Show end.*/
 
             /*Tile.Enable start.*/
             Enable: function () {
 if ( TRACE ) { TRACE( "Tile#Enable", this ); }
 
-                this.IsClickable = true;
+                this._isClickable = true;
                 this.disabledTile.gameObject.SetActive(false);
             },
             /*Tile.Enable end.*/
@@ -409,39 +395,10 @@ if ( TRACE ) { TRACE( "Tile#Enable", this ); }
             Disable: function () {
 if ( TRACE ) { TRACE( "Tile#Disable", this ); }
 
-                this.IsClickable = false;
+                this._isClickable = false;
                 this.disabledTile.gameObject.SetActive(true);
             },
             /*Tile.Disable end.*/
-
-            /*Tile.ResetPosition start.*/
-            ResetPosition: function () {
-if ( TRACE ) { TRACE( "Tile#ResetPosition", this ); }
-
-                this.transform.localPosition = pc.Vec3.ZERO.clone();
-            },
-            /*Tile.ResetPosition end.*/
-
-            /*Tile.OnMouseDown start.*/
-            OnMouseDown: function () {
-if ( TRACE ) { TRACE( "Tile#OnMouseDown", this ); }
-
-                if (this.IsClickable) {
-                    this.OnClick(this);
-                }
-            },
-            /*Tile.OnMouseDown end.*/
-
-            /*Tile.Set start.*/
-            Set: function (data, layer) {
-if ( TRACE ) { TRACE( "Tile#Set", this ); }
-
-                this.Data = data;
-                this.Layer = layer;
-                this.icon.sprite = data.icon;
-                this.Enable();
-            },
-            /*Tile.Set end.*/
 
 
         }
@@ -451,8 +408,7 @@ if ( TRACE ) { TRACE( "Tile#Set", this ); }
     /*TileData start.*/
     Bridge.define("TileData", {
         fields: {
-            type: 0,
-            icon: null,
+            tile: null,
             amount: 0
         },
         props: {
@@ -465,13 +421,13 @@ if ( TRACE ) { TRACE( "TileData#CanSpawn#get", this ); }
             }
         },
         methods: {
-            /*TileData.Decrease start.*/
-            Decrease: function () {
-if ( TRACE ) { TRACE( "TileData#Decrease", this ); }
+            /*TileData.Spawned start.*/
+            Spawned: function () {
+if ( TRACE ) { TRACE( "TileData#Spawned", this ); }
 
                 this.amount = (this.amount - 1) | 0;
             },
-            /*TileData.Decrease end.*/
+            /*TileData.Spawned end.*/
 
 
         }
@@ -493,17 +449,17 @@ if ( TRACE ) { TRACE( "TileData#Decrease", this ); }
                 get: function () {
 if ( TRACE ) { TRACE( "TilesBag#BusySlots#get", this ); }
 
-                    return System.Linq.Enumerable.from(this.slots, BagSlot).where(function (b) {
+                    return System.Linq.Enumerable.from(this.slots, TileSlot).where(function (b) {
                             return b.Busy;
-                        }).toList(BagSlot);
+                        }).toList(TileSlot);
                 }
             },
             HaveEmptySlot: {
                 get: function () {
 if ( TRACE ) { TRACE( "TilesBag#HaveEmptySlot#get", this ); }
 
-                    return System.Linq.Enumerable.from(this.slots, BagSlot).any(function (s) {
-                            return s.IsFree;
+                    return System.Linq.Enumerable.from(this.slots, TileSlot).any(function (s) {
+                            return s.IsEmpty;
                         });
                 }
             },
@@ -511,8 +467,8 @@ if ( TRACE ) { TRACE( "TilesBag#HaveEmptySlot#get", this ); }
                 get: function () {
 if ( TRACE ) { TRACE( "TilesBag#EmptySlot#get", this ); }
 
-                    return System.Linq.Enumerable.from(this.slots, BagSlot).firstOrDefault(Bridge.fn.bind(this, function (s) {
-                            return s.IsFree;
+                    return System.Linq.Enumerable.from(this.slots, TileSlot).firstOrDefault(Bridge.fn.bind(this, function (s) {
+                            return s.IsEmpty;
                         }), null);
                 }
             },
@@ -528,12 +484,20 @@ if ( TRACE ) { TRACE( "TilesBag#NoSpace#get", this ); }
             init: function () {
 if ( TRACE ) { TRACE( "TilesBag#init", this ); }
 
-                this.slots = new (System.Collections.Generic.List$1(BagSlot)).ctor();
+                this.slots = new (System.Collections.Generic.List$1(TileSlot)).ctor();
                 Bridge.event(this, "OnPut", function () { });
                 Bridge.event(this, "OnRemove", function () { });
             }
         },
         methods: {
+            /*TilesBag.GetPrevious start.*/
+            GetPrevious: function (slot) {
+if ( TRACE ) { TRACE( "TilesBag#GetPrevious", this ); }
+
+                return (slot.ID <= 0) ? null : this.slots.getItem(((slot.ID - 1) | 0));
+            },
+            /*TilesBag.GetPrevious end.*/
+
             /*TilesBag.Awake start.*/
             Awake: function () {
 if ( TRACE ) { TRACE( "TilesBag#Awake", this ); }
@@ -545,21 +509,21 @@ if ( TRACE ) { TRACE( "TilesBag#Awake", this ); }
             /*TilesBag.Awake end.*/
 
             /*TilesBag.Put start.*/
-            Put: function (tileSlot, bagSlot) {
+            Put: function (tile, tileSlot) {
 if ( TRACE ) { TRACE( "TilesBag#Put", this ); }
 
-                tileSlot.PutInBag();
-                bagSlot.Put(tileSlot);
+                tile.PutInBag();
+                tileSlot.Put(tile);
                 this.OnPut();
             },
             /*TilesBag.Put end.*/
 
             /*TilesBag.Remove start.*/
-            Remove: function (slot) {
+            Remove: function (object) {
 if ( TRACE ) { TRACE( "TilesBag#Remove", this ); }
 
-                var find = System.Linq.Enumerable.from(this.slots, BagSlot).firstOrDefault(Bridge.fn.bind(this, function (s) {
-                        return UnityEngine.MonoBehaviour.op_Equality(s.TileSlot, slot);
+                var find = System.Linq.Enumerable.from(this.slots, TileSlot).firstOrDefault(Bridge.fn.bind(this, function (s) {
+                        return UnityEngine.MonoBehaviour.op_Equality(s.Tile, object);
                     }), null);
                 if (UnityEngine.Object.op_Implicit(find)) {
                     find.Empty();
@@ -577,45 +541,36 @@ if ( TRACE ) { TRACE( "TilesBag#Remove", this ); }
     Bridge.define("TileSlot", {
         inherits: [UnityEngine.MonoBehaviour],
         fields: {
-            background: null,
-            defaultSize: null,
-            speed: 0,
-            spawnAnimSize: 0,
-            spawnAnimDuration: 0,
-            moveDuration: 0,
-            _isSpawnAnimation: false,
-            _spawnTimer: 0,
-            _targetPosition: null,
-            _timer: 0,
-            _isMoving: false,
-            _targetSlot: null,
-            Layer: 0,
-            Tile: null,
-            InBag: false
-        },
-        events: {
-            OnMoveFinish: null
+            ID: 0,
+            Tile: null
         },
         props: {
-            IsClickable: {
+            Busy: {
                 get: function () {
-if ( TRACE ) { TRACE( "TileSlot#IsClickable#get", this ); }
+if ( TRACE ) { TRACE( "TileSlot#Busy#get", this ); }
 
-                    return UnityEngine.Object.op_Implicit(this.Tile) && this.Tile.IsClickable && !this._isMoving;
+                    return this.Data != null;
                 }
             },
-            IsFree: {
+            IsEmpty: {
                 get: function () {
-if ( TRACE ) { TRACE( "TileSlot#IsFree#get", this ); }
+if ( TRACE ) { TRACE( "TileSlot#IsEmpty#get", this ); }
 
-                    return !UnityEngine.Object.op_Implicit(this.Tile);
+                    return !this.Busy;
                 }
             },
             Data: {
                 get: function () {
 if ( TRACE ) { TRACE( "TileSlot#Data#get", this ); }
 
-                    return this.Tile.Data;
+                    return UnityEngine.Object.op_Implicit(this.Tile) ? this.Tile.Data : null;
+                }
+            },
+            Type: {
+                get: function () {
+if ( TRACE ) { TRACE( "TileSlot#Type#get", this ); }
+
+                    return UnityEngine.Object.op_Implicit(this.Tile) ? this.Tile.Data.tile : null;
                 }
             },
             Position: {
@@ -626,105 +581,7 @@ if ( TRACE ) { TRACE( "TileSlot#Position#get", this ); }
                 }
             }
         },
-        ctors: {
-            init: function () {
-if ( TRACE ) { TRACE( "TileSlot#init", this ); }
-
-                this.defaultSize = new UnityEngine.Vector3();
-                this._targetPosition = new UnityEngine.Vector3();
-                this.defaultSize = new pc.Vec3( 1, 1, 1 );
-                this.spawnAnimSize = 1.5;
-                this.spawnAnimDuration = 0.3;
-                this.moveDuration = 0.5;
-                this._spawnTimer = 0.0;
-                Bridge.event(this, "OnMoveFinish", function () { });
-            }
-        },
         methods: {
-            /*TileSlot.MoveTo start.*/
-            MoveTo: function (slot) {
-if ( TRACE ) { TRACE( "TileSlot#MoveTo", this ); }
-
-                this.Tile.icon.sortingOrder = 1000;
-                this.background.sortingOrder = 1000;
-                this._targetSlot = slot;
-                this._targetPosition = UnityEngine.Vector3.FromVector2(slot.Position.$clone());
-                var distance = this.Position.$clone().sub( UnityEngine.Vector2.FromVector3(this._targetPosition) ).length();
-                this._isMoving = true;
-            },
-            /*TileSlot.MoveTo end.*/
-
-            /*TileSlot.Init start.*/
-            Init: function (id) {
-if ( TRACE ) { TRACE( "TileSlot#Init", this ); }
-
-                this.Layer = id;
-                this.background.sortingOrder = this.Layer;
-                if (UnityEngine.Application.isPlaying) {
-                }
-            },
-            /*TileSlot.Init end.*/
-
-            /*TileSlot.Update start.*/
-            Update: function () {
-if ( TRACE ) { TRACE( "TileSlot#Update", this ); }
-
-                if (this._isMoving) {
-                    this.transform.position = pc.Vec3.moveTowards( UnityEngine.Vector3.FromVector2(this.Position), this._targetPosition, this.speed * UnityEngine.Time.deltaTime );
-                    if (pc.Vec3.distance( this.transform.position, this._targetPosition ) < 0.01) {
-                        this.transform.position = this._targetPosition.$clone();
-                        this._isMoving = false;
-                        this.Tile.icon.sortingOrder = 0;
-                        this.background.sortingOrder = 0;
-                        this.OnMoveFinish(this, this._targetSlot);
-                    }
-                }
-                if (this._isSpawnAnimation) {
-                    this._spawnTimer += UnityEngine.Time.deltaTime;
-                    var progress = this._spawnTimer / this.spawnAnimDuration;
-                    if (progress <= 0.5) {
-                        var scale2 = pc.math.lerp(0.0, this.spawnAnimSize, progress * 2.0);
-                        this.transform.localScale = this.defaultSize.$clone().clone().scale( scale2 );
-                    } else if (progress <= 1.0) {
-                        var scale = pc.math.lerp(this.spawnAnimSize, 1.0, (progress - 0.5) * 2.0);
-                        this.transform.localScale = this.defaultSize.$clone().clone().scale( scale );
-                    } else {
-                        this.transform.localScale = this.defaultSize.$clone();
-                        this._isSpawnAnimation = false;
-                    }
-                }
-            },
-            /*TileSlot.Update end.*/
-
-            /*TileSlot.Put start.*/
-            Put: function (put) {
-if ( TRACE ) { TRACE( "TileSlot#Put", this ); }
-
-                this.Tile = put;
-                this.Tile.icon.sortingOrder = (this.Layer + 1) | 0;
-                this.Tile.disabledTile.sortingOrder = (this.Layer + 2) | 0;
-                this.Tile.SetSlot(this);
-            },
-            /*TileSlot.Put end.*/
-
-            /*TileSlot.SpawnAnimation start.*/
-            SpawnAnimation: function () {
-if ( TRACE ) { TRACE( "TileSlot#SpawnAnimation", this ); }
-
-                this.transform.localScale = pc.Vec3.ZERO.clone();
-                this._isSpawnAnimation = true;
-                this.Show();
-            },
-            /*TileSlot.SpawnAnimation end.*/
-
-            /*TileSlot.PutInBag start.*/
-            PutInBag: function () {
-if ( TRACE ) { TRACE( "TileSlot#PutInBag", this ); }
-
-                this.InBag = true;
-            },
-            /*TileSlot.PutInBag end.*/
-
             /*TileSlot.Empty start.*/
             Empty: function () {
 if ( TRACE ) { TRACE( "TileSlot#Empty", this ); }
@@ -733,26 +590,37 @@ if ( TRACE ) { TRACE( "TileSlot#Empty", this ); }
             },
             /*TileSlot.Empty end.*/
 
-            /*TileSlot.Hide start.*/
-            Hide: function () {
-if ( TRACE ) { TRACE( "TileSlot#Hide", this ); }
+            /*TileSlot.Put start.*/
+            Put: function (tile) {
+if ( TRACE ) { TRACE( "TileSlot#Put", this ); }
 
-                Bridge.ensureBaseProperty(this, "gameObject").$UnityEngine$Component$gameObject.SetActive(false);
+                this.Tile = tile;
+                this.Tile.MoveTo(this);
             },
-            /*TileSlot.Hide end.*/
-
-            /*TileSlot.Show start.*/
-            Show: function () {
-if ( TRACE ) { TRACE( "TileSlot#Show", this ); }
-
-                Bridge.ensureBaseProperty(this, "gameObject").$UnityEngine$Component$gameObject.SetActive(true);
-            },
-            /*TileSlot.Show end.*/
+            /*TileSlot.Put end.*/
 
 
         }
     });
     /*TileSlot end.*/
+
+    /*TileSO start.*/
+    Bridge.define("TileSO", {
+        inherits: [UnityEngine.ScriptableObject],
+        fields: {
+            icon: null
+        },
+        props: {
+            Icon: {
+                get: function () {
+if ( TRACE ) { TRACE( "TileSO#Icon#get", this ); }
+
+                    return this.icon;
+                }
+            }
+        }
+    });
+    /*TileSO end.*/
 
     /*Deck start.*/
     Bridge.define("Deck", {
@@ -766,8 +634,8 @@ if ( TRACE ) { TRACE( "TileSlot#Show", this ); }
 if ( TRACE ) { TRACE( "Deck#Slots#get", this ); }
 
                     return System.Linq.Enumerable.from(this.Layers, DeckLayer).selectMany(function (layer) {
-                            return layer.Slots;
-                        }).toList(TileSlot);
+                            return layer.Tiles;
+                        }).toList(Tile);
                 }
             },
             FirstLayer: {
@@ -775,7 +643,7 @@ if ( TRACE ) { TRACE( "Deck#Slots#get", this ); }
 if ( TRACE ) { TRACE( "Deck#FirstLayer#get", this ); }
 
                     var $t, $t1;
-                    return ($t1 = TileSlot, System.Linq.Enumerable.from(($t = this.Layers)[0].Slots, $t1).toList($t1));
+                    return ($t1 = Tile, System.Linq.Enumerable.from(($t = this.Layers)[0].Tiles, $t1).toList($t1));
                 }
             },
             SecondLayer: {
@@ -783,7 +651,7 @@ if ( TRACE ) { TRACE( "Deck#FirstLayer#get", this ); }
 if ( TRACE ) { TRACE( "Deck#SecondLayer#get", this ); }
 
                     var $t, $t1;
-                    return ($t1 = TileSlot, System.Linq.Enumerable.from(($t = this.Layers)[1].Slots, $t1).toList($t1));
+                    return ($t1 = Tile, System.Linq.Enumerable.from(($t = this.Layers)[1].Tiles, $t1).toList($t1));
                 }
             }
         },
@@ -792,22 +660,22 @@ if ( TRACE ) { TRACE( "Deck#SecondLayer#get", this ); }
             OnInit: function () {
 if ( TRACE ) { TRACE( "Deck#OnInit", this ); }
 
-                this.FindPlatforms();
-                this.InitPlatforms();
+                this.FindLayers();
+                this.InitLayers();
             },
             /*Deck.OnInit end.*/
 
-            /*Deck.FindPlatforms start.*/
-            FindPlatforms: function () {
-if ( TRACE ) { TRACE( "Deck#FindPlatforms", this ); }
+            /*Deck.FindLayers start.*/
+            FindLayers: function () {
+if ( TRACE ) { TRACE( "Deck#FindLayers", this ); }
 
                 this.Layers = this.GetComponentsInChildren(DeckLayer);
             },
-            /*Deck.FindPlatforms end.*/
+            /*Deck.FindLayers end.*/
 
-            /*Deck.InitPlatforms start.*/
-            InitPlatforms: function () {
-if ( TRACE ) { TRACE( "Deck#InitPlatforms", this ); }
+            /*Deck.InitLayers start.*/
+            InitLayers: function () {
+if ( TRACE ) { TRACE( "Deck#InitLayers", this ); }
 
                 var $t;
                 var layers = this.Layers;
@@ -823,7 +691,7 @@ if ( TRACE ) { TRACE( "Deck#InitPlatforms", this ); }
                     }
                 }
             },
-            /*Deck.InitPlatforms end.*/
+            /*Deck.InitLayers end.*/
 
 
         }
@@ -839,6 +707,15 @@ if ( TRACE ) { TRACE( "Deck#InitPlatforms", this ); }
 if ( TRACE ) { TRACE( "EndCard#OnInit", this ); }
  },
             /*EndCard.OnInit end.*/
+
+            /*EndCard.Show start.*/
+            Show: function () {
+if ( TRACE ) { TRACE( "EndCard#Show", this ); }
+
+                Luna.Unity.LifeCycle.GameEnded();
+                Luna.Unity.Playable.InstallFullGame();
+            },
+            /*EndCard.Show end.*/
 
 
         }
@@ -960,7 +837,8 @@ if ( TRACE ) { TRACE( "LoseCondition#Lose", this ); }
     Bridge.define("MatchCondition", {
         inherits: [GameComponent],
         fields: {
-            completeSlots: null
+            completeSlots: null,
+            matches: 0
         },
         events: {
             OnMatch: null
@@ -978,7 +856,7 @@ if ( TRACE ) { TRACE( "MatchCondition#Completed#get", this ); }
             init: function () {
 if ( TRACE ) { TRACE( "MatchCondition#init", this ); }
 
-                this.completeSlots = new (System.Collections.Generic.List$1(TileSlot)).ctor();
+                this.completeSlots = new (System.Collections.Generic.List$1(Tile)).ctor();
                 Bridge.event(this, "OnMatch", function () { });
             }
         },
@@ -1001,15 +879,15 @@ if ( TRACE ) { TRACE( "MatchCondition#Check", this ); }
                 try {
                     while ($t.moveNext()) {
                         var slot = { v : $t.Current };
-                        var same = this.SameAmount(slot.v.Data.type);
+                        var same = this.SameAmount(slot.v.Type);
                         if (same < 3) {
                             continue;
                         }
-                        var match = System.Linq.Enumerable.from(bag.BusySlots, BagSlot).where((function ($me, slot) {
+                        var match = System.Linq.Enumerable.from(bag.BusySlots, TileSlot).where((function ($me, slot) {
                                 return function (s) {
-                                    return s.Data.type === slot.v.Data.type;
+                                    return Bridge.referenceEquals(s.Type, slot.v.Type);
                                 };
-                            })(this, slot)).toList(BagSlot);
+                            })(this, slot)).toList(TileSlot);
                         this.Match(match);
                         break;
                     }
@@ -1025,8 +903,8 @@ if ( TRACE ) { TRACE( "MatchCondition#Check", this ); }
             SameAmount: function (type) {
 if ( TRACE ) { TRACE( "MatchCondition#SameAmount", this ); }
 
-                return System.Linq.Enumerable.from(this.Game.Bag.BusySlots, BagSlot).count(function (check) {
-                        return check.Data.type === type;
+                return System.Linq.Enumerable.from(this.Game.Bag.BusySlots, TileSlot).count(function (check) {
+                        return Bridge.referenceEquals(check.Type, type);
                     });
             },
             /*MatchCondition.SameAmount end.*/
@@ -1036,11 +914,12 @@ if ( TRACE ) { TRACE( "MatchCondition#SameAmount", this ); }
 if ( TRACE ) { TRACE( "MatchCondition#Match", this ); }
 
                 var $t;
+                this.matches = (this.matches + 1) | 0;
                 $t = Bridge.getEnumerator(bagSlots);
                 try {
                     while ($t.moveNext()) {
                         var bagSlot = $t.Current;
-                        var slot = bagSlot.TileSlot;
+                        var slot = bagSlot.Tile;
                         slot.Hide();
                         this.completeSlots.add(slot);
                         this.Game.Bag.Remove(slot);
@@ -1050,6 +929,7 @@ if ( TRACE ) { TRACE( "MatchCondition#Match", this ); }
                         $t.System$IDisposable$Dispose();
                     }
                 }
+                Luna.Unity.Analytics.LogEvent$1("3 tiles matched: ", this.matches);
                 this.OnMatch(bagSlots);
             },
             /*MatchCondition.Match end.*/
@@ -1064,7 +944,8 @@ if ( TRACE ) { TRACE( "MatchCondition#Match", this ); }
         inherits: [GameComponent],
         fields: {
             _slots: null,
-            _cam: null
+            _cam: null,
+            clicks: 0
         },
         methods: {
             /*TileActions.OnInit start.*/
@@ -1082,10 +963,10 @@ if ( TRACE ) { TRACE( "TileActions#OnTouchScreen", this ); }
 
                 var $t;
                 var pos = this._cam.ScreenToWorldPoint(UnityEngine.Vector3.FromVector2(touchPos));
-                var clickable = System.Linq.Enumerable.from(this._slots, TileSlot).where(function (s) {
+                var clickable = System.Linq.Enumerable.from(this._slots, Tile).where(function (s) {
                         return s.IsClickable;
                     });
-                $t = Bridge.getEnumerator(clickable, TileSlot);
+                $t = Bridge.getEnumerator(clickable, Tile);
                 try {
                     while ($t.moveNext()) {
                         var slot = $t.Current;
@@ -1105,23 +986,27 @@ if ( TRACE ) { TRACE( "TileActions#OnTouchScreen", this ); }
             /*TileActions.OnTouchScreen end.*/
 
             /*TileActions.Touched start.*/
-            Touched: function (slot) {
+            Touched: function (tile) {
 if ( TRACE ) { TRACE( "TileActions#Touched", this ); }
 
-                this.Click(slot);
+                this.Click(tile);
             },
             /*TileActions.Touched end.*/
 
             /*TileActions.Click start.*/
-            Click: function (slot) {
+            Click: function (tile) {
 if ( TRACE ) { TRACE( "TileActions#Click", this ); }
 
-                UnityEngine.Debug.Log$1((slot.Tile.icon.sprite.name || "") + " clicked");
-                if (!slot.InBag && !this.Game.Bag.NoSpace) {
-                    var emptySlot = this.Game.Bag.EmptySlot;
-                    emptySlot.Book(slot);
-                    slot.MoveTo(emptySlot);
-                    slot.addOnMoveFinish(Bridge.fn.cacheBind(this, this.PutBag));
+                this.clicks = (this.clicks + 1) | 0;
+                if (tile.InBag) {
+                    Luna.Unity.Analytics.LogEvent$1("Bagckpack clicked", this.clicks);
+                    return;
+                }
+                Luna.Unity.Analytics.LogEvent$1("Tile clicked", this.clicks);
+                if (!this.Game.Bag.NoSpace) {
+                    var empty = this.Game.Bag.EmptySlot;
+                    empty.Put(tile);
+                    tile.addOnMoveFinish(Bridge.fn.cacheBind(this, this.PutBag));
                 }
             },
             /*TileActions.Click end.*/
@@ -1135,12 +1020,12 @@ if ( TRACE ) { TRACE( "TileActions#Observe", this ); }
             /*TileActions.Observe end.*/
 
             /*TileActions.PutBag start.*/
-            PutBag: function (moving, bagSlot) {
+            PutBag: function (moving, tileSlot) {
 if ( TRACE ) { TRACE( "TileActions#PutBag", this ); }
 
                 UnityEngine.Debug.Log$1("Move finished");
                 moving.removeOnMoveFinish(Bridge.fn.cacheBind(this, this.PutBag));
-                this.Game.Bag.Put(moving, bagSlot);
+                this.Game.Bag.Put(moving, tileSlot);
             },
             /*TileActions.PutBag end.*/
 
@@ -1162,7 +1047,7 @@ if ( TRACE ) { TRACE( "TileActions#PutBag", this ); }
                 get: function () {
 if ( TRACE ) { TRACE( "TileBagSorter#NeedsSorting#get", this ); }
 
-                    return System.Linq.Enumerable.from(this.Game.Bag.BusySlots, BagSlot).where(function (slot) {
+                    return System.Linq.Enumerable.from(this.Game.Bag.BusySlots, TileSlot).where(function (slot) {
                             return slot.ID !== 0;
                         }).any(Bridge.fn.bind(this, function (slot) {
                         return this.Game.Bag.slots.getItem(((slot.ID - 1) | 0)).IsEmpty;
@@ -1226,6 +1111,7 @@ if ( TRACE ) { TRACE( "TileBagSorter#Sorting", this ); }
                                 }
                                 case 2: {
                                     this.SortingSlot();
+                                        Bridge["Bridge._"] = this.Game.Bag.EmptySlot;
                                         $enumerator.current = new UnityEngine.WaitForSeconds(this.intervalSec);
                                         $step = 3;
                                         return true;
@@ -1257,7 +1143,7 @@ if ( TRACE ) { TRACE( "TileBagSorter#Sorting", this ); }
             SortingSlot: function () {
 if ( TRACE ) { TRACE( "TileBagSorter#SortingSlot", this ); }
 
-                return System.Linq.Enumerable.from(this.Game.Bag.BusySlots, BagSlot).where(function (slot) {
+                return System.Linq.Enumerable.from(this.Game.Bag.BusySlots, TileSlot).where(function (slot) {
                         return slot.ID !== 0;
                     }).firstOrDefault(Bridge.fn.bind(this, function (slot) {
                         return this.Game.Bag.slots.getItem(((slot.ID - 1) | 0)).IsEmpty;
@@ -1290,8 +1176,8 @@ if ( TRACE ) { TRACE( "TileLocker#Refresh", this ); }
                 var $t;
                 for (var i = 0; i < ((layers.length - 1) | 0); i = (i + 1) | 0) {
                     var layer = layers[i];
-                    var current = { v : layer.id };
-                    var onTop = { v : layers[((i + 1) | 0)].id };
+                    var current = { v : layer.layer };
+                    var onTop = { v : layers[((i + 1) | 0)].layer };
                     $t = Bridge.getEnumerator(System.Linq.Enumerable.from(tiles, Tile).where((function ($me, current) {
                             return function (t) {
                                 return t.Layer === current.v;
@@ -1325,6 +1211,176 @@ if ( TRACE ) { TRACE( "TileLocker#Refresh", this ); }
         }
     });
     /*TileLocker end.*/
+
+    /*TileRandomSpawner start.*/
+    Bridge.define("TileRandomSpawner", {
+        inherits: [GameComponent],
+        fields: {
+            level: null,
+            spawnRate: 0,
+            spawned: null
+        },
+        events: {
+            OnSpawnFinish: null
+        },
+        props: {
+            TotalTiles: {
+                get: function () {
+if ( TRACE ) { TRACE( "TileRandomSpawner#TotalTiles#get", this ); }
+
+                    return System.Linq.Enumerable.from(this.level, TileData).sum(function (d) {
+                            return d.amount;
+                        });
+                }
+            }
+        },
+        ctors: {
+            init: function () {
+if ( TRACE ) { TRACE( "TileRandomSpawner#init", this ); }
+
+                this.level = new (System.Collections.Generic.List$1(TileData)).ctor();
+                this.spawned = new (System.Collections.Generic.List$1(Tile)).ctor();
+                Bridge.event(this, "OnSpawnFinish", function () { });
+            }
+        },
+        methods: {
+            /*TileRandomSpawner.OnInit start.*/
+            OnInit: function () {
+if ( TRACE ) { TRACE( "TileRandomSpawner#OnInit", this ); }
+ },
+            /*TileRandomSpawner.OnInit end.*/
+
+            /*TileRandomSpawner.Spawn start.*/
+            Spawn: function (tiles) {
+if ( TRACE ) { TRACE( "TileRandomSpawner#Spawn", this ); }
+
+                if (this.TotalTiles !== tiles.Count) {
+                    UnityEngine.Debug.LogError$2("Tiles amount should be equals bricks amount on scene");
+                    UnityEngine.Debug.LogError$2("Tiles: " + this.TotalTiles + ", Slots" + tiles.Count);
+                } else {
+                    this.StartCoroutine$1(this.RunSpawn(tiles));
+                }
+            },
+            /*TileRandomSpawner.Spawn end.*/
+
+            /*TileRandomSpawner.GetRandomEmpty start.*/
+            GetRandomEmpty: function (tiles) {
+if ( TRACE ) { TRACE( "TileRandomSpawner#GetRandomEmpty", this ); }
+
+                var empty = System.Linq.Enumerable.from(tiles, Tile).where(function (t) {
+                        return !t.IsInit;
+                    }).toList(Tile);
+                return empty.getItem(UnityEngine.Random.Range(0, empty.Count));
+            },
+            /*TileRandomSpawner.GetRandomEmpty end.*/
+
+            /*TileRandomSpawner.RunSpawn start.*/
+            RunSpawn: function (tiles) {
+if ( TRACE ) { TRACE( "TileRandomSpawner#RunSpawn", this ); }
+
+                var $step = 0,
+                    $jumpFromFinally,
+                    $returnValue,
+                    $t,
+                    tile2,
+                    i,
+                    tile,
+                    data,
+                    $async_e;
+
+                var $enumerator = new Bridge.GeneratorEnumerator(Bridge.fn.bind(this, function () {
+                    try {
+                        for (;;) {
+                            switch ($step) {
+                                case 0: {
+                                    this.spawned.clear();
+                                        $t = Bridge.getEnumerator(tiles);
+                                        try {
+                                            while ($t.moveNext()) {
+                                                tile2 = $t.Current;
+                                                tile2.Hide();
+                                            }
+                                        } finally {
+                                            if (Bridge.is($t, System.IDisposable)) {
+                                                $t.System$IDisposable$Dispose();
+                                            }
+                                        }
+                                        UnityEngine.Debug.LogError$2("Total: " + this.TotalTiles);
+                                        i = 0;
+                                        $step = 1;
+                                        continue;
+                                }
+                                case 1: {
+                                    if ( i < this.TotalTiles ) {
+                                            $step = 2;
+                                            continue;
+                                        }
+                                    $step = 5;
+                                    continue;
+                                }
+                                case 2: {
+                                    tile = this.GetRandomEmpty(tiles);
+                                        if (!UnityEngine.Object.op_Implicit(tile)) {
+                                            UnityEngine.Debug.LogWarning$1("Why theres no empty slot?");
+                                            $step = 4;
+                                            continue;
+                                        }
+                                        data = this.BookRandom();
+                                        tile.Set(data);
+                                        this.spawned.add(tile);
+                                        $enumerator.current = new UnityEngine.WaitForSeconds(1.0 / this.spawnRate);
+                                        $step = 3;
+                                        return true;
+                                }
+                                case 3: {
+                                    $step = 4;
+                                    continue;
+                                }
+                                case 4: {
+                                    i = (i + 1) | 0;
+                                    $step = 1;
+                                    continue;
+                                }
+                                case 5: {
+                                    $enumerator.current = new UnityEngine.WaitForSeconds(1.0 / this.spawnRate);
+                                        $step = 6;
+                                        return true;
+                                }
+                                case 6: {
+                                    this.OnSpawnFinish(this.spawned);
+
+                                }
+                                default: {
+                                    return false;
+                                }
+                            }
+                        }
+                    } catch($async_e1) {
+                        $async_e = System.Exception.create($async_e1);
+                        throw $async_e;
+                    }
+                }));
+                return $enumerator;
+            },
+            /*TileRandomSpawner.RunSpawn end.*/
+
+            /*TileRandomSpawner.BookRandom start.*/
+            BookRandom: function () {
+if ( TRACE ) { TRACE( "TileRandomSpawner#BookRandom", this ); }
+
+                var onlyFree = System.Linq.Enumerable.from(this.level, TileData).where(function (p) {
+                        return p.CanSpawn;
+                    });
+                var r = UnityEngine.Random.Range(0, System.Linq.Enumerable.from(onlyFree, TileData).count());
+                this.level.getItem(r).Spawned();
+                return this.level.getItem(r);
+            },
+            /*TileRandomSpawner.BookRandom end.*/
+
+
+        }
+    });
+    /*TileRandomSpawner end.*/
 
     /*TileSpawnAnimation start.*/
     Bridge.define("TileSpawnAnimation", {
@@ -1376,11 +1432,11 @@ if ( TRACE ) { TRACE( "TileSpawnAnimation#Play", this ); }
                         for (;;) {
                             switch ($step) {
                                 case 0: {
-                                    groupedTiles = (System.Linq.Enumerable.from(slots, TileSlot).groupBy(function (tile) {
+                                    groupedTiles = (System.Linq.Enumerable.from(slots, Tile).groupBy(function (tile) {
                                                 return tile.Layer;
                                             }).select(function (group) {
-                                            return group.toList(TileSlot);
-                                        })).toList(System.Collections.Generic.List$1(TileSlot));
+                                            return group.toList(Tile);
+                                        })).toList(System.Collections.Generic.List$1(Tile));
                                         $t = Bridge.getEnumerator(groupedTiles);
                                         $step = 1;
                                         continue;
@@ -1433,11 +1489,11 @@ if ( TRACE ) { TRACE( "TileSpawnAnimation#Play", this ); }
                                         return true;
                                 }
                                 case 9: {
-                                    groupedTiles2 = (System.Linq.Enumerable.from(slots2, TileSlot).groupBy(function (tile) {
+                                    groupedTiles2 = (System.Linq.Enumerable.from(slots2, Tile).groupBy(function (tile) {
                                                 return tile.Layer;
                                             }).select(function (group) {
-                                            return group.toList(TileSlot);
-                                        })).toList(System.Collections.Generic.List$1(TileSlot));
+                                            return group.toList(Tile);
+                                        })).toList(System.Collections.Generic.List$1(Tile));
                                         $t2 = Bridge.getEnumerator(groupedTiles2);
                                         $step = 10;
                                         continue;
@@ -1519,7 +1575,6 @@ if ( TRACE ) { TRACE( "TileSpawnAnimation#OnInit", this ); }
             level: null,
             prefab: null,
             spawned: null,
-            spawnData: null,
             hideAtSpawn: false,
             spawnRate: 0
         },
@@ -1541,7 +1596,6 @@ if ( TRACE ) { TRACE( "TileSpawner#init", this ); }
 
                 this.level = new (System.Collections.Generic.List$1(TileData)).ctor();
                 this.spawned = new (System.Collections.Generic.List$1(Tile)).ctor();
-                this.spawnData = new (System.Collections.Generic.List$1(TileData)).ctor();
                 this.hideAtSpawn = true;
                 Bridge.event(this, "OnSpawnFinish", function () { });
             }
@@ -1550,11 +1604,7 @@ if ( TRACE ) { TRACE( "TileSpawner#init", this ); }
             /*TileSpawner.OnInit start.*/
             OnInit: function () {
 if ( TRACE ) { TRACE( "TileSpawner#OnInit", this ); }
-
-                for (var i = 0; i < this.level.Count; i = (i + 1) | 0) {
-                    this.level.getItem(i).type = i;
-                }
-            },
+ },
             /*TileSpawner.OnInit end.*/
 
             /*TileSpawner.Spawn start.*/
@@ -1565,7 +1615,7 @@ if ( TRACE ) { TRACE( "TileSpawner#Spawn", this ); }
                         return t.amount;
                     });
                 var slots = System.Linq.Enumerable.from(layers, DeckLayer).sum(function (p) {
-                        return p.Slots.length;
+                        return p.Tiles.length;
                     });
                 if (tilez !== slots) {
                     UnityEngine.Debug.LogError$2("Tiles amount should be equals bricks amount on scene");
@@ -1583,12 +1633,6 @@ if ( TRACE ) { TRACE( "TileSpawner#RunSpawn", this ); }
                 var $step = 0,
                     $jumpFromFinally,
                     $returnValue,
-                    total,
-                    i,
-                    layer,
-                    emptySlot,
-                    data,
-                    tile,
                     $async_e;
 
                 var $enumerator = new Bridge.GeneratorEnumerator(Bridge.fn.bind(this, function () {
@@ -1596,54 +1640,11 @@ if ( TRACE ) { TRACE( "TileSpawner#RunSpawn", this ); }
                         for (;;) {
                             switch ($step) {
                                 case 0: {
-                                    this.spawnData = tileData;
-                                        this.spawned.clear();
-                                        total = System.Linq.Enumerable.from(tileData, TileData).sum(function (t) {
-                                                return t.amount;
-                                            });
-                                        i = 0;
+                                    $enumerator.current = new UnityEngine.WaitForSeconds(1.0 / this.spawnRate);
                                         $step = 1;
-                                        continue;
-                                }
-                                case 1: {
-                                    if ( i < total ) {
-                                            $step = 2;
-                                            continue;
-                                        }
-                                    $step = 5;
-                                    continue;
-                                }
-                                case 2: {
-                                    layer = this.GetRandom(layers);
-                                        emptySlot = layer.GetFreeSlot();
-                                        if (UnityEngine.MonoBehaviour.op_Equality(emptySlot, null)) {
-                                            UnityEngine.Debug.LogWarning$1("Why theres no empty slots?");
-                                            $step = 4;
-                                            continue;
-                                        }
-                                        data = this.GetRandom$1(tileData);
-                                        data.Decrease();
-                                        tile = UnityEngine.Object.Instantiate(Tile, this.prefab);
-                                        tile.Set(data, layer.id);
-                                        emptySlot.Put(tile);
-                                        if (this.hideAtSpawn) {
-                                            emptySlot.Hide();
-                                        }
-                                        this.spawned.add(tile);
-                                        $enumerator.current = new UnityEngine.WaitForSeconds(1.0 / this.spawnRate);
-                                        $step = 3;
                                         return true;
                                 }
-                                case 3: {
-                                    $step = 4;
-                                    continue;
-                                }
-                                case 4: {
-                                    i = (i + 1) | 0;
-                                    $step = 1;
-                                    continue;
-                                }
-                                case 5: {
+                                case 1: {
                                     this.OnSpawnFinish(this.spawned);
 
                                 }
@@ -1661,34 +1662,7 @@ if ( TRACE ) { TRACE( "TileSpawner#RunSpawn", this ); }
             },
             /*TileSpawner.RunSpawn end.*/
 
-            /*TileSpawner.GetRandom$1 start.*/
-            GetRandom$1: function (data) {
-if ( TRACE ) { TRACE( "TileSpawner#GetRandom$1", this ); }
 
-                var onlyFree = System.Linq.Enumerable.from(data, TileData).where(function (p) {
-                        return p.CanSpawn;
-                    });
-                var r = UnityEngine.Random.Range(0, System.Linq.Enumerable.from(onlyFree, TileData).count());
-                return data.getItem(r);
-            },
-            /*TileSpawner.GetRandom$1 end.*/
-
-            /*TileSpawner.GetRandom start.*/
-            GetRandom: function (layers) {
-if ( TRACE ) { TRACE( "TileSpawner#GetRandom", this ); }
-
-                var onlyFree = System.Linq.Enumerable.from(layers, DeckLayer).where(function (p) {
-                        return p.AnyFreeSlot;
-                    });
-                var r = UnityEngine.Random.Range(0, System.Linq.Enumerable.from(onlyFree, DeckLayer).count());
-                return layers[r];
-            },
-            /*TileSpawner.GetRandom end.*/
-
-
-        },
-        overloads: {
-            "GetRandom(List<TileData>)": "GetRandom$1"
         }
     });
     /*TileSpawner end.*/
@@ -1715,7 +1689,7 @@ if ( TRACE ) { TRACE( "WinCondition#Completed#get", this ); }
             init: function () {
 if ( TRACE ) { TRACE( "WinCondition#init", this ); }
 
-                this.completeSlots = new (System.Collections.Generic.List$1(TileSlot)).ctor();
+                this.completeSlots = new (System.Collections.Generic.List$1(Tile)).ctor();
                 Bridge.event(this, "OnWin", function () { });
             }
         },
@@ -1745,14 +1719,10 @@ if ( TRACE ) { TRACE( "WinCondition#Check", this ); }
 
     if ( MODULE_reflection ) {
     var $m = Bridge.setMetadata,
-        $n = ["System","UnityEngine","System.Collections.Generic","System.Collections"];
-
-    /*BagSlot start.*/
-    $m("BagSlot", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":1,"n":"Awake","t":8,"sn":"Awake","rt":$n[0].Void},{"a":2,"n":"Book","t":8,"pi":[{"n":"slot","pt":TileSlot,"ps":0}],"sn":"Book","rt":$n[0].Void,"p":[TileSlot]},{"a":2,"n":"Empty","t":8,"sn":"Empty","rt":$n[0].Void},{"a":2,"n":"Put","t":8,"pi":[{"n":"slot","pt":TileSlot,"ps":0}],"sn":"Put","rt":$n[0].Void,"p":[TileSlot]},{"a":2,"n":"StopBooking","t":8,"sn":"StopBooking","rt":$n[0].Void},{"a":1,"n":"Booked","t":16,"rt":$n[0].Boolean,"g":{"a":1,"n":"get_Booked","t":8,"rt":$n[0].Boolean,"fg":"Booked","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},"fn":"Booked"},{"a":2,"n":"Busy","t":16,"rt":$n[0].Boolean,"g":{"a":2,"n":"get_Busy","t":8,"rt":$n[0].Boolean,"fg":"Busy","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},"fn":"Busy"},{"a":2,"n":"Data","t":16,"rt":TileData,"g":{"a":2,"n":"get_Data","t":8,"rt":TileData,"fg":"Data"},"fn":"Data"},{"a":2,"n":"IsEmpty","t":16,"rt":$n[0].Boolean,"g":{"a":2,"n":"get_IsEmpty","t":8,"rt":$n[0].Boolean,"fg":"IsEmpty","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},"fn":"IsEmpty"},{"a":2,"n":"IsFree","t":16,"rt":$n[0].Boolean,"g":{"a":2,"n":"get_IsFree","t":8,"rt":$n[0].Boolean,"fg":"IsFree","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},"fn":"IsFree"},{"a":2,"n":"Position","t":16,"rt":$n[1].Vector2,"g":{"a":2,"n":"get_Position","t":8,"rt":$n[1].Vector2,"fg":"Position"},"fn":"Position"},{"a":2,"n":"ID","t":4,"rt":$n[0].Int32,"sn":"ID","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":2,"n":"TileSlot","t":4,"rt":TileSlot,"sn":"TileSlot"},{"a":2,"n":"bookedSlot","t":4,"rt":TileSlot,"sn":"bookedSlot"}]}; }, $n);
-    /*BagSlot end.*/
+        $n = ["System","System.Collections.Generic","UnityEngine","System.Collections"];
 
     /*Deck start.*/
-    $m("Deck", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":1,"n":"FindPlatforms","t":8,"sn":"FindPlatforms","rt":$n[0].Void},{"a":1,"n":"InitPlatforms","t":8,"sn":"InitPlatforms","rt":$n[0].Void},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[0].Void},{"a":2,"n":"FirstLayer","t":16,"rt":$n[2].List$1(TileSlot),"g":{"a":2,"n":"get_FirstLayer","t":8,"rt":$n[2].List$1(TileSlot),"fg":"FirstLayer"},"fn":"FirstLayer"},{"a":2,"n":"Layers","t":16,"rt":System.Array.type(DeckLayer),"g":{"a":2,"n":"get_Layers","t":8,"rt":System.Array.type(DeckLayer),"fg":"Layers"},"s":{"a":1,"n":"set_Layers","t":8,"p":[System.Array.type(DeckLayer)],"rt":$n[0].Void,"fs":"Layers"},"fn":"Layers"},{"a":2,"n":"SecondLayer","t":16,"rt":$n[2].List$1(TileSlot),"g":{"a":2,"n":"get_SecondLayer","t":8,"rt":$n[2].List$1(TileSlot),"fg":"SecondLayer"},"fn":"SecondLayer"},{"a":2,"n":"Slots","t":16,"rt":$n[2].List$1(TileSlot),"g":{"a":2,"n":"get_Slots","t":8,"rt":$n[2].List$1(TileSlot),"fg":"Slots"},"fn":"Slots"},{"a":1,"backing":true,"n":"<Layers>k__BackingField","t":4,"rt":System.Array.type(DeckLayer),"sn":"Layers"}]}; }, $n);
+    $m("Deck", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":1,"n":"FindLayers","t":8,"sn":"FindLayers","rt":$n[0].Void},{"a":1,"n":"InitLayers","t":8,"sn":"InitLayers","rt":$n[0].Void},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[0].Void},{"a":2,"n":"FirstLayer","t":16,"rt":$n[1].List$1(Tile),"g":{"a":2,"n":"get_FirstLayer","t":8,"rt":$n[1].List$1(Tile),"fg":"FirstLayer"},"fn":"FirstLayer"},{"a":2,"n":"Layers","t":16,"rt":System.Array.type(DeckLayer),"g":{"a":2,"n":"get_Layers","t":8,"rt":System.Array.type(DeckLayer),"fg":"Layers"},"s":{"a":1,"n":"set_Layers","t":8,"p":[System.Array.type(DeckLayer)],"rt":$n[0].Void,"fs":"Layers"},"fn":"Layers"},{"a":2,"n":"SecondLayer","t":16,"rt":$n[1].List$1(Tile),"g":{"a":2,"n":"get_SecondLayer","t":8,"rt":$n[1].List$1(Tile),"fg":"SecondLayer"},"fn":"SecondLayer"},{"a":2,"n":"Slots","t":16,"rt":$n[1].List$1(Tile),"g":{"a":2,"n":"get_Slots","t":8,"rt":$n[1].List$1(Tile),"fg":"Slots"},"fn":"Slots"},{"a":1,"backing":true,"n":"<Layers>k__BackingField","t":4,"rt":System.Array.type(DeckLayer),"sn":"Layers"}]}; }, $n);
     /*Deck end.*/
 
     /*DeckBuilder start.*/
@@ -1760,15 +1730,15 @@ if ( TRACE ) { TRACE( "WinCondition#Check", this ); }
     /*DeckBuilder end.*/
 
     /*DeckLayer start.*/
-    $m("DeckLayer", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":1,"n":"FindSlots","t":8,"sn":"FindSlots","rt":$n[0].Void},{"a":2,"n":"GetFreeSlot","t":8,"sn":"GetFreeSlot","rt":TileSlot},{"a":2,"n":"Init","t":8,"pi":[{"n":"deck","pt":Deck,"ps":0}],"sn":"Init","rt":$n[0].Void,"p":[Deck]},{"a":1,"n":"InitSlots","t":8,"sn":"InitSlots","rt":$n[0].Void},{"a":2,"n":"AnyFreeSlot","t":16,"rt":$n[0].Boolean,"g":{"a":2,"n":"get_AnyFreeSlot","t":8,"rt":$n[0].Boolean,"fg":"AnyFreeSlot","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},"fn":"AnyFreeSlot"},{"a":2,"n":"Slots","t":16,"rt":System.Array.type(TileSlot),"g":{"a":2,"n":"get_Slots","t":8,"rt":System.Array.type(TileSlot),"fg":"Slots"},"s":{"a":1,"n":"set_Slots","t":8,"p":[System.Array.type(TileSlot)],"rt":$n[0].Void,"fs":"Slots"},"fn":"Slots"},{"a":1,"n":"_deck","t":4,"rt":Deck,"sn":"_deck"},{"a":2,"n":"id","t":4,"rt":$n[0].Int32,"sn":"id","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":1,"backing":true,"n":"<Slots>k__BackingField","t":4,"rt":System.Array.type(TileSlot),"sn":"Slots"}]}; }, $n);
+    $m("DeckLayer", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":1,"n":"FindTiles","t":8,"sn":"FindTiles","rt":$n[0].Void},{"a":2,"n":"Init","t":8,"pi":[{"n":"deck","pt":Deck,"ps":0}],"sn":"Init","rt":$n[0].Void,"p":[Deck]},{"a":1,"n":"InitTiles","t":8,"sn":"InitTiles","rt":$n[0].Void},{"a":2,"n":"Tiles","t":16,"rt":System.Array.type(Tile),"g":{"a":2,"n":"get_Tiles","t":8,"rt":System.Array.type(Tile),"fg":"Tiles"},"s":{"a":1,"n":"set_Tiles","t":8,"p":[System.Array.type(Tile)],"rt":$n[0].Void,"fs":"Tiles"},"fn":"Tiles"},{"a":1,"n":"_deck","t":4,"rt":Deck,"sn":"_deck"},{"a":2,"n":"layer","t":4,"rt":$n[0].Int32,"sn":"layer","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":1,"backing":true,"n":"<Tiles>k__BackingField","t":4,"rt":System.Array.type(Tile),"sn":"Tiles"}]}; }, $n);
     /*DeckLayer end.*/
 
     /*EndCard start.*/
-    $m("EndCard", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[0].Void}]}; }, $n);
+    $m("EndCard", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[0].Void},{"a":2,"n":"Show","t":8,"sn":"Show","rt":$n[0].Void}]}; }, $n);
     /*EndCard end.*/
 
     /*Game start.*/
-    $m("Game", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":1,"n":"InitComponents","t":8,"sn":"InitComponents","rt":$n[0].Void},{"a":1,"n":"OnValidate","t":8,"sn":"OnValidate","rt":$n[0].Void},{"a":1,"n":"Spawn","t":8,"sn":"Spawn","rt":$n[0].Void},{"a":1,"n":"Spawned","t":8,"pi":[{"n":"tiles","pt":$n[2].List$1(Tile),"ps":0}],"sn":"Spawned","rt":$n[0].Void,"p":[$n[2].List$1(Tile)]},{"a":1,"n":"Start","t":8,"sn":"Start","rt":$n[0].Void},{"a":2,"n":"Bag","t":16,"rt":TilesBag,"g":{"a":2,"n":"get_Bag","t":8,"rt":TilesBag,"fg":"Bag"},"fn":"Bag"},{"a":2,"n":"Input","t":16,"rt":InputTouch,"g":{"a":2,"n":"get_Input","t":8,"rt":InputTouch,"fg":"Input"},"fn":"Input"},{"a":2,"n":"LevelData","t":16,"rt":$n[2].IReadOnlyList$1(TileData),"g":{"a":2,"n":"get_LevelData","t":8,"rt":$n[2].IReadOnlyList$1(TileData),"fg":"LevelData"},"fn":"LevelData"},{"a":2,"n":"MatchCondition","t":16,"rt":MatchCondition,"g":{"a":2,"n":"get_MatchCondition","t":8,"rt":MatchCondition,"fg":"MatchCondition"},"fn":"MatchCondition"},{"a":2,"n":"Tiles","t":16,"rt":$n[2].IReadOnlyList$1(Tile),"g":{"a":2,"n":"get_Tiles","t":8,"rt":$n[2].IReadOnlyList$1(Tile),"fg":"Tiles"},"fn":"Tiles"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"actions","t":4,"rt":TileActions,"sn":"actions"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"bag","t":4,"rt":TilesBag,"sn":"bag"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"deck","t":4,"rt":Deck,"sn":"deck"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"input","t":4,"rt":InputTouch,"sn":"input"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"locker","t":4,"rt":TileLocker,"sn":"locker"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"loseCondition","t":4,"rt":LoseCondition,"sn":"loseCondition"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"matchCondition","t":4,"rt":MatchCondition,"sn":"matchCondition"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"randomTiles","t":4,"rt":$n[0].Boolean,"sn":"randomTiles","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"spawnAnimation","t":4,"rt":TileSpawnAnimation,"sn":"spawnAnimation"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"spawner","t":4,"rt":TileSpawner,"sn":"spawner"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"tiles","t":4,"rt":$n[2].List$1(Tile),"sn":"tiles"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"totalBricks","t":4,"rt":$n[0].Int32,"sn":"totalBricks","box":function ($v) { return Bridge.box($v, System.Int32);}},{"at":[new UnityEngine.SpaceAttribute.$ctor1(20.0),new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"totalTiles","t":4,"rt":$n[0].Int32,"sn":"totalTiles","box":function ($v) { return Bridge.box($v, System.Int32);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"winCondition","t":4,"rt":WinCondition,"sn":"winCondition"}]}; }, $n);
+    $m("Game", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":1,"n":"InitComponents","t":8,"sn":"InitComponents","rt":$n[0].Void},{"a":1,"n":"OnValidate","t":8,"sn":"OnValidate","rt":$n[0].Void},{"a":1,"n":"Spawn","t":8,"sn":"Spawn","rt":$n[0].Void},{"a":1,"n":"Spawned","t":8,"pi":[{"n":"spawned","pt":$n[1].List$1(Tile),"ps":0}],"sn":"Spawned","rt":$n[0].Void,"p":[$n[1].List$1(Tile)]},{"a":1,"n":"Start","t":8,"sn":"Start","rt":$n[0].Void},{"a":2,"n":"Bag","t":16,"rt":TilesBag,"g":{"a":2,"n":"get_Bag","t":8,"rt":TilesBag,"fg":"Bag"},"fn":"Bag"},{"a":2,"n":"Input","t":16,"rt":InputTouch,"g":{"a":2,"n":"get_Input","t":8,"rt":InputTouch,"fg":"Input"},"fn":"Input"},{"a":2,"n":"MatchCondition","t":16,"rt":MatchCondition,"g":{"a":2,"n":"get_MatchCondition","t":8,"rt":MatchCondition,"fg":"MatchCondition"},"fn":"MatchCondition"},{"a":2,"n":"Tiles","t":16,"rt":$n[1].IReadOnlyList$1(Tile),"g":{"a":2,"n":"get_Tiles","t":8,"rt":$n[1].IReadOnlyList$1(Tile),"fg":"Tiles"},"fn":"Tiles"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"actions","t":4,"rt":TileActions,"sn":"actions"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"bag","t":4,"rt":TilesBag,"sn":"bag"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"deck","t":4,"rt":Deck,"sn":"deck"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"input","t":4,"rt":InputTouch,"sn":"input"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"locker","t":4,"rt":TileLocker,"sn":"locker"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"loseCondition","t":4,"rt":LoseCondition,"sn":"loseCondition"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"matchCondition","t":4,"rt":MatchCondition,"sn":"matchCondition"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"randomTiles","t":4,"rt":$n[0].Boolean,"sn":"randomTiles","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"spawnAnimation","t":4,"rt":TileSpawnAnimation,"sn":"spawnAnimation"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"spawnRandom","t":4,"rt":TileRandomSpawner,"sn":"spawnRandom"},{"at":[new UnityEngine.Serialization.FormerlySerializedAsAttribute("totalTiles"),new UnityEngine.SpaceAttribute.$ctor1(20.0),new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"tileToSpawn","t":4,"rt":$n[0].Int32,"sn":"tileToSpawn","box":function ($v) { return Bridge.box($v, System.Int32);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"tiles","t":4,"rt":$n[1].List$1(Tile),"sn":"tiles"},{"at":[new UnityEngine.Serialization.FormerlySerializedAsAttribute("tilesOnScene"),new UnityEngine.Serialization.FormerlySerializedAsAttribute("totalBricks"),new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"tilesInScene","t":4,"rt":$n[0].Int32,"sn":"tilesInScene","box":function ($v) { return Bridge.box($v, System.Int32);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"winCondition","t":4,"rt":WinCondition,"sn":"winCondition"}]}; }, $n);
     /*Game end.*/
 
     /*GameComponent start.*/
@@ -1776,7 +1746,7 @@ if ( TRACE ) { TRACE( "WinCondition#Check", this ); }
     /*GameComponent end.*/
 
     /*InputTouch start.*/
-    $m("InputTouch", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[0].Void},{"a":1,"n":"Update","t":8,"sn":"Update","rt":$n[0].Void},{"a":2,"n":"touchSize","t":4,"rt":$n[0].Single,"sn":"touchSize","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"touches","t":4,"rt":$n[2].List$1(UnityEngine.Vector2),"sn":"touches"},{"a":2,"n":"OnTouchScreen","t":2,"ad":{"a":2,"n":"add_OnTouchScreen","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"addOnTouchScreen","rt":$n[0].Void,"p":[Function]},"r":{"a":2,"n":"remove_OnTouchScreen","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"removeOnTouchScreen","rt":$n[0].Void,"p":[Function]}}]}; }, $n);
+    $m("InputTouch", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[0].Void},{"a":1,"n":"Update","t":8,"sn":"Update","rt":$n[0].Void},{"a":2,"n":"touchSize","t":4,"rt":$n[0].Single,"sn":"touchSize","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"touches","t":4,"rt":$n[1].List$1(UnityEngine.Vector2),"sn":"touches"},{"a":2,"n":"OnTouchScreen","t":2,"ad":{"a":2,"n":"add_OnTouchScreen","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"addOnTouchScreen","rt":$n[0].Void,"p":[Function]},"r":{"a":2,"n":"remove_OnTouchScreen","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"removeOnTouchScreen","rt":$n[0].Void,"p":[Function]}}]}; }, $n);
     /*InputTouch end.*/
 
     /*LoseCondition start.*/
@@ -1784,47 +1754,57 @@ if ( TRACE ) { TRACE( "WinCondition#Check", this ); }
     /*LoseCondition end.*/
 
     /*MatchCondition start.*/
-    $m("MatchCondition", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":1,"n":"Check","t":8,"sn":"Check","rt":$n[0].Void},{"a":1,"n":"Match","t":8,"pi":[{"n":"bagSlots","pt":$n[2].List$1(BagSlot),"ps":0}],"sn":"Match","rt":$n[0].Void,"p":[$n[2].List$1(BagSlot)]},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[0].Void},{"a":1,"n":"SameAmount","t":8,"pi":[{"n":"type","pt":$n[0].Int32,"ps":0}],"sn":"SameAmount","rt":$n[0].Int32,"p":[$n[0].Int32],"box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":2,"n":"Completed","t":16,"rt":$n[0].Int32,"g":{"a":2,"n":"get_Completed","t":8,"rt":$n[0].Int32,"fg":"Completed","box":function ($v) { return Bridge.box($v, System.Int32);}},"fn":"Completed"},{"a":2,"n":"completeSlots","t":4,"rt":$n[2].List$1(TileSlot),"sn":"completeSlots"},{"a":2,"n":"OnMatch","t":2,"ad":{"a":2,"n":"add_OnMatch","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"addOnMatch","rt":$n[0].Void,"p":[Function]},"r":{"a":2,"n":"remove_OnMatch","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"removeOnMatch","rt":$n[0].Void,"p":[Function]}}]}; }, $n);
+    $m("MatchCondition", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":1,"n":"Check","t":8,"sn":"Check","rt":$n[0].Void},{"a":1,"n":"Match","t":8,"pi":[{"n":"bagSlots","pt":$n[1].List$1(TileSlot),"ps":0}],"sn":"Match","rt":$n[0].Void,"p":[$n[1].List$1(TileSlot)]},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[0].Void},{"a":1,"n":"SameAmount","t":8,"pi":[{"n":"type","pt":TileSO,"ps":0}],"sn":"SameAmount","rt":$n[0].Int32,"p":[TileSO],"box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":2,"n":"Completed","t":16,"rt":$n[0].Int32,"g":{"a":2,"n":"get_Completed","t":8,"rt":$n[0].Int32,"fg":"Completed","box":function ($v) { return Bridge.box($v, System.Int32);}},"fn":"Completed"},{"a":2,"n":"completeSlots","t":4,"rt":$n[1].List$1(Tile),"sn":"completeSlots"},{"a":1,"n":"matches","t":4,"rt":$n[0].Int32,"sn":"matches","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":2,"n":"OnMatch","t":2,"ad":{"a":2,"n":"add_OnMatch","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"addOnMatch","rt":$n[0].Void,"p":[Function]},"r":{"a":2,"n":"remove_OnMatch","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"removeOnMatch","rt":$n[0].Void,"p":[Function]}}]}; }, $n);
     /*MatchCondition end.*/
 
     /*Tile start.*/
-    $m("Tile", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":2,"n":"Disable","t":8,"sn":"Disable","rt":$n[0].Void},{"a":2,"n":"Enable","t":8,"sn":"Enable","rt":$n[0].Void},{"a":1,"n":"OnMouseDown","t":8,"sn":"OnMouseDown","rt":$n[0].Void},{"a":1,"n":"ResetPosition","t":8,"sn":"ResetPosition","rt":$n[0].Void},{"a":2,"n":"Set","t":8,"pi":[{"n":"data","pt":TileData,"ps":0},{"n":"layer","pt":$n[0].Int32,"ps":1}],"sn":"Set","rt":$n[0].Void,"p":[TileData,$n[0].Int32]},{"a":2,"n":"SetContacts","t":8,"pi":[{"n":"cover","pt":$n[2].List$1(Tile),"ps":0}],"sn":"SetContacts","rt":$n[0].Void,"p":[$n[2].List$1(Tile)]},{"a":2,"n":"SetSlot","t":8,"pi":[{"n":"slot","pt":TileSlot,"ps":0}],"sn":"SetSlot","rt":$n[0].Void,"p":[TileSlot]},{"a":2,"n":"Data","t":16,"rt":TileData,"g":{"a":2,"n":"get_Data","t":8,"rt":TileData,"fg":"Data"},"s":{"a":1,"n":"set_Data","t":8,"p":[TileData],"rt":$n[0].Void,"fs":"Data"},"fn":"Data"},{"a":2,"n":"IsClickable","t":16,"rt":$n[0].Boolean,"g":{"a":2,"n":"get_IsClickable","t":8,"rt":$n[0].Boolean,"fg":"IsClickable","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},"s":{"a":2,"n":"set_IsClickable","t":8,"p":[$n[0].Boolean],"rt":$n[0].Void,"fs":"IsClickable"},"fn":"IsClickable"},{"a":2,"n":"Layer","t":16,"rt":$n[0].Int32,"g":{"a":2,"n":"get_Layer","t":8,"rt":$n[0].Int32,"fg":"Layer","box":function ($v) { return Bridge.box($v, System.Int32);}},"s":{"a":1,"n":"set_Layer","t":8,"p":[$n[0].Int32],"rt":$n[0].Void,"fs":"Layer"},"fn":"Layer"},{"a":2,"n":"Position","t":16,"rt":$n[1].Vector2,"g":{"a":2,"n":"get_Position","t":8,"rt":$n[1].Vector2,"fg":"Position"},"fn":"Position"},{"a":2,"n":"Slot","t":16,"rt":TileSlot,"g":{"a":2,"n":"get_Slot","t":8,"rt":TileSlot,"fg":"Slot"},"s":{"a":1,"n":"set_Slot","t":8,"p":[TileSlot],"rt":$n[0].Void,"fs":"Slot"},"fn":"Slot"},{"a":2,"n":"coverTiles","t":4,"rt":$n[2].List$1(Tile),"sn":"coverTiles"},{"a":2,"n":"disabledTile","t":4,"rt":$n[1].SpriteRenderer,"sn":"disabledTile"},{"a":2,"n":"icon","t":4,"rt":$n[1].SpriteRenderer,"sn":"icon"},{"a":2,"n":"OnClick","t":2,"ad":{"a":2,"n":"add_OnClick","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"addOnClick","rt":$n[0].Void,"p":[Function]},"r":{"a":2,"n":"remove_OnClick","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"removeOnClick","rt":$n[0].Void,"p":[Function]}},{"a":1,"backing":true,"n":"<Data>k__BackingField","t":4,"rt":TileData,"sn":"Data"},{"a":1,"backing":true,"n":"<IsClickable>k__BackingField","t":4,"rt":$n[0].Boolean,"sn":"IsClickable","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"backing":true,"n":"<Layer>k__BackingField","t":4,"rt":$n[0].Int32,"sn":"Layer","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":1,"backing":true,"n":"<Slot>k__BackingField","t":4,"rt":TileSlot,"sn":"Slot"}]}; }, $n);
+    $m("Tile", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":2,"n":"Disable","t":8,"sn":"Disable","rt":$n[0].Void},{"a":2,"n":"Enable","t":8,"sn":"Enable","rt":$n[0].Void},{"a":2,"n":"Hide","t":8,"sn":"Hide","rt":$n[0].Void},{"a":2,"n":"MoveTo","t":8,"pi":[{"n":"slot","pt":TileSlot,"ps":0}],"sn":"MoveTo","rt":$n[0].Void,"p":[TileSlot]},{"a":2,"n":"PutInBag","t":8,"sn":"PutInBag","rt":$n[0].Void},{"a":2,"n":"Set","t":8,"pi":[{"n":"data","pt":TileData,"ps":0}],"sn":"Set","rt":$n[0].Void,"p":[TileData]},{"a":2,"n":"SetContacts","t":8,"pi":[{"n":"cover","pt":$n[1].List$1(Tile),"ps":0}],"sn":"SetContacts","rt":$n[0].Void,"p":[$n[1].List$1(Tile)]},{"a":2,"n":"SetLayer","t":8,"pi":[{"n":"layer","pt":$n[0].Int32,"ps":0}],"sn":"SetLayer","rt":$n[0].Void,"p":[$n[0].Int32]},{"a":2,"n":"Show","t":8,"sn":"Show","rt":$n[0].Void},{"a":2,"n":"SpawnAnimation","t":8,"sn":"SpawnAnimation","rt":$n[0].Void},{"a":1,"n":"Update","t":8,"sn":"Update","rt":$n[0].Void},{"a":2,"n":"Data","t":16,"rt":TileData,"g":{"a":2,"n":"get_Data","t":8,"rt":TileData,"fg":"Data"},"s":{"a":1,"n":"set_Data","t":8,"p":[TileData],"rt":$n[0].Void,"fs":"Data"},"fn":"Data"},{"a":2,"n":"InBag","t":16,"rt":$n[0].Boolean,"g":{"a":2,"n":"get_InBag","t":8,"rt":$n[0].Boolean,"fg":"InBag","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},"s":{"a":1,"n":"set_InBag","t":8,"p":[$n[0].Boolean],"rt":$n[0].Void,"fs":"InBag"},"fn":"InBag"},{"a":2,"n":"IsClickable","t":16,"rt":$n[0].Boolean,"g":{"a":2,"n":"get_IsClickable","t":8,"rt":$n[0].Boolean,"fg":"IsClickable","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},"fn":"IsClickable"},{"a":2,"n":"Layer","t":16,"rt":$n[0].Int32,"g":{"a":2,"n":"get_Layer","t":8,"rt":$n[0].Int32,"fg":"Layer","box":function ($v) { return Bridge.box($v, System.Int32);}},"s":{"a":1,"n":"set_Layer","t":8,"p":[$n[0].Int32],"rt":$n[0].Void,"fs":"Layer"},"fn":"Layer"},{"a":2,"n":"Position","t":16,"rt":$n[2].Vector2,"g":{"a":2,"n":"get_Position","t":8,"rt":$n[2].Vector2,"fg":"Position"},"fn":"Position"},{"a":2,"n":"IsInit","t":4,"rt":$n[0].Boolean,"sn":"IsInit","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"_isClickable","t":4,"rt":$n[0].Boolean,"sn":"_isClickable","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"_isMoving","t":4,"rt":$n[0].Boolean,"sn":"_isMoving","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"_isSpawnAnimation","t":4,"rt":$n[0].Boolean,"sn":"_isSpawnAnimation","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"_spawnTimer","t":4,"rt":$n[0].Single,"sn":"_spawnTimer","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":1,"n":"_targetPosition","t":4,"rt":$n[2].Vector3,"sn":"_targetPosition"},{"a":1,"n":"_targetSlot","t":4,"rt":TileSlot,"sn":"_targetSlot"},{"a":1,"n":"_timer","t":4,"rt":$n[0].Single,"sn":"_timer","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"background","t":4,"rt":$n[2].SpriteRenderer,"sn":"background"},{"a":2,"n":"coverTiles","t":4,"rt":$n[1].List$1(Tile),"sn":"coverTiles"},{"a":2,"n":"defaultSize","t":4,"rt":$n[2].Vector3,"sn":"defaultSize"},{"a":2,"n":"disabledTile","t":4,"rt":$n[2].SpriteRenderer,"sn":"disabledTile"},{"a":2,"n":"icon","t":4,"rt":$n[2].SpriteRenderer,"sn":"icon"},{"a":2,"n":"moveDuration","t":4,"rt":$n[0].Single,"sn":"moveDuration","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"spawnAnimDuration","t":4,"rt":$n[0].Single,"sn":"spawnAnimDuration","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"spawnAnimSize","t":4,"rt":$n[0].Single,"sn":"spawnAnimSize","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"speed","t":4,"rt":$n[0].Single,"sn":"speed","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"OnMoveFinish","t":2,"ad":{"a":2,"n":"add_OnMoveFinish","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"addOnMoveFinish","rt":$n[0].Void,"p":[Function]},"r":{"a":2,"n":"remove_OnMoveFinish","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"removeOnMoveFinish","rt":$n[0].Void,"p":[Function]}},{"a":1,"backing":true,"n":"<Data>k__BackingField","t":4,"rt":TileData,"sn":"Data"},{"a":1,"backing":true,"n":"<InBag>k__BackingField","t":4,"rt":$n[0].Boolean,"sn":"InBag","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"backing":true,"n":"<Layer>k__BackingField","t":4,"rt":$n[0].Int32,"sn":"Layer","box":function ($v) { return Bridge.box($v, System.Int32);}}]}; }, $n);
     /*Tile end.*/
 
     /*TileActions start.*/
-    $m("TileActions", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":1,"n":"Click","t":8,"pi":[{"n":"slot","pt":TileSlot,"ps":0}],"sn":"Click","rt":$n[0].Void,"p":[TileSlot]},{"a":2,"n":"Observe","t":8,"pi":[{"n":"tiles","pt":$n[2].List$1(TileSlot),"ps":0}],"sn":"Observe","rt":$n[0].Void,"p":[$n[2].List$1(TileSlot)]},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[0].Void},{"a":1,"n":"OnTouchScreen","t":8,"pi":[{"n":"touchPos","pt":$n[1].Vector2,"ps":0},{"n":"touchSize","pt":$n[0].Single,"ps":1}],"sn":"OnTouchScreen","rt":$n[0].Void,"p":[$n[1].Vector2,$n[0].Single]},{"a":1,"n":"PutBag","t":8,"pi":[{"n":"moving","pt":TileSlot,"ps":0},{"n":"bagSlot","pt":BagSlot,"ps":1}],"sn":"PutBag","rt":$n[0].Void,"p":[TileSlot,BagSlot]},{"a":1,"n":"Touched","t":8,"pi":[{"n":"slot","pt":TileSlot,"ps":0}],"sn":"Touched","rt":$n[0].Void,"p":[TileSlot]},{"a":2,"n":"_cam","t":4,"rt":$n[1].Camera,"sn":"_cam"},{"a":1,"n":"_slots","t":4,"rt":$n[2].List$1(TileSlot),"sn":"_slots"}]}; }, $n);
+    $m("TileActions", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":1,"n":"Click","t":8,"pi":[{"n":"tile","pt":Tile,"ps":0}],"sn":"Click","rt":$n[0].Void,"p":[Tile]},{"a":2,"n":"Observe","t":8,"pi":[{"n":"tiles","pt":$n[1].List$1(Tile),"ps":0}],"sn":"Observe","rt":$n[0].Void,"p":[$n[1].List$1(Tile)]},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[0].Void},{"a":1,"n":"OnTouchScreen","t":8,"pi":[{"n":"touchPos","pt":$n[2].Vector2,"ps":0},{"n":"touchSize","pt":$n[0].Single,"ps":1}],"sn":"OnTouchScreen","rt":$n[0].Void,"p":[$n[2].Vector2,$n[0].Single]},{"a":1,"n":"PutBag","t":8,"pi":[{"n":"moving","pt":Tile,"ps":0},{"n":"tileSlot","pt":TileSlot,"ps":1}],"sn":"PutBag","rt":$n[0].Void,"p":[Tile,TileSlot]},{"a":1,"n":"Touched","t":8,"pi":[{"n":"tile","pt":Tile,"ps":0}],"sn":"Touched","rt":$n[0].Void,"p":[Tile]},{"a":1,"n":"_cam","t":4,"rt":$n[2].Camera,"sn":"_cam"},{"a":1,"n":"_slots","t":4,"rt":$n[1].List$1(Tile),"sn":"_slots"},{"a":1,"n":"clicks","t":4,"rt":$n[0].Int32,"sn":"clicks","box":function ($v) { return Bridge.box($v, System.Int32);}}]}; }, $n);
     /*TileActions end.*/
 
     /*TileBagSorter start.*/
-    $m("TileBagSorter", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[0].Void},{"a":1,"n":"Sort","t":8,"sn":"Sort","rt":$n[0].Void},{"a":1,"n":"Sorting","t":8,"sn":"Sorting","rt":$n[3].IEnumerator},{"a":1,"n":"SortingSlot","t":8,"sn":"SortingSlot","rt":BagSlot},{"a":1,"n":"NeedsSorting","t":16,"rt":$n[0].Boolean,"g":{"a":1,"n":"get_NeedsSorting","t":8,"rt":$n[0].Boolean,"fg":"NeedsSorting","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},"fn":"NeedsSorting"},{"a":1,"n":"_isSorting","t":4,"rt":$n[0].Boolean,"sn":"_isSorting","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"enable","t":4,"rt":$n[0].Boolean,"sn":"enable","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"intervalSec","t":4,"rt":$n[0].Single,"sn":"intervalSec","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}}]}; }, $n);
+    $m("TileBagSorter", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[0].Void},{"a":1,"n":"Sort","t":8,"sn":"Sort","rt":$n[0].Void},{"a":1,"n":"Sorting","t":8,"sn":"Sorting","rt":$n[3].IEnumerator},{"a":1,"n":"SortingSlot","t":8,"sn":"SortingSlot","rt":TileSlot},{"a":1,"n":"NeedsSorting","t":16,"rt":$n[0].Boolean,"g":{"a":1,"n":"get_NeedsSorting","t":8,"rt":$n[0].Boolean,"fg":"NeedsSorting","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},"fn":"NeedsSorting"},{"a":1,"n":"_isSorting","t":4,"rt":$n[0].Boolean,"sn":"_isSorting","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"enable","t":4,"rt":$n[0].Boolean,"sn":"enable","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"intervalSec","t":4,"rt":$n[0].Single,"sn":"intervalSec","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}}]}; }, $n);
     /*TileBagSorter end.*/
 
     /*TileData start.*/
-    $m("TileData", function () { return {"att":1056769,"a":2,"at":[new System.SerializableAttribute()],"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":2,"n":"Decrease","t":8,"sn":"Decrease","rt":$n[0].Void},{"a":2,"n":"CanSpawn","t":16,"rt":$n[0].Boolean,"g":{"a":2,"n":"get_CanSpawn","t":8,"rt":$n[0].Boolean,"fg":"CanSpawn","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},"fn":"CanSpawn"},{"a":2,"n":"amount","t":4,"rt":$n[0].Int32,"sn":"amount","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":2,"n":"icon","t":4,"rt":$n[1].Sprite,"sn":"icon"},{"a":2,"n":"type","t":4,"rt":$n[0].Int32,"sn":"type","box":function ($v) { return Bridge.box($v, System.Int32);}}]}; }, $n);
+    $m("TileData", function () { return {"att":1056769,"a":2,"at":[new System.SerializableAttribute()],"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":2,"n":"Spawned","t":8,"sn":"Spawned","rt":$n[0].Void},{"a":2,"n":"CanSpawn","t":16,"rt":$n[0].Boolean,"g":{"a":2,"n":"get_CanSpawn","t":8,"rt":$n[0].Boolean,"fg":"CanSpawn","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},"fn":"CanSpawn"},{"a":2,"n":"amount","t":4,"rt":$n[0].Int32,"sn":"amount","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":2,"n":"tile","t":4,"rt":TileSO,"sn":"tile"}]}; }, $n);
     /*TileData end.*/
 
     /*TileLocker start.*/
-    $m("TileLocker", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[0].Void},{"a":2,"n":"Refresh","t":8,"pi":[{"n":"tiles","pt":$n[2].List$1(Tile),"ps":0},{"n":"layers","pt":System.Array.type(DeckLayer),"ps":1}],"sn":"Refresh","rt":$n[0].Void,"p":[$n[2].List$1(Tile),System.Array.type(DeckLayer)]},{"a":2,"n":"lockDistance","t":4,"rt":$n[0].Single,"sn":"lockDistance","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}}]}; }, $n);
+    $m("TileLocker", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[0].Void},{"a":2,"n":"Refresh","t":8,"pi":[{"n":"tiles","pt":$n[1].List$1(Tile),"ps":0},{"n":"layers","pt":System.Array.type(DeckLayer),"ps":1}],"sn":"Refresh","rt":$n[0].Void,"p":[$n[1].List$1(Tile),System.Array.type(DeckLayer)]},{"a":2,"n":"lockDistance","t":4,"rt":$n[0].Single,"sn":"lockDistance","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}}]}; }, $n);
     /*TileLocker end.*/
 
+    /*TileRandomSpawner start.*/
+    $m("TileRandomSpawner", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":1,"n":"BookRandom","t":8,"sn":"BookRandom","rt":TileData},{"a":1,"n":"GetRandomEmpty","t":8,"pi":[{"n":"tiles","pt":$n[1].List$1(Tile),"ps":0}],"sn":"GetRandomEmpty","rt":Tile,"p":[$n[1].List$1(Tile)]},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[0].Void},{"a":1,"n":"RunSpawn","t":8,"pi":[{"n":"tiles","pt":$n[1].List$1(Tile),"ps":0}],"sn":"RunSpawn","rt":$n[3].IEnumerator,"p":[$n[1].List$1(Tile)]},{"a":2,"n":"Spawn","t":8,"pi":[{"n":"tiles","pt":$n[1].List$1(Tile),"ps":0}],"sn":"Spawn","rt":$n[0].Void,"p":[$n[1].List$1(Tile)]},{"a":2,"n":"TotalTiles","t":16,"rt":$n[0].Int32,"g":{"a":2,"n":"get_TotalTiles","t":8,"rt":$n[0].Int32,"fg":"TotalTiles","box":function ($v) { return Bridge.box($v, System.Int32);}},"fn":"TotalTiles"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"level","t":4,"rt":$n[1].List$1(TileData),"sn":"level"},{"a":2,"n":"spawnRate","t":4,"rt":$n[0].Single,"sn":"spawnRate","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"spawned","t":4,"rt":$n[1].List$1(Tile),"sn":"spawned"},{"a":2,"n":"OnSpawnFinish","t":2,"ad":{"a":2,"n":"add_OnSpawnFinish","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"addOnSpawnFinish","rt":$n[0].Void,"p":[Function]},"r":{"a":2,"n":"remove_OnSpawnFinish","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"removeOnSpawnFinish","rt":$n[0].Void,"p":[Function]}}]}; }, $n);
+    /*TileRandomSpawner end.*/
+
     /*TilesBag start.*/
-    $m("TilesBag", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":1,"n":"Awake","t":8,"sn":"Awake","rt":$n[0].Void},{"a":2,"n":"Put","t":8,"pi":[{"n":"tileSlot","pt":TileSlot,"ps":0},{"n":"bagSlot","pt":BagSlot,"ps":1}],"sn":"Put","rt":$n[0].Void,"p":[TileSlot,BagSlot]},{"a":2,"n":"Remove","t":8,"pi":[{"n":"slot","pt":TileSlot,"ps":0}],"sn":"Remove","rt":$n[0].Void,"p":[TileSlot]},{"a":2,"n":"BusySlots","t":16,"rt":$n[2].List$1(BagSlot),"g":{"a":2,"n":"get_BusySlots","t":8,"rt":$n[2].List$1(BagSlot),"fg":"BusySlots"},"fn":"BusySlots"},{"a":2,"n":"EmptySlot","t":16,"rt":BagSlot,"g":{"a":2,"n":"get_EmptySlot","t":8,"rt":BagSlot,"fg":"EmptySlot"},"fn":"EmptySlot"},{"a":2,"n":"HaveEmptySlot","t":16,"rt":$n[0].Boolean,"g":{"a":2,"n":"get_HaveEmptySlot","t":8,"rt":$n[0].Boolean,"fg":"HaveEmptySlot","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},"fn":"HaveEmptySlot"},{"a":2,"n":"NoSpace","t":16,"rt":$n[0].Boolean,"g":{"a":2,"n":"get_NoSpace","t":8,"rt":$n[0].Boolean,"fg":"NoSpace","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},"fn":"NoSpace"},{"a":2,"n":"slots","t":4,"rt":$n[2].List$1(BagSlot),"sn":"slots"},{"a":2,"n":"OnPut","t":2,"ad":{"a":2,"n":"add_OnPut","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"addOnPut","rt":$n[0].Void,"p":[Function]},"r":{"a":2,"n":"remove_OnPut","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"removeOnPut","rt":$n[0].Void,"p":[Function]}},{"a":2,"n":"OnRemove","t":2,"ad":{"a":2,"n":"add_OnRemove","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"addOnRemove","rt":$n[0].Void,"p":[Function]},"r":{"a":2,"n":"remove_OnRemove","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"removeOnRemove","rt":$n[0].Void,"p":[Function]}}]}; }, $n);
+    $m("TilesBag", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":1,"n":"Awake","t":8,"sn":"Awake","rt":$n[0].Void},{"a":2,"n":"GetPrevious","t":8,"pi":[{"n":"slot","pt":TileSlot,"ps":0}],"sn":"GetPrevious","rt":TileSlot,"p":[TileSlot]},{"a":2,"n":"Put","t":8,"pi":[{"n":"tile","pt":Tile,"ps":0},{"n":"tileSlot","pt":TileSlot,"ps":1}],"sn":"Put","rt":$n[0].Void,"p":[Tile,TileSlot]},{"a":2,"n":"Remove","t":8,"pi":[{"n":"object","pt":Tile,"ps":0}],"sn":"Remove","rt":$n[0].Void,"p":[Tile]},{"a":2,"n":"BusySlots","t":16,"rt":$n[1].List$1(TileSlot),"g":{"a":2,"n":"get_BusySlots","t":8,"rt":$n[1].List$1(TileSlot),"fg":"BusySlots"},"fn":"BusySlots"},{"a":2,"n":"EmptySlot","t":16,"rt":TileSlot,"g":{"a":2,"n":"get_EmptySlot","t":8,"rt":TileSlot,"fg":"EmptySlot"},"fn":"EmptySlot"},{"a":2,"n":"HaveEmptySlot","t":16,"rt":$n[0].Boolean,"g":{"a":2,"n":"get_HaveEmptySlot","t":8,"rt":$n[0].Boolean,"fg":"HaveEmptySlot","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},"fn":"HaveEmptySlot"},{"a":2,"n":"NoSpace","t":16,"rt":$n[0].Boolean,"g":{"a":2,"n":"get_NoSpace","t":8,"rt":$n[0].Boolean,"fg":"NoSpace","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},"fn":"NoSpace"},{"a":2,"n":"slots","t":4,"rt":$n[1].List$1(TileSlot),"sn":"slots"},{"a":2,"n":"OnPut","t":2,"ad":{"a":2,"n":"add_OnPut","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"addOnPut","rt":$n[0].Void,"p":[Function]},"r":{"a":2,"n":"remove_OnPut","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"removeOnPut","rt":$n[0].Void,"p":[Function]}},{"a":2,"n":"OnRemove","t":2,"ad":{"a":2,"n":"add_OnRemove","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"addOnRemove","rt":$n[0].Void,"p":[Function]},"r":{"a":2,"n":"remove_OnRemove","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"removeOnRemove","rt":$n[0].Void,"p":[Function]}}]}; }, $n);
     /*TilesBag end.*/
 
     /*TileSlot start.*/
-    $m("TileSlot", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":2,"n":"Empty","t":8,"sn":"Empty","rt":$n[0].Void},{"a":2,"n":"Hide","t":8,"sn":"Hide","rt":$n[0].Void},{"a":2,"n":"Init","t":8,"pi":[{"n":"id","pt":$n[0].Int32,"ps":0}],"sn":"Init","rt":$n[0].Void,"p":[$n[0].Int32]},{"a":2,"n":"MoveTo","t":8,"pi":[{"n":"slot","pt":BagSlot,"ps":0}],"sn":"MoveTo","rt":$n[0].Void,"p":[BagSlot]},{"a":2,"n":"Put","t":8,"pi":[{"n":"put","pt":Tile,"ps":0}],"sn":"Put","rt":$n[0].Void,"p":[Tile]},{"a":2,"n":"PutInBag","t":8,"sn":"PutInBag","rt":$n[0].Void},{"a":2,"n":"Show","t":8,"sn":"Show","rt":$n[0].Void},{"a":2,"n":"SpawnAnimation","t":8,"sn":"SpawnAnimation","rt":$n[0].Void},{"a":1,"n":"Update","t":8,"sn":"Update","rt":$n[0].Void},{"a":2,"n":"Data","t":16,"rt":TileData,"g":{"a":2,"n":"get_Data","t":8,"rt":TileData,"fg":"Data"},"fn":"Data"},{"a":2,"n":"InBag","t":16,"rt":$n[0].Boolean,"g":{"a":2,"n":"get_InBag","t":8,"rt":$n[0].Boolean,"fg":"InBag","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},"s":{"a":1,"n":"set_InBag","t":8,"p":[$n[0].Boolean],"rt":$n[0].Void,"fs":"InBag"},"fn":"InBag"},{"a":2,"n":"IsClickable","t":16,"rt":$n[0].Boolean,"g":{"a":2,"n":"get_IsClickable","t":8,"rt":$n[0].Boolean,"fg":"IsClickable","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},"fn":"IsClickable"},{"a":2,"n":"IsFree","t":16,"rt":$n[0].Boolean,"g":{"a":2,"n":"get_IsFree","t":8,"rt":$n[0].Boolean,"fg":"IsFree","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},"fn":"IsFree"},{"a":2,"n":"Layer","t":16,"rt":$n[0].Int32,"g":{"a":2,"n":"get_Layer","t":8,"rt":$n[0].Int32,"fg":"Layer","box":function ($v) { return Bridge.box($v, System.Int32);}},"s":{"a":1,"n":"set_Layer","t":8,"p":[$n[0].Int32],"rt":$n[0].Void,"fs":"Layer"},"fn":"Layer"},{"a":2,"n":"Position","t":16,"rt":$n[1].Vector2,"g":{"a":2,"n":"get_Position","t":8,"rt":$n[1].Vector2,"fg":"Position"},"fn":"Position"},{"a":2,"n":"Tile","t":16,"rt":Tile,"g":{"a":2,"n":"get_Tile","t":8,"rt":Tile,"fg":"Tile"},"s":{"a":1,"n":"set_Tile","t":8,"p":[Tile],"rt":$n[0].Void,"fs":"Tile"},"fn":"Tile"},{"a":1,"n":"_isMoving","t":4,"rt":$n[0].Boolean,"sn":"_isMoving","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"_isSpawnAnimation","t":4,"rt":$n[0].Boolean,"sn":"_isSpawnAnimation","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"_spawnTimer","t":4,"rt":$n[0].Single,"sn":"_spawnTimer","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":1,"n":"_targetPosition","t":4,"rt":$n[1].Vector3,"sn":"_targetPosition"},{"a":1,"n":"_targetSlot","t":4,"rt":BagSlot,"sn":"_targetSlot"},{"a":1,"n":"_timer","t":4,"rt":$n[0].Single,"sn":"_timer","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"background","t":4,"rt":$n[1].SpriteRenderer,"sn":"background"},{"a":2,"n":"defaultSize","t":4,"rt":$n[1].Vector3,"sn":"defaultSize"},{"a":2,"n":"moveDuration","t":4,"rt":$n[0].Single,"sn":"moveDuration","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"spawnAnimDuration","t":4,"rt":$n[0].Single,"sn":"spawnAnimDuration","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"spawnAnimSize","t":4,"rt":$n[0].Single,"sn":"spawnAnimSize","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"speed","t":4,"rt":$n[0].Single,"sn":"speed","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"OnMoveFinish","t":2,"ad":{"a":2,"n":"add_OnMoveFinish","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"addOnMoveFinish","rt":$n[0].Void,"p":[Function]},"r":{"a":2,"n":"remove_OnMoveFinish","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"removeOnMoveFinish","rt":$n[0].Void,"p":[Function]}},{"a":1,"backing":true,"n":"<InBag>k__BackingField","t":4,"rt":$n[0].Boolean,"sn":"InBag","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"backing":true,"n":"<Layer>k__BackingField","t":4,"rt":$n[0].Int32,"sn":"Layer","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":1,"backing":true,"n":"<Tile>k__BackingField","t":4,"rt":Tile,"sn":"Tile"}]}; }, $n);
+    $m("TileSlot", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":2,"n":"Empty","t":8,"sn":"Empty","rt":$n[0].Void},{"a":2,"n":"Put","t":8,"pi":[{"n":"tile","pt":Tile,"ps":0}],"sn":"Put","rt":$n[0].Void,"p":[Tile]},{"a":2,"n":"Busy","t":16,"rt":$n[0].Boolean,"g":{"a":2,"n":"get_Busy","t":8,"rt":$n[0].Boolean,"fg":"Busy","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},"fn":"Busy"},{"a":2,"n":"Data","t":16,"rt":TileData,"g":{"a":2,"n":"get_Data","t":8,"rt":TileData,"fg":"Data"},"fn":"Data"},{"a":2,"n":"IsEmpty","t":16,"rt":$n[0].Boolean,"g":{"a":2,"n":"get_IsEmpty","t":8,"rt":$n[0].Boolean,"fg":"IsEmpty","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},"fn":"IsEmpty"},{"a":2,"n":"Position","t":16,"rt":$n[2].Vector2,"g":{"a":2,"n":"get_Position","t":8,"rt":$n[2].Vector2,"fg":"Position"},"fn":"Position"},{"a":2,"n":"Type","t":16,"rt":TileSO,"g":{"a":2,"n":"get_Type","t":8,"rt":TileSO,"fg":"Type"},"fn":"Type"},{"a":2,"n":"ID","t":4,"rt":$n[0].Int32,"sn":"ID","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":2,"n":"Tile","t":4,"rt":Tile,"sn":"Tile"}]}; }, $n);
     /*TileSlot end.*/
 
+    /*TileSO start.*/
+    $m("TileSO", function () { return {"att":1048577,"a":2,"at":[Bridge.apply(new UnityEngine.CreateAssetMenuAttribute(), {
+        fileName: "Tile", menuName: "SO/Tile"
+    } )],"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":2,"n":"Icon","t":16,"rt":$n[2].Sprite,"g":{"a":2,"n":"get_Icon","t":8,"rt":$n[2].Sprite,"fg":"Icon"},"fn":"Icon"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"icon","t":4,"rt":$n[2].Sprite,"sn":"icon"}]}; }, $n);
+    /*TileSO end.*/
+
     /*TileSpawnAnimation start.*/
-    $m("TileSpawnAnimation", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[0].Void},{"a":1,"n":"Play","t":8,"pi":[{"n":"slots","pt":$n[2].List$1(TileSlot),"ps":0},{"n":"slots2","pt":$n[2].List$1(TileSlot),"ps":1}],"sn":"Play","rt":$n[3].IEnumerator,"p":[$n[2].List$1(TileSlot),$n[2].List$1(TileSlot)]},{"a":2,"n":"SpawnAnimation","t":8,"pi":[{"n":"slots","pt":$n[2].List$1(TileSlot),"ps":0},{"n":"slots2","pt":$n[2].List$1(TileSlot),"ps":1}],"sn":"SpawnAnimation","rt":$n[0].Void,"p":[$n[2].List$1(TileSlot),$n[2].List$1(TileSlot)]},{"a":2,"n":"delayBetweenLayers","t":4,"rt":$n[0].Single,"sn":"delayBetweenLayers","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"delayBetweenLines","t":4,"rt":$n[0].Single,"sn":"delayBetweenLines","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"delayBetweenTiles","t":4,"rt":$n[0].Single,"sn":"delayBetweenTiles","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}}]}; }, $n);
+    $m("TileSpawnAnimation", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[0].Void},{"a":1,"n":"Play","t":8,"pi":[{"n":"slots","pt":$n[1].List$1(Tile),"ps":0},{"n":"slots2","pt":$n[1].List$1(Tile),"ps":1}],"sn":"Play","rt":$n[3].IEnumerator,"p":[$n[1].List$1(Tile),$n[1].List$1(Tile)]},{"a":2,"n":"SpawnAnimation","t":8,"pi":[{"n":"slots","pt":$n[1].List$1(Tile),"ps":0},{"n":"slots2","pt":$n[1].List$1(Tile),"ps":1}],"sn":"SpawnAnimation","rt":$n[0].Void,"p":[$n[1].List$1(Tile),$n[1].List$1(Tile)]},{"a":2,"n":"delayBetweenLayers","t":4,"rt":$n[0].Single,"sn":"delayBetweenLayers","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"delayBetweenLines","t":4,"rt":$n[0].Single,"sn":"delayBetweenLines","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"delayBetweenTiles","t":4,"rt":$n[0].Single,"sn":"delayBetweenTiles","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}}]}; }, $n);
     /*TileSpawnAnimation end.*/
 
     /*TileSpawner start.*/
-    $m("TileSpawner", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":1,"n":"GetRandom","t":8,"pi":[{"n":"layers","pt":System.Array.type(DeckLayer),"ps":0}],"sn":"GetRandom","rt":DeckLayer,"p":[System.Array.type(DeckLayer)]},{"a":1,"n":"GetRandom","t":8,"pi":[{"n":"data","pt":$n[2].List$1(TileData),"ps":0}],"sn":"GetRandom$1","rt":TileData,"p":[$n[2].List$1(TileData)]},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[0].Void},{"a":1,"n":"RunSpawn","t":8,"pi":[{"n":"tileData","pt":$n[2].List$1(TileData),"ps":0},{"n":"layers","pt":System.Array.type(DeckLayer),"ps":1}],"sn":"RunSpawn","rt":$n[3].IEnumerator,"p":[$n[2].List$1(TileData),System.Array.type(DeckLayer)]},{"a":2,"n":"Spawn","t":8,"pi":[{"n":"tiles","pt":$n[2].List$1(TileData),"ps":0},{"n":"layers","pt":System.Array.type(DeckLayer),"ps":1}],"sn":"Spawn","rt":$n[0].Void,"p":[$n[2].List$1(TileData),System.Array.type(DeckLayer)]},{"a":2,"n":"Level","t":16,"rt":$n[2].List$1(TileData),"g":{"a":2,"n":"get_Level","t":8,"rt":$n[2].List$1(TileData),"fg":"Level"},"fn":"Level"},{"a":2,"n":"hideAtSpawn","t":4,"rt":$n[0].Boolean,"sn":"hideAtSpawn","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"at":[new UnityEngine.Serialization.FormerlySerializedAsAttribute("levelData"),new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"level","t":4,"rt":$n[2].List$1(TileData),"sn":"level"},{"a":2,"n":"prefab","t":4,"rt":Tile,"sn":"prefab"},{"a":2,"n":"spawnData","t":4,"rt":$n[2].List$1(TileData),"sn":"spawnData"},{"a":2,"n":"spawnRate","t":4,"rt":$n[0].Single,"sn":"spawnRate","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"spawned","t":4,"rt":$n[2].List$1(Tile),"sn":"spawned"},{"a":2,"n":"OnSpawnFinish","t":2,"ad":{"a":2,"n":"add_OnSpawnFinish","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"addOnSpawnFinish","rt":$n[0].Void,"p":[Function]},"r":{"a":2,"n":"remove_OnSpawnFinish","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"removeOnSpawnFinish","rt":$n[0].Void,"p":[Function]}}]}; }, $n);
+    $m("TileSpawner", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[0].Void},{"a":1,"n":"RunSpawn","t":8,"pi":[{"n":"tileData","pt":$n[1].List$1(TileData),"ps":0},{"n":"layers","pt":System.Array.type(DeckLayer),"ps":1}],"sn":"RunSpawn","rt":$n[3].IEnumerator,"p":[$n[1].List$1(TileData),System.Array.type(DeckLayer)]},{"a":2,"n":"Spawn","t":8,"pi":[{"n":"tiles","pt":$n[1].List$1(TileData),"ps":0},{"n":"layers","pt":System.Array.type(DeckLayer),"ps":1}],"sn":"Spawn","rt":$n[0].Void,"p":[$n[1].List$1(TileData),System.Array.type(DeckLayer)]},{"a":2,"n":"Level","t":16,"rt":$n[1].List$1(TileData),"g":{"a":2,"n":"get_Level","t":8,"rt":$n[1].List$1(TileData),"fg":"Level"},"fn":"Level"},{"a":2,"n":"hideAtSpawn","t":4,"rt":$n[0].Boolean,"sn":"hideAtSpawn","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"level","t":4,"rt":$n[1].List$1(TileData),"sn":"level"},{"a":2,"n":"prefab","t":4,"rt":Tile,"sn":"prefab"},{"a":2,"n":"spawnRate","t":4,"rt":$n[0].Single,"sn":"spawnRate","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"spawned","t":4,"rt":$n[1].List$1(Tile),"sn":"spawned"},{"a":2,"n":"OnSpawnFinish","t":2,"ad":{"a":2,"n":"add_OnSpawnFinish","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"addOnSpawnFinish","rt":$n[0].Void,"p":[Function]},"r":{"a":2,"n":"remove_OnSpawnFinish","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"removeOnSpawnFinish","rt":$n[0].Void,"p":[Function]}}]}; }, $n);
     /*TileSpawner end.*/
 
     /*WinCondition start.*/
-    $m("WinCondition", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":1,"n":"Check","t":8,"pi":[{"n":"bagSlots","pt":$n[2].List$1(BagSlot),"ps":0}],"sn":"Check","rt":$n[0].Void,"p":[$n[2].List$1(BagSlot)]},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[0].Void},{"a":1,"n":"Completed","t":16,"rt":$n[0].Int32,"g":{"a":1,"n":"get_Completed","t":8,"rt":$n[0].Int32,"fg":"Completed","box":function ($v) { return Bridge.box($v, System.Int32);}},"fn":"Completed"},{"a":2,"n":"completeSlots","t":4,"rt":$n[2].List$1(TileSlot),"sn":"completeSlots"},{"a":2,"n":"OnWin","t":2,"ad":{"a":2,"n":"add_OnWin","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"addOnWin","rt":$n[0].Void,"p":[Function]},"r":{"a":2,"n":"remove_OnWin","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"removeOnWin","rt":$n[0].Void,"p":[Function]}}]}; }, $n);
+    $m("WinCondition", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":1,"n":"Check","t":8,"pi":[{"n":"bagSlots","pt":$n[1].List$1(TileSlot),"ps":0}],"sn":"Check","rt":$n[0].Void,"p":[$n[1].List$1(TileSlot)]},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[0].Void},{"a":1,"n":"Completed","t":16,"rt":$n[0].Int32,"g":{"a":1,"n":"get_Completed","t":8,"rt":$n[0].Int32,"fg":"Completed","box":function ($v) { return Bridge.box($v, System.Int32);}},"fn":"Completed"},{"a":2,"n":"completeSlots","t":4,"rt":$n[1].List$1(Tile),"sn":"completeSlots"},{"a":2,"n":"OnWin","t":2,"ad":{"a":2,"n":"add_OnWin","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"addOnWin","rt":$n[0].Void,"p":[Function]},"r":{"a":2,"n":"remove_OnWin","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"removeOnWin","rt":$n[0].Void,"p":[Function]}}]}; }, $n);
     /*WinCondition end.*/
 
     }});

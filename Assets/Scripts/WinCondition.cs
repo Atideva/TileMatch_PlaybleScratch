@@ -1,22 +1,27 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class WinCondition : GameComponent
 {
     public event Action OnWin = delegate { }; 
-    public List<Tile> completeSlots = new();
-    int Completed => completeSlots.Count;
     protected override void OnInit()
     {
-        Game.MatchCondition.OnMatch += Check;
+        Game.TileMatcher.OnMatch += Check;
     }
 
-    void Check(List<TileSlot> bagSlots)
+    void Check(List<TileSlot> bagSlots, TileSO type)
     {
-        if (Game.MatchCondition.Completed < Game.Tiles.Count) return;
+        if (bagSlots.Count <= 0)
+        {
+            Debug.Log("WTF");
+            return;
+        }
+
+        if (bagSlots[0].Type) Debug.Log("Check: " + bagSlots[0].Type.name);
+        else Debug.LogWarning("Why bug is empty on match?", bagSlots[0].gameObject);
+        
+        if (Game.TileMatcher.Completed < Game.TilesInGame.Count) return;
         OnWin();
     }
 }

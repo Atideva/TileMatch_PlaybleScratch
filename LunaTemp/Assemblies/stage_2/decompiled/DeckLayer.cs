@@ -1,39 +1,31 @@
-using System.Linq;
 using UnityEngine;
 
 public class DeckLayer : MonoBehaviour
 {
-	public int id;
+	public int layer;
 
 	private Deck _deck;
 
-	public TileSlot[] Slots { get; private set; }
-
-	public bool AnyFreeSlot => Slots.Any((TileSlot s) => s.IsFree);
+	public Tile[] Tiles { get; private set; }
 
 	public void Init(Deck deck)
 	{
 		_deck = deck;
-		FindSlots();
-		InitSlots();
+		FindTiles();
+		InitTiles();
 	}
 
-	private void InitSlots()
+	private void InitTiles()
 	{
-		TileSlot[] slots = Slots;
-		foreach (TileSlot slot in slots)
+		Tile[] tiles = Tiles;
+		foreach (Tile tile in tiles)
 		{
-			slot.Init(id);
+			tile.SetLayer(layer);
 		}
 	}
 
-	private void FindSlots()
+	private void FindTiles()
 	{
-		Slots = GetComponentsInChildren<TileSlot>();
-	}
-
-	public TileSlot GetFreeSlot()
-	{
-		return Slots.FirstOrDefault((TileSlot s) => s.IsFree);
+		Tiles = GetComponentsInChildren<Tile>();
 	}
 }

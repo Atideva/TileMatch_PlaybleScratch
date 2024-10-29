@@ -13,21 +13,26 @@ public class TileLocker : GameComponent
 
     public void Refresh(List<Tile> tiles, DeckLayer[] layers)
     {
-        //Debug.LogWarning("TILES" + tiles.Count);
-
         for (var i = 0; i < layers.Length - 1; i++)
         {
             var layer = layers[i];
-            var current = layer.id;
-            var onTop = layers[i + 1].id;
+            var current = layer.Layer;
+            var onTop = layers[i + 1].Layer;
             //Debug.LogWarning("Current: " + current + ", onTop:" + onTop);
 
             foreach (var tile in tiles.Where(t => t.Layer == current).ToList())
             {
-                var topTiles = tiles.Where(t => t.Layer == onTop).ToList();
-                //Debug.Log("Top tiles: " + topTiles.Count);
+                var coverTiles = tiles
+                    .Where(t => t.Layer == onTop)
+                    .Where(t => !t.IsMoving)
+                    .Where(t => !t.InBag)
+                    .Where(t => Vector2.Distance(tile.Position, t.Position) <= lockDistance)
+                    .ToList();
 
-                var coverTiles = topTiles.Where(t => Vector2.Distance(tile.Position, t.Position) <= lockDistance).ToList();
+                /*
+                if (coverTiles.Count > 0)
+                    Debug.Log("Covered " + tile.name, tile.gameObject);*/
+
                 //Debug.LogWarning("coverTiles tiles: " + coverTiles.Count);
 
                 tile.SetContacts(coverTiles);

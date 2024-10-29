@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class WinCondition : GameComponent
 {
-	public List<TileSlot> completeSlots = new List<TileSlot>();
+	public List<Tile> completeSlots = new List<Tile>();
 
 	private int Completed => completeSlots.Count;
 
@@ -16,7 +16,7 @@ public class WinCondition : GameComponent
 		Game.MatchCondition.OnMatch += Check;
 	}
 
-	private void Check(List<BagSlot> bagSlots)
+	private void Check(List<TileSlot> bagSlots)
 	{
 		if (Game.MatchCondition.Completed >= Game.Tiles.Count)
 		{

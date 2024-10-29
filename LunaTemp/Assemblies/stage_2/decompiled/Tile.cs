@@ -10,17 +10,45 @@ public class Tile : MonoBehaviour
 
 	public List<Tile> coverTiles = new List<Tile>();
 
-	public Vector2 Position => base.transform.position;
+	public SpriteRenderer background;
 
-	public TileData Data { get; private set; }
+	public Vector3 defaultSize = Vector3.one;
 
-	public TileSlot Slot { get; private set; }
+	public float speed;
+
+	public float spawnAnimSize = 1.5f;
+
+	public float spawnAnimDuration = 0.3f;
+
+	public float moveDuration = 0.5f;
+
+	private bool _isSpawnAnimation;
+
+	private float _spawnTimer = 0f;
+
+	private Vector3 _targetPosition;
+
+	private float _timer;
+
+	private bool _isMoving;
+
+	private TileSlot _targetSlot;
+
+	public bool _isClickable;
+
+	public bool IsInit;
 
 	public int Layer { get; private set; }
 
-	public bool IsClickable { get; set; }
+	public bool IsClickable => _isClickable && !_isMoving;
 
-	public event Action<Tile> OnClick = delegate
+	public TileData Data { get; private set; }
+
+	public bool InBag { get; private set; }
+
+	public Vector2 Position => base.transform.position;
+
+	public event Action<Tile, TileSlot> OnMoveFinish = delegate
 	{
 	};
 
@@ -37,44 +65,99 @@ public class Tile : MonoBehaviour
 		}
 	}
 
-	public void SetSlot(TileSlot slot)
+	public void MoveTo(TileSlot slot)
 	{
-		Slot = slot;
-		base.transform.SetParent(Slot.transform);
-		Invoke("ResetPosition", 0.1f);
-		ResetPosition();
+		icon.sortingOrder = 1000;
+		background.sortingOrder = 1000;
+		_targetSlot = slot;
+		_targetPosition = slot.Position;
+		float distance = Vector2.Distance(Position, _targetPosition);
+		_isMoving = true;
+	}
+
+	public void SetLayer(int layer)
+	{
+		Layer = layer;
+		background.sortingOrder = Layer;
+		icon.sortingOrder = Layer + 1;
+		disabledTile.sortingOrder = Layer + 2;
+	}
+
+	private void Update()
+	{
+		if (_isMoving)
+		{
+			base.transform.position = Vector3.MoveTowards(Position, _targetPosition, speed * Time.deltaTime);
+			if (Vector3.Distance(base.transform.position, _targetPosition) < 0.01f)
+			{
+				base.transform.position = _targetPosition;
+				_isMoving = false;
+				icon.sortingOrder = 0;
+				background.sortingOrder = 0;
+				this.OnMoveFinish(this, _targetSlot);
+			}
+		}
+		if (_isSpawnAnimation)
+		{
+			_spawnTimer += Time.deltaTime;
+			float progress = _spawnTimer / spawnAnimDuration;
+			if (progress <= 0.5f)
+			{
+				float scale2 = Mathf.Lerp(0f, spawnAnimSize, progress * 2f);
+				base.transform.localScale = defaultSize * scale2;
+			}
+			else if (progress <= 1f)
+			{
+				float scale = Mathf.Lerp(spawnAnimSize, 1f, (progress - 0.5f) * 2f);
+				base.transform.localScale = defaultSize * scale;
+			}
+			else
+			{
+				base.transform.localScale = defaultSize;
+				_isSpawnAnimation = false;
+			}
+		}
+	}
+
+	public void Set(TileData data)
+	{
+		Data = data;
+		icon.sprite = data.tile.Icon;
+		Enable();
+		IsInit = true;
+	}
+
+	public void SpawnAnimation()
+	{
+		base.transform.localScale = Vector3.zero;
+		_isSpawnAnimation = true;
+		Show();
+	}
+
+	public void PutInBag()
+	{
+		InBag = true;
+	}
+
+	public void Hide()
+	{
+		base.gameObject.SetActive(false);
+	}
+
+	public void Show()
+	{
+		base.gameObject.SetActive(true);
 	}
 
 	public void Enable()
 	{
-		IsClickable = true;
+		_isClickable = true;
 		disabledTile.gameObject.SetActive(false);
 	}
 
 	public void Disable()
 	{
-		IsClickable = false;
+		_isClickable = false;
 		disabledTile.gameObject.SetActive(true);
-	}
-
-	private void ResetPosition()
-	{
-		base.transform.localPosition = Vector3.zero;
-	}
-
-	private void OnMouseDown()
-	{
-		if (IsClickable)
-		{
-			this.OnClick(this);
-		}
-	}
-
-	public void Set(TileData data, int layer)
-	{
-		Data = data;
-		Layer = layer;
-		icon.sprite = data.icon;
-		Enable();
 	}
 }

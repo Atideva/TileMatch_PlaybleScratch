@@ -3,27 +3,43 @@ using UnityEngine;
 
 public class DeckLayer : MonoBehaviour
 {
-    public int id;
+    public int Layer { get; private set; }
     Deck _deck;
-    public Tile[] Slots { get; private set; }
+    public Tile[] Tiles;
 
-    public void Init(Deck deck)
+    public void Init(Deck deck,int layer)
     {
-       // transform.localPosition += Vector3.forward * id;
+        var pos = transform.position;
+        transform.position = new Vector3(pos.x, pos.y, layer);
         _deck = deck;
-        FindSlots();
-        InitSlots();
+        
+        //FindTiles();
+        InitTiles(layer);
     }
 
-    void InitSlots()
+    void InitTiles(int layer)
     {
-        foreach (var slot in Slots)
-            slot.Init(id);
+        Layer = layer;
+        
+      var  groupedByYPosition = Tiles
+            .GroupBy(tile => tile.Y)  
+            //.OrderByDescending(group => group.Key)  
+            .Select(group => group.ToList())  
+            .ToList();
+      
+      for (var i = 0; i < groupedByYPosition.Count; i++)
+      {
+          var lineId = i * 10;
+          var group = groupedByYPosition[i];
+          foreach (var tile in group)
+          {
+              tile.SetLayer(Layer, lineId);
+              tile.Hide();
+          }
+      }
+
     }
 
-    void FindSlots()
-    {
-        Slots = GetComponentsInChildren<Tile>();
-        //Debug.Log(name+": slots total "+ Slots.Length);
-    }
+    /*void FindTiles() 
+        => Tiles = GetComponentsInChildren<Tile>();*/
 }

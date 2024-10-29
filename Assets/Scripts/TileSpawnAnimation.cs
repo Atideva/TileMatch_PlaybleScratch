@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class TileSpawnAnimation : GameComponent
@@ -16,13 +15,13 @@ public class TileSpawnAnimation : GameComponent
 
     IEnumerator Play(List<Tile> slots, List<Tile> slots2)
     {
-        var groupedTiles = slots.GroupBy(tile => tile.Layer)
+        /*var groupedTiles = slots.GroupBy(tile => tile.Layer)
             .Select(group => group.ToList())
-            .ToList();
+            .ToList();*/
 
-        foreach (var group in groupedTiles)
-        {
-            foreach (var slot in group)
+        /*foreach (var group in slots)
+        {*/
+            foreach (var slot in slots)
             {
                 slot.SpawnAnimation();
                 yield return new WaitForSeconds(delayBetweenTiles);
@@ -30,7 +29,7 @@ public class TileSpawnAnimation : GameComponent
 
             //Debug.Log("New group with Y value: " + group[0].Layer + " and count: " + group.Count);
             yield return new WaitForSeconds(delayBetweenLines);
-        }
+        /*}*/
 
         yield return new WaitForSeconds(delayBetweenLayers);
         

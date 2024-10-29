@@ -1,22 +1,18 @@
-report@config:load 29.91
 Authorized using stored user info.
-report@account:authorize 29.07
 stderr: 'rm' is not recognized as an internal or external command,
 operable program or batch file.
 
 Exporting assets from Unity......
 
 [ Stage1 ] Assets exported from Unity and staged for further processing
-report@unity:export 3047.05
-report@config:load 10.40
+Using C:/Projects/TileMatch_PlaybleScratch/Assets/TextMesh Pro/Fonts/LiberationSans.ttf file to generate an atlas for LiberationSans[36692] font
+  Using alphabet  §1234567890-=qwertyuiop[]asdfghjkl;'\`zxcvbnm,./±!@#$%^&*()_+QWERTYUIOP{}ASDFGHJKL:"|~ZXCVBNM<>?
+Combined 97 glyphs into bitmap texture at C:/Projects/TileMatch_PlaybleScratch/LunaTemp/stage1/tmp/fonts/LiberationSans-36692/output_0.png (56kb)
+Found custom rules for texture Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset
+  {"maxWidth":512,"maxHeight":512,"format":"png32","compression":"none","quality":65,"script":"","ext":"","name":"Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF.asset","isOverride":true}
 Resources:
 {}
-report@assets:stage2 1971.50
-report@assets:stage3 137.48
 [ Stage2 ] Assets postprocessed and bundled successfully
-report@config:unity 0.08
-report@config:load 14.00
-report@config:unity 0.17
 ﻿
 [ error ] $﻿
 Diagnostics gathered successfully
@@ -28,28 +24,28 @@ Copyright (C) Microsoft Corporation. All rights reserved.
 
 C:\Projects\TileMatch_PlaybleScratch\Assets\Scripts\Game.cs(8,27): warning CS0649: Field 'Game.deck' is never assigned to, and will always have its default value null
 
-C:\Projects\TileMatch_PlaybleScratch\Assets\Scripts\Game.cs(10,34): warning CS0649: Field 'Game.actions' is never assigned to, and will always have its default value null
-C:\Projects\TileMatch_PlaybleScratch\Assets\Scripts\TileSlot.cs(17,11): warning CS0169: The field 'TileSlot._timer' is never used
-C:\Projects\TileMatch_PlaybleScratch\Assets\Scripts\Game.cs(13,41): warning CS0649: Field 'Game.spawnAnimation' is never assigned to, and will always have its default value null
-C:\Projects\TileMatch_PlaybleScratch\Assets\Scripts\Game.cs(17,33): warning CS0649: Field 'Game.input' is never assigned to, and will always have its default value null
-C:\Projects\TileMatch_PlaybleScratch\Assets\Scripts\Game.cs(11,33): warning CS0649: Field 'Game.locker' is never assigned to, and will always have its default value null
-C:\Projects\TileMatch_PlaybleScratch\Assets\Scripts\Game.cs(15,36): warning CS0169: The field 'Game.loseCondition' is never used
-C:\Projects\TileMatch_PlaybleScratch\Assets\Scripts\Game.cs(22,27): warning CS0169: The field 'Game.randomTiles' is never used
-C:\Projects\TileMatch_PlaybleScratch\Assets\Scripts\Game.cs(16,35): warning CS0169: The field 'Game.winCondition' is never used
-C:\Projects\TileMatch_PlaybleScratch\Assets\Scripts\Game.cs(9,34): warning CS0649: Field 'Game.spawner' is never assigned to, and will always have its default value null
-C:\Projects\TileMatch_PlaybleScratch\Assets\Scripts\Game.cs(12,31): warning CS0649: Field 'Game.bag' is never assigned to, and will always have its default value null
-C:\Projects\TileMatch_PlaybleScratch\Assets\Scripts\Game.cs(14,37): warning CS0649: Field 'Game.matchCondition' is never assigned to, and will always have its default value null
+C:\Projects\TileMatch_PlaybleScratch\Assets\Scripts\Game.cs(12,33): warning CS0649: Field 'Game.locker' is never assigned to, and will always have its default value null
+C:\Projects\TileMatch_PlaybleScratch\Assets\Scripts\Game.cs(13,31): warning CS0649: Field 'Game.bag' is never assigned to, and will always have its default value null
+C:\Projects\TileMatch_PlaybleScratch\Assets\Scripts\Game.cs(15,37): warning CS0649: Field 'Game.matchCondition' is never assigned to, and will always have its default value null
+C:\Projects\TileMatch_PlaybleScratch\Assets\Scripts\Game.cs(11,34): warning CS0649: Field 'Game.actions' is never assigned to, and will always have its default value null
+C:\Projects\TileMatch_PlaybleScratch\Assets\Scripts\Game.cs(25,27): warning CS0169: The field 'Game.randomTiles' is never used
+
+C:\Projects\TileMatch_PlaybleScratch\Assets\Scripts\Game.cs(16,36): warning CS0169: The field 'Game.loseCondition' is never used
+C:\Projects\TileMatch_PlaybleScratch\Assets\Scripts\Game.cs(18,33): warning CS0649: Field 'Game.input' is never assigned to, and will always have its default value null
+C:\Projects\TileMatch_PlaybleScratch\Assets\Scripts\Tile.cs(20,11): warning CS0169: The field 'Tile._timer' is never used
+C:\Projects\TileMatch_PlaybleScratch\Assets\Scripts\Game.cs(10,40): warning CS0649: Field 'Game.spawnRandom' is never assigned to, and will always have its default value null
+C:\Projects\TileMatch_PlaybleScratch\Assets\Scripts\TileSO.cs(5,29): warning CS0649: Field 'TileSO.icon' is never assigned to, and will always have its default value null
+C:\Projects\TileMatch_PlaybleScratch\Assets\Scripts\Game.cs(17,35): warning CS0169: The field 'Game.winCondition' is never used
+C:\Projects\TileMatch_PlaybleScratch\Assets\Scripts\Game.cs(14,41): warning CS0649: Field 'Game.spawnAnimation' is never assigned to, and will always have its default value null
 
 Usercode compiled successfully!
 .NET Core 3 runtime not found.
 .NET Core 3 runtime not found.
 code-v2:compose complete successfully!
-report@code-v2:compose 0.16
 Authorized using stored user info.
-report@account:authorize 3.11
 MSBuild version 17.11.9+a69bbaaf5 for .NET Framework
 
-Build started 10/29/2024 10:59:48 AM.
+Build started 10/29/2024 2:54:10 PM.
 
 
 
@@ -66,11 +62,17 @@ CoreClean:
   Deleting file "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Bridge.WebGL.dll".
 
   Deleting file "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\bin\Debug\DOTween.dll".
+
   Deleting file "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\bin\Debug\JetBrains.dll".
+
   Deleting file "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Newtonsoft.Json.dll".
+
   Deleting file "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.Core.dll".
+
   Deleting file "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.dom.dll".
+
   Deleting file "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.es5.dll".
+
   Deleting file "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.scripthost.dll".
 
   Deleting file "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\bin\Debug\TextMeshPro.dll".
@@ -111,63 +113,67 @@ GenerateTargetFrameworkMonikerAttribute:
 Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
 
 CoreCompile:
-  C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\MSBuild\Current\Bin\Roslyn\csc.exe /noconfig /nowarn:CS0626,1701,1702 /fullpaths /nostdlib+ /errorreport:prompt /warn:4 /define:UNITY_LUNA;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_2021;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2021_3;UNITY_2021_3_44 /highentropyva+ /reference:C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\Bridge.Core.17.9.42-luna\lib\net40\Bridge.dll /reference:C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\Bridge.Html5.17.9.0\lib\net40\Bridge.Html5.dll /reference:C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\Bridge.WebGL.1.22.0\lib\net40\Bridge.WebGL.dll /reference:C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\DOTween.1.2.705\lib\net40\DOTween.dll /reference:C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\com.unity.ide.rider\3.0.0\JetBrains.dll /reference:C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\Bridge.Newtonsoft.Json.1.16.0\lib\net40\Newtonsoft.Json.dll /reference:C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\Retyped.Core.1.6.6733\lib\net40\Retyped.Core.dll /reference:C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\Retyped.dom.2.8.6733\lib\net40\Retyped.dom.dll /reference:C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\Retyped.es5.2.8.6733\lib\net40\Retyped.es5.dll /reference:C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\Retyped.scripthost.2.8.6733\lib\net40\Retyped.scripthost.dll /reference:C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\com.unity.textmeshpro\3.0.6\TextMeshPro.dll /reference:C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Vendor\UnityEngine.dll /reference:C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\com.unity.ui\1.2.1\UnityEngine.UI.dll /reference:C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\com.unity.urp\7.6\UnityEngine.UniversalRenderPipeline.dll /debug+ /debug:full /optimize- /out:obj\Debug\UnityScriptsCompiler.dll /subsystemversion:6.00 /target:library /warnaserror- /utf8output /langversion:8 C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\BagSlot.cs C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Deck.cs C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\DeckBuilder.cs C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\DeckLayer.cs C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\EndCard.cs C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Game.cs C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\GameComponent.cs C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\InputTouch.cs C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\LoseCondition.cs C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\MatchCondition.cs C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Properties\AssemblyInfo.cs C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Tile.cs C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\TileActions.cs C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\TileBagSorter.cs C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\TileData.cs C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\TileLocker.cs C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\TilesBag.cs C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\TileSlot.cs C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\TileSpawnAnimation.cs C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\TileSpawner.cs C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\WinCondition.cs "obj\Debug\.NETFramework,Version=v4.7.AssemblyAttributes.cs"
+  C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\MSBuild\Current\Bin\Roslyn\csc.exe /noconfig /nowarn:CS0626,1701,1702 /fullpaths /nostdlib+ /errorreport:prompt /warn:4 /define:UNITY_LUNA;CSHARP_7_OR_LATER;CSHARP_7_3_OR_NEWER;UNITY_5_3_OR_NEWER;UNITY_5_4_OR_NEWER;UNITY_5_5_OR_NEWER;UNITY_2021;UNITY_2017_1_OR_NEWER;UNITY_2017_2_OR_NEWER;UNITY_2017_3_OR_NEWER;UNITY_2017_4_OR_NEWER;UNITY_2018_1_OR_NEWER;UNITY_2018_2_OR_NEWER;UNITY_2018_3_OR_NEWER;UNITY_2018_4_OR_NEWER;UNITY_2019_1_OR_NEWER;UNITY_2019_2_OR_NEWER;UNITY_2019_3_OR_NEWER;UNITY_2019_4_OR_NEWER;UNITY_2020_1_OR_NEWER;UNITY_2020_2_OR_NEWER;UNITY_2020_3_OR_NEWER;UNITY_2021_1_OR_NEWER;UNITY_2021_2_OR_NEWER;UNITY_2021_3_OR_NEWER;UNITY_2021_3;UNITY_2021_3_44 /highentropyva+ /reference:C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\Bridge.Core.17.9.42-luna\lib\net40\Bridge.dll /reference:C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\Bridge.Html5.17.9.0\lib\net40\Bridge.Html5.dll /reference:C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\Bridge.WebGL.1.22.0\lib\net40\Bridge.WebGL.dll /reference:C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\DOTween.1.2.705\lib\net40\DOTween.dll /reference:C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\com.unity.ide.rider\3.0.0\JetBrains.dll /reference:C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\Bridge.Newtonsoft.Json.1.16.0\lib\net40\Newtonsoft.Json.dll /reference:C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\Retyped.Core.1.6.6733\lib\net40\Retyped.Core.dll /reference:C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\Retyped.dom.2.8.6733\lib\net40\Retyped.dom.dll /reference:C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\Retyped.es5.2.8.6733\lib\net40\Retyped.es5.dll /reference:C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\Retyped.scripthost.2.8.6733\lib\net40\Retyped.scripthost.dll /reference:C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\com.unity.textmeshpro\3.0.6\TextMeshPro.dll /reference:C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Vendor\UnityEngine.dll /reference:C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\com.unity.ui\1.2.1\UnityEngine.UI.dll /reference:C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\com.unity.urp\7.6\UnityEngine.UniversalRenderPipeline.dll /debug+ /debug:full /optimize- /out:obj\Debug\UnityScriptsCompiler.dll /subsystemversion:6.00 /target:library /warnaserror- /utf8output /langversion:8 C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Deck.cs C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\DeckBuilder.cs C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\DeckLayer.cs C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\EndCard.cs C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Game.cs C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\GameComponent.cs C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\InputTouch.cs C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\LoseCondition.cs C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\MatchCondition.cs C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Properties\AssemblyInfo.cs C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Tile.cs C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\TileActions.cs C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\TileBagSorter.cs C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\TileData.cs C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\TileLocker.cs C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\TileRandomSpawner.cs C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\TilesBag.cs C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\TileSlot.cs C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\TileSO.cs C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\TileSpawnAnimation.cs C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\TileSpawner.cs C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\WinCondition.cs "obj\Debug\.NETFramework,Version=v4.7.AssemblyAttributes.cs"
 
-C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Game.cs(23,29): warning CS0649: Field 'Game.spawnAnimation' is never assigned to, and will always have its default value null [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Game.cs(29,24): warning CS0169: The field 'Game.loseCondition' is never used [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Game.cs(21,19): warning CS0649: Field 'Game.bag' is never assigned to, and will always have its default value null [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
 
-C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Game.cs(17,21): warning CS0649: Field 'Game.locker' is never assigned to, and will always have its default value null [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\TileSlot.cs(24,16): warning CS0169: The field 'TileSlot._timer' is never used [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Game.cs(14,22): warning CS0649: Field 'Game.actions' is never assigned to, and will always have its default value null [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Game.cs(26,25): warning CS0649: Field 'Game.matchCondition' is never assigned to, and will always have its default value null [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Game.cs(8,15): warning CS0649: Field 'Game.deck' is never assigned to, and will always have its default value null [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Game.cs(11,22): warning CS0649: Field 'Game.spawner' is never assigned to, and will always have its default value null [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Game.cs(33,23): warning CS0169: The field 'Game.winCondition' is never used [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Game.cs(9,15): warning CS0649: Field 'Game.deck' is never assigned to, and will always have its default value null [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Tile.cs(31,16): warning CS0169: The field 'Tile._timer' is never used [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Game.cs(30,24): warning CS0169: The field 'Game.loseCondition' is never used [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Game.cs(15,22): warning CS0649: Field 'Game.actions' is never assigned to, and will always have its default value null [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Game.cs(49,15): warning CS0169: The field 'Game.randomTiles' is never used [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
 
-C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Game.cs(35,21): warning CS0649: Field 'Game.input' is never assigned to, and will always have its default value null [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Game.cs(32,23): warning CS0169: The field 'Game.winCondition' is never used [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Game.cs(36,21): warning CS0649: Field 'Game.input' is never assigned to, and will always have its default value null [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Game.cs(18,21): warning CS0649: Field 'Game.locker' is never assigned to, and will always have its default value null [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
 
-C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Game.cs(45,15): warning CS0169: The field 'Game.randomTiles' is never used [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Game.cs(20,19): warning CS0649: Field 'Game.bag' is never assigned to, and will always have its default value null [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Game.cs(12,28): warning CS0649: Field 'Game.spawnRandom' is never assigned to, and will always have its default value null [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+
+C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Game.cs(24,29): warning CS0649: Field 'Game.spawnAnimation' is never assigned to, and will always have its default value null [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+
+C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Game.cs(27,25): warning CS0649: Field 'Game.matchCondition' is never assigned to, and will always have its default value null [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\TileSO.cs(7,17): warning CS0649: Field 'TileSO.icon' is never assigned to, and will always have its default value null [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompile
+r\Scripts\Scripts.csproj]
 
   CompilerServer: server - server processed compilation - Scripts
 
 _CopyFilesMarkedCopyLocal:
-
+  Copying file from "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\com.unity.ide.rider\3.0.0\JetBrains.dll" to "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\bin\Debug\JetBrains.dll".
   Copying file from "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\Bridge.WebGL.1.22.0\lib\net40\Bridge.WebGL.dll" to "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Bridge.WebGL.dll".
-  Copying file from "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\DOTween.1.2.705\lib\net40\DOTween.dll" to "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\bin\Debug\DOTween.dll".
   Copying file from "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\Bridge.Html5.17.9.0\lib\net40\Bridge.Html5.dll" to "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Bridge.Html5.dll".
 
-  Copying file from "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\Bridge.Core.17.9.42-luna\lib\net40\Bridge.dll" to "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Bridge.dll".
-
-  Copying file from "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\com.unity.ide.rider\3.0.0\JetBrains.dll" to "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\bin\Debug\JetBrains.dll".
+  Copying file from "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\DOTween.1.2.705\lib\net40\DOTween.dll" to "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\bin\Debug\DOTween.dll".
 
   Copying file from "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\Bridge.Newtonsoft.Json.1.16.0\lib\net40\Newtonsoft.Json.dll" to "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Newtonsoft.Json.dll".
 
+  Copying file from "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\Bridge.Core.17.9.42-luna\lib\net40\Bridge.dll" to "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Bridge.dll".
+
   Copying file from "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\Retyped.Core.1.6.6733\lib\net40\Retyped.Core.dll" to "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.Core.dll".
-  Copying file from "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\Retyped.es5.2.8.6733\lib\net40\Retyped.es5.dll" to "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.es5.dll".
-
-  Copying file from "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\Retyped.dom.2.8.6733\lib\net40\Retyped.dom.dll" to "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.dom.dll".
-
   Copying file from "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\Retyped.scripthost.2.8.6733\lib\net40\Retyped.scripthost.dll" to "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.scripthost.dll".
-  Copying file from "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\com.unity.textmeshpro\3.0.6\TextMeshPro.dll" to "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\bin\Debug\TextMeshPro.dll".
 
-  Copying file from "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Vendor\UnityEngine.dll" to "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\bin\Debug\UnityEngine.dll".
+  Copying file from "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\com.unity.textmeshpro\3.0.6\TextMeshPro.dll" to "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\bin\Debug\TextMeshPro.dll".
+  Copying file from "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\Retyped.es5.2.8.6733\lib\net40\Retyped.es5.dll" to "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.es5.dll".
+  Copying file from "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\Retyped.dom.2.8.6733\lib\net40\Retyped.dom.dll" to "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.dom.dll".
 
   Copying file from "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\com.unity.ui\1.2.1\UnityEngine.UI.dll" to "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\bin\Debug\UnityEngine.UI.dll".
 
   Copying file from "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\com.unity.urp\7.6\UnityEngine.UniversalRenderPipeline.dll" to "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\bin\Debug\UnityEngine.UniversalRenderPipeline.dll".
+
   Copying file from "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\Bridge.Core.17.9.42-luna\lib\net40\Bridge.xml" to "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Bridge.xml".
+
+  Copying file from "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Vendor\UnityEngine.dll" to "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\bin\Debug\UnityEngine.dll".
 
   Copying file from "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\Bridge.Html5.17.9.0\lib\net40\Bridge.Html5.xml" to "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Bridge.Html5.xml".
 
   Copying file from "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\Bridge.WebGL.1.22.0\lib\net40\Bridge.WebGL.xml" to "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Bridge.WebGL.xml".
 
   Copying file from "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\Bridge.Newtonsoft.Json.1.16.0\lib\net40\Newtonsoft.Json.xml" to "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Newtonsoft.Json.xml".
+
   Copying file from "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\Retyped.Core.1.6.6733\lib\net40\Retyped.Core.xml" to "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.Core.xml".
 
   Copying file from "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\Retyped.dom.2.8.6733\lib\net40\Retyped.dom.xml" to "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.dom.xml".
-  Copying file from "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\Retyped.es5.2.8.6733\lib\net40\Retyped.es5.xml" to "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.es5.xml".
 
+  Copying file from "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\Retyped.es5.2.8.6733\lib\net40\Retyped.es5.xml" to "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.es5.xml".
   Copying file from "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\packages\Retyped.scripthost.2.8.6733\lib\net40\Retyped.scripthost.xml" to "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\bin\Debug\Retyped.scripthost.xml".
 
   Creating "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\obj\Debug\Scripts.csproj.Up2Date" because "AlwaysCreate" was specified.
@@ -185,7 +191,6 @@ BridgeNetCompilerTask:
   Bridge started
 
       To enable detailed logging, configure "logging" in bridge.json.
-
       https://github.com/bridgedotnet/Bridge/wiki/global-configuration#logging
 
   Bridge done
@@ -196,43 +201,34 @@ Done Building Project "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaComp
 Build succeeded.
 
 
-
 "C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj" (Rebuild target) (1) ->
+
 (CoreCompile target) -> 
+  C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Game.cs(21,19): warning CS0649: Field 'Game.bag' is never assigned to, and will always have its default value null [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+  C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Game.cs(33,23): warning CS0169: The field 'Game.winCondition' is never used [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+  C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Game.cs(9,15): warning CS0649: Field 'Game.deck' is never assigned to, and will always have its default value null [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+  C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Tile.cs(31,16): warning CS0169: The field 'Tile._timer' is never used [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+  C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Game.cs(30,24): warning CS0169: The field 'Game.loseCondition' is never used [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+  C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Game.cs(15,22): warning CS0649: Field 'Game.actions' is never assigned to, and will always have its default value null [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+  C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Game.cs(49,15): warning CS0169: The field 'Game.randomTiles' is never used [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+  C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Game.cs(36,21): warning CS0649: Field 'Game.input' is never assigned to, and will always have its default value null [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+  C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Game.cs(18,21): warning CS0649: Field 'Game.locker' is never assigned to, and will always have its default value null [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+  C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Game.cs(12,28): warning CS0649: Field 'Game.spawnRandom' is never assigned to, and will always have its default value null [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+  C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Game.cs(24,29): warning CS0649: Field 'Game.spawnAnimation' is never assigned to, and will always have its default value null [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+  C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Game.cs(27,25): warning CS0649: Field 'Game.matchCondition' is never assigned to, and will always have its default value null [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
+  C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\TileSO.cs(7,17): warning CS0649: Field 'TileSO.icon' is never assigned to, and will always have its default value null [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
 
-  C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Game.cs(23,29): warning CS0649: Field 'Game.spawnAnimation' is never assigned to, and will always have its default value null [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-  C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Game.cs(29,24): warning CS0169: The field 'Game.loseCondition' is never used [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-  C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Game.cs(17,21): warning CS0649: Field 'Game.locker' is never assigned to, and will always have its default value null [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-  C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\TileSlot.cs(24,16): warning CS0169: The field 'TileSlot._timer' is never used [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-  C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Game.cs(14,22): warning CS0649: Field 'Game.actions' is never assigned to, and will always have its default value null [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-  C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Game.cs(26,25): warning CS0649: Field 'Game.matchCondition' is never assigned to, and will always have its default value null [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-  C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Game.cs(8,15): warning CS0649: Field 'Game.deck' is never assigned to, and will always have its default value null [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-
-  C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Game.cs(11,22): warning CS0649: Field 'Game.spawner' is never assigned to, and will always have its default value null [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-
-  C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Game.cs(35,21): warning CS0649: Field 'Game.input' is never assigned to, and will always have its default value null [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-  C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Game.cs(32,23): warning CS0169: The field 'Game.winCondition' is never used [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-  C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Game.cs(45,15): warning CS0169: The field 'Game.randomTiles' is never used [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-  C:\Projects\TileMatch_PlaybleScratch\LunaTemp\Assemblies\stage_2\decompiled\Game.cs(20,19): warning CS0649: Field 'Game.bag' is never assigned to, and will always have its default value null [C:\Users\Eduard\Desktop\6.1.1\pipeline\templates\LunaCompiler\Scripts\Scripts.csproj]
-
-
-    12 Warning(s)
+    13 Warning(s)
     0 Error(s)
 
 
-Time Elapsed 00:00:06.38
+Time Elapsed 00:00:05.26
 
 Source code compiled successfully!
 ﻿
 [ error ] $﻿
 Diagnostics gathered successfully
-report@code:build 8784.83
-report@diagnostics:verify 0.44
-report@diagnostics:upload 2422.11
-report@code:stage 13139.42
 [ Stage3 ] Code compiled and bundled successfully.
-report@code:bundle 31864.95
-report@package:stage 1630.60
-[ Stage4 ] Target platform: develop
+[ Stage4 ] Target platform: playground
 [ Stage4 ] Package bundled successfully
-report@assets:stats 0.10
+[ Stage4 ] Package uploaded successfully

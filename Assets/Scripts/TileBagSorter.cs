@@ -1,8 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class TileBagSorter : GameComponent
 {
@@ -26,12 +24,13 @@ public class TileBagSorter : GameComponent
     IEnumerator Sorting()
     {
         _isSorting = true;
-
+        yield return new WaitForSeconds(intervalSec);
+        
         while (NeedsSorting)
         {
-            var slot = SortingSlot();
+            var busy = SortingSlot();
             var empty = Game.Bag.EmptySlot;
-            
+            Game.Bag.Move(busy, empty);
             yield return new WaitForSeconds(intervalSec);
         }
 
@@ -42,11 +41,11 @@ public class TileBagSorter : GameComponent
         => Game.Bag
             .BusySlots
             .Where(slot => slot.ID != 0)
-            .FirstOrDefault(slot => Game.Bag.slots[slot.ID - 1].IsEmpty);
+            .FirstOrDefault(slot => Game.Bag.LeftFrom(slot).IsEmpty);
 
     bool NeedsSorting
         => Game.Bag
             .BusySlots
             .Where(slot => slot.ID != 0)
-            .Any(slot => Game.Bag.slots[slot.ID - 1].IsEmpty);
+            .Any(slot => Game.Bag.LeftFrom(slot).IsEmpty);
 }
