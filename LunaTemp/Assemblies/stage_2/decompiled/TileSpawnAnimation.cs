@@ -18,25 +18,19 @@ public class TileSpawnAnimation : GameComponent
 
 	private IEnumerator Play(List<Tile> slots, List<Tile> slots2)
 	{
-		List<List<Tile>> groupedTiles = (from tile in slots
-			group tile by tile.Layer into @group
-			select @group.ToList()).ToList();
-		foreach (List<Tile> group2 in groupedTiles)
+		foreach (Tile slot2 in slots)
 		{
-			foreach (Tile slot2 in group2)
-			{
-				slot2.SpawnAnimation();
-				yield return new WaitForSeconds(delayBetweenTiles);
-			}
-			yield return new WaitForSeconds(delayBetweenLines);
+			slot2.SpawnAnimation();
+			yield return new WaitForSeconds(delayBetweenTiles);
 		}
+		yield return new WaitForSeconds(delayBetweenLines);
 		yield return new WaitForSeconds(delayBetweenLayers);
 		List<List<Tile>> groupedTiles2 = (from tile in slots2
 			group tile by tile.Layer into @group
 			select @group.ToList()).ToList();
-		foreach (List<Tile> group3 in groupedTiles2)
+		foreach (List<Tile> group2 in groupedTiles2)
 		{
-			foreach (Tile slot in group3)
+			foreach (Tile slot in group2)
 			{
 				slot.SpawnAnimation();
 				yield return new WaitForSeconds(delayBetweenTiles);

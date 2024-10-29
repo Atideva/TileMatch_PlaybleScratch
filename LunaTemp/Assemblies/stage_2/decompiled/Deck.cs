@@ -5,7 +5,7 @@ public class Deck : GameComponent
 {
 	public DeckLayer[] Layers { get; private set; }
 
-	public List<Tile> Slots => Layers.SelectMany((DeckLayer layer) => layer.Tiles).ToList();
+	public List<Tile> Tiles => Layers.SelectMany((DeckLayer layer) => layer.Tiles).ToList();
 
 	public List<Tile> FirstLayer => Layers[0].Tiles.ToList();
 
@@ -24,10 +24,11 @@ public class Deck : GameComponent
 
 	private void InitLayers()
 	{
-		DeckLayer[] layers = Layers;
-		foreach (DeckLayer layer in layers)
+		for (int i = 0; i < Layers.Length; i++)
 		{
-			layer.Init(this);
+			DeckLayer layer = Layers[i];
+			int layerID = (i + 1) * 100;
+			layer.Init(this, layerID);
 		}
 	}
 }

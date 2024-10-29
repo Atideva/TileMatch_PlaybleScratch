@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Luna.Unity;
@@ -9,12 +10,30 @@ public class TileActions : GameComponent
 
 	private Camera _cam;
 
+	private bool isDisable;
+
 	private int clicks;
+
+	public event Action<Tile> OnMoveStart = delegate
+	{
+	};
+
+	public event Action OnMoveFinish = delegate
+	{
+	};
 
 	protected override void OnInit()
 	{
 		_cam = Camera.main;
-		Game.Input.OnTouchScreen += OnTouchScreen;
+		if (Application.isPlaying)
+		{
+			Game.Input.OnTouchScreen += OnTouchScreen;
+		}
+	}
+
+	public void Disable()
+	{
+		isDisable = true;
 	}
 
 	private void OnTouchScreen(Vector2 touchPos, float touchSize)
@@ -35,23 +54,22 @@ public class TileActions : GameComponent
 
 	private void Touched(Tile tile)
 	{
-		Click(tile);
+		if (!isDisable)
+		{
+			Click(tile);
+		}
 	}
 
 	private void Click(Tile tile)
 	{
 		clicks++;
-		if (tile.InBag)
-		{
-			Analytics.LogEvent("Bagckpack clicked", clicks);
-			return;
-		}
 		Analytics.LogEvent("Tile clicked", clicks);
 		if (!Game.Bag.NoSpace)
 		{
 			TileSlot empty = Game.Bag.EmptySlot;
-			empty.Put(tile);
-			tile.OnMoveFinish += PutBag;
+			Game.Bag.Put(tile, empty);
+			this.OnMoveStart(tile);
+			tile.OnMoveFinish += MoveFinished;
 		}
 	}
 
@@ -60,10 +78,10 @@ public class TileActions : GameComponent
 		_slots = tiles;
 	}
 
-	private void PutBag(Tile moving, TileSlot tileSlot)
+	private void MoveFinished(Tile moving, TileSlot tileSlot)
 	{
-		Debug.Log("Move finished");
-		moving.OnMoveFinish -= PutBag;
-		Game.Bag.Put(moving, tileSlot);
+		Debug.Log("Move finished: " + moving.Type.name, moving.gameObject);
+		moving.OnMoveFinish -= MoveFinished;
+		this.OnMoveFinish();
 	}
 }

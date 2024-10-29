@@ -15,12 +15,16 @@ public class TileLocker : GameComponent
 		for (int i = 0; i < layers.Length - 1; i++)
 		{
 			DeckLayer layer = layers[i];
-			int current = layer.layer;
-			int onTop = layers[i + 1].layer;
+			int current = layer.Layer;
+			int onTop = layers[i + 1].Layer;
 			foreach (Tile tile in tiles.Where((Tile t) => t.Layer == current).ToList())
 			{
-				List<Tile> topTiles = tiles.Where((Tile t) => t.Layer == onTop).ToList();
-				List<Tile> coverTiles = topTiles.Where((Tile t) => Vector2.Distance(tile.Position, t.Position) <= lockDistance).ToList();
+				List<Tile> coverTiles = (from t in tiles
+					where t.Layer == onTop
+					where !t.IsMoving
+					where !t.InBag
+					where Vector2.Distance(tile.Position, t.Position) <= lockDistance
+					select t).ToList();
 				tile.SetContacts(coverTiles);
 			}
 		}

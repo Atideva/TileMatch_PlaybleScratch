@@ -1,0 +1,39 @@
+{
+  "BuildID": "51accb86-8927-4526-82c9-242cfd12dd9b",
+  "Command": "project:deploy",
+  "ProjectID": "5b6cf7c73bef2a94eac4ebbca2d52761",
+  "ProjectStateHash": "2279865abe444b1d9ba810a4d11801bbe8f8b7f66b8e7affa41c35155aec2b87",
+  "StageCompletedAt": 3,
+  "EarliestFatalError": 0,
+  "StartTime": 1730212833911,
+  "EndTime": 1730212851329,
+  "PlaygroundUserID": 18370,
+  "OperatingSystem": "win32",
+  "UnityPackageID": null,
+  "TargetPlatform": "playground",
+  "UnityVersion": "2021.3.44f1",
+  "LunaVersion": "6.1.1",
+  "LogCount": 1,
+  "Logs": [
+    {
+      "LogID": "2f18b0d1-8583-49f1-b775-943060186bac",
+      "Order": 1,
+      "Timestamp": 1730212851452,
+      "Stage": 3,
+      "ErrorType": 3,
+      "ErrorCode": "LP3011",
+      "Description": "You are not using any LunaPlaygroundFields attributes.",
+      "Details": [
+        "You are not using any LunaPlaygroundFields attributes, it allows you to configure your playable to different concepts to find the best variation, which can drastically improve playable performance on all ad networks."
+      ],
+      "DescriptionValues": null,
+      "DetailsValues": null,
+      "LogCount": 1,
+      "LinePosition": null,
+      "FilePath": "",
+      "ClassName": "",
+      "MemberName": "",
+      "Severity": 0
+    }
+  ]
+}

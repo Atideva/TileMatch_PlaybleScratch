@@ -2,7 +2,7 @@
     "version": "6.1.1",
     "projectId": "5b6cf7c73bef2a94eac4ebbca2d52761",
     "applicationID": 25029,
-    "creativeName": "Edward",
+    "creativeName": "ColelctSalmon",
     "pgServer": "EU",
     "window": {
         "‐ ": true
@@ -85,7 +85,10 @@
             "dotnetVersion": ""
         },
         "assets": {
-            "export": [],
+            "export": [
+                "resources",
+                "streamingAssets"
+            ],
             "excludes": [
                 "**/Editor/",
                 "**/FacebookSDK/",
@@ -131,7 +134,7 @@
             ]
         },
         "scenes": [
-            "Assets/Scenes/TileMatch.unity"
+            "Assets/_Scenes/Rheanov.unity"
         ],
         "disabledScenes": [],
         "startupScene": 0,
@@ -166,8 +169,39 @@
         "disableAntiAliasing": true,
         "preferWebGl2": false,
         "forceStableRandomSeed": false,
-        "unusedModules": [],
-        "disableRuntimeAnalysisForCode": true,
+        "unusedModules": [
+            {
+                "name": "physics3d",
+                "excluded": false,
+                "forceIncluded": false
+            },
+            {
+                "name": "physics2d",
+                "excluded": false,
+                "forceIncluded": false
+            },
+            {
+                "name": "particle-system",
+                "excluded": false,
+                "forceIncluded": false
+            },
+            {
+                "name": "reflection",
+                "excluded": false,
+                "forceIncluded": false
+            },
+            {
+                "name": "prefabs",
+                "excluded": false,
+                "forceIncluded": false
+            },
+            {
+                "name": "mecanim-wasm",
+                "excluded": false,
+                "forceIncluded": false
+            }
+        ],
+        "disableRuntimeAnalysisForCode": false,
         "disableRuntimeAnalysisForShaders": false,
         "useShadersCache": true,
         "preventUpdatingRAListWhenRAIsDisabled": false,

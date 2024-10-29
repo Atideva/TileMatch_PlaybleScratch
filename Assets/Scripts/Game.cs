@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -31,6 +32,7 @@ public class Game : MonoBehaviour
     public TileMatcher TileMatcher => tileMatcher;
     public InputTouch Input => input;
     public TileActions Actions => actions;
+    public WinCondition Condition => winCondition;
     bool _isGameEnded;
 
     void Start()
@@ -45,10 +47,13 @@ public class Game : MonoBehaviour
         actions.OnMoveStart += OnTileMoved;
     }
 
+    public event Action OnQuestWin = delegate { }; 
+    public event Action OnLose = delegate { }; 
     void QuestWin()
     {
         if (_isGameEnded) return;
         _isGameEnded = true;
+        OnQuestWin();
         Invoke(nameof(Win), 1f);
     }
 
@@ -83,7 +88,7 @@ public class Game : MonoBehaviour
         actions.Disable();
         Luna.Unity.LifeCycle.GameEnded();
         Luna.Unity.Analytics.LogEvent("Game lose", 0);
-        Debug.Log("Game lose!");
+        OnLose();
     }
 
     void InitComponents()

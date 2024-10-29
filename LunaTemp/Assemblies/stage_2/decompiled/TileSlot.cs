@@ -6,13 +6,11 @@ public class TileSlot : MonoBehaviour
 
 	public Tile Tile;
 
-	public bool Busy => Data != null;
+	public bool Busy => Tile;
 
 	public bool IsEmpty => !Busy;
 
-	public TileData Data => Tile ? Tile.Data : null;
-
-	public TileSO Type => Tile ? Tile.Data.tile : null;
+	public TileSO Type => Tile ? Tile.Type : null;
 
 	public Vector2 Position => base.transform.position;
 

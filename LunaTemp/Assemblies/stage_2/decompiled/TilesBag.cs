@@ -23,7 +23,7 @@ public class TilesBag : MonoBehaviour
 	{
 	};
 
-	public TileSlot GetPrevious(TileSlot slot)
+	public TileSlot LeftFrom(TileSlot slot)
 	{
 		return (slot.ID <= 0) ? null : slots[slot.ID - 1];
 	}
@@ -43,13 +43,16 @@ public class TilesBag : MonoBehaviour
 		this.OnPut();
 	}
 
-	public void Remove(Tile @object)
+	public void Move(TileSlot from, TileSlot to)
 	{
-		TileSlot find = slots.FirstOrDefault((TileSlot s) => s.Tile == @object);
-		if ((bool)find)
-		{
-			find.Empty();
-			this.OnRemove();
-		}
+		Tile tile = from.Tile;
+		from.Empty();
+		to.Put(tile);
+	}
+
+	public void Empty(TileSlot slot)
+	{
+		slot.Empty();
+		this.OnRemove();
 	}
 }

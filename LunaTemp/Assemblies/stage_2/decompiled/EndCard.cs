@@ -1,14 +1,24 @@
-using Luna.Unity;
+using UnityEngine;
 
 public class EndCard : GameComponent
 {
+	public Canvas canvas;
+
 	protected override void OnInit()
 	{
+		if (Application.isPlaying)
+		{
+			Hide();
+		}
 	}
 
 	public void Show()
 	{
-		LifeCycle.GameEnded();
-		Playable.InstallFullGame();
+		canvas.gameObject.SetActive(true);
+	}
+
+	public void Hide()
+	{
+		canvas.gameObject.SetActive(false);
 	}
 }

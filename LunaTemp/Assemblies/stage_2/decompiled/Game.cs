@@ -1,15 +1,17 @@
 using System.Collections.Generic;
 using System.Linq;
+using Luna.Unity;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Game : MonoBehaviour
 {
+	[Space(20f)]
+	[SerializeField]
+	private float autoGameOverInSeconds = 30f;
+
+	[Space(20f)]
 	[SerializeField]
 	private Deck deck;
-
-	[SerializeField]
-	private TileRandomSpawner spawnRandom;
 
 	[SerializeField]
 	private TileActions actions;
@@ -24,7 +26,7 @@ public class Game : MonoBehaviour
 	private TileSpawnAnimation spawnAnimation;
 
 	[SerializeField]
-	private MatchCondition matchCondition;
+	private TileMatcher tileMatcher;
 
 	[SerializeField]
 	private LoseCondition loseCondition;
@@ -35,34 +37,95 @@ public class Game : MonoBehaviour
 	[SerializeField]
 	private InputTouch input;
 
-	[FormerlySerializedAs("totalTiles")]
+	[SerializeField]
+	private EndCard endCard;
+
+	[SerializeField]
+	private Quest quest;
+
+	[Space]
+	[SerializeField]
+	private bool useRandom;
+
+	[SerializeField]
+	private TileRandomSpawner spawnRandom;
+
 	[Space(20f)]
 	[SerializeField]
 	private int tileToSpawn;
 
-	[FormerlySerializedAs("tilesOnScene")]
-	[FormerlySerializedAs("totalBricks")]
 	[SerializeField]
 	private int tilesInScene;
 
 	[SerializeField]
-	private bool randomTiles;
+	private List<Tile> tilesInGame = new List<Tile>();
 
-	[SerializeField]
-	private List<Tile> tiles = new List<Tile>();
+	private bool _isGameEnded;
 
-	public IReadOnlyList<Tile> Tiles => tiles;
+	public IReadOnlyList<Tile> TilesInGame => tilesInGame;
 
 	public TilesBag Bag => bag;
 
-	public MatchCondition MatchCondition => matchCondition;
+	public TileMatcher TileMatcher => tileMatcher;
 
 	public InputTouch Input => input;
+
+	public TileActions Actions => actions;
 
 	private void Start()
 	{
 		InitComponents();
-		Invoke("Spawn", 0.1f);
+		Invoke("Win", autoGameOverInSeconds);
+		Invoke(useRandom ? "Spawn" : "StartGame", 0.01f);
+		quest.OnWin += QuestWin;
+		winCondition.OnWin += Win;
+		loseCondition.OnLose += Lose;
+		actions.OnMoveStart += OnTileMoved;
+	}
+
+	private void QuestWin()
+	{
+		if (!_isGameEnded)
+		{
+			_isGameEnded = true;
+			Invoke("Win", 1f);
+		}
+	}
+
+	private void OnTileMoved(Tile obj)
+	{
+		RefreshTiles();
+	}
+
+	private void Win()
+	{
+		if (!_isGameEnded)
+		{
+			_isGameEnded = true;
+			endCard.Show();
+			actions.Disable();
+			LifeCycle.GameEnded();
+			Analytics.LogEvent("Game win", 0);
+			Debug.Log("Game win!");
+		}
+	}
+
+	public void OpenURL()
+	{
+		Playable.InstallFullGame();
+	}
+
+	private void Lose()
+	{
+		if (!_isGameEnded)
+		{
+			_isGameEnded = true;
+			endCard.Show();
+			actions.Disable();
+			LifeCycle.GameEnded();
+			Analytics.LogEvent("Game lose", 0);
+			Debug.Log("Game lose!");
+		}
 	}
 
 	private void InitComponents()
@@ -77,22 +140,34 @@ public class Game : MonoBehaviour
 
 	private void Spawn()
 	{
-		spawnRandom.Spawn(deck.Slots);
-		spawnRandom.OnSpawnFinish += Spawned;
+		spawnRandom.Spawn(deck.Tiles);
+		spawnRandom.OnSpawnFinish += ShowDeck;
 	}
 
-	private void Spawned(List<Tile> spawned)
+	private void StartGame()
 	{
-		tiles = spawned;
+		ShowDeck(deck.Tiles);
+	}
+
+	private void ShowDeck(List<Tile> spawned)
+	{
+		tilesInGame = spawned;
 		spawnAnimation.SpawnAnimation(deck.FirstLayer, deck.SecondLayer);
-		actions.Observe(deck.Slots);
-		locker.Refresh(spawned, deck.Layers);
+		actions.Observe(deck.Tiles);
+		RefreshTiles();
+	}
+
+	private void RefreshTiles()
+	{
+		locker.Refresh(tilesInGame, deck.Layers);
 	}
 
 	private void OnValidate()
 	{
-		InitComponents();
-		tileToSpawn = spawnRandom.TotalTiles;
-		tilesInScene = deck.Layers.Sum((DeckLayer p) => p.Tiles.Length);
+		if (!Application.isPlaying)
+		{
+			InitComponents();
+			tilesInScene = deck.Layers.Sum((DeckLayer p) => p.Tiles.Length);
+		}
 	}
 }
