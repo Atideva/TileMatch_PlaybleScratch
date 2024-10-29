@@ -21,28 +21,26 @@ public class TileSpawnAnimation : GameComponent
 		List<List<TileSlot>> groupedTiles = (from tile in slots
 			group tile by tile.Layer into @group
 			select @group.ToList()).ToList();
-		foreach (List<TileSlot> group3 in groupedTiles)
+		foreach (List<TileSlot> group2 in groupedTiles)
 		{
-			foreach (TileSlot slot2 in group3)
+			foreach (TileSlot slot2 in group2)
 			{
 				slot2.SpawnAnimation();
 				yield return new WaitForSeconds(delayBetweenTiles);
 			}
-			Debug.Log("New group with Y value: " + group3[0].Layer + " and count: " + group3.Count);
 			yield return new WaitForSeconds(delayBetweenLines);
 		}
 		yield return new WaitForSeconds(delayBetweenLayers);
 		List<List<TileSlot>> groupedTiles2 = (from tile in slots2
 			group tile by tile.Layer into @group
 			select @group.ToList()).ToList();
-		foreach (List<TileSlot> group2 in groupedTiles2)
+		foreach (List<TileSlot> group3 in groupedTiles2)
 		{
-			foreach (TileSlot slot in group2)
+			foreach (TileSlot slot in group3)
 			{
 				slot.SpawnAnimation();
 				yield return new WaitForSeconds(delayBetweenTiles);
 			}
-			Debug.Log("New group with Y value: " + group2[0].Layer + " and count: " + group2.Count);
 			yield return new WaitForSeconds(delayBetweenLines);
 		}
 	}

@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class MatchCondition : GameComponent
 {
-    public event Action<List<BagSlot>> OnMatch = delegate { };
-    public List<TileSlot> completeSlots = new();
+    public event Action<List<TileSlot>> OnMatch = delegate { };
+    public List<Tile> completeSlots = new();
     public int Completed => completeSlots.Count;
 
     protected override void OnInit()
@@ -18,25 +18,25 @@ public class MatchCondition : GameComponent
     void Check()
     {
         var bag = Game.Bag;
-        foreach (var slot in bag.slots)
+        foreach (var slot in bag.BusySlots)
         {
-            if (slot.IsFree) continue;
+            var same = SameAmount(slot.Type);
+            if (same < 3) continue;
 
-            if (bag.BusySlots.Count <= 0) return;
-            var amount = bag.BusySlots.Count(check => check.Data.type == slot.Data.type);
-            if (amount != 3) continue;
-
-            var match = bag.BusySlots.Where(s => s.Data.type == slot.Data.type).ToList();
+            var match = bag.BusySlots.Where(s => s.Type == slot.Type).ToList();
             Match(match);
             break;
         }
     }
 
-    void Match(List<BagSlot> bagSlots)
+    int SameAmount(TileSO type) 
+        => Game.Bag.BusySlots.Count(check => check.Type == type);
+
+    void Match(List<TileSlot> bagSlots)
     {
         foreach (var bagSlot in bagSlots)
         {
-            var slot = bagSlot.TileSlot;
+            var slot = bagSlot.Tile;
             slot.Hide();
             completeSlots.Add(slot);
             Game.Bag.Remove(slot);

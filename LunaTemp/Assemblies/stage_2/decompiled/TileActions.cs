@@ -1,35 +1,55 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class TileActions : GameComponent
 {
+	private List<TileSlot> _slots;
+
+	public Camera _cam;
+
 	protected override void OnInit()
 	{
+		_cam = Camera.main;
+		Game.Input.OnTouchScreen += OnTouchScreen;
 	}
 
-	public void Observe(List<Tile> tiles)
+	private void OnTouchScreen(Vector2 touchPos, float touchSize)
 	{
-		foreach (Tile tile in tiles)
+		Vector3 pos = _cam.ScreenToWorldPoint(touchPos);
+		IEnumerable<TileSlot> clickable = _slots.Where((TileSlot s) => s.IsClickable);
+		foreach (TileSlot slot in clickable)
 		{
-			tile.OnClick += Click;
-		}
-	}
-
-	private void Click(Tile tile)
-	{
-		Debug.Log(tile.icon.sprite.name + " clicked");
-		if (!tile.Slot.InBag)
-		{
-			TilesBag bag = Game.Bag;
-			if (bag.HaveEmptySlot)
+			float dist = Vector2.Distance(pos, slot.Position);
+			if (dist > touchSize)
 			{
-				TileSlot slot = tile.Slot;
-				BagSlot bagSlot = bag.EmptySlot;
-				bagSlot.Book(slot);
-				slot.MoveToPosition(bagSlot);
-				slot.OnMoveFinish += PutBag;
+				continue;
 			}
+			Touched(slot);
+			break;
 		}
+	}
+
+	private void Touched(TileSlot slot)
+	{
+		Click(slot);
+	}
+
+	private void Click(TileSlot slot)
+	{
+		Debug.Log(slot.Tile.icon.sprite.name + " clicked");
+		if (!slot.InBag && !Game.Bag.NoSpace)
+		{
+			BagSlot emptySlot = Game.Bag.EmptySlot;
+			emptySlot.Book(slot);
+			slot.MoveTo(emptySlot);
+			slot.OnMoveFinish += PutBag;
+		}
+	}
+
+	public void Observe(List<TileSlot> tiles)
+	{
+		_slots = tiles;
 	}
 
 	private void PutBag(TileSlot moving, BagSlot bagSlot)

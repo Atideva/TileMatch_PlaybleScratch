@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class TileActions : GameComponent
 {
-    List<TileSlot> _slots;
-    public Camera _cam;
+    List<Tile> _slots;
+      Camera _cam;
 
     protected override void OnInit()
     {
@@ -17,7 +17,7 @@ public class TileActions : GameComponent
     void OnTouchScreen(Vector2 touchPos, float touchSize)
     {
         var pos = _cam.ScreenToWorldPoint(touchPos);
-        
+
         var clickable = _slots.Where(s => s.IsClickable);
         foreach (var slot in clickable)
         {
@@ -28,38 +28,34 @@ public class TileActions : GameComponent
         }
     }
 
-    void Touched(TileSlot slot)
+    void Touched(Tile tile)
     {
-        Click(slot.Tile);
-    }
-
-    public void Observe(List<TileSlot> tiles)
-    {
-        _slots = tiles;
+        Click(tile);
     }
 
     void Click(Tile tile)
     {
-        Debug.Log(tile.icon.sprite.name + " clicked");
-        if (tile.Slot.InBag) return;
+        Debug.Log("Click: " + tile.Data.tile.name);
+        if (tile.InBag) return;
+        if (Game.Bag.NoSpace) return;
 
-        var bag = Game.Bag;
-        if (!bag.HaveEmptySlot) return;
-
-        var slot = tile.Slot;
-        var bagSlot = bag.EmptySlot;
-        bagSlot.Book(slot);
-
-        slot.MoveToPosition(bagSlot);
-        slot.OnMoveFinish += PutBag;
+        var empty = Game.Bag.EmptySlot;
+        empty.Put(tile);
+       
+        tile.OnMoveFinish += PutBag;
     }
 
-    void PutBag(TileSlot moving, BagSlot bagSlot)
+    public void Observe(List<Tile> tiles)
+    {
+        _slots = tiles;
+    }
+
+    void PutBag(Tile moving, TileSlot tileSlot)
     {
         Debug.Log("Move finished");
 
         moving.OnMoveFinish -= PutBag;
-        Game.Bag.Put(moving, bagSlot);
+        Game.Bag.Put(moving, tileSlot);
     }
 
 }

@@ -70,7 +70,7 @@ MonoBehaviour:
     keywords: []
   _includedShaderVariants: []
   _excludedShaderVariants: []
-  version: 251
+  version: 286
   _shaderParsedShaders:
   - ParsedSubShaders:
     - Index: 0

@@ -58,15 +58,20 @@ public class TileSpawner : GameComponent
 		for (int i = 0; i < total; i++)
 		{
 			DeckLayer layer = GetRandom(layers);
-			TileSlot slot = layer.GetFreeSlot();
+			TileSlot emptySlot = layer.GetFreeSlot();
+			if (emptySlot == null)
+			{
+				Debug.LogWarning("Why theres no empty slots?");
+				continue;
+			}
 			TileData data = GetRandom(tileData);
 			data.Decrease();
 			Tile tile = UnityEngine.Object.Instantiate(prefab);
 			tile.Set(data, layer.id);
-			slot.Put(tile);
+			emptySlot.Put(tile);
 			if (hideAtSpawn)
 			{
-				slot.Hide();
+				emptySlot.Hide();
 			}
 			spawned.Add(tile);
 			yield return new WaitForSeconds(1f / spawnRate);

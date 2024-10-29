@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Tile : MonoBehaviour
 {
@@ -9,10 +8,7 @@ public class Tile : MonoBehaviour
 
 	public SpriteRenderer disabledTile;
 
-	[FormerlySerializedAs("contacters")]
 	public List<Tile> coverTiles = new List<Tile>();
-
-	public int Layer { get; private set; }
 
 	public Vector2 Position => base.transform.position;
 
@@ -20,7 +16,9 @@ public class Tile : MonoBehaviour
 
 	public TileSlot Slot { get; private set; }
 
-	private bool IsClickable { get; set; }
+	public int Layer { get; private set; }
+
+	public bool IsClickable { get; set; }
 
 	public event Action<Tile> OnClick = delegate
 	{

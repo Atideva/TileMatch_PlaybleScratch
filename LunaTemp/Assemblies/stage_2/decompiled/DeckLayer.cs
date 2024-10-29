@@ -30,7 +30,6 @@ public class DeckLayer : MonoBehaviour
 	private void FindSlots()
 	{
 		Slots = GetComponentsInChildren<TileSlot>();
-		Debug.Log(base.name + ": slots total " + Slots.Length);
 	}
 
 	public TileSlot GetFreeSlot()

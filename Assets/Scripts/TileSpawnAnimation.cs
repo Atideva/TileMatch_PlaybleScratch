@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class TileSpawnAnimation : GameComponent
 {
-    public void SpawnAnimation(List<TileSlot> slots, List<TileSlot> slots2)
+    public void SpawnAnimation(List<Tile> slots, List<Tile> slots2)
     {
         StartCoroutine(Play(slots,slots2));
     }
@@ -14,7 +14,7 @@ public class TileSpawnAnimation : GameComponent
     public float delayBetweenLines = 0.1f;
     public float delayBetweenTiles = 0.05f;
 
-    IEnumerator Play(List<TileSlot> slots, List<TileSlot> slots2)
+    IEnumerator Play(List<Tile> slots, List<Tile> slots2)
     {
         var groupedTiles = slots.GroupBy(tile => tile.Layer)
             .Select(group => group.ToList())

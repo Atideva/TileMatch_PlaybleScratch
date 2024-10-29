@@ -1,14 +1,16 @@
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class BagSlot : MonoBehaviour
 {
-	[FormerlySerializedAs("Slot")]
+	public int ID;
+
 	public TileSlot TileSlot;
 
 	public TileSlot bookedSlot;
 
 	public bool Busy => Data != null;
+
+	public bool IsEmpty => !Busy;
 
 	public bool IsFree => !Busy && !Booked;
 

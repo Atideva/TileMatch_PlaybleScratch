@@ -20,18 +20,10 @@ public class MatchCondition : GameComponent
 	private void Check()
 	{
 		TilesBag bag = Game.Bag;
-		foreach (BagSlot slot in bag.slots)
+		foreach (BagSlot slot in bag.BusySlots)
 		{
-			if (slot.IsFree)
-			{
-				continue;
-			}
-			if (bag.BusySlots.Count <= 0)
-			{
-				break;
-			}
-			int amount = bag.BusySlots.Count((BagSlot check) => check.Data.type == slot.Data.type);
-			if (amount != 3)
+			int same = SameAmount(slot.Data.type);
+			if (same < 3)
 			{
 				continue;
 			}
@@ -39,6 +31,11 @@ public class MatchCondition : GameComponent
 			Match(match);
 			break;
 		}
+	}
+
+	private int SameAmount(int type)
+	{
+		return Game.Bag.BusySlots.Count((BagSlot check) => check.Data.type == type);
 	}
 
 	private void Match(List<BagSlot> bagSlots)

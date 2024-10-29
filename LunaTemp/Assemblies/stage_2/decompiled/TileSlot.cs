@@ -5,29 +5,31 @@ public class TileSlot : MonoBehaviour
 {
 	public SpriteRenderer background;
 
+	public Vector3 defaultSize = Vector3.one;
+
+	public float speed;
+
 	public float spawnAnimSize = 1.5f;
 
 	public float spawnAnimDuration = 0.3f;
 
-	private bool _isSpawnAnimation;
+	public float moveDuration = 0.5f;
 
-	public Vector3 defaultSize = Vector3.one;
+	private bool _isSpawnAnimation;
 
 	private float _spawnTimer = 0f;
 
-	public float moveDuration = 0.5f;
-
 	private Vector3 _targetPosition;
 
-	public float speed;
+	private float _timer;
 
-	private float timer;
-
-	private bool isMoving;
+	private bool _isMoving;
 
 	private BagSlot _targetSlot;
 
 	public int Layer { get; private set; }
+
+	public bool IsClickable => (bool)Tile && Tile.IsClickable && !_isMoving;
 
 	public bool IsFree => !Tile;
 
@@ -43,14 +45,14 @@ public class TileSlot : MonoBehaviour
 	{
 	};
 
-	public void MoveToPosition(BagSlot slot)
+	public void MoveTo(BagSlot slot)
 	{
 		Tile.icon.sortingOrder = 1000;
 		background.sortingOrder = 1000;
 		_targetSlot = slot;
 		_targetPosition = slot.Position;
 		float distance = Vector2.Distance(Position, _targetPosition);
-		isMoving = true;
+		_isMoving = true;
 	}
 
 	public void Init(int id)
@@ -62,23 +64,15 @@ public class TileSlot : MonoBehaviour
 		}
 	}
 
-	public void Put(Tile put)
-	{
-		Tile = put;
-		Tile.icon.sortingOrder = Layer + 1;
-		Tile.disabledTile.sortingOrder = Layer + 2;
-		Tile.SetSlot(this);
-	}
-
 	private void Update()
 	{
-		if (isMoving)
+		if (_isMoving)
 		{
 			base.transform.position = Vector3.MoveTowards(Position, _targetPosition, speed * Time.deltaTime);
 			if (Vector3.Distance(base.transform.position, _targetPosition) < 0.01f)
 			{
 				base.transform.position = _targetPosition;
-				isMoving = false;
+				_isMoving = false;
 				Tile.icon.sortingOrder = 0;
 				background.sortingOrder = 0;
 				this.OnMoveFinish(this, _targetSlot);
@@ -104,6 +98,14 @@ public class TileSlot : MonoBehaviour
 				_isSpawnAnimation = false;
 			}
 		}
+	}
+
+	public void Put(Tile put)
+	{
+		Tile = put;
+		Tile.icon.sortingOrder = Layer + 1;
+		Tile.disabledTile.sortingOrder = Layer + 2;
+		Tile.SetSlot(this);
 	}
 
 	public void SpawnAnimation()

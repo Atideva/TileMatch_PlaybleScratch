@@ -13,11 +13,23 @@ public class TilesBag : MonoBehaviour
 
 	public BagSlot EmptySlot => slots.FirstOrDefault((BagSlot s) => s.IsFree);
 
-	public bool NoFreeSpace => !HaveEmptySlot;
+	public bool NoSpace => !HaveEmptySlot;
 
 	public event Action OnPut = delegate
 	{
 	};
+
+	public event Action OnRemove = delegate
+	{
+	};
+
+	private void Awake()
+	{
+		for (int i = 0; i < slots.Count; i++)
+		{
+			slots[i].ID = i;
+		}
+	}
 
 	public void Put(TileSlot tileSlot, BagSlot bagSlot)
 	{
@@ -32,6 +44,7 @@ public class TilesBag : MonoBehaviour
 		if ((bool)find)
 		{
 			find.Empty();
+			this.OnRemove();
 		}
 	}
 }

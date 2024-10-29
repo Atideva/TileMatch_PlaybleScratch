@@ -31,6 +31,9 @@ public class Game : MonoBehaviour
 	[SerializeField]
 	private WinCondition winCondition;
 
+	[SerializeField]
+	private InputTouch input;
+
 	[Space(20f)]
 	[SerializeField]
 	private int totalTiles;
@@ -51,6 +54,8 @@ public class Game : MonoBehaviour
 	public TilesBag Bag => bag;
 
 	public MatchCondition MatchCondition => matchCondition;
+
+	public InputTouch Input => input;
 
 	private void Start()
 	{
@@ -78,7 +83,7 @@ public class Game : MonoBehaviour
 	{
 		this.tiles = tiles;
 		spawnAnimation.SpawnAnimation(deck.FirstLayer, deck.SecondLayer);
-		actions.Observe(tiles);
+		actions.Observe(deck.Slots);
 		locker.Refresh(tiles, deck.Layers);
 	}
 

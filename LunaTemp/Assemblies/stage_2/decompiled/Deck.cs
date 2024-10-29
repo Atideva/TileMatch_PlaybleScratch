@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
 public class Deck : GameComponent
 {
@@ -21,7 +20,6 @@ public class Deck : GameComponent
 	private void FindPlatforms()
 	{
 		Layers = GetComponentsInChildren<DeckLayer>();
-		Debug.Log("Layers total: " + Layers.Length);
 	}
 
 	private void InitPlatforms()

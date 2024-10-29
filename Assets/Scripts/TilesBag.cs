@@ -5,24 +5,34 @@ using UnityEngine;
 
 public class TilesBag : MonoBehaviour
 {
-    public List<BagSlot> slots = new();
-    public List<BagSlot> BusySlots => slots.Where(b => b.Busy).ToList();
-    public bool HaveEmptySlot => slots.Any(s => s.IsFree);
-    public BagSlot EmptySlot => slots.FirstOrDefault(s => s.IsFree);
-    public bool NoFreeSpace => !HaveEmptySlot;
+    public List<TileSlot> slots = new();
+    public TileSlot GetPrevious(TileSlot slot) => slot.ID <= 0 ? null : slots[slot.ID - 1];
+    public List<TileSlot> BusySlots => slots.Where(b => b.Busy).ToList();
+    public bool HaveEmptySlot => slots.Any(s => s.IsEmpty);
+    public TileSlot EmptySlot => slots.FirstOrDefault(s => s.IsEmpty);
+    public bool NoSpace => !HaveEmptySlot;
     public event Action OnPut = delegate { };
+    public event Action OnRemove = delegate { };
 
-    public  void Put (TileSlot tileSlot, BagSlot bagSlot)
+    void Awake()
     {
-        tileSlot.PutInBag();
-        bagSlot.Put(tileSlot);
+        for (var i = 0; i < slots.Count; i++)
+            slots[i].ID = i;
+    }
+
+    public void Put(Tile tile, TileSlot tileSlot)
+    {
+        tile.PutInBag();
+        tileSlot.Put(tile);
         OnPut();
     }
 
-    public void Remove(TileSlot slot)
+    public void Remove(Tile @object)
     {
-        var find = slots.FirstOrDefault(s => s.TileSlot == slot);
-        if (find) find.Empty();
+        var find = slots.FirstOrDefault(s => s.Tile == @object);
+        if (!find) return;
+        find.Empty();
+        OnRemove();
     }
 
 }

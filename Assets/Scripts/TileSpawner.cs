@@ -8,16 +8,13 @@ using Random = UnityEngine.Random;
 
 public class TileSpawner : GameComponent
 {
-    [FormerlySerializedAs("levelData")] [SerializeField] List<TileData> level = new();
+    [SerializeField] List<TileData> level = new();
     public Tile prefab;
     public List<Tile> spawned = new();
-    public List<TileData> spawnData = new();
     public List<TileData> Level => level;
 
     protected override void OnInit()
     {
-        for (var i = 0; i < level.Count; i++)
-            level[i].type = i;
     }
 
     public void Spawn(List<TileData> tiles, DeckLayer[] layers)
@@ -39,7 +36,7 @@ public class TileSpawner : GameComponent
 
     IEnumerator RunSpawn(List<TileData> tileData, DeckLayer[] layers)
     {
-        spawnData = tileData;
+        /*
         spawned.Clear();
 
         var total = tileData.Sum(t => t.amount);
@@ -47,8 +44,8 @@ public class TileSpawner : GameComponent
         for (int i = 0; i < total; i++)
         {
             var layer = GetRandom(layers);
-            var emptySlot = layer.GetFreeSlot();
-            if (emptySlot == null)
+            var empty = layer.GetFreeSlot();
+            if (empty == null)
             {
                 Debug.LogWarning("Why theres no empty slots?");
                 continue;
@@ -60,32 +57,33 @@ public class TileSpawner : GameComponent
             var tile = Instantiate(prefab );
             tile.Set(data, layer.id);
                 
-            emptySlot.Put(tile);
-            if (hideAtSpawn) emptySlot.Hide();
+            empty.Set(tile);
+            if (hideAtSpawn) empty.Hide();
 
             spawned.Add(tile);
             yield return new WaitForSeconds(1 / spawnRate);
         }
-
+        */
+        yield return new WaitForSeconds(1 / spawnRate);
         OnSpawnFinish(spawned);
     }
 
     public float spawnRate;
     public event Action<List<Tile>> OnSpawnFinish = delegate { };
 
-    TileData GetRandom(List<TileData> data)
+    /*TileData GetRandom(List<TileData> data)
     {
         var onlyFree = data.Where(p => p.CanSpawn);
         var r =
             Random.Range(0, onlyFree.Count());
         return data[r];
-    }
+    }*/
 
-    DeckLayer GetRandom(DeckLayer[] layers)
+    /*DeckLayer GetRandom(DeckLayer[] layers)
     {
         var onlyFree = layers.Where(p => p.AnyFreeSlot);
         var r = Random.Range(0, onlyFree.Count());
         return layers[r];
-    }
+    }*/
 
 }

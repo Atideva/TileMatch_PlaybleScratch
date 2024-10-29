@@ -7,14 +7,14 @@ using UnityEngine;
 public class WinCondition : GameComponent
 {
     public event Action OnWin = delegate { }; 
-    public List<TileSlot> completeSlots = new();
+    public List<Tile> completeSlots = new();
     int Completed => completeSlots.Count;
     protected override void OnInit()
     {
         Game.MatchCondition.OnMatch += Check;
     }
 
-    void Check(List<BagSlot> bagSlots)
+    void Check(List<TileSlot> bagSlots)
     {
         if (Game.MatchCondition.Completed < Game.Tiles.Count) return;
         OnWin();
