@@ -3,13 +3,27 @@ using System.Linq;
 
 public class Deck : GameComponent
 {
+	private List<Tile> _tiles = new List<Tile>();
+
 	public DeckLayer[] Layers { get; private set; }
 
-	public List<Tile> Tiles => Layers.SelectMany((DeckLayer layer) => layer.Tiles).ToList();
+	public List<Tile> Tiles
+	{
+		get
+		{
+			if (_tiles.Count > 0)
+			{
+				return _tiles;
+			}
+			_tiles = Layers.SelectMany((DeckLayer layer) => layer.Tiles).ToList();
+			return _tiles;
+		}
+	}
 
-	public List<Tile> FirstLayer => Layers[0].Tiles.ToList();
-
-	public List<Tile> SecondLayer => Layers[1].Tiles.ToList();
+	public List<List<Tile>> LayersTiles()
+	{
+		return Layers.Select((DeckLayer layer) => layer.Tiles.ToList()).ToList();
+	}
 
 	protected override void OnInit()
 	{
@@ -27,7 +41,7 @@ public class Deck : GameComponent
 		for (int i = 0; i < Layers.Length; i++)
 		{
 			DeckLayer layer = Layers[i];
-			int layerID = (i + 1) * 100;
+			int layerID = (i + 1) * 1000;
 			layer.Init(this, layerID);
 		}
 	}

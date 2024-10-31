@@ -1,19 +1,25 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [ExecuteAlways]
 public class Tile : MonoBehaviour
 {
+	[FormerlySerializedAs("Type")]
 	[Space(20f)]
-	public TileSO Type;
+	[SerializeField]
+	private TileSO type;
 
-	public TileSO lastType;
+	[Space(20f)]
+	public int layer;
+
+	public int line;
 
 	[Space(20f)]
 	public SpriteRenderer icon;
 
-	public SpriteRenderer disabledTile;
+	public SpriteRenderer lockTile;
 
 	public SpriteRenderer background;
 
@@ -28,12 +34,32 @@ public class Tile : MonoBehaviour
 
 	public float spawnAnimDuration = 0.3f;
 
+	[FormerlySerializedAs("isClickable")]
 	[Space(20f)]
-	public List<Tile> coverTiles = new List<Tile>();
+	public bool locked;
+
+	public bool isHidden;
+
+	[SerializeField]
+	private int iconSort;
+
+	[SerializeField]
+	private int backGroundSort;
+
+	[SerializeField]
+	private int disabledSort;
+
+	[SerializeField]
+	private int trailSort;
+
+	[SerializeField]
+	private List<Tile> coverTiles = new List<Tile>();
+
+	private TileSO _lastType;
 
 	private bool _isSpawnAnimation;
 
-	private float _spawnTimer = 0f;
+	private float _spawnTimer;
 
 	private Vector3 _targetPosition;
 
@@ -43,23 +69,29 @@ public class Tile : MonoBehaviour
 
 	private TileSlot _targetSlot;
 
-	public bool _isClickable;
+	public float lockAlpha = 0.3f;
 
-	private int iconSort;
+	public float fadeDuration = 1f;
 
-	private int backGroundSort;
+	private float _fadeTimer;
 
-	private int disabledSort;
+	private bool _isFading;
 
-	private int trailSort;
+	private float _fadeFrom;
 
-	public bool IsInit;
+	private float _fadeTo;
 
-	private int _line;
+	private float fadeSpeed = 1f;
 
-	public int Layer { get; private set; }
+	private float currentAlpha;
 
-	public bool IsClickable => _isClickable && !_isMoving && !InBag;
+	public bool debug;
+
+	private Game _game;
+
+	public TileSO Type => type;
+
+	public bool IsClickable => !locked && !_isMoving && !InBag;
 
 	public bool InBag { get; private set; }
 
@@ -69,40 +101,65 @@ public class Tile : MonoBehaviour
 
 	public float Y => base.transform.position.y;
 
+	public float X => base.transform.position.x;
+
 	private bool Arrive => Vector2.Distance(base.transform.position, _targetPosition) < 0.01f;
 
 	public event Action<Tile, TileSlot> OnMoveFinish = delegate
 	{
 	};
 
-	private void Awake()
+	private void OnTriggerEnter2D(Collider2D other)
 	{
-		IsInit = false;
+		if (!_isMoving)
+		{
+			Debug.LogWarning("Contact: " + base.gameObject.name, base.gameObject);
+			Tile tile = _game.Find(other.transform);
+			if ((bool)tile && !tile._isMoving && tile.layer > layer && !coverTiles.Contains(tile))
+			{
+				coverTiles.Add(tile);
+				RefreshLock();
+			}
+		}
+	}
+
+	private void OnTriggerExit2D(Collider2D other)
+	{
+		Tile tile = _game.Find(other.transform);
+		if ((bool)tile && coverTiles.Contains(tile))
+		{
+			coverTiles.Remove(tile);
+			RefreshLock();
+		}
+	}
+
+	private void RefreshLock()
+	{
+		if (coverTiles.Count > 0)
+		{
+			Lock();
+		}
+		else
+		{
+			Unlock();
+		}
 	}
 
 	private void RefreshEditor()
 	{
-		if (!Application.isPlaying && !(lastType == Type))
+		if (!Application.isPlaying && !(_lastType == type))
 		{
-			lastType = Type;
-			Refresh(Type);
+			_lastType = type;
+			Refresh(type);
 		}
 	}
 
-	public void SetContacts(List<Tile> cover)
+	public void SetContacts(List<Tile> covers)
 	{
-		if (cover != null)
+		if (covers != null)
 		{
-			coverTiles.Clear();
-			coverTiles = cover;
-			if (cover.Count > 0)
-			{
-				Disable();
-			}
-			else
-			{
-				Enable();
-			}
+			coverTiles = covers;
+			RefreshLock();
 		}
 	}
 
@@ -116,14 +173,19 @@ public class Tile : MonoBehaviour
 		_isMoving = true;
 	}
 
-	public void SetLayer(int layer, int lineID)
+	public void SetGame(Game game)
 	{
-		_line = lineID;
-		Layer = layer;
-		trailSort = Layer + _line;
-		backGroundSort = Layer + _line + 1;
-		iconSort = Layer + _line + 2;
-		disabledSort = Layer + _line + 3;
+		_game = game;
+	}
+
+	public void SetLayer(int l, int lineID)
+	{
+		line = lineID;
+		layer = l;
+		trailSort = layer + line;
+		backGroundSort = layer + line + 1;
+		iconSort = layer + line + 2;
+		disabledSort = layer + line + 3;
 		Refresh();
 	}
 
@@ -132,7 +194,7 @@ public class Tile : MonoBehaviour
 		trail.sortingOrder = trailSort;
 		background.sortingOrder = backGroundSort;
 		icon.sortingOrder = iconSort;
-		disabledTile.sortingOrder = disabledSort;
+		lockTile.sortingOrder = disabledSort;
 	}
 
 	private void StopMove()
@@ -146,6 +208,19 @@ public class Tile : MonoBehaviour
 	private void Update()
 	{
 		RefreshEditor();
+		if (_isFading)
+		{
+			currentAlpha += fadeSpeed * Time.deltaTime;
+			SetAlpha(currentAlpha);
+			if (currentAlpha <= 0f)
+			{
+				_isFading = false;
+			}
+			if (currentAlpha >= lockAlpha)
+			{
+				_isFading = false;
+			}
+		}
 		if (_isMoving)
 		{
 			base.transform.position = Vector3.MoveTowards(Position, _targetPosition, speed * Time.deltaTime);
@@ -176,11 +251,12 @@ public class Tile : MonoBehaviour
 		}
 	}
 
-	public void Set(TileSO so)
+	private void SetAlpha(float alpha)
 	{
-		Refresh(so);
-		Enable();
-		IsInit = true;
+		Debug.Log(alpha);
+		Color color = lockTile.color;
+		color.a = alpha;
+		lockTile.color = color;
 	}
 
 	private void Refresh(TileSO so)
@@ -206,6 +282,11 @@ public class Tile : MonoBehaviour
 	{
 		if (Application.isPlaying)
 		{
+			if (debug)
+			{
+				Debug.Log(base.name + " - hide");
+			}
+			isHidden = true;
 			base.gameObject.SetActive(false);
 		}
 	}
@@ -214,19 +295,47 @@ public class Tile : MonoBehaviour
 	{
 		if (Application.isPlaying)
 		{
+			if (debug)
+			{
+				Debug.Log(base.name + " - show");
+			}
+			isHidden = false;
 			base.gameObject.SetActive(true);
 		}
 	}
 
-	public void Enable()
+	public void Unlock()
 	{
-		_isClickable = true;
-		disabledTile.gameObject.SetActive(false);
+		if (locked)
+		{
+			Debug.LogWarning("Unlock: " + base.name, base.gameObject);
+			locked = false;
+			HideLockedImage();
+		}
 	}
 
-	public void Disable()
+	public void Lock()
 	{
-		_isClickable = false;
-		disabledTile.gameObject.SetActive(true);
+		if (!locked)
+		{
+			Debug.LogWarning("Lock: " + base.name, base.gameObject);
+			locked = true;
+			lockTile.gameObject.SetActive(true);
+			ShowLockedImage();
+		}
+	}
+
+	private void HideLockedImage()
+	{
+		currentAlpha = lockAlpha;
+		fadeSpeed = (0f - lockAlpha) / fadeDuration;
+		_isFading = true;
+	}
+
+	private void ShowLockedImage()
+	{
+		currentAlpha = 0f;
+		fadeSpeed = lockAlpha / fadeDuration;
+		_isFading = true;
 	}
 }

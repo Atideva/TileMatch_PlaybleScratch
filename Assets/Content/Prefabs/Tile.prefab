@@ -10,7 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8836549629400376286}
   - component: {fileID: 7656251407269346973}
-  m_Layer: 0
+  - component: {fileID: 1630561798894592744}
+  - component: {fileID: 3361229292150857270}
+  m_Layer: 3
   m_Name: Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48,19 +50,74 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d8bd5603d193af4d8efc34408a39cdb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Type: {fileID: 0}
-  lastType: {fileID: 0}
+  type: {fileID: 0}
+  layer: 0
+  line: 0
   icon: {fileID: 3168723117593536920}
-  disabledTile: {fileID: 2552725105977811919}
+  lockTile: {fileID: 2552725105977811919}
   background: {fileID: 6423485362049095280}
   trail: {fileID: 8614884771847725380}
   defaultSize: {x: 1, y: 1, z: 1}
   speed: 20
   spawnAnimSize: 1.5
   spawnAnimDuration: 0.3
+  locked: 0
+  isHidden: 0
+  iconSort: 0
+  backGroundSort: 0
+  disabledSort: 0
+  trailSort: 0
   coverTiles: []
-  _isClickable: 0
-  IsInit: 0
+  lockAlpha: 0.3
+  fadeDuration: 0.2
+  debug: 0
+--- !u!61 &1630561798894592744
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847299469895952333}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.8, y: 0.85}
+  m_EdgeRadius: 0
+--- !u!50 &3361229292150857270
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1847299469895952333}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &3527289433955584711
 GameObject:
   m_ObjectHideFlags: 0
@@ -71,7 +128,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2198663402792817216}
   - component: {fileID: 3168723117593536920}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +212,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4639140678487673242}
   - component: {fileID: 2552725105977811919}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Dark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,7 +276,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f545e4c4e531ca442912ec8ef1be7f1e, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.47843137}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.29411766}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -239,7 +296,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1103978330668950947}
   - component: {fileID: 6423485362049095280}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -427,6 +484,10 @@ PrefabInstance:
     - target: {fileID: 8510732832270628493, guid: 420ffe93daccacd4c8a21988f489b71c, type: 3}
       propertyPath: m_Name
       value: Trail
+      objectReference: {fileID: 0}
+    - target: {fileID: 8510732832270628493, guid: 420ffe93daccacd4c8a21988f489b71c, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 420ffe93daccacd4c8a21988f489b71c, type: 3}

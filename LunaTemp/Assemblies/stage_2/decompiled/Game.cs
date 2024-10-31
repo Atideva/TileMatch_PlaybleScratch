@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Luna.Unity;
@@ -72,6 +73,16 @@ public class Game : MonoBehaviour
 
 	public TileActions Actions => actions;
 
+	public WinCondition Condition => winCondition;
+
+	public event Action OnQuestWin = delegate
+	{
+	};
+
+	public event Action OnLose = delegate
+	{
+	};
+
 	private void Start()
 	{
 		InitComponents();
@@ -88,6 +99,7 @@ public class Game : MonoBehaviour
 		if (!_isGameEnded)
 		{
 			_isGameEnded = true;
+			this.OnQuestWin();
 			Invoke("Win", 1f);
 		}
 	}
@@ -124,13 +136,13 @@ public class Game : MonoBehaviour
 			actions.Disable();
 			LifeCycle.GameEnded();
 			Analytics.LogEvent("Game lose", 0);
-			Debug.Log("Game lose!");
+			this.OnLose();
 		}
 	}
 
 	private void InitComponents()
 	{
-		GameComponent[] find = Object.FindObjectsOfType<GameComponent>();
+		GameComponent[] find = UnityEngine.Object.FindObjectsOfType<GameComponent>();
 		GameComponent[] array = find;
 		foreach (GameComponent component in array)
 		{
@@ -149,10 +161,15 @@ public class Game : MonoBehaviour
 		ShowDeck(deck.Tiles);
 	}
 
+	public Tile Find(Transform t)
+	{
+		return tilesInGame.FirstOrDefault((Tile tile) => tile.transform == t);
+	}
+
 	private void ShowDeck(List<Tile> spawned)
 	{
 		tilesInGame = spawned;
-		spawnAnimation.SpawnAnimation(deck.FirstLayer, deck.SecondLayer);
+		spawnAnimation.SpawnAnimation(deck.LayersTiles());
 		actions.Observe(deck.Tiles);
 		RefreshTiles();
 	}
@@ -164,10 +181,5 @@ public class Game : MonoBehaviour
 
 	private void OnValidate()
 	{
-		if (!Application.isPlaying)
-		{
-			InitComponents();
-			tilesInScene = deck.Layers.Sum((DeckLayer p) => p.Tiles.Length);
-		}
 	}
 }

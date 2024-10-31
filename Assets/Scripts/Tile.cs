@@ -1,17 +1,24 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [ExecuteAlways]
 public class Tile : MonoBehaviour
 {
+
+    #region Inspector
+
+    [FormerlySerializedAs("Type")]
     [Space(20)]
-    public TileSO Type;
-    public TileSO lastType;
-    // public TileData Data;
+    [SerializeField] TileSO type;
+    [Space(20)]
+    public int layer;
+    public int line;
     [Space(20)]
     public SpriteRenderer icon;
-    public SpriteRenderer disabledTile;
+    public SpriteRenderer lockTile;
     public SpriteRenderer background;
     public TrailRenderer trail;
     [Space(20)]
@@ -19,49 +26,91 @@ public class Tile : MonoBehaviour
     public float speed;
     public float spawnAnimSize = 1.5f;
     public float spawnAnimDuration = 0.3f;
-
+    [FormerlySerializedAs("isClickable")]
     [Space(20)]
-    public List<Tile> coverTiles = new();
+    public bool locked;
+    //  public bool isInit;
+    public bool isHidden;
+    [SerializeField] int iconSort;
+    [SerializeField] int backGroundSort;
+    [SerializeField] int disabledSort;
+    [SerializeField] int trailSort;
+    [SerializeField] List<Tile> coverTiles = new();
 
-    public int Layer { get; private set; }
+    #endregion
 
+    #region Variables
+
+    TileSO _lastType;
     bool _isSpawnAnimation;
-    float _spawnTimer = 0.0f;
+    float _spawnTimer;
     Vector3 _targetPosition;
     float _timer;
     bool _isMoving;
     TileSlot _targetSlot;
-    public bool IsClickable => _isClickable && !_isMoving && !InBag;
-    public bool _isClickable;
 
+    #endregion
+
+    #region Access
+
+    public TileSO Type => type;
+    public bool IsClickable => !locked && !_isMoving && !InBag;
     public bool InBag { get; private set; }
+    public event Action<Tile, TileSlot> OnMoveFinish = delegate { };
+    public Vector2 Position => transform.position;
+    public bool IsMoving => _isMoving;
+    public float Y => transform.position.y;
+    public float X => transform.position.x;
+    bool Arrive => Vector2.Distance(transform.position, _targetPosition) < 0.01f;
 
-    void Awake()
+    #endregion
+
+    void OnTriggerEnter2D(Collider2D other)
     {
-        IsInit = false;
+        if (_isMoving) return;
+
+        // if (debug)
+        Debug.LogWarning("Contact: " + gameObject.name, gameObject);
+
+        var tile = _game.Find(other.transform);
+        if (!tile) return;
+        if (tile._isMoving) return;
+
+        if (tile.layer <= layer) return;
+        if (coverTiles.Contains(tile)) return;
+        coverTiles.Add(tile);
+        RefreshLock();
+    }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        var tile = _game.Find(other.transform);
+        if (!tile) return;
+        if (!coverTiles.Contains(tile)) return;
+        coverTiles.Remove(tile);
+        RefreshLock();
+    }
+
+    void RefreshLock()
+    {
+        if (coverTiles.Count > 0) Lock();
+        else Unlock();
     }
 
     void RefreshEditor()
     {
         if (Application.isPlaying) return;
-        if (lastType == Type) return;
-        lastType = Type;
-        Refresh(Type);
+        if (_lastType == type) return;
+        _lastType = type;
+        Refresh(type);
     }
 
-    public void SetContacts(List<Tile> cover)
+    public void SetContacts(List<Tile> covers)
     {
-        if (cover == null) return;
-        coverTiles.Clear();
-        coverTiles = cover;
-        if (cover.Count > 0) Disable();
-        else Enable();
+        if (covers == null) return;
+        coverTiles = covers;
+        RefreshLock();
     }
-
-    int iconSort;
-    int backGroundSort;
-    int disabledSort;
-    int trailSort;
 
     public void MoveTo(TileSlot slot)
     {
@@ -73,19 +122,19 @@ public class Tile : MonoBehaviour
         _isMoving = true;
     }
 
-    public event Action<Tile, TileSlot> OnMoveFinish = delegate { };
-    public Vector2 Position => transform.position;
-    public bool IsMoving => _isMoving;
-    public float Y => transform.position.y;
-
-    public void SetLayer(int layer, int lineID)
+    public void SetGame(Game game)
     {
-        _line = lineID;
-        Layer = layer;
-        trailSort = Layer + _line ;
-        backGroundSort = Layer + _line+1;
-        iconSort = Layer + _line + 2;
-        disabledSort = Layer + _line + 3;
+        _game = game;
+    }
+
+    public void SetLayer(int l, int lineID)
+    {
+        line = lineID;
+        layer = l;
+        trailSort = layer + line;
+        backGroundSort = layer + line + 1;
+        iconSort = layer + line + 2;
+        disabledSort = layer + line + 3;
         Refresh();
     }
 
@@ -94,7 +143,7 @@ public class Tile : MonoBehaviour
         trail.sortingOrder = trailSort;
         background.sortingOrder = backGroundSort;
         icon.sortingOrder = iconSort;
-        disabledTile.sortingOrder = disabledSort;
+        lockTile.sortingOrder = disabledSort;
     }
 
     void StopMove()
@@ -105,11 +154,20 @@ public class Tile : MonoBehaviour
         OnMoveFinish(this, _targetSlot);
     }
 
-    bool Arrive => Vector2.Distance(transform.position, _targetPosition) < 0.01f;
+    public float lockAlpha = 0.3f;
 
     void Update()
     {
         RefreshEditor();
+        if (_isFading)
+        {
+            currentAlpha += fadeSpeed * Time.deltaTime;
+            SetAlpha(currentAlpha);
+
+            if (currentAlpha <= 0) _isFading = false;
+            if (currentAlpha >= lockAlpha) _isFading = false;
+        }
+
         if (_isMoving)
         {
             //  Debug.LogError("Moving to: " + _targetPosition);
@@ -141,11 +199,20 @@ public class Tile : MonoBehaviour
         }
     }
 
-    public void Set(TileSO so)
+    public float fadeDuration = 1f;
+    float _fadeTimer;
+    bool _isFading;
+    float _fadeFrom;
+    float _fadeTo;
+    float fadeSpeed = 1;
+    float currentAlpha;
+
+    void SetAlpha(float alpha)
     {
-        Refresh(so);
-        Enable();
-        IsInit = true;
+        Debug.Log(alpha);
+        var color = lockTile.color;
+        color.a = alpha;
+        lockTile.color = color;
     }
 
     void Refresh(TileSO so)
@@ -154,9 +221,6 @@ public class Tile : MonoBehaviour
         gameObject.name = "Tile - " + soName;
         icon.sprite = so ? so.Icon : null;
     }
-
-    public bool IsInit;
-    int _line;
 
     public void SpawnAnimation()
     {
@@ -173,24 +237,53 @@ public class Tile : MonoBehaviour
     public void Hide()
     {
         if (!Application.isPlaying) return;
+        if (debug) Debug.Log(name + " - hide");
+        isHidden = true;
         gameObject.SetActive(false);
     }
 
     public void Show()
     {
         if (!Application.isPlaying) return;
+        if (debug) Debug.Log(name + " - show");
+        isHidden = false;
         gameObject.SetActive(true);
     }
 
-    public void Enable()
+    public bool debug;
+    Game _game;
+
+    public void Unlock()
     {
-        _isClickable = true;
-        disabledTile.gameObject.SetActive(false);
+        if (!locked) return;
+        // if (debug)
+        Debug.LogWarning("Unlock: " + name, gameObject);
+        locked = false;
+        // 
+        HideLockedImage();
     }
 
-    public void Disable()
+    public void Lock()
     {
-        _isClickable = false;
-        disabledTile.gameObject.SetActive(true);
+        if (locked) return;
+        //if (debug)
+        Debug.LogWarning("Lock: " + name, gameObject);
+        locked = true;
+        lockTile.gameObject.SetActive(true);
+        ShowLockedImage();
+    }
+
+    void HideLockedImage()
+    {
+        currentAlpha = lockAlpha;
+        fadeSpeed = -lockAlpha / fadeDuration;
+        _isFading = true;
+    }
+
+    void ShowLockedImage()
+    {
+        currentAlpha = 0;
+        fadeSpeed = lockAlpha / fadeDuration;
+        _isFading = true;
     }
 }

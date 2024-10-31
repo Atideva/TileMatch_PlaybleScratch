@@ -4,23 +4,24 @@ using UnityEngine;
 
 public class DeckLayer : MonoBehaviour
 {
+	public int layer;
+
 	private Deck _deck;
 
 	public Tile[] Tiles;
 
-	public int Layer { get; private set; }
-
-	public void Init(Deck deck, int layer)
+	public void Init(Deck deck, int layerID)
 	{
 		Vector3 pos = base.transform.position;
-		base.transform.position = new Vector3(pos.x, pos.y, layer);
+		base.transform.position = new Vector3(pos.x, pos.y, layerID);
 		_deck = deck;
-		InitTiles(layer);
+		FindTiles();
+		InitTiles(deck.Game, layerID);
 	}
 
-	private void InitTiles(int layer)
+	private void InitTiles(Game game, int layerID)
 	{
-		Layer = layer;
+		layer = layerID;
 		List<List<Tile>> groupedByYPosition = (from tile in Tiles
 			group tile by tile.Y into @group
 			select @group.ToList()).ToList();
@@ -30,9 +31,16 @@ public class DeckLayer : MonoBehaviour
 			List<Tile> group2 = groupedByYPosition[i];
 			foreach (Tile tile2 in group2)
 			{
-				tile2.SetLayer(Layer, lineId);
+				tile2.SetLayer(layer, lineId);
+				tile2.SetGame(game);
+				tile2.Unlock();
 				tile2.Hide();
 			}
 		}
+	}
+
+	private void FindTiles()
+	{
+		Tiles = GetComponentsInChildren<Tile>();
 	}
 }

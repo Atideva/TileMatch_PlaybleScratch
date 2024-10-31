@@ -27,11 +27,13 @@ public class TileRandomSpawner : GameComponent
         }*/
     }
 
+    /*
     Tile GetRandomEmpty(List<Tile> tiles)
     {
-        var empty = tiles.Where(t => !t.IsInit).ToList();
+        var empty = tiles.Where(t => !t.isInit).ToList();
         return empty[Random.Range(0, empty.Count)];
     }
+    */
 
     /*IEnumerator RunSpawn(List<Tile> tiles)
     {

@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class TileSpawnAnimation : GameComponent
@@ -11,26 +10,16 @@ public class TileSpawnAnimation : GameComponent
 
 	public float delayBetweenLayers = 0.1f;
 
-	public void SpawnAnimation(List<Tile> slots, List<Tile> slots2)
+	public void SpawnAnimation(List<List<Tile>> slots)
 	{
-		StartCoroutine(Play(slots, slots2));
+		StartCoroutine(Play(slots));
 	}
 
-	private IEnumerator Play(List<Tile> slots, List<Tile> slots2)
+	private IEnumerator Play(List<List<Tile>> slots)
 	{
-		foreach (Tile slot2 in slots)
+		foreach (List<Tile> group in slots)
 		{
-			slot2.SpawnAnimation();
-			yield return new WaitForSeconds(delayBetweenTiles);
-		}
-		yield return new WaitForSeconds(delayBetweenLines);
-		yield return new WaitForSeconds(delayBetweenLayers);
-		List<List<Tile>> groupedTiles2 = (from tile in slots2
-			group tile by tile.Layer into @group
-			select @group.ToList()).ToList();
-		foreach (List<Tile> group2 in groupedTiles2)
-		{
-			foreach (Tile slot in group2)
+			foreach (Tile slot in group)
 			{
 				slot.SpawnAnimation();
 				yield return new WaitForSeconds(delayBetweenTiles);

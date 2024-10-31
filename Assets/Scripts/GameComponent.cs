@@ -2,7 +2,8 @@ using UnityEngine;
 
 public abstract class GameComponent : MonoBehaviour
 {
-    protected  Game Game;
+    [HideInInspector]
+    public Game Game;
 
     public void Init(Game game)
     {

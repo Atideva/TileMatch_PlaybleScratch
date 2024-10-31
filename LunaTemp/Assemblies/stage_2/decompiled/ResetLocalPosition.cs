@@ -4,6 +4,7 @@ public class ResetLocalPosition : MonoBehaviour
 {
 	private void Awake()
 	{
-		base.transform.position = Vector3.zero;
+		RectTransform rect = (RectTransform)base.transform;
+		rect.anchoredPosition = Vector3.zero;
 	}
 }

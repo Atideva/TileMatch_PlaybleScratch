@@ -1,45 +1,46 @@
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class DeckLayer : MonoBehaviour
 {
-    public int Layer { get; private set; }
+    public int layer;
     Deck _deck;
     public Tile[] Tiles;
 
-    public void Init(Deck deck,int layer)
+    public void Init(Deck deck, int layerID)
     {
         var pos = transform.position;
-        transform.position = new Vector3(pos.x, pos.y, layer);
+        transform.position = new Vector3(pos.x, pos.y, layerID);
         _deck = deck;
-        
-        //FindTiles();
-        InitTiles(layer);
+
+        FindTiles();
+        InitTiles(deck.Game, layerID);
     }
 
-    void InitTiles(int layer)
+    void InitTiles(Game game, int layerID)
     {
-        Layer = layer;
-        
-      var  groupedByYPosition = Tiles
-            .GroupBy(tile => tile.Y)  
-            //.OrderByDescending(group => group.Key)  
-            .Select(group => group.ToList())  
-            .ToList();
-      
-      for (var i = 0; i < groupedByYPosition.Count; i++)
-      {
-          var lineId = i * 10;
-          var group = groupedByYPosition[i];
-          foreach (var tile in group)
-          {
-              tile.SetLayer(Layer, lineId);
-              tile.Hide();
-          }
-      }
+        layer = layerID;
 
+        var groupedByYPosition = Tiles
+            .GroupBy(tile => tile.Y)
+            .Select(group => group.ToList())
+            .ToList();
+
+        for (var i = 0; i < groupedByYPosition.Count; i++)
+        {
+            var lineId = i * 10;
+            var group = groupedByYPosition[i];
+            foreach (var tile in group)
+            {
+                tile.SetLayer(layer, lineId);
+                tile.SetGame(game);
+                tile.Unlock();
+                tile.Hide();
+            }
+        }
     }
 
-    /*void FindTiles() 
-        => Tiles = GetComponentsInChildren<Tile>();*/
+    void FindTiles()
+        => Tiles = GetComponentsInChildren<Tile>();
 }

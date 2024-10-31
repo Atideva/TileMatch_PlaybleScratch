@@ -10,6 +10,8 @@ public class TileBagSorter : GameComponent
     protected override void OnInit()
     {
         if (!enable) return;
+        if(Game == null) Debug.LogError("WTF");
+        if(Game.Bag == null) Debug.LogError("WTF 2");
         Game.Bag.OnRemove += Sort;
     }
 

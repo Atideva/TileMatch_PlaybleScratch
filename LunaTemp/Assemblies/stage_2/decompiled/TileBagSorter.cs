@@ -16,6 +16,14 @@ public class TileBagSorter : GameComponent
 	{
 		if (enable)
 		{
+			if (Game == null)
+			{
+				Debug.LogError("WTF");
+			}
+			if (Game.Bag == null)
+			{
+				Debug.LogError("WTF 2");
+			}
 			Game.Bag.OnRemove += Sort;
 		}
 	}

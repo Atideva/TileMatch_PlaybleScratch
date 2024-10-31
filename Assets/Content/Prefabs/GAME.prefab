@@ -467,7 +467,7 @@ MonoBehaviour:
   useRandom: 0
   spawnRandom: {fileID: 1871965365635318173}
   tileToSpawn: 54
-  tilesInScene: 72
+  tilesInScene: 37
   tilesInGame: []
 --- !u!1 &1871965364469192219
 GameObject:

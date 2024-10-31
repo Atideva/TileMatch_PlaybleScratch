@@ -1,7 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
 
 public class TileRandomSpawner : GameComponent
 {
@@ -19,11 +17,5 @@ public class TileRandomSpawner : GameComponent
 
 	public void Spawn(List<Tile> tiles)
 	{
-	}
-
-	private Tile GetRandomEmpty(List<Tile> tiles)
-	{
-		List<Tile> empty = tiles.Where((Tile t) => !t.IsInit).ToList();
-		return empty[UnityEngine.Random.Range(0, empty.Count)];
 	}
 }

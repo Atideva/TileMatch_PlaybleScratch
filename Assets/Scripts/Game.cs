@@ -109,19 +109,23 @@ public class Game : MonoBehaviour
         ShowDeck(deck.Tiles);
     }
 
+    public Tile Find(Transform t) => tilesInGame.FirstOrDefault(tile => tile.transform == t);
+
     void ShowDeck(List<Tile> spawned)
     {
 //        Debug.LogError("SHOW deck ");
         tilesInGame = spawned;
-        spawnAnimation.SpawnAnimation(deck.FirstLayer, deck.SecondLayer);
+        spawnAnimation.SpawnAnimation(deck.LayersTiles());
         actions.Observe(deck.Tiles);
         RefreshTiles();
     }
 
-    void RefreshTiles() => locker.Refresh(tilesInGame, deck.Layers);
+    void RefreshTiles() 
+        => locker.Refresh(tilesInGame, deck.Layers);
 
     void OnValidate()
     {
+        return;
         if (Application.isPlaying) return;
         InitComponents();
         //  tileToSpawn = spawnRandom.TotalTiles;
