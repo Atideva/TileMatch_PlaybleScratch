@@ -72,14 +72,19 @@ public class Tile : MonoBehaviour
         // if (debug)
         Debug.LogWarning("Contact: " + gameObject.name, gameObject);
 
-        var tile = _game.Find(other.transform);
-        if (!tile) return;
-        if (tile._isMoving) return;
+        var collideTile = _game.Find(other.transform);
+        if (!collideTile) return;
+        if (collideTile._isMoving) return;
 
-        if (tile.layer <= layer) return;
-        if (coverTiles.Contains(tile)) return;
-        coverTiles.Add(tile);
+        if (collideTile.layer <= layer) return;
+        if (coverTiles.Contains(collideTile)) return;
+        coverTiles.Add(collideTile);
         RefreshLock();
+    }
+
+    void OnTriggerStay2D(Collider2D other)
+    {
+        OnTriggerEnter2D(other);
     }
 
     void OnTriggerExit2D(Collider2D other)
@@ -114,9 +119,9 @@ public class Tile : MonoBehaviour
 
     public void MoveTo(TileSlot slot)
     {
-        trail.sortingOrder = 1000;
-        background.sortingOrder = 1001;
-        icon.sortingOrder = 1002;
+        trail.sortingOrder = 10000;
+        background.sortingOrder = 10001;
+        icon.sortingOrder = 10002;
         _targetSlot = slot;
         _targetPosition = slot.Position;
         _isMoving = true;

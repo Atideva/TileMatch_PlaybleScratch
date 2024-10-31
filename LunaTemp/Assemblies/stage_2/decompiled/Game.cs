@@ -106,7 +106,6 @@ public class Game : MonoBehaviour
 
 	private void OnTileMoved(Tile obj)
 	{
-		RefreshTiles();
 	}
 
 	private void Win()
@@ -171,12 +170,6 @@ public class Game : MonoBehaviour
 		tilesInGame = spawned;
 		spawnAnimation.SpawnAnimation(deck.LayersTiles());
 		actions.Observe(deck.Tiles);
-		RefreshTiles();
-	}
-
-	private void RefreshTiles()
-	{
-		locker.Refresh(tilesInGame, deck.Layers);
 	}
 
 	private void OnValidate()
