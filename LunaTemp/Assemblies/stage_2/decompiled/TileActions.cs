@@ -10,15 +10,15 @@ public class TileActions : GameComponent
 
 	private Camera _cam;
 
-	private bool isDisable;
+	private int _clicks;
 
-	private int clicks;
+	private bool _isDisable;
 
-	public event Action<Tile> OnMoveStart = delegate
+	public event Action OnMoveFinish = delegate
 	{
 	};
 
-	public event Action OnMoveFinish = delegate
+	public event Action<Tile> OnMoveStart = delegate
 	{
 	};
 
@@ -33,7 +33,7 @@ public class TileActions : GameComponent
 
 	public void Disable()
 	{
-		isDisable = true;
+		_isDisable = true;
 	}
 
 	private void OnTouchScreen(Vector2 touchPos, float touchSize)
@@ -54,7 +54,7 @@ public class TileActions : GameComponent
 
 	private void Touched(Tile tile)
 	{
-		if (!isDisable)
+		if (!_isDisable)
 		{
 			Click(tile);
 		}
@@ -62,11 +62,11 @@ public class TileActions : GameComponent
 
 	private void Click(Tile tile)
 	{
-		clicks++;
-		Analytics.LogEvent("Tile clicked", clicks);
+		_clicks++;
+		Analytics.LogEvent("Tile clicked", _clicks);
 		if (!Game.Bag.NoSpace)
 		{
-			TileSlot empty = Game.Bag.EmptySlot;
+			TileSlot empty = Game.Bag.GetSlotFor(tile);
 			Game.Bag.Put(tile, empty);
 			this.OnMoveStart(tile);
 			tile.OnMoveFinish += MoveFinished;

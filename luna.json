@@ -173,10 +173,10 @@
         "enableMecanimWASM": true,
         "minify": true,
         "forceUncompressed": false,
-        "forceBase64": false,
+        "forceBase64": true,
         "genericCheck": true,
         "disableAntiAliasing": true,
-        "preferWebGl2": false,
+        "preferWebGl2": true,
         "forceStableRandomSeed": false,
         "unusedModules": [
             {
@@ -22354,7 +22354,7 @@
                     },
                     {
                         "name": "IsMoving#get",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "Y#get",
@@ -22390,7 +22390,7 @@
                     },
                     {
                         "name": "SetContacts",
-                        "excluded": true
+                        "excluded": false
                     },
                     {
                         "name": "MoveTo",
@@ -22458,6 +22458,10 @@
                     },
                     {
                         "name": "OnTriggerStay2D",
+                        "excluded": false
+                    },
+                    {
+                        "name": "Box#get",
                         "excluded": false
                     }
                 ]
@@ -24435,6 +24439,10 @@
                     {
                         "name": "OnValidate",
                         "excluded": true
+                    },
+                    {
+                        "name": "RefreshTiles",
+                        "excluded": false
                     }
                 ]
             },
@@ -29081,6 +29089,38 @@
                     {
                         "name": "BakeMesh",
                         "excluded": true
+                    }
+                ]
+            },
+            {
+                "className": "Box",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "init",
+                        "excluded": false
+                    },
+                    {
+                        "name": "ctor",
+                        "excluded": false
+                    }
+                ]
+            },
+            {
+                "className": "TileLockerBox",
+                "staticMethods": [],
+                "instanceMethods": [
+                    {
+                        "name": "Refresh",
+                        "excluded": false
+                    },
+                    {
+                        "name": "DoesntCover",
+                        "excluded": false
+                    },
+                    {
+                        "name": "IsCover",
+                        "excluded": false
                     }
                 ]
             }

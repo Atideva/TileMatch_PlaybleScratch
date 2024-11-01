@@ -1,0 +1,106 @@
+{
+  "BuildID": "7c1868c9-4665-49fd-9ece-d0e567a899d3",
+  "Command": "project:deploy",
+  "ProjectID": "5b6cf7c73bef2a94eac4ebbca2d52761",
+  "ProjectStateHash": "139553983aec0d85adbe1f73885260f7313c23a77618e7c65c8c76bab588aaea",
+  "StageCompletedAt": 3,
+  "EarliestFatalError": 0,
+  "StartTime": 1730433038972,
+  "EndTime": 1730433070989,
+  "PlaygroundUserID": 18370,
+  "OperatingSystem": "win32",
+  "UnityPackageID": null,
+  "TargetPlatform": "playground",
+  "UnityVersion": "2021.3.44f1",
+  "LunaVersion": "6.1.1",
+  "LogCount": 4,
+  "Logs": [
+    {
+      "LogID": "6591ba04-6778-4ad3-ba59-84b15c6632a0",
+      "Order": 4,
+      "Timestamp": 1730433071176,
+      "Stage": 3,
+      "ErrorType": 3,
+      "ErrorCode": "LP3011",
+      "Description": "You are not using any LunaPlaygroundFields attributes.",
+      "Details": [
+        "You are not using any LunaPlaygroundFields attributes, it allows you to configure your playable to different concepts to find the best variation, which can drastically improve playable performance on all ad networks."
+      ],
+      "DescriptionValues": null,
+      "DetailsValues": null,
+      "LogCount": 1,
+      "LinePosition": null,
+      "FilePath": "",
+      "ClassName": "",
+      "MemberName": "",
+      "Severity": 0
+    },
+    {
+      "LogID": "97fd2a7e-ef7e-4cc1-8559-f78674c28078",
+      "Order": 0,
+      "Timestamp": 1730433051536,
+      "Stage": 1,
+      "ErrorType": 2,
+      "ErrorCode": "LP1014",
+      "Description": "We recommend running Runtime Analysis to find and remove all unused code",
+      "Details": [
+        "Navigate to the Runtime Analysis → Code tab to enable code stripping. Before uploading the playable, please make sure to have played all scenario’s of the playable in a development build to make Runtime Analysis work properly."
+      ],
+      "DescriptionValues": [],
+      "DetailsValues": [],
+      "LogCount": 1,
+      "LinePosition": 0,
+      "FilePath": "",
+      "ClassName": "",
+      "MemberName": "",
+      "Severity": 0
+    },
+    {
+      "LogID": "2b3f7d1e-3e41-481d-9210-f9d0bb0d4219",
+      "Order": 1,
+      "Timestamp": 1730433051536,
+      "Stage": 1,
+      "ErrorType": 2,
+      "ErrorCode": "LP1031",
+      "Description": "We recommend running Runtime Analysis to find and remove all unused shader variants",
+      "Details": [
+        "You have 20 shaders and 133 shader variants in your scene, this can be detrimental to the loading times and size of your playable.\n\nRuntime Analysis has only found 5 shader variants in use within your playable. Navigate to the Runtime Analysis > Shaders tab to enable shader stripping to help reduce the amount of shaders, and shader variants present in your playable"
+      ],
+      "DescriptionValues": [],
+      "DetailsValues": [
+        "20",
+        "133",
+        "5"
+      ],
+      "LogCount": 1,
+      "LinePosition": 0,
+      "FilePath": "",
+      "ClassName": "",
+      "MemberName": "",
+      "Severity": 0
+    },
+    {
+      "LogID": "3e17ee3e-d3b8-46c6-9011-670c6e8e661e",
+      "Order": 2,
+      "Timestamp": 1730433051536,
+      "Stage": 1,
+      "ErrorType": 1,
+      "ErrorCode": "LP1023",
+      "Description": "Too many files for facebook platform",
+      "Details": [
+        "Too many files for facebook platform in use ($137) only $100 available"
+      ],
+      "DescriptionValues": [],
+      "DetailsValues": [
+        "137",
+        "100"
+      ],
+      "LogCount": 1,
+      "LinePosition": 0,
+      "FilePath": "",
+      "ClassName": "",
+      "MemberName": "",
+      "Severity": 0
+    }
+  ]
+}

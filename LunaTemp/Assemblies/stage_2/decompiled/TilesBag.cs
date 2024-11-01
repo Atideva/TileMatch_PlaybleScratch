@@ -11,7 +11,7 @@ public class TilesBag : MonoBehaviour
 
 	public bool HaveEmptySlot => slots.Any((TileSlot s) => s.IsEmpty);
 
-	public TileSlot EmptySlot => slots.FirstOrDefault((TileSlot s) => s.IsEmpty);
+	public TileSlot LastEmptySlot => slots.FirstOrDefault((TileSlot s) => s.IsEmpty);
 
 	public bool NoSpace => !HaveEmptySlot;
 
@@ -26,6 +26,27 @@ public class TilesBag : MonoBehaviour
 	public TileSlot LeftFrom(TileSlot slot)
 	{
 		return (slot.ID <= 0) ? null : slots[slot.ID - 1];
+	}
+
+	public TileSlot GetSlotFor(Tile tile)
+	{
+		TileSlot findSame = BusySlots.FirstOrDefault((TileSlot s) => s.Type == tile.Type);
+		if ((bool)findSame)
+		{
+			int rightID = findSame.ID + 1;
+			TileSlot rightSlot = slots[rightID];
+			for (int i = slots.Count - 1; i >= rightID + 1; i--)
+			{
+				TileSlot slot = slots[i];
+				TileSlot leftSlot = slots[i - 1];
+				if (leftSlot.Busy)
+				{
+					Put(leftSlot.Tile, slot);
+				}
+			}
+			return rightSlot;
+		}
+		return LastEmptySlot;
 	}
 
 	private void Awake()

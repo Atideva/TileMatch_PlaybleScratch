@@ -61,6 +61,11 @@ MonoBehaviour:
   speed: 20
   spawnAnimSize: 1.5
   spawnAnimDuration: 0.3
+  customColissionBox: 1
+  box:
+    Position: {x: 0, y: 0.08}
+    Width: 0.7
+    Height: 0.8
   locked: 0
   isHidden: 0
   iconSort: 0

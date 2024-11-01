@@ -1,9 +1,34 @@
-if ( TRACE ) { TRACE( JSON.parse( '["GameComponent#Init","DeckLayer#Init","DeckLayer#InitTiles","DeckLayer#FindTiles","Game#TilesInGame#get","Game#Bag#get","Game#TileMatcher#get","Game#Input#get","Game#Actions#get","Game#Condition#get","Game#init","Game#Start","Game#QuestWin","Game#OnTileMoved","Game#Win","Game#OpenURL","Game#Lose","Game#InitComponents","Game#Spawn","Game#StartGame","Game#Find","Game#ShowDeck","Game#OnValidate","QuestSlot#Type#get","QuestSlot#Locked#get","QuestSlot#Complete#get","QuestSlot#init","QuestSlot#Start","QuestSlot#Unlock","QuestSlot#Update","QuestSlot#PlayAnimation","QuestSlot#Animate","QuestSlot#RefreshIcon","ResetLocalPosition#Awake","Tile#Type#get","Tile#IsClickable#get","Tile#Position#get","Tile#IsMoving#get","Tile#Y#get","Tile#X#get","Tile#Arrive#get","Tile#init","Tile#OnTriggerEnter2D","Tile#OnTriggerStay2D","Tile#OnTriggerExit2D","Tile#RefreshLock","Tile#RefreshEditor","Tile#SetContacts","Tile#MoveTo","Tile#SetGame","Tile#SetLayer","Tile#Refresh","Tile#Refresh$1","Tile#StopMove","Tile#Update","Tile#SetAlpha","Tile#SpawnAnimation","Tile#PutInBag","Tile#Hide","Tile#Show","Tile#Unlock","Tile#Lock","Tile#HideLockedImage","Tile#ShowLockedImage","TilesBag#BusySlots#get","TilesBag#HaveEmptySlot#get","TilesBag#EmptySlot#get","TilesBag#NoSpace#get","TilesBag#init","TilesBag#LeftFrom","TilesBag#Awake","TilesBag#Put","TilesBag#Move","TilesBag#Empty","TileSlot#Busy#get","TileSlot#IsEmpty#get","TileSlot#Type#get","TileSlot#Position#get","TileSlot#Empty","TileSlot#Put","TileSO#Icon#get","Deck#Tiles#get","Deck#init","Deck#LayersTiles","Deck#OnInit","Deck#FindLayers","Deck#InitLayers","EndCard#OnInit","EndCard#Show","EndCard#Hide","InputTouch#init","InputTouch#OnInit","InputTouch#Update","LoseCondition#init","LoseCondition#OnInit","LoseCondition#OnBagChange","LoseCondition#Update","LoseCondition#Check","LoseCondition#Lose","Quest#init","Quest#OnInit","Quest#OnMatch","Sounds#OnInit","Sounds#Play","TileActions#init","TileActions#OnInit","TileActions#Disable","TileActions#OnTouchScreen","TileActions#Touched","TileActions#Click","TileActions#Observe","TileActions#MoveFinished","TileBagSorter#NeedsSorting#get","TileBagSorter#init","TileBagSorter#OnInit","TileBagSorter#Sort","TileBagSorter#Sorting","TileBagSorter#SortingSlot","TileLocker#OnInit","TileLocker#Refresh","TileMatcher#Completed#get","TileMatcher#init","TileMatcher#OnInit","TileMatcher#Check","TileMatcher#SameAmount","TileMatcher#Match","TileRandomSpawner#init","TileRandomSpawner#OnInit","TileRandomSpawner#Spawn","TileSpawnAnimation#init","TileSpawnAnimation#SpawnAnimation","TileSpawnAnimation#Play","TileSpawnAnimation#OnInit","TileSpawner#init","TileSpawner#OnInit","WinCondition#init","WinCondition#OnInit","WinCondition#Check"]' ) ); }
+if ( TRACE ) { TRACE( JSON.parse( '["Box#init","Box#ctor","GameComponent#Init","DeckLayer#Init","DeckLayer#InitTiles","DeckLayer#FindTiles","Game#TilesInGame#get","Game#Bag#get","Game#TileMatcher#get","Game#Input#get","Game#Actions#get","Game#Condition#get","Game#init","Game#Start","Game#QuestWin","Game#OnTileMoved","Game#Win","Game#OpenURL","Game#Lose","Game#InitComponents","Game#Spawn","Game#StartGame","Game#Find","Game#ShowDeck","Game#RefreshTiles","Game#OnValidate","QuestSlot#Type#get","QuestSlot#Locked#get","QuestSlot#Complete#get","QuestSlot#init","QuestSlot#Start","QuestSlot#Unlock","QuestSlot#Update","QuestSlot#PlayAnimation","QuestSlot#Animate","QuestSlot#RefreshIcon","ResetLocalPosition#Awake","Tile#Box#get","Tile#Type#get","Tile#IsClickable#get","Tile#Position#get","Tile#IsMoving#get","Tile#Y#get","Tile#X#get","Tile#Arrive#get","Tile#init","Tile#OnTriggerEnter2D","Tile#OnTriggerStay2D","Tile#OnTriggerExit2D","Tile#RefreshLock","Tile#RefreshEditor","Tile#SetContacts","Tile#MoveTo","Tile#SetGame","Tile#SetLayer","Tile#Refresh","Tile#Refresh$1","Tile#StopMove","Tile#Update","Tile#SetAlpha","Tile#SpawnAnimation","Tile#PutInBag","Tile#Hide","Tile#Show","Tile#Unlock","Tile#Lock","Tile#HideLockedImage","Tile#ShowLockedImage","TileLockerBox#Refresh","TileLockerBox#DoesntCover","TileLockerBox#IsCover","TilesBag#BusySlots#get","TilesBag#HaveEmptySlot#get","TilesBag#LastEmptySlot#get","TilesBag#NoSpace#get","TilesBag#init","TilesBag#LeftFrom","TilesBag#GetSlotFor","TilesBag#Awake","TilesBag#Put","TilesBag#Move","TilesBag#Empty","TileSlot#Busy#get","TileSlot#IsEmpty#get","TileSlot#Type#get","TileSlot#Position#get","TileSlot#Empty","TileSlot#Put","TileSO#Icon#get","Deck#Tiles#get","Deck#init","Deck#LayersTiles","Deck#OnInit","Deck#FindLayers","Deck#InitLayers","EndCard#OnInit","EndCard#Show","EndCard#Hide","InputTouch#init","InputTouch#OnInit","InputTouch#Update","LoseCondition#init","LoseCondition#OnInit","LoseCondition#OnBagChange","LoseCondition#Update","LoseCondition#Check","LoseCondition#Lose","Quest#init","Quest#OnInit","Quest#OnMatch","Sounds#OnInit","Sounds#Play","TileActions#init","TileActions#OnInit","TileActions#Disable","TileActions#OnTouchScreen","TileActions#Touched","TileActions#Click","TileActions#Observe","TileActions#MoveFinished","TileBagSorter#NeedsSorting#get","TileBagSorter#init","TileBagSorter#OnInit","TileBagSorter#SortAfterMatch3","TileBagSorter#Sorting","TileBagSorter#SortingSlot","TileLocker#OnInit","TileLocker#Refresh","TileMatcher#Completed#get","TileMatcher#init","TileMatcher#OnInit","TileMatcher#Check","TileMatcher#SameAmount","TileMatcher#Match","TileRandomSpawner#init","TileRandomSpawner#OnInit","TileRandomSpawner#Spawn","TileSpawnAnimation#init","TileSpawnAnimation#SpawnAnimation","TileSpawnAnimation#Play","TileSpawnAnimation#OnInit","TileSpawner#init","TileSpawner#OnInit","WinCondition#init","WinCondition#OnInit","WinCondition#Check"]' ) ); }
 /**
  * @compiler Bridge.NET 17.9.42-luna
  */
 Bridge.assembly("UnityScriptsCompiler", function ($asm, globals) {
     "use strict";
+
+    /*Box start.*/
+    Bridge.define("Box", {
+        fields: {
+            Position: null,
+            Width: 0,
+            Height: 0
+        },
+        ctors: {
+            init: function () {
+if ( TRACE ) { TRACE( "Box#init", this ); }
+
+                this.Position = new UnityEngine.Vector2();
+            },
+            ctor: function (position, width, height) {
+if ( TRACE ) { TRACE( "Box#ctor", this ); }
+
+                this.$initialize();
+                this.Position = position.$clone();
+                this.Width = width;
+                this.Height = height;
+            }
+        }
+    });
+    /*Box end.*/
 
     /*GameComponent start.*/
     Bridge.define("GameComponent", {
@@ -106,6 +131,7 @@ if ( TRACE ) { TRACE( "DeckLayer#FindTiles", this ); }
             deck: null,
             actions: null,
             locker: null,
+            boxLocker: null,
             bag: null,
             spawnAnimation: null,
             tileMatcher: null,
@@ -200,6 +226,7 @@ if ( TRACE ) { TRACE( "Game#QuestWin", this ); }
 
                 if (!this._isGameEnded) {
                     this._isGameEnded = true;
+                    Luna.Unity.Analytics.LogEvent$1("Quest win", 0);
                     this.OnQuestWin();
                     this.Invoke("Win", 1.0);
                 }
@@ -209,7 +236,9 @@ if ( TRACE ) { TRACE( "Game#QuestWin", this ); }
             /*Game.OnTileMoved start.*/
             OnTileMoved: function (obj) {
 if ( TRACE ) { TRACE( "Game#OnTileMoved", this ); }
- },
+
+                this.RefreshTiles();
+            },
             /*Game.OnTileMoved end.*/
 
             /*Game.Win start.*/
@@ -285,6 +314,7 @@ if ( TRACE ) { TRACE( "Game#Spawn", this ); }
 if ( TRACE ) { TRACE( "Game#StartGame", this ); }
 
                 this.ShowDeck(this.deck.Tiles);
+                this.Invoke("RefreshTiles", 2.0);
             },
             /*Game.StartGame end.*/
 
@@ -305,8 +335,17 @@ if ( TRACE ) { TRACE( "Game#ShowDeck", this ); }
                 this.tilesInGame = spawned;
                 this.spawnAnimation.SpawnAnimation(this.deck.LayersTiles());
                 this.actions.Observe(this.deck.Tiles);
+                this.RefreshTiles();
             },
             /*Game.ShowDeck end.*/
+
+            /*Game.RefreshTiles start.*/
+            RefreshTiles: function () {
+if ( TRACE ) { TRACE( "Game#RefreshTiles", this ); }
+
+                this.boxLocker.Refresh(this.deck.Layers);
+            },
+            /*Game.RefreshTiles end.*/
 
             /*Game.OnValidate start.*/
             OnValidate: function () {
@@ -502,6 +541,8 @@ if ( TRACE ) { TRACE( "ResetLocalPosition#Awake", this ); }
             speed: 0,
             spawnAnimSize: 0,
             spawnAnimDuration: 0,
+            customColissionBox: false,
+            box: null,
             locked: false,
             isHidden: false,
             iconSort: 0,
@@ -532,6 +573,13 @@ if ( TRACE ) { TRACE( "ResetLocalPosition#Awake", this ); }
             OnMoveFinish: null
         },
         props: {
+            Box: {
+                get: function () {
+if ( TRACE ) { TRACE( "Tile#Box#get", this ); }
+
+                    return new Box(this.Position.$clone().add( this.box.Position ), this.box.Width, this.box.Height);
+                }
+            },
             Type: {
                 get: function () {
 if ( TRACE ) { TRACE( "Tile#Type#get", this ); }
@@ -603,7 +651,7 @@ if ( TRACE ) { TRACE( "Tile#init", this ); }
             OnTriggerEnter2D: function (other) {
 if ( TRACE ) { TRACE( "Tile#OnTriggerEnter2D", this ); }
 
-                if (!this._isMoving) {
+                if (!this.customColissionBox && !this._isMoving) {
                     UnityEngine.Debug.LogWarning$1("Contact: " + (Bridge.ensureBaseProperty(this, "gameObject").$UnityEngine$Component$gameObject.name || ""), Bridge.ensureBaseProperty(this, "gameObject").$UnityEngine$Component$gameObject);
                     var collideTile = this._game.Find(other.transform);
                     if (UnityEngine.Object.op_Implicit(collideTile) && !collideTile._isMoving && collideTile.layer > this.layer && !this.coverTiles.contains(collideTile)) {
@@ -618,7 +666,9 @@ if ( TRACE ) { TRACE( "Tile#OnTriggerEnter2D", this ); }
             OnTriggerStay2D: function (other) {
 if ( TRACE ) { TRACE( "Tile#OnTriggerStay2D", this ); }
 
-                this.OnTriggerEnter2D(other);
+                if (!this.customColissionBox) {
+                    this.OnTriggerEnter2D(other);
+                }
             },
             /*Tile.OnTriggerStay2D end.*/
 
@@ -626,10 +676,12 @@ if ( TRACE ) { TRACE( "Tile#OnTriggerStay2D", this ); }
             OnTriggerExit2D: function (other) {
 if ( TRACE ) { TRACE( "Tile#OnTriggerExit2D", this ); }
 
-                var tile = this._game.Find(other.transform);
-                if (UnityEngine.Object.op_Implicit(tile) && this.coverTiles.contains(tile)) {
-                    this.coverTiles.remove(tile);
-                    this.RefreshLock();
+                if (!this.customColissionBox) {
+                    var tile = this._game.Find(other.transform);
+                    if (UnityEngine.Object.op_Implicit(tile) && this.coverTiles.contains(tile)) {
+                        this.coverTiles.remove(tile);
+                        this.RefreshLock();
+                    }
                 }
             },
             /*Tile.OnTriggerExit2D end.*/
@@ -777,7 +829,6 @@ if ( TRACE ) { TRACE( "Tile#Update", this ); }
             SetAlpha: function (alpha) {
 if ( TRACE ) { TRACE( "Tile#SetAlpha", this ); }
 
-                UnityEngine.Debug.Log(Bridge.box(alpha, System.Single, System.Single.format, System.Single.getHashCode));
                 var color = this.lockTile.color.$clone();
                 color.a = alpha;
                 this.lockTile.color = color.$clone();
@@ -835,7 +886,9 @@ if ( TRACE ) { TRACE( "Tile#Show", this ); }
 if ( TRACE ) { TRACE( "Tile#Unlock", this ); }
 
                 if (this.locked) {
-                    UnityEngine.Debug.LogWarning$1("Unlock: " + (Bridge.ensureBaseProperty(this, "name").$UnityEngine$Component$name || ""), Bridge.ensureBaseProperty(this, "gameObject").$UnityEngine$Component$gameObject);
+                    if (this.debug) {
+                        UnityEngine.Debug.LogWarning$1("Unlock: " + (Bridge.ensureBaseProperty(this, "name").$UnityEngine$Component$name || ""), Bridge.ensureBaseProperty(this, "gameObject").$UnityEngine$Component$gameObject);
+                    }
                     this.locked = false;
                     this.HideLockedImage();
                 }
@@ -847,7 +900,9 @@ if ( TRACE ) { TRACE( "Tile#Unlock", this ); }
 if ( TRACE ) { TRACE( "Tile#Lock", this ); }
 
                 if (!this.locked) {
-                    UnityEngine.Debug.LogWarning$1("Lock: " + (Bridge.ensureBaseProperty(this, "name").$UnityEngine$Component$name || ""), Bridge.ensureBaseProperty(this, "gameObject").$UnityEngine$Component$gameObject);
+                    if (this.debug) {
+                        UnityEngine.Debug.LogWarning$1("Lock: " + (Bridge.ensureBaseProperty(this, "name").$UnityEngine$Component$name || ""), Bridge.ensureBaseProperty(this, "gameObject").$UnityEngine$Component$gameObject);
+                    }
                     this.locked = true;
                     this.lockTile.gameObject.SetActive(true);
                     this.ShowLockedImage();
@@ -883,6 +938,73 @@ if ( TRACE ) { TRACE( "Tile#ShowLockedImage", this ); }
     });
     /*Tile end.*/
 
+    /*TileLockerBox start.*/
+    Bridge.define("TileLockerBox", {
+        inherits: [UnityEngine.MonoBehaviour],
+        fields: {
+            enable: false
+        },
+        methods: {
+            /*TileLockerBox.Refresh start.*/
+            Refresh: function (layers) {
+if ( TRACE ) { TRACE( "TileLockerBox#Refresh", this ); }
+
+                var $t;
+                if (!this.enable) {
+                    UnityEngine.Debug.LogWarning$1("TileLocker is disabled");
+                    return;
+                }
+                for (var i = 0; i < ((layers.length - 1) | 0); i = (i + 1) | 0) {
+                    var layer = layers[i];
+                    var onTop = layers[((i + 1) | 0)];
+                    var tiles = layer.Tiles;
+                    $t = Bridge.getEnumerator(tiles);
+                    try {
+                        while ($t.moveNext()) {
+                            var tile = { v : $t.Current };
+                            var coverTiles = (System.Linq.Enumerable.from(onTop.Tiles, Tile).where(function (topTile) {
+                                    return !topTile.InBag;
+                                }).where(function (topTile) {
+                                return !topTile.IsMoving;
+                            }).where((function ($me, tile) {
+                                return Bridge.fn.bind($me, function (topTile) {
+                                    return this.IsCover(tile.v.Box, topTile.Box);
+                                });
+                            })(this, tile))).toList(Tile);
+                            tile.v.SetContacts(coverTiles);
+                        }
+                    } finally {
+                        if (Bridge.is($t, System.IDisposable)) {
+                            $t.System$IDisposable$Dispose();
+                        }
+                    }
+                }
+            },
+            /*TileLockerBox.Refresh end.*/
+
+            /*TileLockerBox.DoesntCover start.*/
+            DoesntCover: function (rect1, rect2) {
+if ( TRACE ) { TRACE( "TileLockerBox#DoesntCover", this ); }
+
+                return !this.IsCover(rect1, rect2);
+            },
+            /*TileLockerBox.DoesntCover end.*/
+
+            /*TileLockerBox.IsCover start.*/
+            IsCover: function (rect1, rect2) {
+if ( TRACE ) { TRACE( "TileLockerBox#IsCover", this ); }
+
+                var xOverlap = rect1.Position.x < rect2.Position.x + rect2.Width && rect1.Position.x + rect1.Width > rect2.Position.x;
+                var yOverlap = rect1.Position.y < rect2.Position.y + rect2.Height && rect1.Position.y + rect1.Height > rect2.Position.y;
+                return xOverlap && yOverlap;
+            },
+            /*TileLockerBox.IsCover end.*/
+
+
+        }
+    });
+    /*TileLockerBox end.*/
+
     /*TilesBag start.*/
     Bridge.define("TilesBag", {
         inherits: [UnityEngine.MonoBehaviour],
@@ -912,9 +1034,9 @@ if ( TRACE ) { TRACE( "TilesBag#HaveEmptySlot#get", this ); }
                         });
                 }
             },
-            EmptySlot: {
+            LastEmptySlot: {
                 get: function () {
-if ( TRACE ) { TRACE( "TilesBag#EmptySlot#get", this ); }
+if ( TRACE ) { TRACE( "TilesBag#LastEmptySlot#get", this ); }
 
                     return System.Linq.Enumerable.from(this.slots, TileSlot).firstOrDefault(Bridge.fn.bind(this, function (s) {
                             return s.IsEmpty;
@@ -946,6 +1068,29 @@ if ( TRACE ) { TRACE( "TilesBag#LeftFrom", this ); }
                 return (slot.ID <= 0) ? null : this.slots.getItem(((slot.ID - 1) | 0));
             },
             /*TilesBag.LeftFrom end.*/
+
+            /*TilesBag.GetSlotFor start.*/
+            GetSlotFor: function (tile) {
+if ( TRACE ) { TRACE( "TilesBag#GetSlotFor", this ); }
+
+                var findSame = System.Linq.Enumerable.from(this.BusySlots, TileSlot).firstOrDefault(Bridge.fn.bind(this, function (s) {
+                        return Bridge.referenceEquals(s.Type, tile.Type);
+                    }), null);
+                if (UnityEngine.Object.op_Implicit(findSame)) {
+                    var rightID = (findSame.ID + 1) | 0;
+                    var rightSlot = this.slots.getItem(rightID);
+                    for (var i = (this.slots.Count - 1) | 0; i >= ((rightID + 1) | 0); i = (i - 1) | 0) {
+                        var slot = this.slots.getItem(i);
+                        var leftSlot = this.slots.getItem(((i - 1) | 0));
+                        if (leftSlot.Busy) {
+                            this.Put(leftSlot.Tile, slot);
+                        }
+                    }
+                    return rightSlot;
+                }
+                return this.LastEmptySlot;
+            },
+            /*TilesBag.GetSlotFor end.*/
 
             /*TilesBag.Awake start.*/
             Awake: function () {
@@ -1335,12 +1480,12 @@ if ( TRACE ) { TRACE( "Quest#OnMatch", this ); }
                     UnityEngine.Debug.Log$1("WTF");
                     return;
                 }
-                var find = (System.Linq.Enumerable.from(this.slots, QuestSlot).where(function (s) {
+                var locked = (System.Linq.Enumerable.from(this.slots, QuestSlot).where(function (s) {
                         return Bridge.referenceEquals(s.Type, type);
                     }).where(function (s) {
                     return s.Locked;
                 })).toList(QuestSlot);
-                $t = Bridge.getEnumerator(find);
+                $t = Bridge.getEnumerator(locked);
                 try {
                     while ($t.moveNext()) {
                         var slot = $t.Current;
@@ -1354,7 +1499,10 @@ if ( TRACE ) { TRACE( "Quest#OnMatch", this ); }
                 if (System.Linq.Enumerable.from(this.slots, QuestSlot).all(function (s) {
                         return s.Complete;
                     })) {
+                    Luna.Unity.Analytics.LogEvent$1("Quest win", 0);
                     this.OnWin();
+                } else {
+                    Luna.Unity.Analytics.LogEvent$1("Quest in process. Locked items: " + locked.Count, 0);
                 }
             },
             /*Quest.OnMatch end.*/
@@ -1428,19 +1576,19 @@ if ( TRACE ) { TRACE( "Sounds#Play", this ); }
         fields: {
             _slots: null,
             _cam: null,
-            isDisable: false,
-            clicks: 0
+            _clicks: 0,
+            _isDisable: false
         },
         events: {
-            OnMoveStart: null,
-            OnMoveFinish: null
+            OnMoveFinish: null,
+            OnMoveStart: null
         },
         ctors: {
             init: function () {
 if ( TRACE ) { TRACE( "TileActions#init", this ); }
 
-                Bridge.event(this, "OnMoveStart", function () { });
                 Bridge.event(this, "OnMoveFinish", function () { });
+                Bridge.event(this, "OnMoveStart", function () { });
             }
         },
         methods: {
@@ -1459,7 +1607,7 @@ if ( TRACE ) { TRACE( "TileActions#OnInit", this ); }
             Disable: function () {
 if ( TRACE ) { TRACE( "TileActions#Disable", this ); }
 
-                this.isDisable = true;
+                this._isDisable = true;
             },
             /*TileActions.Disable end.*/
 
@@ -1495,7 +1643,7 @@ if ( TRACE ) { TRACE( "TileActions#OnTouchScreen", this ); }
             Touched: function (tile) {
 if ( TRACE ) { TRACE( "TileActions#Touched", this ); }
 
-                if (!this.isDisable) {
+                if (!this._isDisable) {
                     this.Click(tile);
                 }
             },
@@ -1505,10 +1653,10 @@ if ( TRACE ) { TRACE( "TileActions#Touched", this ); }
             Click: function (tile) {
 if ( TRACE ) { TRACE( "TileActions#Click", this ); }
 
-                this.clicks = (this.clicks + 1) | 0;
-                Luna.Unity.Analytics.LogEvent$1("Tile clicked", this.clicks);
+                this._clicks = (this._clicks + 1) | 0;
+                Luna.Unity.Analytics.LogEvent$1("Tile clicked", this._clicks);
                 if (!this.Game.Bag.NoSpace) {
-                    var empty = this.Game.Bag.EmptySlot;
+                    var empty = this.Game.Bag.GetSlotFor(tile);
                     this.Game.Bag.Put(tile, empty);
                     this.OnMoveStart(tile);
                     tile.addOnMoveFinish(Bridge.fn.cacheBind(this, this.MoveFinished));
@@ -1573,26 +1721,20 @@ if ( TRACE ) { TRACE( "TileBagSorter#init", this ); }
 if ( TRACE ) { TRACE( "TileBagSorter#OnInit", this ); }
 
                 if (this.enable) {
-                    if (UnityEngine.MonoBehaviour.op_Equality(this.Game, null)) {
-                        UnityEngine.Debug.LogError$2("WTF");
-                    }
-                    if (UnityEngine.MonoBehaviour.op_Equality(this.Game.Bag, null)) {
-                        UnityEngine.Debug.LogError$2("WTF 2");
-                    }
-                    this.Game.Bag.addOnRemove(Bridge.fn.cacheBind(this, this.Sort));
+                    this.Game.Bag.addOnRemove(Bridge.fn.cacheBind(this, this.SortAfterMatch3));
                 }
             },
             /*TileBagSorter.OnInit end.*/
 
-            /*TileBagSorter.Sort start.*/
-            Sort: function () {
-if ( TRACE ) { TRACE( "TileBagSorter#Sort", this ); }
+            /*TileBagSorter.SortAfterMatch3 start.*/
+            SortAfterMatch3: function () {
+if ( TRACE ) { TRACE( "TileBagSorter#SortAfterMatch3", this ); }
 
                 if (!this._isSorting) {
                     this.StartCoroutine$1(this.Sorting());
                 }
             },
-            /*TileBagSorter.Sort end.*/
+            /*TileBagSorter.SortAfterMatch3 end.*/
 
             /*TileBagSorter.Sorting start.*/
             Sorting: function () {
@@ -1625,7 +1767,7 @@ if ( TRACE ) { TRACE( "TileBagSorter#Sorting", this ); }
                                 }
                                 case 2: {
                                     busy = this.SortingSlot();
-                                        empty = this.Game.Bag.EmptySlot;
+                                        empty = this.Game.Bag.LastEmptySlot;
                                         this.Game.Bag.Move(busy, empty);
                                         $enumerator.current = new UnityEngine.WaitForSeconds(this.intervalSec);
                                         $step = 3;
@@ -2081,10 +2223,14 @@ if ( TRACE ) { TRACE( "WinCondition#Check", this ); }
 
     if ( MODULE_reflection ) {
     var $m = Bridge.setMetadata,
-        $n = ["System","System.Collections.Generic","UnityEngine","TMPro","UnityEngine.UI","System.Collections"];
+        $n = ["UnityEngine","System","System.Collections.Generic","TMPro","UnityEngine.UI","System.Collections"];
+
+    /*Box start.*/
+    $m("Box", function () { return {"att":1056769,"a":2,"at":[new System.SerializableAttribute()],"m":[{"a":2,"n":".ctor","t":1,"p":[$n[0].Vector2,$n[1].Single,$n[1].Single],"pi":[{"n":"position","pt":$n[0].Vector2,"ps":0},{"n":"width","pt":$n[1].Single,"ps":1},{"n":"height","pt":$n[1].Single,"ps":2}],"sn":"ctor"},{"a":2,"n":"Height","t":4,"rt":$n[1].Single,"sn":"Height","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"Position","t":4,"rt":$n[0].Vector2,"sn":"Position"},{"a":2,"n":"Width","t":4,"rt":$n[1].Single,"sn":"Width","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}}]}; }, $n);
+    /*Box end.*/
 
     /*Deck start.*/
-    $m("Deck", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":1,"n":"FindLayers","t":8,"sn":"FindLayers","rt":$n[0].Void},{"a":1,"n":"InitLayers","t":8,"sn":"InitLayers","rt":$n[0].Void},{"a":2,"n":"LayersTiles","t":8,"sn":"LayersTiles","rt":$n[1].List$1(System.Collections.Generic.List$1(Tile))},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[0].Void},{"a":2,"n":"Layers","t":16,"rt":System.Array.type(DeckLayer),"g":{"a":2,"n":"get_Layers","t":8,"rt":System.Array.type(DeckLayer),"fg":"Layers"},"s":{"a":1,"n":"set_Layers","t":8,"p":[System.Array.type(DeckLayer)],"rt":$n[0].Void,"fs":"Layers"},"fn":"Layers"},{"a":2,"n":"Tiles","t":16,"rt":$n[1].List$1(Tile),"g":{"a":2,"n":"get_Tiles","t":8,"rt":$n[1].List$1(Tile),"fg":"Tiles"},"fn":"Tiles"},{"a":1,"n":"_tiles","t":4,"rt":$n[1].List$1(Tile),"sn":"_tiles"},{"a":1,"backing":true,"n":"<Layers>k__BackingField","t":4,"rt":System.Array.type(DeckLayer),"sn":"Layers"}]}; }, $n);
+    $m("Deck", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":1,"n":"FindLayers","t":8,"sn":"FindLayers","rt":$n[1].Void},{"a":1,"n":"InitLayers","t":8,"sn":"InitLayers","rt":$n[1].Void},{"a":2,"n":"LayersTiles","t":8,"sn":"LayersTiles","rt":$n[2].List$1(System.Collections.Generic.List$1(Tile))},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[1].Void},{"a":2,"n":"Layers","t":16,"rt":System.Array.type(DeckLayer),"g":{"a":2,"n":"get_Layers","t":8,"rt":System.Array.type(DeckLayer),"fg":"Layers"},"s":{"a":1,"n":"set_Layers","t":8,"p":[System.Array.type(DeckLayer)],"rt":$n[1].Void,"fs":"Layers"},"fn":"Layers"},{"a":2,"n":"Tiles","t":16,"rt":$n[2].List$1(Tile),"g":{"a":2,"n":"get_Tiles","t":8,"rt":$n[2].List$1(Tile),"fg":"Tiles"},"fn":"Tiles"},{"a":1,"n":"_tiles","t":4,"rt":$n[2].List$1(Tile),"sn":"_tiles"},{"a":1,"backing":true,"n":"<Layers>k__BackingField","t":4,"rt":System.Array.type(DeckLayer),"sn":"Layers"}]}; }, $n);
     /*Deck end.*/
 
     /*DeckBuilder start.*/
@@ -2092,39 +2238,39 @@ if ( TRACE ) { TRACE( "WinCondition#Check", this ); }
     /*DeckBuilder end.*/
 
     /*DeckLayer start.*/
-    $m("DeckLayer", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":1,"n":"FindTiles","t":8,"sn":"FindTiles","rt":$n[0].Void},{"a":2,"n":"Init","t":8,"pi":[{"n":"deck","pt":Deck,"ps":0},{"n":"layerID","pt":$n[0].Int32,"ps":1}],"sn":"Init","rt":$n[0].Void,"p":[Deck,$n[0].Int32]},{"a":1,"n":"InitTiles","t":8,"pi":[{"n":"game","pt":Game,"ps":0},{"n":"layerID","pt":$n[0].Int32,"ps":1}],"sn":"InitTiles","rt":$n[0].Void,"p":[Game,$n[0].Int32]},{"a":2,"n":"Tiles","t":4,"rt":System.Array.type(Tile),"sn":"Tiles"},{"a":1,"n":"_deck","t":4,"rt":Deck,"sn":"_deck"},{"a":2,"n":"layer","t":4,"rt":$n[0].Int32,"sn":"layer","box":function ($v) { return Bridge.box($v, System.Int32);}}]}; }, $n);
+    $m("DeckLayer", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":1,"n":"FindTiles","t":8,"sn":"FindTiles","rt":$n[1].Void},{"a":2,"n":"Init","t":8,"pi":[{"n":"deck","pt":Deck,"ps":0},{"n":"layerID","pt":$n[1].Int32,"ps":1}],"sn":"Init","rt":$n[1].Void,"p":[Deck,$n[1].Int32]},{"a":1,"n":"InitTiles","t":8,"pi":[{"n":"game","pt":Game,"ps":0},{"n":"layerID","pt":$n[1].Int32,"ps":1}],"sn":"InitTiles","rt":$n[1].Void,"p":[Game,$n[1].Int32]},{"a":2,"n":"Tiles","t":4,"rt":System.Array.type(Tile),"sn":"Tiles"},{"a":1,"n":"_deck","t":4,"rt":Deck,"sn":"_deck"},{"a":2,"n":"layer","t":4,"rt":$n[1].Int32,"sn":"layer","box":function ($v) { return Bridge.box($v, System.Int32);}}]}; }, $n);
     /*DeckLayer end.*/
 
     /*EndCard start.*/
-    $m("EndCard", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":2,"n":"Hide","t":8,"sn":"Hide","rt":$n[0].Void},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[0].Void},{"a":2,"n":"Show","t":8,"sn":"Show","rt":$n[0].Void},{"a":2,"n":"canvas","t":4,"rt":$n[2].Canvas,"sn":"canvas"}]}; }, $n);
+    $m("EndCard", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":2,"n":"Hide","t":8,"sn":"Hide","rt":$n[1].Void},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[1].Void},{"a":2,"n":"Show","t":8,"sn":"Show","rt":$n[1].Void},{"a":2,"n":"canvas","t":4,"rt":$n[0].Canvas,"sn":"canvas"}]}; }, $n);
     /*EndCard end.*/
 
     /*Game start.*/
-    $m("Game", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":2,"n":"Find","t":8,"pi":[{"n":"t","pt":$n[2].Transform,"ps":0}],"sn":"Find","rt":Tile,"p":[$n[2].Transform]},{"a":1,"n":"InitComponents","t":8,"sn":"InitComponents","rt":$n[0].Void},{"a":1,"n":"Lose","t":8,"sn":"Lose","rt":$n[0].Void},{"a":1,"n":"OnTileMoved","t":8,"pi":[{"n":"obj","pt":Tile,"ps":0}],"sn":"OnTileMoved","rt":$n[0].Void,"p":[Tile]},{"a":1,"n":"OnValidate","t":8,"sn":"OnValidate","rt":$n[0].Void},{"a":2,"n":"OpenURL","t":8,"sn":"OpenURL","rt":$n[0].Void},{"a":1,"n":"QuestWin","t":8,"sn":"QuestWin","rt":$n[0].Void},{"a":1,"n":"ShowDeck","t":8,"pi":[{"n":"spawned","pt":$n[1].List$1(Tile),"ps":0}],"sn":"ShowDeck","rt":$n[0].Void,"p":[$n[1].List$1(Tile)]},{"a":1,"n":"Spawn","t":8,"sn":"Spawn","rt":$n[0].Void},{"a":1,"n":"Start","t":8,"sn":"Start","rt":$n[0].Void},{"a":1,"n":"StartGame","t":8,"sn":"StartGame","rt":$n[0].Void},{"a":1,"n":"Win","t":8,"sn":"Win","rt":$n[0].Void},{"a":2,"n":"Actions","t":16,"rt":TileActions,"g":{"a":2,"n":"get_Actions","t":8,"rt":TileActions,"fg":"Actions"},"fn":"Actions"},{"a":2,"n":"Bag","t":16,"rt":TilesBag,"g":{"a":2,"n":"get_Bag","t":8,"rt":TilesBag,"fg":"Bag"},"fn":"Bag"},{"a":2,"n":"Condition","t":16,"rt":WinCondition,"g":{"a":2,"n":"get_Condition","t":8,"rt":WinCondition,"fg":"Condition"},"fn":"Condition"},{"a":2,"n":"Input","t":16,"rt":InputTouch,"g":{"a":2,"n":"get_Input","t":8,"rt":InputTouch,"fg":"Input"},"fn":"Input"},{"a":2,"n":"TileMatcher","t":16,"rt":TileMatcher,"g":{"a":2,"n":"get_TileMatcher","t":8,"rt":TileMatcher,"fg":"TileMatcher"},"fn":"TileMatcher"},{"a":2,"n":"TilesInGame","t":16,"rt":$n[1].IReadOnlyList$1(Tile),"g":{"a":2,"n":"get_TilesInGame","t":8,"rt":$n[1].IReadOnlyList$1(Tile),"fg":"TilesInGame"},"fn":"TilesInGame"},{"a":1,"n":"_isGameEnded","t":4,"rt":$n[0].Boolean,"sn":"_isGameEnded","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"actions","t":4,"rt":TileActions,"sn":"actions"},{"at":[new UnityEngine.SpaceAttribute.$ctor1(20.0),new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"autoGameOverInSeconds","t":4,"rt":$n[0].Single,"sn":"autoGameOverInSeconds","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"bag","t":4,"rt":TilesBag,"sn":"bag"},{"at":[new UnityEngine.SpaceAttribute.$ctor1(20.0),new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"deck","t":4,"rt":Deck,"sn":"deck"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"endCard","t":4,"rt":EndCard,"sn":"endCard"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"input","t":4,"rt":InputTouch,"sn":"input"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"locker","t":4,"rt":TileLocker,"sn":"locker"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"loseCondition","t":4,"rt":LoseCondition,"sn":"loseCondition"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"quest","t":4,"rt":Quest,"sn":"quest"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"spawnAnimation","t":4,"rt":TileSpawnAnimation,"sn":"spawnAnimation"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"spawnRandom","t":4,"rt":TileRandomSpawner,"sn":"spawnRandom"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"tileMatcher","t":4,"rt":TileMatcher,"sn":"tileMatcher"},{"at":[new UnityEngine.SpaceAttribute.$ctor1(20.0),new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"tileToSpawn","t":4,"rt":$n[0].Int32,"sn":"tileToSpawn","box":function ($v) { return Bridge.box($v, System.Int32);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"tilesInGame","t":4,"rt":$n[1].List$1(Tile),"sn":"tilesInGame"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"tilesInScene","t":4,"rt":$n[0].Int32,"sn":"tilesInScene","box":function ($v) { return Bridge.box($v, System.Int32);}},{"at":[new UnityEngine.SpaceAttribute.ctor(),new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"useRandom","t":4,"rt":$n[0].Boolean,"sn":"useRandom","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"winCondition","t":4,"rt":WinCondition,"sn":"winCondition"},{"a":2,"n":"OnLose","t":2,"ad":{"a":2,"n":"add_OnLose","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"addOnLose","rt":$n[0].Void,"p":[Function]},"r":{"a":2,"n":"remove_OnLose","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"removeOnLose","rt":$n[0].Void,"p":[Function]}},{"a":2,"n":"OnQuestWin","t":2,"ad":{"a":2,"n":"add_OnQuestWin","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"addOnQuestWin","rt":$n[0].Void,"p":[Function]},"r":{"a":2,"n":"remove_OnQuestWin","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"removeOnQuestWin","rt":$n[0].Void,"p":[Function]}}]}; }, $n);
+    $m("Game", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":2,"n":"Find","t":8,"pi":[{"n":"t","pt":$n[0].Transform,"ps":0}],"sn":"Find","rt":Tile,"p":[$n[0].Transform]},{"a":1,"n":"InitComponents","t":8,"sn":"InitComponents","rt":$n[1].Void},{"a":1,"n":"Lose","t":8,"sn":"Lose","rt":$n[1].Void},{"a":1,"n":"OnTileMoved","t":8,"pi":[{"n":"obj","pt":Tile,"ps":0}],"sn":"OnTileMoved","rt":$n[1].Void,"p":[Tile]},{"a":1,"n":"OnValidate","t":8,"sn":"OnValidate","rt":$n[1].Void},{"a":2,"n":"OpenURL","t":8,"sn":"OpenURL","rt":$n[1].Void},{"a":1,"n":"QuestWin","t":8,"sn":"QuestWin","rt":$n[1].Void},{"a":1,"n":"RefreshTiles","t":8,"sn":"RefreshTiles","rt":$n[1].Void},{"a":1,"n":"ShowDeck","t":8,"pi":[{"n":"spawned","pt":$n[2].List$1(Tile),"ps":0}],"sn":"ShowDeck","rt":$n[1].Void,"p":[$n[2].List$1(Tile)]},{"a":1,"n":"Spawn","t":8,"sn":"Spawn","rt":$n[1].Void},{"a":1,"n":"Start","t":8,"sn":"Start","rt":$n[1].Void},{"a":1,"n":"StartGame","t":8,"sn":"StartGame","rt":$n[1].Void},{"a":1,"n":"Win","t":8,"sn":"Win","rt":$n[1].Void},{"a":2,"n":"Actions","t":16,"rt":TileActions,"g":{"a":2,"n":"get_Actions","t":8,"rt":TileActions,"fg":"Actions"},"fn":"Actions"},{"a":2,"n":"Bag","t":16,"rt":TilesBag,"g":{"a":2,"n":"get_Bag","t":8,"rt":TilesBag,"fg":"Bag"},"fn":"Bag"},{"a":2,"n":"Condition","t":16,"rt":WinCondition,"g":{"a":2,"n":"get_Condition","t":8,"rt":WinCondition,"fg":"Condition"},"fn":"Condition"},{"a":2,"n":"Input","t":16,"rt":InputTouch,"g":{"a":2,"n":"get_Input","t":8,"rt":InputTouch,"fg":"Input"},"fn":"Input"},{"a":2,"n":"TileMatcher","t":16,"rt":TileMatcher,"g":{"a":2,"n":"get_TileMatcher","t":8,"rt":TileMatcher,"fg":"TileMatcher"},"fn":"TileMatcher"},{"a":2,"n":"TilesInGame","t":16,"rt":$n[2].IReadOnlyList$1(Tile),"g":{"a":2,"n":"get_TilesInGame","t":8,"rt":$n[2].IReadOnlyList$1(Tile),"fg":"TilesInGame"},"fn":"TilesInGame"},{"a":1,"n":"_isGameEnded","t":4,"rt":$n[1].Boolean,"sn":"_isGameEnded","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"actions","t":4,"rt":TileActions,"sn":"actions"},{"at":[new UnityEngine.SpaceAttribute.$ctor1(20.0),new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"autoGameOverInSeconds","t":4,"rt":$n[1].Single,"sn":"autoGameOverInSeconds","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"bag","t":4,"rt":TilesBag,"sn":"bag"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"boxLocker","t":4,"rt":TileLockerBox,"sn":"boxLocker"},{"at":[new UnityEngine.SpaceAttribute.$ctor1(20.0),new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"deck","t":4,"rt":Deck,"sn":"deck"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"endCard","t":4,"rt":EndCard,"sn":"endCard"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"input","t":4,"rt":InputTouch,"sn":"input"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"locker","t":4,"rt":TileLocker,"sn":"locker"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"loseCondition","t":4,"rt":LoseCondition,"sn":"loseCondition"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"quest","t":4,"rt":Quest,"sn":"quest"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"spawnAnimation","t":4,"rt":TileSpawnAnimation,"sn":"spawnAnimation"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"spawnRandom","t":4,"rt":TileRandomSpawner,"sn":"spawnRandom"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"tileMatcher","t":4,"rt":TileMatcher,"sn":"tileMatcher"},{"at":[new UnityEngine.SpaceAttribute.$ctor1(20.0),new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"tileToSpawn","t":4,"rt":$n[1].Int32,"sn":"tileToSpawn","box":function ($v) { return Bridge.box($v, System.Int32);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"tilesInGame","t":4,"rt":$n[2].List$1(Tile),"sn":"tilesInGame"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"tilesInScene","t":4,"rt":$n[1].Int32,"sn":"tilesInScene","box":function ($v) { return Bridge.box($v, System.Int32);}},{"at":[new UnityEngine.SpaceAttribute.ctor(),new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"useRandom","t":4,"rt":$n[1].Boolean,"sn":"useRandom","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"winCondition","t":4,"rt":WinCondition,"sn":"winCondition"},{"a":2,"n":"OnLose","t":2,"ad":{"a":2,"n":"add_OnLose","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"addOnLose","rt":$n[1].Void,"p":[Function]},"r":{"a":2,"n":"remove_OnLose","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"removeOnLose","rt":$n[1].Void,"p":[Function]}},{"a":2,"n":"OnQuestWin","t":2,"ad":{"a":2,"n":"add_OnQuestWin","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"addOnQuestWin","rt":$n[1].Void,"p":[Function]},"r":{"a":2,"n":"remove_OnQuestWin","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"removeOnQuestWin","rt":$n[1].Void,"p":[Function]}}]}; }, $n);
     /*Game end.*/
 
     /*GameComponent start.*/
-    $m("GameComponent", function () { return {"att":1048705,"a":2,"m":[{"a":3,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":2,"n":"Init","t":8,"pi":[{"n":"game","pt":Game,"ps":0}],"sn":"Init","rt":$n[0].Void,"p":[Game]},{"ab":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[0].Void},{"at":[new UnityEngine.HideInInspector()],"a":2,"n":"Game","t":4,"rt":Game,"sn":"Game"}]}; }, $n);
+    $m("GameComponent", function () { return {"att":1048705,"a":2,"m":[{"a":3,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":2,"n":"Init","t":8,"pi":[{"n":"game","pt":Game,"ps":0}],"sn":"Init","rt":$n[1].Void,"p":[Game]},{"ab":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[1].Void},{"at":[new UnityEngine.HideInInspector()],"a":2,"n":"Game","t":4,"rt":Game,"sn":"Game"}]}; }, $n);
     /*GameComponent end.*/
 
     /*InputTouch start.*/
-    $m("InputTouch", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[0].Void},{"a":1,"n":"Update","t":8,"sn":"Update","rt":$n[0].Void},{"a":1,"n":"_cooldown","t":4,"rt":$n[0].Single,"sn":"_cooldown","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"inputCooldown","t":4,"rt":$n[0].Single,"sn":"inputCooldown","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"touchSize","t":4,"rt":$n[0].Single,"sn":"touchSize","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"touches","t":4,"rt":$n[1].List$1(UnityEngine.Vector2),"sn":"touches"},{"a":2,"n":"OnTouchScreen","t":2,"ad":{"a":2,"n":"add_OnTouchScreen","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"addOnTouchScreen","rt":$n[0].Void,"p":[Function]},"r":{"a":2,"n":"remove_OnTouchScreen","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"removeOnTouchScreen","rt":$n[0].Void,"p":[Function]}}]}; }, $n);
+    $m("InputTouch", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[1].Void},{"a":1,"n":"Update","t":8,"sn":"Update","rt":$n[1].Void},{"a":1,"n":"_cooldown","t":4,"rt":$n[1].Single,"sn":"_cooldown","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"inputCooldown","t":4,"rt":$n[1].Single,"sn":"inputCooldown","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"touchSize","t":4,"rt":$n[1].Single,"sn":"touchSize","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"touches","t":4,"rt":$n[2].List$1(UnityEngine.Vector2),"sn":"touches"},{"a":2,"n":"OnTouchScreen","t":2,"ad":{"a":2,"n":"add_OnTouchScreen","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"addOnTouchScreen","rt":$n[1].Void,"p":[Function]},"r":{"a":2,"n":"remove_OnTouchScreen","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"removeOnTouchScreen","rt":$n[1].Void,"p":[Function]}}]}; }, $n);
     /*InputTouch end.*/
 
     /*LoseCondition start.*/
-    $m("LoseCondition", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":1,"n":"Check","t":8,"sn":"Check","rt":$n[0].Void},{"a":1,"n":"Lose","t":8,"sn":"Lose","rt":$n[0].Void},{"a":1,"n":"OnBagChange","t":8,"sn":"OnBagChange","rt":$n[0].Void},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[0].Void},{"a":1,"n":"Update","t":8,"sn":"Update","rt":$n[0].Void},{"a":1,"n":"_checkDelay","t":4,"rt":$n[0].Single,"sn":"_checkDelay","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"OnLose","t":2,"ad":{"a":2,"n":"add_OnLose","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"addOnLose","rt":$n[0].Void,"p":[Function]},"r":{"a":2,"n":"remove_OnLose","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"removeOnLose","rt":$n[0].Void,"p":[Function]}}]}; }, $n);
+    $m("LoseCondition", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":1,"n":"Check","t":8,"sn":"Check","rt":$n[1].Void},{"a":1,"n":"Lose","t":8,"sn":"Lose","rt":$n[1].Void},{"a":1,"n":"OnBagChange","t":8,"sn":"OnBagChange","rt":$n[1].Void},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[1].Void},{"a":1,"n":"Update","t":8,"sn":"Update","rt":$n[1].Void},{"a":1,"n":"_checkDelay","t":4,"rt":$n[1].Single,"sn":"_checkDelay","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"OnLose","t":2,"ad":{"a":2,"n":"add_OnLose","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"addOnLose","rt":$n[1].Void,"p":[Function]},"r":{"a":2,"n":"remove_OnLose","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"removeOnLose","rt":$n[1].Void,"p":[Function]}}]}; }, $n);
     /*LoseCondition end.*/
 
     /*Quest start.*/
-    $m("Quest", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[0].Void},{"a":1,"n":"OnMatch","t":8,"pi":[{"n":"bagSlots","pt":$n[1].List$1(TileSlot),"ps":0},{"n":"type","pt":TileSO,"ps":1}],"sn":"OnMatch","rt":$n[0].Void,"p":[$n[1].List$1(TileSlot),TileSO]},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"slots","t":4,"rt":$n[1].List$1(QuestSlot),"sn":"slots"},{"a":2,"n":"OnWin","t":2,"ad":{"a":2,"n":"add_OnWin","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"addOnWin","rt":$n[0].Void,"p":[Function]},"r":{"a":2,"n":"remove_OnWin","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"removeOnWin","rt":$n[0].Void,"p":[Function]}}]}; }, $n);
+    $m("Quest", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[1].Void},{"a":1,"n":"OnMatch","t":8,"pi":[{"n":"bagSlots","pt":$n[2].List$1(TileSlot),"ps":0},{"n":"type","pt":TileSO,"ps":1}],"sn":"OnMatch","rt":$n[1].Void,"p":[$n[2].List$1(TileSlot),TileSO]},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"slots","t":4,"rt":$n[2].List$1(QuestSlot),"sn":"slots"},{"a":2,"n":"OnWin","t":2,"ad":{"a":2,"n":"add_OnWin","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"addOnWin","rt":$n[1].Void,"p":[Function]},"r":{"a":2,"n":"remove_OnWin","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"removeOnWin","rt":$n[1].Void,"p":[Function]}}]}; }, $n);
     /*Quest end.*/
 
     /*QuestSlot start.*/
-    $m("QuestSlot", function () { return {"att":1048577,"a":2,"at":[new UnityEngine.ExecuteAlwaysAttribute()],"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":1,"n":"Animate","t":8,"sn":"Animate","rt":$n[0].Void},{"a":2,"n":"PlayAnimation","t":8,"sn":"PlayAnimation","rt":$n[0].Void},{"a":1,"n":"RefreshIcon","t":8,"sn":"RefreshIcon","rt":$n[0].Void},{"a":1,"n":"Start","t":8,"sn":"Start","rt":$n[0].Void},{"a":2,"n":"Unlock","t":8,"sn":"Unlock","rt":$n[0].Void},{"a":1,"n":"Update","t":8,"sn":"Update","rt":$n[0].Void},{"a":2,"n":"Complete","t":16,"rt":$n[0].Boolean,"g":{"a":2,"n":"get_Complete","t":8,"rt":$n[0].Boolean,"fg":"Complete","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},"fn":"Complete"},{"a":2,"n":"Locked","t":16,"rt":$n[0].Boolean,"g":{"a":2,"n":"get_Locked","t":8,"rt":$n[0].Boolean,"fg":"Locked","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},"fn":"Locked"},{"a":2,"n":"Type","t":16,"rt":TileSO,"g":{"a":2,"n":"get_Type","t":8,"rt":TileSO,"fg":"Type"},"fn":"Type"},{"a":2,"n":"EndScale","t":4,"rt":$n[2].Vector3,"sn":"EndScale"},{"a":2,"n":"InitialScale","t":4,"rt":$n[2].Vector3,"sn":"InitialScale"},{"a":2,"n":"MaximumScale","t":4,"rt":$n[2].Vector3,"sn":"MaximumScale"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"amount","t":4,"rt":$n[0].Int32,"sn":"amount","box":function ($v) { return Bridge.box($v, System.Int32);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"amountTxt","t":4,"rt":$n[3].TextMeshProUGUI,"sn":"amountTxt"},{"a":2,"n":"animationDuration","t":4,"rt":$n[0].Single,"sn":"animationDuration","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":1,"n":"elapsedTime","t":4,"rt":$n[0].Single,"sn":"elapsedTime","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.SpaceAttribute.$ctor1(20.0),new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"icon","t":4,"rt":$n[4].Image,"sn":"icon"},{"a":1,"n":"isAnimating","t":4,"rt":$n[0].Boolean,"sn":"isAnimating","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"isShrinking","t":4,"rt":$n[0].Boolean,"sn":"isShrinking","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"locked","t":4,"rt":$n[0].Boolean,"sn":"locked","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"maxSizeTrigger","t":4,"rt":$n[0].Single,"sn":"maxSizeTrigger","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.Serialization.FormerlySerializedAsAttribute("goal"),new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"type","t":4,"rt":TileSO,"sn":"type"}]}; }, $n);
+    $m("QuestSlot", function () { return {"att":1048577,"a":2,"at":[new UnityEngine.ExecuteAlwaysAttribute()],"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":1,"n":"Animate","t":8,"sn":"Animate","rt":$n[1].Void},{"a":2,"n":"PlayAnimation","t":8,"sn":"PlayAnimation","rt":$n[1].Void},{"a":1,"n":"RefreshIcon","t":8,"sn":"RefreshIcon","rt":$n[1].Void},{"a":1,"n":"Start","t":8,"sn":"Start","rt":$n[1].Void},{"a":2,"n":"Unlock","t":8,"sn":"Unlock","rt":$n[1].Void},{"a":1,"n":"Update","t":8,"sn":"Update","rt":$n[1].Void},{"a":2,"n":"Complete","t":16,"rt":$n[1].Boolean,"g":{"a":2,"n":"get_Complete","t":8,"rt":$n[1].Boolean,"fg":"Complete","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},"fn":"Complete"},{"a":2,"n":"Locked","t":16,"rt":$n[1].Boolean,"g":{"a":2,"n":"get_Locked","t":8,"rt":$n[1].Boolean,"fg":"Locked","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},"fn":"Locked"},{"a":2,"n":"Type","t":16,"rt":TileSO,"g":{"a":2,"n":"get_Type","t":8,"rt":TileSO,"fg":"Type"},"fn":"Type"},{"a":2,"n":"EndScale","t":4,"rt":$n[0].Vector3,"sn":"EndScale"},{"a":2,"n":"InitialScale","t":4,"rt":$n[0].Vector3,"sn":"InitialScale"},{"a":2,"n":"MaximumScale","t":4,"rt":$n[0].Vector3,"sn":"MaximumScale"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"amount","t":4,"rt":$n[1].Int32,"sn":"amount","box":function ($v) { return Bridge.box($v, System.Int32);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"amountTxt","t":4,"rt":$n[3].TextMeshProUGUI,"sn":"amountTxt"},{"a":2,"n":"animationDuration","t":4,"rt":$n[1].Single,"sn":"animationDuration","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":1,"n":"elapsedTime","t":4,"rt":$n[1].Single,"sn":"elapsedTime","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.SpaceAttribute.$ctor1(20.0),new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"icon","t":4,"rt":$n[4].Image,"sn":"icon"},{"a":1,"n":"isAnimating","t":4,"rt":$n[1].Boolean,"sn":"isAnimating","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"isShrinking","t":4,"rt":$n[1].Boolean,"sn":"isShrinking","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"locked","t":4,"rt":$n[1].Boolean,"sn":"locked","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"maxSizeTrigger","t":4,"rt":$n[1].Single,"sn":"maxSizeTrigger","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.Serialization.FormerlySerializedAsAttribute("goal"),new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"type","t":4,"rt":TileSO,"sn":"type"}]}; }, $n);
     /*QuestSlot end.*/
 
     /*ResetLocalPosition start.*/
-    $m("ResetLocalPosition", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":1,"n":"Awake","t":8,"sn":"Awake","rt":$n[0].Void}]}; }, $n);
+    $m("ResetLocalPosition", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":1,"n":"Awake","t":8,"sn":"Awake","rt":$n[1].Void}]}; }, $n);
     /*ResetLocalPosition end.*/
 
     /*Sound start.*/
@@ -2132,57 +2278,61 @@ if ( TRACE ) { TRACE( "WinCondition#Check", this ); }
     /*Sound end.*/
 
     /*Sounds start.*/
-    $m("Sounds", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[0].Void},{"a":2,"n":"Play","t":8,"pi":[{"n":"type","pt":Sound,"ps":0}],"sn":"Play","rt":$n[0].Void,"p":[Sound]},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"leveLose","t":4,"rt":$n[2].AudioClip,"sn":"leveLose"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"levelWin","t":4,"rt":$n[2].AudioClip,"sn":"levelWin"},{"at":[new UnityEngine.SpaceAttribute.$ctor1(50.0),new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"source","t":4,"rt":$n[2].AudioSource,"sn":"source"},{"at":[new UnityEngine.SpaceAttribute.$ctor1(10.0),new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"tileClick","t":4,"rt":$n[2].AudioClip,"sn":"tileClick"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"tileMerge","t":4,"rt":$n[2].AudioClip,"sn":"tileMerge"}]}; }, $n);
+    $m("Sounds", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[1].Void},{"a":2,"n":"Play","t":8,"pi":[{"n":"type","pt":Sound,"ps":0}],"sn":"Play","rt":$n[1].Void,"p":[Sound]},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"leveLose","t":4,"rt":$n[0].AudioClip,"sn":"leveLose"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"levelWin","t":4,"rt":$n[0].AudioClip,"sn":"levelWin"},{"at":[new UnityEngine.SpaceAttribute.$ctor1(50.0),new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"source","t":4,"rt":$n[0].AudioSource,"sn":"source"},{"at":[new UnityEngine.SpaceAttribute.$ctor1(10.0),new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"tileClick","t":4,"rt":$n[0].AudioClip,"sn":"tileClick"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"tileMerge","t":4,"rt":$n[0].AudioClip,"sn":"tileMerge"}]}; }, $n);
     /*Sounds end.*/
 
     /*Tile start.*/
-    $m("Tile", function () { return {"att":1048577,"a":2,"at":[new UnityEngine.ExecuteAlwaysAttribute()],"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":2,"n":"Hide","t":8,"sn":"Hide","rt":$n[0].Void},{"a":1,"n":"HideLockedImage","t":8,"sn":"HideLockedImage","rt":$n[0].Void},{"a":2,"n":"Lock","t":8,"sn":"Lock","rt":$n[0].Void},{"a":2,"n":"MoveTo","t":8,"pi":[{"n":"slot","pt":TileSlot,"ps":0}],"sn":"MoveTo","rt":$n[0].Void,"p":[TileSlot]},{"a":1,"n":"OnTriggerEnter2D","t":8,"pi":[{"n":"other","pt":$n[2].Collider2D,"ps":0}],"sn":"OnTriggerEnter2D","rt":$n[0].Void,"p":[$n[2].Collider2D]},{"a":1,"n":"OnTriggerExit2D","t":8,"pi":[{"n":"other","pt":$n[2].Collider2D,"ps":0}],"sn":"OnTriggerExit2D","rt":$n[0].Void,"p":[$n[2].Collider2D]},{"a":1,"n":"OnTriggerStay2D","t":8,"pi":[{"n":"other","pt":$n[2].Collider2D,"ps":0}],"sn":"OnTriggerStay2D","rt":$n[0].Void,"p":[$n[2].Collider2D]},{"a":2,"n":"PutInBag","t":8,"sn":"PutInBag","rt":$n[0].Void},{"a":1,"n":"Refresh","t":8,"sn":"Refresh","rt":$n[0].Void},{"a":1,"n":"Refresh","t":8,"pi":[{"n":"so","pt":TileSO,"ps":0}],"sn":"Refresh$1","rt":$n[0].Void,"p":[TileSO]},{"a":1,"n":"RefreshEditor","t":8,"sn":"RefreshEditor","rt":$n[0].Void},{"a":1,"n":"RefreshLock","t":8,"sn":"RefreshLock","rt":$n[0].Void},{"a":1,"n":"SetAlpha","t":8,"pi":[{"n":"alpha","pt":$n[0].Single,"ps":0}],"sn":"SetAlpha","rt":$n[0].Void,"p":[$n[0].Single]},{"a":2,"n":"SetContacts","t":8,"pi":[{"n":"covers","pt":$n[1].List$1(Tile),"ps":0}],"sn":"SetContacts","rt":$n[0].Void,"p":[$n[1].List$1(Tile)]},{"a":2,"n":"SetGame","t":8,"pi":[{"n":"game","pt":Game,"ps":0}],"sn":"SetGame","rt":$n[0].Void,"p":[Game]},{"a":2,"n":"SetLayer","t":8,"pi":[{"n":"l","pt":$n[0].Int32,"ps":0},{"n":"lineID","pt":$n[0].Int32,"ps":1}],"sn":"SetLayer","rt":$n[0].Void,"p":[$n[0].Int32,$n[0].Int32]},{"a":2,"n":"Show","t":8,"sn":"Show","rt":$n[0].Void},{"a":1,"n":"ShowLockedImage","t":8,"sn":"ShowLockedImage","rt":$n[0].Void},{"a":2,"n":"SpawnAnimation","t":8,"sn":"SpawnAnimation","rt":$n[0].Void},{"a":1,"n":"StopMove","t":8,"sn":"StopMove","rt":$n[0].Void},{"a":2,"n":"Unlock","t":8,"sn":"Unlock","rt":$n[0].Void},{"a":1,"n":"Update","t":8,"sn":"Update","rt":$n[0].Void},{"a":1,"n":"Arrive","t":16,"rt":$n[0].Boolean,"g":{"a":1,"n":"get_Arrive","t":8,"rt":$n[0].Boolean,"fg":"Arrive","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},"fn":"Arrive"},{"a":2,"n":"InBag","t":16,"rt":$n[0].Boolean,"g":{"a":2,"n":"get_InBag","t":8,"rt":$n[0].Boolean,"fg":"InBag","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},"s":{"a":1,"n":"set_InBag","t":8,"p":[$n[0].Boolean],"rt":$n[0].Void,"fs":"InBag"},"fn":"InBag"},{"a":2,"n":"IsClickable","t":16,"rt":$n[0].Boolean,"g":{"a":2,"n":"get_IsClickable","t":8,"rt":$n[0].Boolean,"fg":"IsClickable","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},"fn":"IsClickable"},{"a":2,"n":"IsMoving","t":16,"rt":$n[0].Boolean,"g":{"a":2,"n":"get_IsMoving","t":8,"rt":$n[0].Boolean,"fg":"IsMoving","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},"fn":"IsMoving"},{"a":2,"n":"Position","t":16,"rt":$n[2].Vector2,"g":{"a":2,"n":"get_Position","t":8,"rt":$n[2].Vector2,"fg":"Position"},"fn":"Position"},{"a":2,"n":"Type","t":16,"rt":TileSO,"g":{"a":2,"n":"get_Type","t":8,"rt":TileSO,"fg":"Type"},"fn":"Type"},{"a":2,"n":"X","t":16,"rt":$n[0].Single,"g":{"a":2,"n":"get_X","t":8,"rt":$n[0].Single,"fg":"X","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},"fn":"X"},{"a":2,"n":"Y","t":16,"rt":$n[0].Single,"g":{"a":2,"n":"get_Y","t":8,"rt":$n[0].Single,"fg":"Y","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},"fn":"Y"},{"a":1,"n":"_fadeFrom","t":4,"rt":$n[0].Single,"sn":"_fadeFrom","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":1,"n":"_fadeTimer","t":4,"rt":$n[0].Single,"sn":"_fadeTimer","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":1,"n":"_fadeTo","t":4,"rt":$n[0].Single,"sn":"_fadeTo","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":1,"n":"_game","t":4,"rt":Game,"sn":"_game"},{"a":1,"n":"_isFading","t":4,"rt":$n[0].Boolean,"sn":"_isFading","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"_isMoving","t":4,"rt":$n[0].Boolean,"sn":"_isMoving","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"_isSpawnAnimation","t":4,"rt":$n[0].Boolean,"sn":"_isSpawnAnimation","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"_lastType","t":4,"rt":TileSO,"sn":"_lastType"},{"a":1,"n":"_spawnTimer","t":4,"rt":$n[0].Single,"sn":"_spawnTimer","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":1,"n":"_targetPosition","t":4,"rt":$n[2].Vector3,"sn":"_targetPosition"},{"a":1,"n":"_targetSlot","t":4,"rt":TileSlot,"sn":"_targetSlot"},{"a":1,"n":"_timer","t":4,"rt":$n[0].Single,"sn":"_timer","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"backGroundSort","t":4,"rt":$n[0].Int32,"sn":"backGroundSort","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":2,"n":"background","t":4,"rt":$n[2].SpriteRenderer,"sn":"background"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"coverTiles","t":4,"rt":$n[1].List$1(Tile),"sn":"coverTiles"},{"a":1,"n":"currentAlpha","t":4,"rt":$n[0].Single,"sn":"currentAlpha","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"debug","t":4,"rt":$n[0].Boolean,"sn":"debug","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"at":[new UnityEngine.SpaceAttribute.$ctor1(20.0)],"a":2,"n":"defaultSize","t":4,"rt":$n[2].Vector3,"sn":"defaultSize"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"disabledSort","t":4,"rt":$n[0].Int32,"sn":"disabledSort","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":2,"n":"fadeDuration","t":4,"rt":$n[0].Single,"sn":"fadeDuration","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":1,"n":"fadeSpeed","t":4,"rt":$n[0].Single,"sn":"fadeSpeed","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.SpaceAttribute.$ctor1(20.0)],"a":2,"n":"icon","t":4,"rt":$n[2].SpriteRenderer,"sn":"icon"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"iconSort","t":4,"rt":$n[0].Int32,"sn":"iconSort","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":2,"n":"isHidden","t":4,"rt":$n[0].Boolean,"sn":"isHidden","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"at":[new UnityEngine.SpaceAttribute.$ctor1(20.0)],"a":2,"n":"layer","t":4,"rt":$n[0].Int32,"sn":"layer","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":2,"n":"line","t":4,"rt":$n[0].Int32,"sn":"line","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":2,"n":"lockAlpha","t":4,"rt":$n[0].Single,"sn":"lockAlpha","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"lockTile","t":4,"rt":$n[2].SpriteRenderer,"sn":"lockTile"},{"at":[new UnityEngine.Serialization.FormerlySerializedAsAttribute("isClickable"),new UnityEngine.SpaceAttribute.$ctor1(20.0)],"a":2,"n":"locked","t":4,"rt":$n[0].Boolean,"sn":"locked","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"spawnAnimDuration","t":4,"rt":$n[0].Single,"sn":"spawnAnimDuration","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"spawnAnimSize","t":4,"rt":$n[0].Single,"sn":"spawnAnimSize","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"speed","t":4,"rt":$n[0].Single,"sn":"speed","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"trail","t":4,"rt":$n[2].TrailRenderer,"sn":"trail"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"trailSort","t":4,"rt":$n[0].Int32,"sn":"trailSort","box":function ($v) { return Bridge.box($v, System.Int32);}},{"at":[new UnityEngine.Serialization.FormerlySerializedAsAttribute("Type"),new UnityEngine.SpaceAttribute.$ctor1(20.0),new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"type","t":4,"rt":TileSO,"sn":"type"},{"a":2,"n":"OnMoveFinish","t":2,"ad":{"a":2,"n":"add_OnMoveFinish","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"addOnMoveFinish","rt":$n[0].Void,"p":[Function]},"r":{"a":2,"n":"remove_OnMoveFinish","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"removeOnMoveFinish","rt":$n[0].Void,"p":[Function]}},{"a":1,"backing":true,"n":"<InBag>k__BackingField","t":4,"rt":$n[0].Boolean,"sn":"InBag","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}}]}; }, $n);
+    $m("Tile", function () { return {"att":1048577,"a":2,"at":[new UnityEngine.ExecuteAlwaysAttribute()],"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":2,"n":"Hide","t":8,"sn":"Hide","rt":$n[1].Void},{"a":1,"n":"HideLockedImage","t":8,"sn":"HideLockedImage","rt":$n[1].Void},{"a":2,"n":"Lock","t":8,"sn":"Lock","rt":$n[1].Void},{"a":2,"n":"MoveTo","t":8,"pi":[{"n":"slot","pt":TileSlot,"ps":0}],"sn":"MoveTo","rt":$n[1].Void,"p":[TileSlot]},{"a":1,"n":"OnTriggerEnter2D","t":8,"pi":[{"n":"other","pt":$n[0].Collider2D,"ps":0}],"sn":"OnTriggerEnter2D","rt":$n[1].Void,"p":[$n[0].Collider2D]},{"a":1,"n":"OnTriggerExit2D","t":8,"pi":[{"n":"other","pt":$n[0].Collider2D,"ps":0}],"sn":"OnTriggerExit2D","rt":$n[1].Void,"p":[$n[0].Collider2D]},{"a":1,"n":"OnTriggerStay2D","t":8,"pi":[{"n":"other","pt":$n[0].Collider2D,"ps":0}],"sn":"OnTriggerStay2D","rt":$n[1].Void,"p":[$n[0].Collider2D]},{"a":2,"n":"PutInBag","t":8,"sn":"PutInBag","rt":$n[1].Void},{"a":1,"n":"Refresh","t":8,"sn":"Refresh","rt":$n[1].Void},{"a":1,"n":"Refresh","t":8,"pi":[{"n":"so","pt":TileSO,"ps":0}],"sn":"Refresh$1","rt":$n[1].Void,"p":[TileSO]},{"a":1,"n":"RefreshEditor","t":8,"sn":"RefreshEditor","rt":$n[1].Void},{"a":1,"n":"RefreshLock","t":8,"sn":"RefreshLock","rt":$n[1].Void},{"a":1,"n":"SetAlpha","t":8,"pi":[{"n":"alpha","pt":$n[1].Single,"ps":0}],"sn":"SetAlpha","rt":$n[1].Void,"p":[$n[1].Single]},{"a":2,"n":"SetContacts","t":8,"pi":[{"n":"covers","pt":$n[2].List$1(Tile),"ps":0}],"sn":"SetContacts","rt":$n[1].Void,"p":[$n[2].List$1(Tile)]},{"a":2,"n":"SetGame","t":8,"pi":[{"n":"game","pt":Game,"ps":0}],"sn":"SetGame","rt":$n[1].Void,"p":[Game]},{"a":2,"n":"SetLayer","t":8,"pi":[{"n":"l","pt":$n[1].Int32,"ps":0},{"n":"lineID","pt":$n[1].Int32,"ps":1}],"sn":"SetLayer","rt":$n[1].Void,"p":[$n[1].Int32,$n[1].Int32]},{"a":2,"n":"Show","t":8,"sn":"Show","rt":$n[1].Void},{"a":1,"n":"ShowLockedImage","t":8,"sn":"ShowLockedImage","rt":$n[1].Void},{"a":2,"n":"SpawnAnimation","t":8,"sn":"SpawnAnimation","rt":$n[1].Void},{"a":1,"n":"StopMove","t":8,"sn":"StopMove","rt":$n[1].Void},{"a":2,"n":"Unlock","t":8,"sn":"Unlock","rt":$n[1].Void},{"a":1,"n":"Update","t":8,"sn":"Update","rt":$n[1].Void},{"a":1,"n":"Arrive","t":16,"rt":$n[1].Boolean,"g":{"a":1,"n":"get_Arrive","t":8,"rt":$n[1].Boolean,"fg":"Arrive","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},"fn":"Arrive"},{"a":2,"n":"Box","t":16,"rt":Box,"g":{"a":2,"n":"get_Box","t":8,"rt":Box,"fg":"Box"},"fn":"Box"},{"a":2,"n":"InBag","t":16,"rt":$n[1].Boolean,"g":{"a":2,"n":"get_InBag","t":8,"rt":$n[1].Boolean,"fg":"InBag","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},"s":{"a":1,"n":"set_InBag","t":8,"p":[$n[1].Boolean],"rt":$n[1].Void,"fs":"InBag"},"fn":"InBag"},{"a":2,"n":"IsClickable","t":16,"rt":$n[1].Boolean,"g":{"a":2,"n":"get_IsClickable","t":8,"rt":$n[1].Boolean,"fg":"IsClickable","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},"fn":"IsClickable"},{"a":2,"n":"IsMoving","t":16,"rt":$n[1].Boolean,"g":{"a":2,"n":"get_IsMoving","t":8,"rt":$n[1].Boolean,"fg":"IsMoving","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},"fn":"IsMoving"},{"a":2,"n":"Position","t":16,"rt":$n[0].Vector2,"g":{"a":2,"n":"get_Position","t":8,"rt":$n[0].Vector2,"fg":"Position"},"fn":"Position"},{"a":2,"n":"Type","t":16,"rt":TileSO,"g":{"a":2,"n":"get_Type","t":8,"rt":TileSO,"fg":"Type"},"fn":"Type"},{"a":2,"n":"X","t":16,"rt":$n[1].Single,"g":{"a":2,"n":"get_X","t":8,"rt":$n[1].Single,"fg":"X","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},"fn":"X"},{"a":2,"n":"Y","t":16,"rt":$n[1].Single,"g":{"a":2,"n":"get_Y","t":8,"rt":$n[1].Single,"fg":"Y","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},"fn":"Y"},{"a":1,"n":"_fadeFrom","t":4,"rt":$n[1].Single,"sn":"_fadeFrom","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":1,"n":"_fadeTimer","t":4,"rt":$n[1].Single,"sn":"_fadeTimer","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":1,"n":"_fadeTo","t":4,"rt":$n[1].Single,"sn":"_fadeTo","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":1,"n":"_game","t":4,"rt":Game,"sn":"_game"},{"a":1,"n":"_isFading","t":4,"rt":$n[1].Boolean,"sn":"_isFading","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"_isMoving","t":4,"rt":$n[1].Boolean,"sn":"_isMoving","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"_isSpawnAnimation","t":4,"rt":$n[1].Boolean,"sn":"_isSpawnAnimation","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"_lastType","t":4,"rt":TileSO,"sn":"_lastType"},{"a":1,"n":"_spawnTimer","t":4,"rt":$n[1].Single,"sn":"_spawnTimer","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":1,"n":"_targetPosition","t":4,"rt":$n[0].Vector3,"sn":"_targetPosition"},{"a":1,"n":"_targetSlot","t":4,"rt":TileSlot,"sn":"_targetSlot"},{"a":1,"n":"_timer","t":4,"rt":$n[1].Single,"sn":"_timer","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"backGroundSort","t":4,"rt":$n[1].Int32,"sn":"backGroundSort","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":2,"n":"background","t":4,"rt":$n[0].SpriteRenderer,"sn":"background"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"box","t":4,"rt":Box,"sn":"box"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"coverTiles","t":4,"rt":$n[2].List$1(Tile),"sn":"coverTiles"},{"a":1,"n":"currentAlpha","t":4,"rt":$n[1].Single,"sn":"currentAlpha","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.SpaceAttribute.$ctor1(20.0)],"a":2,"n":"customColissionBox","t":4,"rt":$n[1].Boolean,"sn":"customColissionBox","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"debug","t":4,"rt":$n[1].Boolean,"sn":"debug","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"at":[new UnityEngine.SpaceAttribute.$ctor1(20.0)],"a":2,"n":"defaultSize","t":4,"rt":$n[0].Vector3,"sn":"defaultSize"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"disabledSort","t":4,"rt":$n[1].Int32,"sn":"disabledSort","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":2,"n":"fadeDuration","t":4,"rt":$n[1].Single,"sn":"fadeDuration","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":1,"n":"fadeSpeed","t":4,"rt":$n[1].Single,"sn":"fadeSpeed","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"at":[new UnityEngine.SpaceAttribute.$ctor1(20.0)],"a":2,"n":"icon","t":4,"rt":$n[0].SpriteRenderer,"sn":"icon"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"iconSort","t":4,"rt":$n[1].Int32,"sn":"iconSort","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":2,"n":"isHidden","t":4,"rt":$n[1].Boolean,"sn":"isHidden","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"at":[new UnityEngine.SpaceAttribute.$ctor1(20.0)],"a":2,"n":"layer","t":4,"rt":$n[1].Int32,"sn":"layer","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":2,"n":"line","t":4,"rt":$n[1].Int32,"sn":"line","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":2,"n":"lockAlpha","t":4,"rt":$n[1].Single,"sn":"lockAlpha","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"lockTile","t":4,"rt":$n[0].SpriteRenderer,"sn":"lockTile"},{"at":[new UnityEngine.Serialization.FormerlySerializedAsAttribute("isClickable"),new UnityEngine.SpaceAttribute.$ctor1(20.0)],"a":2,"n":"locked","t":4,"rt":$n[1].Boolean,"sn":"locked","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"spawnAnimDuration","t":4,"rt":$n[1].Single,"sn":"spawnAnimDuration","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"spawnAnimSize","t":4,"rt":$n[1].Single,"sn":"spawnAnimSize","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"speed","t":4,"rt":$n[1].Single,"sn":"speed","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"trail","t":4,"rt":$n[0].TrailRenderer,"sn":"trail"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"trailSort","t":4,"rt":$n[1].Int32,"sn":"trailSort","box":function ($v) { return Bridge.box($v, System.Int32);}},{"at":[new UnityEngine.Serialization.FormerlySerializedAsAttribute("Type"),new UnityEngine.SpaceAttribute.$ctor1(20.0),new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"type","t":4,"rt":TileSO,"sn":"type"},{"a":2,"n":"OnMoveFinish","t":2,"ad":{"a":2,"n":"add_OnMoveFinish","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"addOnMoveFinish","rt":$n[1].Void,"p":[Function]},"r":{"a":2,"n":"remove_OnMoveFinish","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"removeOnMoveFinish","rt":$n[1].Void,"p":[Function]}},{"a":1,"backing":true,"n":"<InBag>k__BackingField","t":4,"rt":$n[1].Boolean,"sn":"InBag","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}}]}; }, $n);
     /*Tile end.*/
 
     /*TileActions start.*/
-    $m("TileActions", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":1,"n":"Click","t":8,"pi":[{"n":"tile","pt":Tile,"ps":0}],"sn":"Click","rt":$n[0].Void,"p":[Tile]},{"a":2,"n":"Disable","t":8,"sn":"Disable","rt":$n[0].Void},{"a":1,"n":"MoveFinished","t":8,"pi":[{"n":"moving","pt":Tile,"ps":0},{"n":"tileSlot","pt":TileSlot,"ps":1}],"sn":"MoveFinished","rt":$n[0].Void,"p":[Tile,TileSlot]},{"a":2,"n":"Observe","t":8,"pi":[{"n":"tiles","pt":$n[1].List$1(Tile),"ps":0}],"sn":"Observe","rt":$n[0].Void,"p":[$n[1].List$1(Tile)]},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[0].Void},{"a":1,"n":"OnTouchScreen","t":8,"pi":[{"n":"touchPos","pt":$n[2].Vector2,"ps":0},{"n":"touchSize","pt":$n[0].Single,"ps":1}],"sn":"OnTouchScreen","rt":$n[0].Void,"p":[$n[2].Vector2,$n[0].Single]},{"a":1,"n":"Touched","t":8,"pi":[{"n":"tile","pt":Tile,"ps":0}],"sn":"Touched","rt":$n[0].Void,"p":[Tile]},{"a":1,"n":"_cam","t":4,"rt":$n[2].Camera,"sn":"_cam"},{"a":1,"n":"_slots","t":4,"rt":$n[1].List$1(Tile),"sn":"_slots"},{"a":1,"n":"clicks","t":4,"rt":$n[0].Int32,"sn":"clicks","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":1,"n":"isDisable","t":4,"rt":$n[0].Boolean,"sn":"isDisable","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"OnMoveFinish","t":2,"ad":{"a":2,"n":"add_OnMoveFinish","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"addOnMoveFinish","rt":$n[0].Void,"p":[Function]},"r":{"a":2,"n":"remove_OnMoveFinish","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"removeOnMoveFinish","rt":$n[0].Void,"p":[Function]}},{"a":2,"n":"OnMoveStart","t":2,"ad":{"a":2,"n":"add_OnMoveStart","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"addOnMoveStart","rt":$n[0].Void,"p":[Function]},"r":{"a":2,"n":"remove_OnMoveStart","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"removeOnMoveStart","rt":$n[0].Void,"p":[Function]}}]}; }, $n);
+    $m("TileActions", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":1,"n":"Click","t":8,"pi":[{"n":"tile","pt":Tile,"ps":0}],"sn":"Click","rt":$n[1].Void,"p":[Tile]},{"a":2,"n":"Disable","t":8,"sn":"Disable","rt":$n[1].Void},{"a":1,"n":"MoveFinished","t":8,"pi":[{"n":"moving","pt":Tile,"ps":0},{"n":"tileSlot","pt":TileSlot,"ps":1}],"sn":"MoveFinished","rt":$n[1].Void,"p":[Tile,TileSlot]},{"a":2,"n":"Observe","t":8,"pi":[{"n":"tiles","pt":$n[2].List$1(Tile),"ps":0}],"sn":"Observe","rt":$n[1].Void,"p":[$n[2].List$1(Tile)]},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[1].Void},{"a":1,"n":"OnTouchScreen","t":8,"pi":[{"n":"touchPos","pt":$n[0].Vector2,"ps":0},{"n":"touchSize","pt":$n[1].Single,"ps":1}],"sn":"OnTouchScreen","rt":$n[1].Void,"p":[$n[0].Vector2,$n[1].Single]},{"a":1,"n":"Touched","t":8,"pi":[{"n":"tile","pt":Tile,"ps":0}],"sn":"Touched","rt":$n[1].Void,"p":[Tile]},{"a":1,"n":"_cam","t":4,"rt":$n[0].Camera,"sn":"_cam"},{"a":1,"n":"_clicks","t":4,"rt":$n[1].Int32,"sn":"_clicks","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":1,"n":"_isDisable","t":4,"rt":$n[1].Boolean,"sn":"_isDisable","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"_slots","t":4,"rt":$n[2].List$1(Tile),"sn":"_slots"},{"a":2,"n":"OnMoveFinish","t":2,"ad":{"a":2,"n":"add_OnMoveFinish","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"addOnMoveFinish","rt":$n[1].Void,"p":[Function]},"r":{"a":2,"n":"remove_OnMoveFinish","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"removeOnMoveFinish","rt":$n[1].Void,"p":[Function]}},{"a":2,"n":"OnMoveStart","t":2,"ad":{"a":2,"n":"add_OnMoveStart","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"addOnMoveStart","rt":$n[1].Void,"p":[Function]},"r":{"a":2,"n":"remove_OnMoveStart","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"removeOnMoveStart","rt":$n[1].Void,"p":[Function]}}]}; }, $n);
     /*TileActions end.*/
 
     /*TileBagSorter start.*/
-    $m("TileBagSorter", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[0].Void},{"a":1,"n":"Sort","t":8,"sn":"Sort","rt":$n[0].Void},{"a":1,"n":"Sorting","t":8,"sn":"Sorting","rt":$n[5].IEnumerator},{"a":1,"n":"SortingSlot","t":8,"sn":"SortingSlot","rt":TileSlot},{"a":1,"n":"NeedsSorting","t":16,"rt":$n[0].Boolean,"g":{"a":1,"n":"get_NeedsSorting","t":8,"rt":$n[0].Boolean,"fg":"NeedsSorting","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},"fn":"NeedsSorting"},{"a":1,"n":"_isSorting","t":4,"rt":$n[0].Boolean,"sn":"_isSorting","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"enable","t":4,"rt":$n[0].Boolean,"sn":"enable","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"intervalSec","t":4,"rt":$n[0].Single,"sn":"intervalSec","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}}]}; }, $n);
+    $m("TileBagSorter", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[1].Void},{"a":1,"n":"SortAfterMatch3","t":8,"sn":"SortAfterMatch3","rt":$n[1].Void},{"a":1,"n":"Sorting","t":8,"sn":"Sorting","rt":$n[5].IEnumerator},{"a":1,"n":"SortingSlot","t":8,"sn":"SortingSlot","rt":TileSlot},{"a":1,"n":"NeedsSorting","t":16,"rt":$n[1].Boolean,"g":{"a":1,"n":"get_NeedsSorting","t":8,"rt":$n[1].Boolean,"fg":"NeedsSorting","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},"fn":"NeedsSorting"},{"a":1,"n":"_isSorting","t":4,"rt":$n[1].Boolean,"sn":"_isSorting","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"enable","t":4,"rt":$n[1].Boolean,"sn":"enable","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"intervalSec","t":4,"rt":$n[1].Single,"sn":"intervalSec","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}}]}; }, $n);
     /*TileBagSorter end.*/
 
     /*TileLocker start.*/
-    $m("TileLocker", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[0].Void},{"a":2,"n":"Refresh","t":8,"pi":[{"n":"tiles","pt":$n[1].List$1(Tile),"ps":0},{"n":"layers","pt":System.Array.type(DeckLayer),"ps":1}],"sn":"Refresh","rt":$n[0].Void,"p":[$n[1].List$1(Tile),System.Array.type(DeckLayer)]},{"a":2,"n":"enabled","t":4,"rt":$n[0].Boolean,"sn":"enabled$1","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"lockDistance","t":4,"rt":$n[0].Single,"sn":"lockDistance","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}}]}; }, $n);
+    $m("TileLocker", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[1].Void},{"a":2,"n":"Refresh","t":8,"pi":[{"n":"tiles","pt":$n[2].List$1(Tile),"ps":0},{"n":"layers","pt":System.Array.type(DeckLayer),"ps":1}],"sn":"Refresh","rt":$n[1].Void,"p":[$n[2].List$1(Tile),System.Array.type(DeckLayer)]},{"a":2,"n":"enabled","t":4,"rt":$n[1].Boolean,"sn":"enabled$1","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"lockDistance","t":4,"rt":$n[1].Single,"sn":"lockDistance","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}}]}; }, $n);
     /*TileLocker end.*/
 
+    /*TileLockerBox start.*/
+    $m("TileLockerBox", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":1,"n":"DoesntCover","t":8,"pi":[{"n":"rect1","pt":Box,"ps":0},{"n":"rect2","pt":Box,"ps":1}],"sn":"DoesntCover","rt":$n[1].Boolean,"p":[Box,Box],"box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":1,"n":"IsCover","t":8,"pi":[{"n":"rect1","pt":Box,"ps":0},{"n":"rect2","pt":Box,"ps":1}],"sn":"IsCover","rt":$n[1].Boolean,"p":[Box,Box],"box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"Refresh","t":8,"pi":[{"n":"layers","pt":System.Array.type(DeckLayer),"ps":0}],"sn":"Refresh","rt":$n[1].Void,"p":[System.Array.type(DeckLayer)]},{"a":2,"n":"enable","t":4,"rt":$n[1].Boolean,"sn":"enable","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}}]}; }, $n);
+    /*TileLockerBox end.*/
+
     /*TileMatcher start.*/
-    $m("TileMatcher", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":1,"n":"Check","t":8,"sn":"Check","rt":$n[0].Void},{"a":1,"n":"Match","t":8,"pi":[{"n":"bagSlots","pt":$n[1].List$1(TileSlot),"ps":0}],"sn":"Match","rt":$n[0].Void,"p":[$n[1].List$1(TileSlot)]},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[0].Void},{"a":1,"n":"SameAmount","t":8,"pi":[{"n":"type","pt":TileSO,"ps":0}],"sn":"SameAmount","rt":$n[0].Int32,"p":[TileSO],"box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":2,"n":"Completed","t":16,"rt":$n[0].Int32,"g":{"a":2,"n":"get_Completed","t":8,"rt":$n[0].Int32,"fg":"Completed","box":function ($v) { return Bridge.box($v, System.Int32);}},"fn":"Completed"},{"a":2,"n":"completed","t":4,"rt":$n[1].List$1(Tile),"sn":"completed"},{"a":2,"n":"lastMatch","t":4,"rt":$n[1].List$1(TileSlot),"sn":"lastMatch"},{"a":1,"n":"matches","t":4,"rt":$n[0].Int32,"sn":"matches","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":2,"n":"vfx","t":4,"rt":$n[2].GameObject,"sn":"vfx"},{"a":2,"n":"OnMatch","t":2,"ad":{"a":2,"n":"add_OnMatch","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"addOnMatch","rt":$n[0].Void,"p":[Function]},"r":{"a":2,"n":"remove_OnMatch","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"removeOnMatch","rt":$n[0].Void,"p":[Function]}}]}; }, $n);
+    $m("TileMatcher", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":1,"n":"Check","t":8,"sn":"Check","rt":$n[1].Void},{"a":1,"n":"Match","t":8,"pi":[{"n":"bagSlots","pt":$n[2].List$1(TileSlot),"ps":0}],"sn":"Match","rt":$n[1].Void,"p":[$n[2].List$1(TileSlot)]},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[1].Void},{"a":1,"n":"SameAmount","t":8,"pi":[{"n":"type","pt":TileSO,"ps":0}],"sn":"SameAmount","rt":$n[1].Int32,"p":[TileSO],"box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":2,"n":"Completed","t":16,"rt":$n[1].Int32,"g":{"a":2,"n":"get_Completed","t":8,"rt":$n[1].Int32,"fg":"Completed","box":function ($v) { return Bridge.box($v, System.Int32);}},"fn":"Completed"},{"a":2,"n":"completed","t":4,"rt":$n[2].List$1(Tile),"sn":"completed"},{"a":2,"n":"lastMatch","t":4,"rt":$n[2].List$1(TileSlot),"sn":"lastMatch"},{"a":1,"n":"matches","t":4,"rt":$n[1].Int32,"sn":"matches","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":2,"n":"vfx","t":4,"rt":$n[0].GameObject,"sn":"vfx"},{"a":2,"n":"OnMatch","t":2,"ad":{"a":2,"n":"add_OnMatch","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"addOnMatch","rt":$n[1].Void,"p":[Function]},"r":{"a":2,"n":"remove_OnMatch","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"removeOnMatch","rt":$n[1].Void,"p":[Function]}}]}; }, $n);
     /*TileMatcher end.*/
 
     /*TileRandomSpawner start.*/
-    $m("TileRandomSpawner", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[0].Void},{"a":2,"n":"Spawn","t":8,"pi":[{"n":"tiles","pt":$n[1].List$1(Tile),"ps":0}],"sn":"Spawn","rt":$n[0].Void,"p":[$n[1].List$1(Tile)]},{"a":2,"n":"spawnRate","t":4,"rt":$n[0].Single,"sn":"spawnRate","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"spawned","t":4,"rt":$n[1].List$1(Tile),"sn":"spawned"},{"a":2,"n":"OnSpawnFinish","t":2,"ad":{"a":2,"n":"add_OnSpawnFinish","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"addOnSpawnFinish","rt":$n[0].Void,"p":[Function]},"r":{"a":2,"n":"remove_OnSpawnFinish","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"removeOnSpawnFinish","rt":$n[0].Void,"p":[Function]}}]}; }, $n);
+    $m("TileRandomSpawner", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[1].Void},{"a":2,"n":"Spawn","t":8,"pi":[{"n":"tiles","pt":$n[2].List$1(Tile),"ps":0}],"sn":"Spawn","rt":$n[1].Void,"p":[$n[2].List$1(Tile)]},{"a":2,"n":"spawnRate","t":4,"rt":$n[1].Single,"sn":"spawnRate","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"spawned","t":4,"rt":$n[2].List$1(Tile),"sn":"spawned"},{"a":2,"n":"OnSpawnFinish","t":2,"ad":{"a":2,"n":"add_OnSpawnFinish","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"addOnSpawnFinish","rt":$n[1].Void,"p":[Function]},"r":{"a":2,"n":"remove_OnSpawnFinish","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"removeOnSpawnFinish","rt":$n[1].Void,"p":[Function]}}]}; }, $n);
     /*TileRandomSpawner end.*/
 
     /*TilesBag start.*/
-    $m("TilesBag", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":1,"n":"Awake","t":8,"sn":"Awake","rt":$n[0].Void},{"a":2,"n":"Empty","t":8,"pi":[{"n":"slot","pt":TileSlot,"ps":0}],"sn":"Empty","rt":$n[0].Void,"p":[TileSlot]},{"a":2,"n":"LeftFrom","t":8,"pi":[{"n":"slot","pt":TileSlot,"ps":0}],"sn":"LeftFrom","rt":TileSlot,"p":[TileSlot]},{"a":2,"n":"Move","t":8,"pi":[{"n":"from","pt":TileSlot,"ps":0},{"n":"to","pt":TileSlot,"ps":1}],"sn":"Move","rt":$n[0].Void,"p":[TileSlot,TileSlot]},{"a":2,"n":"Put","t":8,"pi":[{"n":"tile","pt":Tile,"ps":0},{"n":"tileSlot","pt":TileSlot,"ps":1}],"sn":"Put","rt":$n[0].Void,"p":[Tile,TileSlot]},{"a":2,"n":"BusySlots","t":16,"rt":$n[1].List$1(TileSlot),"g":{"a":2,"n":"get_BusySlots","t":8,"rt":$n[1].List$1(TileSlot),"fg":"BusySlots"},"fn":"BusySlots"},{"a":2,"n":"EmptySlot","t":16,"rt":TileSlot,"g":{"a":2,"n":"get_EmptySlot","t":8,"rt":TileSlot,"fg":"EmptySlot"},"fn":"EmptySlot"},{"a":2,"n":"HaveEmptySlot","t":16,"rt":$n[0].Boolean,"g":{"a":2,"n":"get_HaveEmptySlot","t":8,"rt":$n[0].Boolean,"fg":"HaveEmptySlot","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},"fn":"HaveEmptySlot"},{"a":2,"n":"NoSpace","t":16,"rt":$n[0].Boolean,"g":{"a":2,"n":"get_NoSpace","t":8,"rt":$n[0].Boolean,"fg":"NoSpace","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},"fn":"NoSpace"},{"a":2,"n":"slots","t":4,"rt":$n[1].List$1(TileSlot),"sn":"slots"},{"a":2,"n":"OnPut","t":2,"ad":{"a":2,"n":"add_OnPut","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"addOnPut","rt":$n[0].Void,"p":[Function]},"r":{"a":2,"n":"remove_OnPut","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"removeOnPut","rt":$n[0].Void,"p":[Function]}},{"a":2,"n":"OnRemove","t":2,"ad":{"a":2,"n":"add_OnRemove","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"addOnRemove","rt":$n[0].Void,"p":[Function]},"r":{"a":2,"n":"remove_OnRemove","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"removeOnRemove","rt":$n[0].Void,"p":[Function]}}]}; }, $n);
+    $m("TilesBag", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":1,"n":"Awake","t":8,"sn":"Awake","rt":$n[1].Void},{"a":2,"n":"Empty","t":8,"pi":[{"n":"slot","pt":TileSlot,"ps":0}],"sn":"Empty","rt":$n[1].Void,"p":[TileSlot]},{"a":2,"n":"GetSlotFor","t":8,"pi":[{"n":"tile","pt":Tile,"ps":0}],"sn":"GetSlotFor","rt":TileSlot,"p":[Tile]},{"a":2,"n":"LeftFrom","t":8,"pi":[{"n":"slot","pt":TileSlot,"ps":0}],"sn":"LeftFrom","rt":TileSlot,"p":[TileSlot]},{"a":2,"n":"Move","t":8,"pi":[{"n":"from","pt":TileSlot,"ps":0},{"n":"to","pt":TileSlot,"ps":1}],"sn":"Move","rt":$n[1].Void,"p":[TileSlot,TileSlot]},{"a":2,"n":"Put","t":8,"pi":[{"n":"tile","pt":Tile,"ps":0},{"n":"tileSlot","pt":TileSlot,"ps":1}],"sn":"Put","rt":$n[1].Void,"p":[Tile,TileSlot]},{"a":2,"n":"BusySlots","t":16,"rt":$n[2].List$1(TileSlot),"g":{"a":2,"n":"get_BusySlots","t":8,"rt":$n[2].List$1(TileSlot),"fg":"BusySlots"},"fn":"BusySlots"},{"a":2,"n":"HaveEmptySlot","t":16,"rt":$n[1].Boolean,"g":{"a":2,"n":"get_HaveEmptySlot","t":8,"rt":$n[1].Boolean,"fg":"HaveEmptySlot","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},"fn":"HaveEmptySlot"},{"a":2,"n":"LastEmptySlot","t":16,"rt":TileSlot,"g":{"a":2,"n":"get_LastEmptySlot","t":8,"rt":TileSlot,"fg":"LastEmptySlot"},"fn":"LastEmptySlot"},{"a":2,"n":"NoSpace","t":16,"rt":$n[1].Boolean,"g":{"a":2,"n":"get_NoSpace","t":8,"rt":$n[1].Boolean,"fg":"NoSpace","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},"fn":"NoSpace"},{"a":2,"n":"slots","t":4,"rt":$n[2].List$1(TileSlot),"sn":"slots"},{"a":2,"n":"OnPut","t":2,"ad":{"a":2,"n":"add_OnPut","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"addOnPut","rt":$n[1].Void,"p":[Function]},"r":{"a":2,"n":"remove_OnPut","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"removeOnPut","rt":$n[1].Void,"p":[Function]}},{"a":2,"n":"OnRemove","t":2,"ad":{"a":2,"n":"add_OnRemove","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"addOnRemove","rt":$n[1].Void,"p":[Function]},"r":{"a":2,"n":"remove_OnRemove","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"removeOnRemove","rt":$n[1].Void,"p":[Function]}}]}; }, $n);
     /*TilesBag end.*/
 
     /*TileSlot start.*/
-    $m("TileSlot", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":2,"n":"Empty","t":8,"sn":"Empty","rt":$n[0].Void},{"a":2,"n":"Put","t":8,"pi":[{"n":"tile","pt":Tile,"ps":0}],"sn":"Put","rt":$n[0].Void,"p":[Tile]},{"a":2,"n":"Busy","t":16,"rt":$n[0].Boolean,"g":{"a":2,"n":"get_Busy","t":8,"rt":$n[0].Boolean,"fg":"Busy","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},"fn":"Busy"},{"a":2,"n":"IsEmpty","t":16,"rt":$n[0].Boolean,"g":{"a":2,"n":"get_IsEmpty","t":8,"rt":$n[0].Boolean,"fg":"IsEmpty","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},"fn":"IsEmpty"},{"a":2,"n":"Position","t":16,"rt":$n[2].Vector2,"g":{"a":2,"n":"get_Position","t":8,"rt":$n[2].Vector2,"fg":"Position"},"fn":"Position"},{"a":2,"n":"Type","t":16,"rt":TileSO,"g":{"a":2,"n":"get_Type","t":8,"rt":TileSO,"fg":"Type"},"fn":"Type"},{"a":2,"n":"ID","t":4,"rt":$n[0].Int32,"sn":"ID","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":2,"n":"Tile","t":4,"rt":Tile,"sn":"Tile"}]}; }, $n);
+    $m("TileSlot", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":2,"n":"Empty","t":8,"sn":"Empty","rt":$n[1].Void},{"a":2,"n":"Put","t":8,"pi":[{"n":"tile","pt":Tile,"ps":0}],"sn":"Put","rt":$n[1].Void,"p":[Tile]},{"a":2,"n":"Busy","t":16,"rt":$n[1].Boolean,"g":{"a":2,"n":"get_Busy","t":8,"rt":$n[1].Boolean,"fg":"Busy","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},"fn":"Busy"},{"a":2,"n":"IsEmpty","t":16,"rt":$n[1].Boolean,"g":{"a":2,"n":"get_IsEmpty","t":8,"rt":$n[1].Boolean,"fg":"IsEmpty","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},"fn":"IsEmpty"},{"a":2,"n":"Position","t":16,"rt":$n[0].Vector2,"g":{"a":2,"n":"get_Position","t":8,"rt":$n[0].Vector2,"fg":"Position"},"fn":"Position"},{"a":2,"n":"Type","t":16,"rt":TileSO,"g":{"a":2,"n":"get_Type","t":8,"rt":TileSO,"fg":"Type"},"fn":"Type"},{"a":2,"n":"ID","t":4,"rt":$n[1].Int32,"sn":"ID","box":function ($v) { return Bridge.box($v, System.Int32);}},{"a":2,"n":"Tile","t":4,"rt":Tile,"sn":"Tile"}]}; }, $n);
     /*TileSlot end.*/
 
     /*TileSO start.*/
     $m("TileSO", function () { return {"att":1048577,"a":2,"at":[Bridge.apply(new UnityEngine.CreateAssetMenuAttribute(), {
         fileName: "Tile", menuName: "SO/Tile"
-    } )],"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":2,"n":"Icon","t":16,"rt":$n[2].Sprite,"g":{"a":2,"n":"get_Icon","t":8,"rt":$n[2].Sprite,"fg":"Icon"},"fn":"Icon"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"icon","t":4,"rt":$n[2].Sprite,"sn":"icon"}]}; }, $n);
+    } )],"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":2,"n":"Icon","t":16,"rt":$n[0].Sprite,"g":{"a":2,"n":"get_Icon","t":8,"rt":$n[0].Sprite,"fg":"Icon"},"fn":"Icon"},{"at":[new UnityEngine.SerializeFieldAttribute()],"a":1,"n":"icon","t":4,"rt":$n[0].Sprite,"sn":"icon"}]}; }, $n);
     /*TileSO end.*/
 
     /*TileSpawnAnimation start.*/
-    $m("TileSpawnAnimation", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[0].Void},{"a":1,"n":"Play","t":8,"pi":[{"n":"slots","pt":$n[1].List$1(System.Collections.Generic.List$1(Tile)),"ps":0}],"sn":"Play","rt":$n[5].IEnumerator,"p":[$n[1].List$1(System.Collections.Generic.List$1(Tile))]},{"a":2,"n":"SpawnAnimation","t":8,"pi":[{"n":"slots","pt":$n[1].List$1(System.Collections.Generic.List$1(Tile)),"ps":0}],"sn":"SpawnAnimation","rt":$n[0].Void,"p":[$n[1].List$1(System.Collections.Generic.List$1(Tile))]},{"a":2,"n":"delayBetweenLayers","t":4,"rt":$n[0].Single,"sn":"delayBetweenLayers","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"delayBetweenLines","t":4,"rt":$n[0].Single,"sn":"delayBetweenLines","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"delayBetweenTiles","t":4,"rt":$n[0].Single,"sn":"delayBetweenTiles","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}}]}; }, $n);
+    $m("TileSpawnAnimation", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[1].Void},{"a":1,"n":"Play","t":8,"pi":[{"n":"slots","pt":$n[2].List$1(System.Collections.Generic.List$1(Tile)),"ps":0}],"sn":"Play","rt":$n[5].IEnumerator,"p":[$n[2].List$1(System.Collections.Generic.List$1(Tile))]},{"a":2,"n":"SpawnAnimation","t":8,"pi":[{"n":"slots","pt":$n[2].List$1(System.Collections.Generic.List$1(Tile)),"ps":0}],"sn":"SpawnAnimation","rt":$n[1].Void,"p":[$n[2].List$1(System.Collections.Generic.List$1(Tile))]},{"a":2,"n":"delayBetweenLayers","t":4,"rt":$n[1].Single,"sn":"delayBetweenLayers","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"delayBetweenLines","t":4,"rt":$n[1].Single,"sn":"delayBetweenLines","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"delayBetweenTiles","t":4,"rt":$n[1].Single,"sn":"delayBetweenTiles","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}}]}; }, $n);
     /*TileSpawnAnimation end.*/
 
     /*TileSpawner start.*/
-    $m("TileSpawner", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[0].Void},{"a":2,"n":"hideAtSpawn","t":4,"rt":$n[0].Boolean,"sn":"hideAtSpawn","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"prefab","t":4,"rt":Tile,"sn":"prefab"},{"a":2,"n":"spawnRate","t":4,"rt":$n[0].Single,"sn":"spawnRate","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"spawned","t":4,"rt":$n[1].List$1(Tile),"sn":"spawned"},{"a":2,"n":"OnSpawnFinish","t":2,"ad":{"a":2,"n":"add_OnSpawnFinish","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"addOnSpawnFinish","rt":$n[0].Void,"p":[Function]},"r":{"a":2,"n":"remove_OnSpawnFinish","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"removeOnSpawnFinish","rt":$n[0].Void,"p":[Function]}}]}; }, $n);
+    $m("TileSpawner", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[1].Void},{"a":2,"n":"hideAtSpawn","t":4,"rt":$n[1].Boolean,"sn":"hideAtSpawn","box":function ($v) { return Bridge.box($v, System.Boolean, System.Boolean.toString);}},{"a":2,"n":"prefab","t":4,"rt":Tile,"sn":"prefab"},{"a":2,"n":"spawnRate","t":4,"rt":$n[1].Single,"sn":"spawnRate","box":function ($v) { return Bridge.box($v, System.Single, System.Single.format, System.Single.getHashCode);}},{"a":2,"n":"spawned","t":4,"rt":$n[2].List$1(Tile),"sn":"spawned"},{"a":2,"n":"OnSpawnFinish","t":2,"ad":{"a":2,"n":"add_OnSpawnFinish","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"addOnSpawnFinish","rt":$n[1].Void,"p":[Function]},"r":{"a":2,"n":"remove_OnSpawnFinish","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"removeOnSpawnFinish","rt":$n[1].Void,"p":[Function]}}]}; }, $n);
     /*TileSpawner end.*/
 
     /*WinCondition start.*/
-    $m("WinCondition", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":1,"n":"Check","t":8,"pi":[{"n":"bagSlots","pt":$n[1].List$1(TileSlot),"ps":0},{"n":"type","pt":TileSO,"ps":1}],"sn":"Check","rt":$n[0].Void,"p":[$n[1].List$1(TileSlot),TileSO]},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[0].Void},{"a":2,"n":"OnWin","t":2,"ad":{"a":2,"n":"add_OnWin","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"addOnWin","rt":$n[0].Void,"p":[Function]},"r":{"a":2,"n":"remove_OnWin","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"removeOnWin","rt":$n[0].Void,"p":[Function]}}]}; }, $n);
+    $m("WinCondition", function () { return {"att":1048577,"a":2,"m":[{"a":2,"isSynthetic":true,"n":".ctor","t":1,"sn":"ctor"},{"a":1,"n":"Check","t":8,"pi":[{"n":"bagSlots","pt":$n[2].List$1(TileSlot),"ps":0},{"n":"type","pt":TileSO,"ps":1}],"sn":"Check","rt":$n[1].Void,"p":[$n[2].List$1(TileSlot),TileSO]},{"ov":true,"a":3,"n":"OnInit","t":8,"sn":"OnInit","rt":$n[1].Void},{"a":2,"n":"OnWin","t":2,"ad":{"a":2,"n":"add_OnWin","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"addOnWin","rt":$n[1].Void,"p":[Function]},"r":{"a":2,"n":"remove_OnWin","t":8,"pi":[{"n":"value","pt":Function,"ps":0}],"sn":"removeOnWin","rt":$n[1].Void,"p":[Function]}}]}; }, $n);
     /*WinCondition end.*/
 
     }});

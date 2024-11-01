@@ -6,13 +6,12 @@ using UnityEngine;
 public class Quest : GameComponent
 {
     [SerializeField] List<QuestSlot> slots = new();
-    
-
+    public event Action OnWin = delegate { };
     protected override void OnInit()
     {
         Game.TileMatcher.OnMatch += OnMatch;
     }
-    public event Action OnWin = delegate { }; 
+
     void OnMatch(List<TileSlot> bagSlots, TileSO type)
     {
         if (bagSlots.Count <= 0)
@@ -21,16 +20,18 @@ public class Quest : GameComponent
             return;
         }
 
-        var find = slots.Where(s => s.Type == type).Where(s=>s.Locked).ToList();
-        foreach (var slot in find)
-        {
+        var locked = slots.Where(s => s.Type == type).Where(s => s.Locked).ToList();
+        foreach (var slot in locked)
             slot.Unlock();
-        }
 
         if (slots.All(s => s.Complete))
         {
             OnWin();
+            Luna.Unity.Analytics.LogEvent("Quest win", 0);
         }
-      
+        else
+        {
+            Luna.Unity.Analytics.LogEvent("Quest in process. Locked items: "+locked.Count, 0);
+        }
     }
 }

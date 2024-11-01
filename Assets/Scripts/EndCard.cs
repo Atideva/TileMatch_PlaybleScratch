@@ -12,9 +12,10 @@ public class EndCard : GameComponent
 
     public void Show()
     {
+        Luna.Unity.Analytics.LogEvent("Show end card", 0);
         canvas.gameObject.SetActive(true);
-
     }
 
-    public void Hide() => canvas.gameObject.SetActive(false);
+    void Hide() 
+        => canvas.gameObject.SetActive(false);
 }

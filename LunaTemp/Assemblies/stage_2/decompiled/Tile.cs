@@ -34,6 +34,12 @@ public class Tile : MonoBehaviour
 
 	public float spawnAnimDuration = 0.3f;
 
+	[Space(20f)]
+	public bool customColissionBox;
+
+	[SerializeField]
+	private Box box;
+
 	[FormerlySerializedAs("isClickable")]
 	[Space(20f)]
 	public bool locked;
@@ -89,6 +95,8 @@ public class Tile : MonoBehaviour
 
 	private Game _game;
 
+	public Box Box => new Box(Position + box.Position, box.Width, box.Height);
+
 	public TileSO Type => type;
 
 	public bool IsClickable => !locked && !_isMoving && !InBag;
@@ -111,7 +119,7 @@ public class Tile : MonoBehaviour
 
 	private void OnTriggerEnter2D(Collider2D other)
 	{
-		if (!_isMoving)
+		if (!customColissionBox && !_isMoving)
 		{
 			Debug.LogWarning("Contact: " + base.gameObject.name, base.gameObject);
 			Tile collideTile = _game.Find(other.transform);
@@ -125,16 +133,22 @@ public class Tile : MonoBehaviour
 
 	private void OnTriggerStay2D(Collider2D other)
 	{
-		OnTriggerEnter2D(other);
+		if (!customColissionBox)
+		{
+			OnTriggerEnter2D(other);
+		}
 	}
 
 	private void OnTriggerExit2D(Collider2D other)
 	{
-		Tile tile = _game.Find(other.transform);
-		if ((bool)tile && coverTiles.Contains(tile))
+		if (!customColissionBox)
 		{
-			coverTiles.Remove(tile);
-			RefreshLock();
+			Tile tile = _game.Find(other.transform);
+			if ((bool)tile && coverTiles.Contains(tile))
+			{
+				coverTiles.Remove(tile);
+				RefreshLock();
+			}
 		}
 	}
 
@@ -258,7 +272,6 @@ public class Tile : MonoBehaviour
 
 	private void SetAlpha(float alpha)
 	{
-		Debug.Log(alpha);
 		Color color = lockTile.color;
 		color.a = alpha;
 		lockTile.color = color;
@@ -313,7 +326,10 @@ public class Tile : MonoBehaviour
 	{
 		if (locked)
 		{
-			Debug.LogWarning("Unlock: " + base.name, base.gameObject);
+			if (debug)
+			{
+				Debug.LogWarning("Unlock: " + base.name, base.gameObject);
+			}
 			locked = false;
 			HideLockedImage();
 		}
@@ -323,7 +339,10 @@ public class Tile : MonoBehaviour
 	{
 		if (!locked)
 		{
-			Debug.LogWarning("Lock: " + base.name, base.gameObject);
+			if (debug)
+			{
+				Debug.LogWarning("Lock: " + base.name, base.gameObject);
+			}
 			locked = true;
 			lockTile.gameObject.SetActive(true);
 			ShowLockedImage();

@@ -21,6 +21,9 @@ public class Game : MonoBehaviour
 	private TileLocker locker;
 
 	[SerializeField]
+	private TileLockerBox boxLocker;
+
+	[SerializeField]
 	private TilesBag bag;
 
 	[SerializeField]
@@ -99,6 +102,7 @@ public class Game : MonoBehaviour
 		if (!_isGameEnded)
 		{
 			_isGameEnded = true;
+			Analytics.LogEvent("Quest win", 0);
 			this.OnQuestWin();
 			Invoke("Win", 1f);
 		}
@@ -106,6 +110,7 @@ public class Game : MonoBehaviour
 
 	private void OnTileMoved(Tile obj)
 	{
+		RefreshTiles();
 	}
 
 	private void Win()
@@ -158,6 +163,7 @@ public class Game : MonoBehaviour
 	private void StartGame()
 	{
 		ShowDeck(deck.Tiles);
+		Invoke("RefreshTiles", 2f);
 	}
 
 	public Tile Find(Transform t)
@@ -170,6 +176,12 @@ public class Game : MonoBehaviour
 		tilesInGame = spawned;
 		spawnAnimation.SpawnAnimation(deck.LayersTiles());
 		actions.Observe(deck.Tiles);
+		RefreshTiles();
+	}
+
+	private void RefreshTiles()
+	{
+		boxLocker.Refresh(deck.Layers);
 	}
 
 	private void OnValidate()

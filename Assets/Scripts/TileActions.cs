@@ -8,27 +8,25 @@ public class TileActions : GameComponent
 {
     List<Tile> _slots;
     Camera _cam;
-
+    int _clicks;
+    bool _isDisable;
+    public event Action OnMoveFinish = delegate { };
+    public event Action<Tile> OnMoveStart = delegate { };
     protected override void OnInit()
     {
         _cam = Camera.main;
         if (Application.isPlaying)
-        {
-//            Debug.LogError("INITED");
             Game.Input.OnTouchScreen += OnTouchScreen;
-        }
     }
 
-    bool isDisable;
 
     public void Disable()
     {
-        isDisable = true;
+        _isDisable = true;
     }
 
     void OnTouchScreen(Vector2 touchPos, float touchSize)
     {
-//        Debug.LogError("TOUCHED");
         var pos = _cam.ScreenToWorldPoint(touchPos);
 
         var clickable = _slots.Where(s => s.IsClickable);
@@ -43,21 +41,18 @@ public class TileActions : GameComponent
 
     void Touched(Tile tile)
     {
-        if (isDisable) return;
+        if (_isDisable) return;
         Click(tile);
     }
 
-    int clicks;
-    public event Action<Tile> OnMoveStart = delegate { };
-
     void Click(Tile tile)
     {
-        clicks++;
-        LogEvent("Tile clicked", clicks);
+        _clicks++;
+        LogEvent("Tile clicked", _clicks);
 
         if (Game.Bag.NoSpace) return;
 
-        var empty = Game.Bag.EmptySlot;
+        var empty = Game.Bag.GetSlotFor(tile);
         Game.Bag.Put(tile, empty);
 
         OnMoveStart(tile);
@@ -68,8 +63,6 @@ public class TileActions : GameComponent
     {
         _slots = tiles;
     }
-
-    public event Action OnMoveFinish = delegate { };
 
     void MoveFinished(Tile moving, TileSlot tileSlot)
     {

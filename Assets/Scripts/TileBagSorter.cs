@@ -6,32 +6,30 @@ public class TileBagSorter : GameComponent
 {
     public bool enable;
     public float intervalSec = 0.05f;
+    bool _isSorting;
 
     protected override void OnInit()
     {
         if (!enable) return;
-        if(Game == null) Debug.LogError("WTF");
-        if(Game.Bag == null) Debug.LogError("WTF 2");
-        Game.Bag.OnRemove += Sort;
+        Game.Bag.OnRemove += SortAfterMatch3;
     }
 
-    void Sort()
+    void SortAfterMatch3()
     {
         if (_isSorting) return;
         StartCoroutine(Sorting());
     }
 
-    bool _isSorting;
 
     IEnumerator Sorting()
     {
         _isSorting = true;
         yield return new WaitForSeconds(intervalSec);
-        
+
         while (NeedsSorting)
         {
             var busy = SortingSlot();
-            var empty = Game.Bag.EmptySlot;
+            var empty = Game.Bag.LastEmptySlot;
             Game.Bag.Move(busy, empty);
             yield return new WaitForSeconds(intervalSec);
         }

@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Serialization;
+using static Luna.Unity.Analytics;
 
 public class Game : MonoBehaviour
 {
@@ -11,6 +13,7 @@ public class Game : MonoBehaviour
     [SerializeField] Deck deck;
     [SerializeField] TileActions actions;
     [SerializeField] TileLocker locker;
+    [FormerlySerializedAs("boxLocker")] [SerializeField] TileLockerBox2D box2DLocker;
     [SerializeField] TilesBag bag;
     [SerializeField] TileSpawnAnimation spawnAnimation;
     [SerializeField] TileMatcher tileMatcher;
@@ -33,7 +36,9 @@ public class Game : MonoBehaviour
     public InputTouch Input => input;
     public TileActions Actions => actions;
     public WinCondition Condition => winCondition;
-    bool _isGameEnded;
+    public bool _isGameEnded;
+    public event Action OnQuestWin = delegate { };
+    public event Action OnLose = delegate { };
 
     void Start()
     {
@@ -47,19 +52,15 @@ public class Game : MonoBehaviour
         actions.OnMoveStart += OnTileMoved;
     }
 
-    public event Action OnQuestWin = delegate { }; 
-    public event Action OnLose = delegate { }; 
-    void QuestWin()
+    public void QuestWin()
     {
-        if (_isGameEnded) return;
-        _isGameEnded = true;
         OnQuestWin();
-        Invoke(nameof(Win), 1f);
+        Invoke(nameof(Win), 0.6f);
     }
 
     void OnTileMoved(Tile obj)
     {
-       // RefreshTiles();
+        RefreshTiles();
     }
 
     void Win()
@@ -70,8 +71,7 @@ public class Game : MonoBehaviour
         endCard.Show();
         actions.Disable();
         Luna.Unity.LifeCycle.GameEnded();
-        Luna.Unity.Analytics.LogEvent("Game win", 0);
-        Debug.Log("Game win!");
+        LogEvent("Game win", 0);
     }
 
     public void OpenURL()
@@ -87,7 +87,7 @@ public class Game : MonoBehaviour
         endCard.Show();
         actions.Disable();
         Luna.Unity.LifeCycle.GameEnded();
-        Luna.Unity.Analytics.LogEvent("Game lose", 0);
+        LogEvent("Game lose", 0);
         OnLose();
     }
 
@@ -107,6 +107,7 @@ public class Game : MonoBehaviour
     void StartGame()
     {
         ShowDeck(deck.Tiles);
+        Invoke(nameof(RefreshTiles), 2f);
     }
 
     public Tile Find(Transform t) => tilesInGame.FirstOrDefault(tile => tile.transform == t);
@@ -117,11 +118,14 @@ public class Game : MonoBehaviour
         tilesInGame = spawned;
         spawnAnimation.SpawnAnimation(deck.LayersTiles());
         actions.Observe(deck.Tiles);
-       // RefreshTiles();
+        RefreshTiles();
     }
 
-    /*void RefreshTiles() 
-        => locker.Refresh(tilesInGame, deck.Layers);*/
+    void RefreshTiles()
+    {
+        //locker.Refresh(tilesInGame, deck.Layers);
+        box2DLocker.Refresh(deck.Layers);
+    }
 
     void OnValidate()
     {

@@ -9,7 +9,31 @@ public class TilesBag : MonoBehaviour
     public TileSlot LeftFrom(TileSlot slot) => slot.ID <= 0 ? null : slots[slot.ID - 1];
     public List<TileSlot> BusySlots => slots.Where(b => b.Busy).ToList();
     public bool HaveEmptySlot => slots.Any(s => s.IsEmpty);
-    public TileSlot EmptySlot => slots.FirstOrDefault(s => s.IsEmpty);
+    public TileSlot LastEmptySlot => slots.FirstOrDefault(s => s.IsEmpty);
+
+    public TileSlot GetSlotFor(Tile tile)
+    {
+        var findSame = BusySlots.FirstOrDefault(s => s.Type == tile.Type);
+        if (findSame)
+        {
+            var rightID = findSame.ID + 1;
+            var rightSlot = slots[rightID];
+            
+            for (int i = slots.Count - 1; i >= rightID+1; i--)
+            {
+                var slot = slots[i];
+                var leftSlot = slots[i - 1];
+                if (leftSlot.Busy)
+                {
+                    Put(leftSlot.Tile, slot);
+                }
+            }
+            
+            return rightSlot;
+        }
+
+        return LastEmptySlot;
+    }
     public bool NoSpace => !HaveEmptySlot;
     public event Action OnPut = delegate { };
     public event Action OnRemove = delegate { };

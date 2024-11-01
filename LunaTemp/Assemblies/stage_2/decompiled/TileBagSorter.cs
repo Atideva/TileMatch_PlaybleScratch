@@ -16,19 +16,11 @@ public class TileBagSorter : GameComponent
 	{
 		if (enable)
 		{
-			if (Game == null)
-			{
-				Debug.LogError("WTF");
-			}
-			if (Game.Bag == null)
-			{
-				Debug.LogError("WTF 2");
-			}
-			Game.Bag.OnRemove += Sort;
+			Game.Bag.OnRemove += SortAfterMatch3;
 		}
 	}
 
-	private void Sort()
+	private void SortAfterMatch3()
 	{
 		if (!_isSorting)
 		{
@@ -43,7 +35,7 @@ public class TileBagSorter : GameComponent
 		while (NeedsSorting)
 		{
 			TileSlot busy = SortingSlot();
-			TileSlot empty = Game.Bag.EmptySlot;
+			TileSlot empty = Game.Bag.LastEmptySlot;
 			Game.Bag.Move(busy, empty);
 			yield return new WaitForSeconds(intervalSec);
 		}
