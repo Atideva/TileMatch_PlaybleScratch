@@ -22,6 +22,7 @@ public class DeckLayer : MonoBehaviour
         layer = layerID;
 
         var groupedByYPosition = Tiles
+            .OrderByDescending(tile => tile.Y)   
             .GroupBy(tile => tile.Y)
             .Select(group => group.ToList())
             .ToList();

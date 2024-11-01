@@ -88,8 +88,11 @@ public class Tile : MonoBehaviour
         RefreshLock();
     }
 
+    public event Action OnMoveStart = delegate { };
+
     public void MoveTo(TileSlot slot)
     {
+        OnMoveStart();
         movement.MoveTo(slot);
         movement.OnMoveFinish += MovementFinished;
     }

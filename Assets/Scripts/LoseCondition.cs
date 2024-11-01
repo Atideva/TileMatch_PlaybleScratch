@@ -12,7 +12,7 @@ public class LoseCondition : GameComponent
 
     void OnBagChange()
     {
-        _checkDelay += 1;
+        _checkDelay = 0.7f;
     }
 
     float _checkDelay;
