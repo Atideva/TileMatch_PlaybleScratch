@@ -12,16 +12,16 @@ public class Tile : MonoBehaviour
     [FormerlySerializedAs("Type")]
     [Space(20)]
     [SerializeField] TileSO type;
-   
+
     [Space(20)]
     public int layer;
     public int line;
-   
+
     [Space(20)]
     public SpriteRenderer icon;
     public SpriteRenderer lockTile;
     public SpriteRenderer background;
-   
+
     public TrailRenderer trail;
     [Space(20)]
     public Vector3 defaultSize = Vector3.one;
@@ -35,7 +35,6 @@ public class Tile : MonoBehaviour
     public bool customColissionBox;
     [SerializeField] Box box;
 
-   
     [FormerlySerializedAs("isClickable")]
     [Space(20)]
     public bool locked;
@@ -48,17 +47,11 @@ public class Tile : MonoBehaviour
 
     #endregion
 
- 
-
     #region Variables
 
     TileSO _lastType;
-    bool _isSpawnAnimation;
-    float _spawnTimer;
-    Vector3 _targetPosition;
     float _timer;
-    bool _isMoving;
-    TileSlot _targetSlot;
+    bool _isMoving => move._isMoving;
     float _fadeTimer;
     bool _isFading;
     float _fadeFrom;
@@ -67,9 +60,11 @@ public class Tile : MonoBehaviour
     float currentAlpha;
     public bool debug;
     Game _game;
+
     #endregion
 
     #region Access
+
     public Box Box => new(Position + box.Position, box.Width, box.Height);
     public TileSO Type => type;
     public bool IsClickable => !locked && !_isMoving && !InBag;
@@ -79,53 +74,15 @@ public class Tile : MonoBehaviour
     public bool IsMoving => _isMoving;
     public bool CanCover => !IsMoving && !InBag;
     public float Y => transform.position.y;
-    public float X => transform.position.x;
-    bool HasArrive => Vector2.Distance(transform.position, _targetPosition) < 0.01f;
 
     #endregion
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        if (customColissionBox) return;
-        if (_isMoving) return;
-
-        if (debug)
-            Debug.Log("Contact: " + gameObject.name, gameObject);
-
-        var collideTile = _game.Find(other.transform);
-        if (!collideTile) return;
-        if (collideTile._isMoving) return;
-
-        if (collideTile.layer <= layer) return;
-        if (coverTiles.Contains(collideTile)) return;
-        coverTiles.Add(collideTile);
-        RefreshLock();
-    }
-
-    void OnTriggerStay2D(Collider2D other)
-    {
-        if (customColissionBox) return;
-
-        OnTriggerEnter2D(other);
-    }
-
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (customColissionBox) return;
-
-        var tile = _game.Find(other.transform);
-        if (!tile) return;
-        if (!coverTiles.Contains(tile)) return;
-        coverTiles.Remove(tile);
-        RefreshLock();
-    }
 
     void RefreshLock()
     {
         if (coverTiles.Count > 0) Lock();
         else Unlock();
     }
- 
+
     void RefreshInEditor()
     {
         if (Application.isPlaying) return;
@@ -143,13 +100,17 @@ public class Tile : MonoBehaviour
 
     public void MoveTo(TileSlot slot)
     {
-        trail.sortingOrder = 10000;
-        background.sortingOrder = 10001;
-        icon.sortingOrder = 10002;
-        _targetSlot = slot;
-        _targetPosition = slot.Position;
-        _isMoving = true;
+        move.MoveTo(this, slot);
+        move.OnMoveFinish += MoveFinished;
     }
+
+    void MoveFinished(TileSlot toSlot)
+    {
+        Refresh();
+        OnMoveFinish(this, toSlot);
+    }
+
+    public TileMove move;
 
     public void SetGame(Game game)
     {
@@ -175,48 +136,10 @@ public class Tile : MonoBehaviour
         lockTile.sortingOrder = disabledSort;
     }
 
-    void StopMove()
-    {
-        transform.position = _targetPosition;
-        _isMoving = false;
-        Refresh();
-        OnMoveFinish(this, _targetSlot);
-    }
-
     void Update()
     {
         RefreshInEditor();
         UpdateFading();
-        UpdateMovement();
-        UpdateSpawnAnimation();
-    }
-
-    void UpdateSpawnAnimation()
-    {
-        if (!_isSpawnAnimation) return;
-
-        _spawnTimer += Time.deltaTime;
-        var progress = _spawnTimer / spawnAnimDuration;
-
-        switch (progress)
-        {
-            case <= 0.5f:
-            {
-                var scale = Mathf.Lerp(0, spawnAnimSize, progress * 2);
-                transform.localScale = defaultSize * scale;
-                break;
-            }
-            case <= 1.0f:
-            {
-                var scale = Mathf.Lerp(spawnAnimSize, 1, (progress - 0.5f) * 2);
-                transform.localScale = defaultSize * scale;
-                break;
-            }
-            default:
-                transform.localScale = defaultSize;
-                _isSpawnAnimation = false;
-                break;
-        }
     }
 
     void UpdateFading()
@@ -228,15 +151,6 @@ public class Tile : MonoBehaviour
 
         if (currentAlpha <= 0) _isFading = false;
         if (currentAlpha >= lockAlpha) _isFading = false;
-    }
-
-    void UpdateMovement()
-    {
-        if (!_isMoving) return;
-
-        transform.position = Vector3.MoveTowards(Position, _targetPosition, speed * Time.deltaTime);
-        if (HasArrive)
-            StopMove();
     }
 
     void SetAlpha(float alpha)
@@ -254,11 +168,10 @@ public class Tile : MonoBehaviour
     }
 
     public AppearAnimation spawnAnim;
+
     public void SpawnAnimation()
     {
-        spawnAnim.Play();
-        transform.localScale = Vector3.zero;
-        _isSpawnAnimation = true;
+        spawnAnim.Play(transform);
         Show();
     }
 

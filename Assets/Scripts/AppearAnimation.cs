@@ -1,44 +1,50 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AppearAnimation : MonoBehaviour
 {
-    public Vector3 defaultSize = Vector3.one;
-    public float spawnAnimSize = 1.5f;
-    public float spawnAnimDuration = 0.3f;
-    float _spawnTimer;
+    [SerializeField] float startSize = 0;
+    [SerializeField] float maxSize = 1.5f;
+    [SerializeField] float endSize = 1;
+    [SerializeField] float duration = 0.3f;
+
+    float _timer;
     bool _isSpawnAnimation;
-    public void Play()
+    Transform _target;
+
+    public void Play(Transform target)
     {
-        transform.localScale = Vector3.zero;
+        _target = target;
+        _target.localScale = new Vector3(startSize, startSize, startSize);
         _isSpawnAnimation = true;
     }
+
     void Update()
     {
         if (!_isSpawnAnimation) return;
 
-        _spawnTimer += Time.deltaTime;
-        var progress = _spawnTimer / spawnAnimDuration;
+        _timer += Time.deltaTime;
+        var progress = _timer / duration;
 
         switch (progress)
         {
-            case <= 0.5f:
+            case < 0.5f:
             {
-                var scale = Mathf.Lerp(0, spawnAnimSize, progress * 2);
-                transform.localScale = defaultSize * scale;
+                var scale = Mathf.Lerp(0, maxSize, progress * 2);
+                _target.localScale = new Vector3(endSize, endSize, endSize) * scale;
                 break;
             }
-            case <= 1.0f:
+            case < 1.0f:
             {
-                var scale = Mathf.Lerp(spawnAnimSize, 1, (progress - 0.5f) * 2);
-                transform.localScale = defaultSize * scale;
+                var scale = Mathf.Lerp(maxSize, 1, (progress - 0.5f) * 2);
+                _target.localScale = new Vector3(endSize, endSize, endSize) * scale;
                 break;
             }
-            default:
-                transform.localScale = defaultSize;
+            case >= 1.0f:
+            {
+                _target.localScale = new Vector3(endSize, endSize, endSize);
                 _isSpawnAnimation = false;
                 break;
+            }
         }
     }
 }
