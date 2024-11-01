@@ -23,6 +23,7 @@ public class DeckLayer : MonoBehaviour
 	{
 		layer = layerID;
 		List<List<Tile>> groupedByYPosition = (from tile in Tiles
+			orderby tile.Y descending
 			group tile by tile.Y into @group
 			select @group.ToList()).ToList();
 		for (int i = 0; i < groupedByYPosition.Count; i++)

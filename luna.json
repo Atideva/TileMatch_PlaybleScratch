@@ -176,7 +176,7 @@
         "forceBase64": true,
         "genericCheck": true,
         "disableAntiAliasing": true,
-        "preferWebGl2": true,
+        "preferWebGl2": false,
         "forceStableRandomSeed": false,
         "unusedModules": [
             {
@@ -29206,8 +29206,8 @@
                 "default": {
                     "channels": 1,
                     "startTime": "00:00.000",
-                    "endTime": "00:00.000",
-                    "lengthInSeconds": 0.0,
+                    "endTime": "00:30.000",
+                    "lengthInSeconds": 30.0,
                     "bitrate": 128,
                     "script": "",
                     "ext": ""

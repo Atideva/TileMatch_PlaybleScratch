@@ -5,6 +5,8 @@ public class EndCard : GameComponent
 {
 	public Canvas canvas;
 
+	public SlideAnimationUI slideAnimation;
+
 	protected override void OnInit()
 	{
 		if (Application.isPlaying)
@@ -17,6 +19,7 @@ public class EndCard : GameComponent
 	{
 		Analytics.LogEvent("Show end card", 0);
 		canvas.gameObject.SetActive(true);
+		slideAnimation.Play();
 	}
 
 	private void Hide()

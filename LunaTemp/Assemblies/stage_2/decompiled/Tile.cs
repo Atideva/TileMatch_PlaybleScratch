@@ -96,6 +96,10 @@ public class Tile : MonoBehaviour
 	{
 	};
 
+	public event Action OnMoveStart = delegate
+	{
+	};
+
 	private void RefreshLock()
 	{
 		if (coverTiles.Count > 0)
@@ -128,6 +132,7 @@ public class Tile : MonoBehaviour
 
 	public void MoveTo(TileSlot slot)
 	{
+		this.OnMoveStart();
 		movement.MoveTo(slot);
 		movement.OnMoveFinish += MovementFinished;
 	}
