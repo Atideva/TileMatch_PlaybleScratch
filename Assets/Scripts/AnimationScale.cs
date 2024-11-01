@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class AppearAnimation : MonoBehaviour
+public class AnimationScale : MonoBehaviour
 {
     [SerializeField] float startSize = 0;
     [SerializeField] float maxSize = 1.5f;
@@ -10,7 +10,7 @@ public class AppearAnimation : MonoBehaviour
     float _timer;
     bool _isSpawnAnimation;
     Transform _target;
-
+  
     public void Play(Transform target)
     {
         _target = target;

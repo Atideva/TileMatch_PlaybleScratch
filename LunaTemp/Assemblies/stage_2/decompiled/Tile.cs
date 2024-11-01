@@ -26,21 +26,16 @@ public class Tile : MonoBehaviour
 	public TrailRenderer trail;
 
 	[Space(20f)]
-	public Vector3 defaultSize = Vector3.one;
-
-	public float speed;
-
-	public float spawnAnimSize = 1.5f;
-
-	public float spawnAnimDuration = 0.3f;
-
-	[Space(20f)]
-	public bool customColissionBox;
-
 	[SerializeField]
 	private Box box;
 
-	[FormerlySerializedAs("isClickable")]
+	[SerializeField]
+	private TileMovement movement;
+
+	[FormerlySerializedAs("fadeAnim")]
+	[SerializeField]
+	private TileLockAnimation lockAnim;
+
 	[Space(20f)]
 	public bool locked;
 
@@ -63,25 +58,9 @@ public class Tile : MonoBehaviour
 
 	private TileSO _lastType;
 
-	private bool _isSpawnAnimation;
-
-	private float _spawnTimer;
-
-	private Vector3 _targetPosition;
-
 	private float _timer;
 
-	private bool _isMoving;
-
-	private TileSlot _targetSlot;
-
-	public float lockAlpha = 0.3f;
-
-	public float fadeDuration = 1f;
-
 	private float _fadeTimer;
-
-	private bool _isFading;
 
 	private float _fadeFrom;
 
@@ -89,11 +68,13 @@ public class Tile : MonoBehaviour
 
 	private float fadeSpeed = 1f;
 
-	private float currentAlpha;
-
 	public bool debug;
 
 	private Game _game;
+
+	public AnimationScale spawnAnim;
+
+	private bool _isMoving => movement._isMoving;
 
 	public Box Box => new Box(Position + box.Position, box.Width, box.Height);
 
@@ -107,50 +88,13 @@ public class Tile : MonoBehaviour
 
 	public bool IsMoving => _isMoving;
 
+	public bool CanCover => !IsMoving && !InBag;
+
 	public float Y => base.transform.position.y;
-
-	public float X => base.transform.position.x;
-
-	private bool Arrive => Vector2.Distance(base.transform.position, _targetPosition) < 0.01f;
 
 	public event Action<Tile, TileSlot> OnMoveFinish = delegate
 	{
 	};
-
-	private void OnTriggerEnter2D(Collider2D other)
-	{
-		if (!customColissionBox && !_isMoving)
-		{
-			Debug.LogWarning("Contact: " + base.gameObject.name, base.gameObject);
-			Tile collideTile = _game.Find(other.transform);
-			if ((bool)collideTile && !collideTile._isMoving && collideTile.layer > layer && !coverTiles.Contains(collideTile))
-			{
-				coverTiles.Add(collideTile);
-				RefreshLock();
-			}
-		}
-	}
-
-	private void OnTriggerStay2D(Collider2D other)
-	{
-		if (!customColissionBox)
-		{
-			OnTriggerEnter2D(other);
-		}
-	}
-
-	private void OnTriggerExit2D(Collider2D other)
-	{
-		if (!customColissionBox)
-		{
-			Tile tile = _game.Find(other.transform);
-			if ((bool)tile && coverTiles.Contains(tile))
-			{
-				coverTiles.Remove(tile);
-				RefreshLock();
-			}
-		}
-	}
 
 	private void RefreshLock()
 	{
@@ -164,7 +108,7 @@ public class Tile : MonoBehaviour
 		}
 	}
 
-	private void RefreshEditor()
+	private void RefreshInEditor()
 	{
 		if (!Application.isPlaying && !(_lastType == type))
 		{
@@ -184,12 +128,14 @@ public class Tile : MonoBehaviour
 
 	public void MoveTo(TileSlot slot)
 	{
-		trail.sortingOrder = 10000;
-		background.sortingOrder = 10001;
-		icon.sortingOrder = 10002;
-		_targetSlot = slot;
-		_targetPosition = slot.Position;
-		_isMoving = true;
+		movement.MoveTo(slot);
+		movement.OnMoveFinish += MovementFinished;
+	}
+
+	private void MovementFinished(TileSlot toSlot)
+	{
+		Refresh();
+		this.OnMoveFinish(this, toSlot);
 	}
 
 	public void SetGame(Game game)
@@ -199,6 +145,8 @@ public class Tile : MonoBehaviour
 
 	public void SetLayer(int l, int lineID)
 	{
+		movement.SetTile(this);
+		lockAnim.SetTile(this);
 		line = lineID;
 		layer = l;
 		trailSort = layer + line;
@@ -216,65 +164,9 @@ public class Tile : MonoBehaviour
 		lockTile.sortingOrder = disabledSort;
 	}
 
-	private void StopMove()
-	{
-		base.transform.position = _targetPosition;
-		_isMoving = false;
-		Refresh();
-		this.OnMoveFinish(this, _targetSlot);
-	}
-
 	private void Update()
 	{
-		RefreshEditor();
-		if (_isFading)
-		{
-			currentAlpha += fadeSpeed * Time.deltaTime;
-			SetAlpha(currentAlpha);
-			if (currentAlpha <= 0f)
-			{
-				_isFading = false;
-			}
-			if (currentAlpha >= lockAlpha)
-			{
-				_isFading = false;
-			}
-		}
-		if (_isMoving)
-		{
-			base.transform.position = Vector3.MoveTowards(Position, _targetPosition, speed * Time.deltaTime);
-			if (Arrive)
-			{
-				StopMove();
-			}
-		}
-		if (_isSpawnAnimation)
-		{
-			_spawnTimer += Time.deltaTime;
-			float progress = _spawnTimer / spawnAnimDuration;
-			if (progress <= 0.5f)
-			{
-				float scale2 = Mathf.Lerp(0f, spawnAnimSize, progress * 2f);
-				base.transform.localScale = defaultSize * scale2;
-			}
-			else if (progress <= 1f)
-			{
-				float scale = Mathf.Lerp(spawnAnimSize, 1f, (progress - 0.5f) * 2f);
-				base.transform.localScale = defaultSize * scale;
-			}
-			else
-			{
-				base.transform.localScale = defaultSize;
-				_isSpawnAnimation = false;
-			}
-		}
-	}
-
-	private void SetAlpha(float alpha)
-	{
-		Color color = lockTile.color;
-		color.a = alpha;
-		lockTile.color = color;
+		RefreshInEditor();
 	}
 
 	private void Refresh(TileSO so)
@@ -286,8 +178,7 @@ public class Tile : MonoBehaviour
 
 	public void SpawnAnimation()
 	{
-		base.transform.localScale = Vector3.zero;
-		_isSpawnAnimation = true;
+		spawnAnim.Play(base.transform);
 		Show();
 	}
 
@@ -326,40 +217,26 @@ public class Tile : MonoBehaviour
 	{
 		if (locked)
 		{
+			locked = false;
+			lockAnim.Unlock();
 			if (debug)
 			{
-				Debug.LogWarning("Unlock: " + base.name, base.gameObject);
+				Debug.Log("Unlock: " + base.name, base.gameObject);
 			}
-			locked = false;
-			HideLockedImage();
 		}
 	}
 
-	public void Lock()
+	private void Lock()
 	{
 		if (!locked)
 		{
-			if (debug)
-			{
-				Debug.LogWarning("Lock: " + base.name, base.gameObject);
-			}
 			locked = true;
 			lockTile.gameObject.SetActive(true);
-			ShowLockedImage();
+			lockAnim.Lock();
+			if (debug)
+			{
+				Debug.Log("Lock: " + base.name, base.gameObject);
+			}
 		}
-	}
-
-	private void HideLockedImage()
-	{
-		currentAlpha = lockAlpha;
-		fadeSpeed = (0f - lockAlpha) / fadeDuration;
-		_isFading = true;
-	}
-
-	private void ShowLockedImage()
-	{
-		currentAlpha = 0f;
-		fadeSpeed = lockAlpha / fadeDuration;
-		_isFading = true;
 	}
 }

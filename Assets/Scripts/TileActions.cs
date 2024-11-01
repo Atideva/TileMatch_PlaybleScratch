@@ -12,13 +12,13 @@ public class TileActions : GameComponent
     bool _isDisable;
     public event Action OnMoveFinish = delegate { };
     public event Action<Tile> OnMoveStart = delegate { };
+
     protected override void OnInit()
     {
         _cam = Camera.main;
         if (Application.isPlaying)
             Game.Input.OnTouchScreen += OnTouchScreen;
     }
-
 
     public void Disable()
     {
@@ -48,7 +48,7 @@ public class TileActions : GameComponent
     void Click(Tile tile)
     {
         _clicks++;
-        LogEvent("Tile clicked", _clicks);
+        LogEvent("Tile clicked: " + tile.Type.name, _clicks);
 
         if (Game.Bag.NoSpace) return;
 

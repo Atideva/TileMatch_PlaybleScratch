@@ -63,7 +63,7 @@ public class TileActions : GameComponent
 	private void Click(Tile tile)
 	{
 		_clicks++;
-		Analytics.LogEvent("Tile clicked", _clicks);
+		Analytics.LogEvent("Tile clicked: " + tile.Type.name, _clicks);
 		if (!Game.Bag.NoSpace)
 		{
 			TileSlot empty = Game.Bag.GetSlotFor(tile);

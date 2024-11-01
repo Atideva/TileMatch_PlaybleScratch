@@ -35,8 +35,8 @@ public class Quest : GameComponent
 		}
 		if (slots.All((QuestSlot s) => s.Complete))
 		{
-			Analytics.LogEvent("Quest win", 0);
 			this.OnWin();
+			Analytics.LogEvent("Quest win", 0);
 		}
 		else
 		{

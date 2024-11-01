@@ -1,12 +1,12 @@
 {
-  "BuildID": "7c1868c9-4665-49fd-9ece-d0e567a899d3",
+  "BuildID": "6fe5683c-990a-46de-b3a7-9e56aae1e2e5",
   "Command": "project:deploy",
   "ProjectID": "5b6cf7c73bef2a94eac4ebbca2d52761",
-  "ProjectStateHash": "139553983aec0d85adbe1f73885260f7313c23a77618e7c65c8c76bab588aaea",
+  "ProjectStateHash": "9dce40eec1f7dc57ee80e8e59e4ece6d313c23a77618e7c65c8c76bab588aaea",
   "StageCompletedAt": 3,
   "EarliestFatalError": 0,
-  "StartTime": 1730433038972,
-  "EndTime": 1730433070989,
+  "StartTime": 1730443848793,
+  "EndTime": 1730443886034,
   "PlaygroundUserID": 18370,
   "OperatingSystem": "win32",
   "UnityPackageID": null,
@@ -16,9 +16,9 @@
   "LogCount": 4,
   "Logs": [
     {
-      "LogID": "6591ba04-6778-4ad3-ba59-84b15c6632a0",
+      "LogID": "12c8d9dc-9eff-416d-982c-d539a5e4b1a8",
       "Order": 4,
-      "Timestamp": 1730433071176,
+      "Timestamp": 1730443886204,
       "Stage": 3,
       "ErrorType": 3,
       "ErrorCode": "LP3011",
@@ -36,9 +36,9 @@
       "Severity": 0
     },
     {
-      "LogID": "97fd2a7e-ef7e-4cc1-8559-f78674c28078",
+      "LogID": "bc3a41ee-5c61-45d4-9d24-bb341bdba349",
       "Order": 0,
-      "Timestamp": 1730433051536,
+      "Timestamp": 1730443860613,
       "Stage": 1,
       "ErrorType": 2,
       "ErrorCode": "LP1014",
@@ -56,9 +56,9 @@
       "Severity": 0
     },
     {
-      "LogID": "2b3f7d1e-3e41-481d-9210-f9d0bb0d4219",
+      "LogID": "5aa5ed7e-39d3-49e9-9e00-4bc188129253",
       "Order": 1,
-      "Timestamp": 1730433051536,
+      "Timestamp": 1730443860614,
       "Stage": 1,
       "ErrorType": 2,
       "ErrorCode": "LP1031",
@@ -80,19 +80,19 @@
       "Severity": 0
     },
     {
-      "LogID": "3e17ee3e-d3b8-46c6-9011-670c6e8e661e",
+      "LogID": "c3768659-372c-44dd-ac7a-51743b38d25d",
       "Order": 2,
-      "Timestamp": 1730433051536,
+      "Timestamp": 1730443860615,
       "Stage": 1,
       "ErrorType": 1,
       "ErrorCode": "LP1023",
       "Description": "Too many files for facebook platform",
       "Details": [
-        "Too many files for facebook platform in use ($137) only $100 available"
+        "Too many files for facebook platform in use ($143) only $100 available"
       ],
       "DescriptionValues": [],
       "DetailsValues": [
-        "137",
+        "143",
         "100"
       ],
       "LogCount": 1,

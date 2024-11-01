@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Luna.Unity;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Game : MonoBehaviour
 {
@@ -20,8 +21,9 @@ public class Game : MonoBehaviour
 	[SerializeField]
 	private TileLocker locker;
 
+	[FormerlySerializedAs("boxLocker")]
 	[SerializeField]
-	private TileLockerBox boxLocker;
+	private TileLockerBox2D box2DLocker;
 
 	[SerializeField]
 	private TilesBag bag;
@@ -64,7 +66,7 @@ public class Game : MonoBehaviour
 	[SerializeField]
 	private List<Tile> tilesInGame = new List<Tile>();
 
-	private bool _isGameEnded;
+	public bool _isGameEnded;
 
 	public IReadOnlyList<Tile> TilesInGame => tilesInGame;
 
@@ -97,15 +99,10 @@ public class Game : MonoBehaviour
 		actions.OnMoveStart += OnTileMoved;
 	}
 
-	private void QuestWin()
+	public void QuestWin()
 	{
-		if (!_isGameEnded)
-		{
-			_isGameEnded = true;
-			Analytics.LogEvent("Quest win", 0);
-			this.OnQuestWin();
-			Invoke("Win", 1f);
-		}
+		this.OnQuestWin();
+		Invoke("Win", 0.6f);
 	}
 
 	private void OnTileMoved(Tile obj)
@@ -122,7 +119,6 @@ public class Game : MonoBehaviour
 			actions.Disable();
 			LifeCycle.GameEnded();
 			Analytics.LogEvent("Game win", 0);
-			Debug.Log("Game win!");
 		}
 	}
 
@@ -181,7 +177,7 @@ public class Game : MonoBehaviour
 
 	private void RefreshTiles()
 	{
-		boxLocker.Refresh(deck.Layers);
+		box2DLocker.Refresh(deck.Layers);
 	}
 
 	private void OnValidate()

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class TileLockerBox : MonoBehaviour
+public class TileLockerBox2D : MonoBehaviour
 {
 	public bool enable;
 
@@ -21,18 +21,12 @@ public class TileLockerBox : MonoBehaviour
 			foreach (Tile tile in tiles)
 			{
 				List<Tile> coverTiles = (from topTile in onTop.Tiles
-					where !topTile.InBag
-					where !topTile.IsMoving
+					where topTile.CanCover
 					where IsCover(tile.Box, topTile.Box)
 					select topTile).ToList();
 				tile.SetContacts(coverTiles);
 			}
 		}
-	}
-
-	private bool DoesntCover(Box rect1, Box rect2)
-	{
-		return !IsCover(rect1, rect2);
 	}
 
 	private bool IsCover(Box rect1, Box rect2)

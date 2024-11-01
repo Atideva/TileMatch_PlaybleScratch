@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ScaleAnimation : MonoBehaviour
+public class AnimationScaleLooped : MonoBehaviour
 {
     [SerializeField] bool playFromStart;
     [SerializeField] Vector3 startScale = Vector3.one;

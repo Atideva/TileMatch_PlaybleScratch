@@ -21,21 +21,12 @@ public class Tile : MonoBehaviour
     public SpriteRenderer icon;
     public SpriteRenderer lockTile;
     public SpriteRenderer background;
-
     public TrailRenderer trail;
-    [Space(20)]
-    public Vector3 defaultSize = Vector3.one;
-    public float speed;
-    public float spawnAnimSize = 1.5f;
-    public float spawnAnimDuration = 0.3f;
-    public float lockAlpha = 0.3f;
-    public float fadeDuration = 1f;
 
     [Space(20)]
-    public bool customColissionBox;
     [SerializeField] Box box;
-
-    [FormerlySerializedAs("isClickable")]
+    [SerializeField] TileMovement movement;
+    [FormerlySerializedAs("fadeAnim")] [SerializeField] TileLockAnimation lockAnim;
     [Space(20)]
     public bool locked;
     public bool isHidden;
@@ -51,13 +42,12 @@ public class Tile : MonoBehaviour
 
     TileSO _lastType;
     float _timer;
-    bool _isMoving => move._isMoving;
+    bool _isMoving => movement._isMoving;
     float _fadeTimer;
-    bool _isFading;
     float _fadeFrom;
     float _fadeTo;
     float fadeSpeed = 1;
-    float currentAlpha;
+
     public bool debug;
     Game _game;
 
@@ -100,17 +90,15 @@ public class Tile : MonoBehaviour
 
     public void MoveTo(TileSlot slot)
     {
-        move.MoveTo(this, slot);
-        move.OnMoveFinish += MoveFinished;
+        movement.MoveTo(slot);
+        movement.OnMoveFinish += MovementFinished;
     }
 
-    void MoveFinished(TileSlot toSlot)
+    void MovementFinished(TileSlot toSlot)
     {
         Refresh();
         OnMoveFinish(this, toSlot);
     }
-
-    public TileMove move;
 
     public void SetGame(Game game)
     {
@@ -119,12 +107,16 @@ public class Tile : MonoBehaviour
 
     public void SetLayer(int l, int lineID)
     {
+        movement.SetTile(this);
+        lockAnim.SetTile(this);
+        
         line = lineID;
         layer = l;
         trailSort = layer + line;
         backGroundSort = layer + line + 1;
         iconSort = layer + line + 2;
         disabledSort = layer + line + 3;
+        
         Refresh();
     }
 
@@ -139,25 +131,6 @@ public class Tile : MonoBehaviour
     void Update()
     {
         RefreshInEditor();
-        UpdateFading();
-    }
-
-    void UpdateFading()
-    {
-        if (!_isFading) return;
-
-        currentAlpha += fadeSpeed * Time.deltaTime;
-        SetAlpha(currentAlpha);
-
-        if (currentAlpha <= 0) _isFading = false;
-        if (currentAlpha >= lockAlpha) _isFading = false;
-    }
-
-    void SetAlpha(float alpha)
-    {
-        var color = lockTile.color;
-        color.a = alpha;
-        lockTile.color = color;
     }
 
     void Refresh(TileSO so)
@@ -167,7 +140,7 @@ public class Tile : MonoBehaviour
         icon.sprite = so ? so.Icon : null;
     }
 
-    public AppearAnimation spawnAnim;
+    public AnimationScale spawnAnim;
 
     public void SpawnAnimation()
     {
@@ -201,7 +174,7 @@ public class Tile : MonoBehaviour
         if (!locked) return;
         locked = false;
 
-        HideLockedImage();
+        lockAnim.Unlock();
         if (debug) Debug.Log("Unlock: " + name, gameObject);
     }
 
@@ -211,21 +184,8 @@ public class Tile : MonoBehaviour
         locked = true;
 
         lockTile.gameObject.SetActive(true);
-        ShowLockedImage();
+        lockAnim.Lock();
         if (debug) Debug.Log("Lock: " + name, gameObject);
     }
 
-    void HideLockedImage()
-    {
-        currentAlpha = lockAlpha;
-        fadeSpeed = -lockAlpha / fadeDuration;
-        _isFading = true;
-    }
-
-    void ShowLockedImage()
-    {
-        currentAlpha = 0;
-        fadeSpeed = lockAlpha / fadeDuration;
-        _isFading = true;
-    }
 }

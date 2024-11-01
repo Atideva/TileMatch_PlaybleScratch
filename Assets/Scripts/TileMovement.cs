@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TileMove : MonoBehaviour
+public class TileMovement : MonoBehaviour
 {
     public float speed = 20;
     public bool _isMoving;
@@ -14,27 +14,32 @@ public class TileMove : MonoBehaviour
     Vector2 Position => _tile.Position;
     public event Action<TileSlot> OnMoveFinish = delegate { };
 
-    public void MoveTo(Tile tile, TileSlot slot)
+    public void SetTile(Tile tile)
     {
         _tile = tile;
+    }
+
+    public void MoveTo(TileSlot slot)
+    {
+        _targetSlot = slot;
         _tile.trail.sortingOrder = 10000;
         _tile.background.sortingOrder = 10001;
         _tile.icon.sortingOrder = 10002;
         _isMoving = true;
     }
 
-    void UpdateMovement()
+    void Update()
     {
         if (!_isMoving) return;
 
-        transform.position = Vector3.MoveTowards(Position, Destination, speed * Time.deltaTime);
+        _tile.transform.position = Vector3.MoveTowards(Position, Destination, speed * Time.deltaTime);
         if (HasArrive)
             StopMove();
     }
 
     void StopMove()
     {
-        transform.position = Destination;
+        _tile.transform.position = Destination;
         _isMoving = false;
         OnMoveFinish(_targetSlot);
     }
