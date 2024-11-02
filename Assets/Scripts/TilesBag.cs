@@ -46,7 +46,7 @@ public class TilesBag : MonoBehaviour
 
     public void Put(Tile tile, TileSlot tileSlot)
     {
-        tile.PutInBag();
+        tile.PutInBag(tileSlot);
         tileSlot.Put(tile);
         OnPut();
     }

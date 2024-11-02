@@ -46,8 +46,9 @@ public class Game : MonoBehaviour
 	[SerializeField]
 	private EndCard endCard;
 
+	[FormerlySerializedAs("quest")]
 	[SerializeField]
-	private Quest quest;
+	private QuestMatch3 questMatch3;
 
 	[Space]
 	[SerializeField]
@@ -93,13 +94,16 @@ public class Game : MonoBehaviour
 		InitComponents();
 		Invoke("Win", autoGameOverInSeconds);
 		Invoke(useRandom ? "Spawn" : "StartGame", 0.01f);
-		quest.OnWin += QuestWin;
+		if ((bool)questMatch3)
+		{
+			questMatch3.OnWin += QuestMatch3Win;
+		}
 		winCondition.OnWin += Win;
 		loseCondition.OnLose += Lose;
 		actions.OnMoveStart += OnTileMoved;
 	}
 
-	public void QuestWin()
+	public void QuestMatch3Win()
 	{
 		this.OnQuestWin();
 		Invoke("Win", 0.6f);

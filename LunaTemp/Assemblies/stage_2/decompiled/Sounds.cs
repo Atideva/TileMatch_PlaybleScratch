@@ -26,7 +26,7 @@ public class Sounds : GameComponent
 		{
 			Play(Sound.Click);
 		};
-		Game.TileMatcher.OnMatch += delegate
+		Game.TileMatcher.OnMatch3 += delegate
 		{
 			Play(Sound.Merge);
 		};

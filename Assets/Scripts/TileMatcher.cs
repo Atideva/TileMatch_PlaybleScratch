@@ -7,7 +7,7 @@ using static Luna.Unity.Analytics;
 public class TileMatcher : GameComponent
 {
     public GameObject vfx;
-    public event Action<List<TileSlot>, TileSO> OnMatch = delegate { };
+    public event Action<List<TileSlot>, TileSO> OnMatch3 = delegate { };
     public List<Tile> completed = new();
     public int Completed => completed.Count;
 
@@ -48,7 +48,7 @@ public class TileMatcher : GameComponent
         LogEvent("3 tiles matched: ", matches);
 
         Debug.Log("Matched: " + bagSlots[0].Type);
-        OnMatch(bagSlots, bagSlots[0].Type);
+        OnMatch3(bagSlots, bagSlots[0].Type);
 
         foreach (var bagSlot in bagSlots)
         {

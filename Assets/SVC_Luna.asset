@@ -1069,7 +1069,7 @@ MonoBehaviour:
     - _COLORCOLOR_ON
   _includedShaderVariants: []
   _excludedShaderVariants: []
-  version: 861
+  version: 903
   _shaderParsedShaders:
   - ParsedSubShaders:
     - Index: 0

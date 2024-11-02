@@ -21,7 +21,7 @@ public class Game : MonoBehaviour
     [SerializeField] WinCondition winCondition;
     [SerializeField] InputTouch input;
     [SerializeField] EndCard endCard;
-    [SerializeField] Quest quest;
+    [FormerlySerializedAs("quest")] [SerializeField] QuestMatch3 questMatch3;
     [Space]
     [SerializeField] bool useRandom;
     [SerializeField] TileRandomSpawner spawnRandom;
@@ -46,13 +46,13 @@ public class Game : MonoBehaviour
         Invoke(nameof(Win), autoGameOverInSeconds);
         Invoke(useRandom ? nameof(Spawn) : nameof(StartGame), 0.01f);
 
-        quest.OnWin += QuestWin;
+        if (questMatch3) questMatch3.OnWin += QuestMatch3Win;
         winCondition.OnWin += Win;
         loseCondition.OnLose += Lose;
         actions.OnMoveStart += OnTileMoved;
     }
 
-    public void QuestWin()
+    public void QuestMatch3Win()
     {
         OnQuestWin();
         Invoke(nameof(Win), 0.6f);

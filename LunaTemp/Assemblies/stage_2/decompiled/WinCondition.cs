@@ -10,7 +10,7 @@ public class WinCondition : GameComponent
 
 	protected override void OnInit()
 	{
-		Game.TileMatcher.OnMatch += Check;
+		Game.TileMatcher.OnMatch3 += Check;
 	}
 
 	private void Check(List<TileSlot> bagSlots, TileSO type)

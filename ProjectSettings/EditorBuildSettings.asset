@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/RheanovBackup.unity
-    guid: 0f9d739d25d80bf43a5917711ce639de
+    path: Assets/Scenes/TyrRewards.unity
+    guid: a1a10ef900650e844b496f2e3a246b35
   m_configObjects: {}

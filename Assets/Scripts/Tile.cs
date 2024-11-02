@@ -151,8 +151,10 @@ public class Tile : MonoBehaviour
         Show();
     }
 
-    public void PutInBag()
+    public void PutInBag(TileSlot slot)
     {
+        transform.SetParent(slot.transform);
+        transform.localScale = Vector3.one;
         InBag = true;
     }
 

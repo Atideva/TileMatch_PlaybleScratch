@@ -13,7 +13,7 @@ public class Sounds : GameComponent
     protected override void OnInit()
     {
         Game.Actions.OnMoveStart += _ => { Play(Sound.Click); };
-        Game.TileMatcher.OnMatch += (_, _) => { Play(Sound.Merge); };
+        Game.TileMatcher.OnMatch3 += (_, _) => { Play(Sound.Merge); };
         Game.OnQuestWin += ( ) => { Play(Sound.LevelWin); };
         Game.OnLose += ( ) => { Play(Sound.LevelLose); };
     }

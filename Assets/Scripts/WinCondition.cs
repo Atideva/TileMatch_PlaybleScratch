@@ -7,7 +7,7 @@ public class WinCondition : GameComponent
     public event Action OnWin = delegate { }; 
     protected override void OnInit()
     {
-        Game.TileMatcher.OnMatch += Check;
+        Game.TileMatcher.OnMatch3 += Check;
     }
 
     void Check(List<TileSlot> bagSlots, TileSO type)

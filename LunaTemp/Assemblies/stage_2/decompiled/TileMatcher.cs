@@ -16,7 +16,7 @@ public class TileMatcher : GameComponent
 
 	public int Completed => completed.Count;
 
-	public event Action<List<TileSlot>, TileSO> OnMatch = delegate
+	public event Action<List<TileSlot>, TileSO> OnMatch3 = delegate
 	{
 	};
 
@@ -52,7 +52,7 @@ public class TileMatcher : GameComponent
 		matches++;
 		Analytics.LogEvent("3 tiles matched: ", matches);
 		Debug.Log("Matched: " + bagSlots[0].Type);
-		this.OnMatch(bagSlots, bagSlots[0].Type);
+		this.OnMatch3(bagSlots, bagSlots[0].Type);
 		foreach (TileSlot bagSlot in bagSlots)
 		{
 			Tile tile = bagSlot.Tile;

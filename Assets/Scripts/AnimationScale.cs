@@ -8,19 +8,20 @@ public class AnimationScale : MonoBehaviour
     [SerializeField] float duration = 0.3f;
 
     float _timer;
-    bool _isSpawnAnimation;
+    bool _isPlaying;
     Transform _target;
   
     public void Play(Transform target)
     {
         _target = target;
         _target.localScale = new Vector3(startSize, startSize, startSize);
-        _isSpawnAnimation = true;
+        _isPlaying = true;
+        _timer = 0;
     }
 
     void Update()
     {
-        if (!_isSpawnAnimation) return;
+        if (!_isPlaying) return;
 
         _timer += Time.deltaTime;
         var progress = _timer / duration;
@@ -42,7 +43,7 @@ public class AnimationScale : MonoBehaviour
             case >= 1.0f:
             {
                 _target.localScale = new Vector3(endSize, endSize, endSize);
-                _isSpawnAnimation = false;
+                _isPlaying = false;
                 break;
             }
         }

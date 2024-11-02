@@ -16,7 +16,7 @@ public class AnimationScale : MonoBehaviour
 
 	private float _timer;
 
-	private bool _isSpawnAnimation;
+	private bool _isPlaying;
 
 	private Transform _target;
 
@@ -24,12 +24,13 @@ public class AnimationScale : MonoBehaviour
 	{
 		_target = target;
 		_target.localScale = new Vector3(startSize, startSize, startSize);
-		_isSpawnAnimation = true;
+		_isPlaying = true;
+		_timer = 0f;
 	}
 
 	private void Update()
 	{
-		if (!_isSpawnAnimation)
+		if (!_isPlaying)
 		{
 			return;
 		}
@@ -53,7 +54,7 @@ public class AnimationScale : MonoBehaviour
 		else if (num2 >= 1f)
 		{
 			_target.localScale = new Vector3(endSize, endSize, endSize);
-			_isSpawnAnimation = false;
+			_isPlaying = false;
 		}
 	}
 }
